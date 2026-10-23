@@ -1,0 +1,41 @@
+{
+  "exportedAt": 1792738683.9480278,
+  "hubBaseCommit": "f0d9d49d9a480c5e246de7cfaf28d590b38bc717",
+  "status": "Experimental handoff only; Hub working tree retained; no Hub commit or push.",
+  "localOnlyPatch": "D:/work/code/PLCnext-Engineer/tests/hub-runtime/hub-handoff-experimental.patch",
+  "patchSha256": "084fc4d4bb6673a6383067067f17a32a7a4534955471cafc129bf400fec32cbe",
+  "files": {
+    "hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/config/IoTSnapshotCompiler.java": "c210193be689af7cfbf8bc08649e1d03387464bb0de28b39b948270a1a040cd8",
+    "hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/messaging/IoTConfigGetHandler.java": "f19d66c019da01ee98966de3d386142ee367e3c62894e393f5ef91b031147cbb",
+    "hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/messaging/IoTMessagingMapper.java": "12fc4db9372d7a5f6fc7dd06c9cc8185a4bf82d81cb89afb2afa8f6114bb15bc",
+    "hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/persistence/IoTReleaseMapper.java": "718b6da98cbb0bffefba6e74ec70b9114b3fbe7b88d5f559253ac99b95d32fe0",
+    "hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/state/IoTStateMapper.java": "5db7e009a9a43c947e4d8cc896cf9b0ff1bf0fde3fc4b467ada15d2986b84e1f",
+    "hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/state/IoTStateService.java": "36d7e5929345576654181ad39e2bea7079e7fbb6c52fc693db6c2bf852fdc0ab",
+    "hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/config/IoTLifecycleIntegrationTest.java": "23035a059052082a1ae475dde552804e4f22b9c6484866618831f8f45f11bbac",
+    "hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/messaging/IoTDevicePatchMessagingTest.java": "f0f6091b24ca86684bbfe600627e30286f4882d601aa99e229488288e9931cbe",
+    "hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/state/IoTSessionStateTest.java": "888508da22fec0e7a613ed36497ca819cc94682852801053e87752caaeeba455",
+    "hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/telemetry/IoTTelemetryIntegrationTest.java": "c6bf4b047cc404d26ee1719558562965c1b8305b239078a5e42fad933b7fcb51",
+    "hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/contract/IoTLiveTimestamp.java": "f3eb299ecb0a212b421e7ad6b8bcee0dab0e0977eb7f63d16f658db23da59e9d",
+    "hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/config/IoTSnapshotCapacityTest.java": "738cdcffc792622331b76e1baa26fd52cc5971f662251a02b1a7cab443979ec9",
+    "hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/state/IoTStateCapacityTest.java": "5da3dcb4fdc736dd2d3d342726a4dddd48d34597e92284d6993caf9d603cd901"
+  },
+  "runningLocalHub": {
+    "pid": 20224,
+    "jarSha256": "8cb0572a82cb8ed1ddcb3d5f12fd51ea313bd38ac40cf0f7f157d5de33bf1f70",
+    "includes": [
+      "state batch upsert",
+      "gateway lock experiment",
+      "bounded live timestamp skew"
+    ],
+    "excludes": [
+      "bulk snapshot compiler",
+      "Hub-clock SQL cutoff"
+    ]
+  },
+  "lastExtendedRun": {
+    "tests": 59,
+    "failures": 0,
+    "errors": 20,
+    "status": "FAILED; not a releasable verified Hub patch"
+  }
+}

@@ -3,6 +3,8 @@
 *.dt text eol=lf
 *.py text eol=lf
 *.md text eol=lf
+Dockerfile text eol=lf
+deploy/ntp/*.conf text eol=lf
 *.pcwex binary
 *.pcwlx binary
 *.png binary

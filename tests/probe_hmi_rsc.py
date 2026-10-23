@@ -21,7 +21,9 @@ with Device('192.168.0.8') as device:
     if '--enroll-hub' in sys.argv:
         current=service.ReadSingle('Arp.Plc.Eclr/HMI.GatewayId')
         assert 'PLC-ENG-01' in str(current) or 'NG-HUB-2152-01' in str(current), 'Unexpected gateway identity'
-        for field,value in [('BrokerGatewayId','NG-HUB-2152-01'),('ManagementMode','HUB_MANAGED'),('UtcOffsetMinutes','480'),('ClientId','NG-HUB-2152-01-native')]:
+        # Continuous NTP uses real UTC. The earlier manual local-wall-clock
+        # fixture used 480 and must not be reapplied after UTC migration.
+        for field,value in [('BrokerGatewayId','NG-HUB-2152-01'),('ManagementMode','HUB_MANAGED'),('UtcOffsetMinutes','0'),('ClientId','NG-HUB-2152-01-native')]:
             result=service.WriteSingle(WriteItem('Arp.Plc.Eclr/HMI.'+field,RscVariant.of(value)))
             assert int(result)==0,(field,str(result))
         result=service.WriteSingle(WriteItem('Arp.Plc.Eclr/GW_SaveBroker',RscVariant.of(True)))

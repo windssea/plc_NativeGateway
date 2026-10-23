@@ -1,0 +1,184 @@
+{
+  "date": "2026-10-23",
+  "plc": "192.168.0.8",
+  "gatewayId": "NG-HUB-2152-01",
+  "application": "native-0.5.0",
+  "applicationRebuiltThisRound": false,
+  "engineerProjectSha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154",
+  "timeConfiguration": {
+    "server": "192.168.0.5",
+    "udpPort": 123,
+    "pollSeconds": 64,
+    "timezone": "UTC+00:00",
+    "utcOffsetMinutes": 0,
+    "container": "nativegateway-ntp",
+    "source": "common Hub-host clock; not independently traceable UTC"
+  },
+  "controllerReboot": {
+    "at": 1792737911.2239943,
+    "passed": true,
+    "observedRscOutage": true,
+    "elapsedSeconds": 217.15,
+    "epochOffsetSeconds": -0.142,
+    "core": {
+      "HMI.GatewayId": "NG-HUB-2152-01",
+      "HMI.ManagementMode": "STANDALONE",
+      "HMI.Managed": false,
+      "HMI.LocalChanges": true,
+      "HMI.LocalRevision": "8",
+      "HMI.UiMaintenance": "本地改动已生效：继续采集，暂停写入平台；交还时恢复平台配置。",
+      "HMI.UiStatus": "已自动恢复保存的配置，无需重复保存。",
+      "HMI.UiPersistence": "已保存到控制器 · 保存序号 58 · 重启后自动恢复",
+      "HMI.Connection": "CONNECTED",
+      "MainInstance.BootId": "ng-d4f61b3085b97c5e3831983b-22",
+      "MainInstance.Store.Busy": false,
+      "MainInstance.Store.Error": false,
+      "MainInstance.Durable.HasHubBaseline": true,
+      "MainInstance.Durable.Generation": 58,
+      "MainInstance.Durable.LocalRevision": 8,
+      "MainInstance.Durable.LocalChanges": true,
+      "MainInstance.Active.Version": 9,
+      "MainInstance.Active.MessageId": "cfg-12d3f296-5082-40ce-9a3f-1da1494d3e21",
+      "MainInstance.Active.DeviceCount": 50,
+      "MainInstance.Active.PointCount": 250,
+      "MainInstance.QueueCount": 0,
+      "MainInstance.Dropped": 0,
+      "HMI.InvalidAcks": 0,
+      "at": 1792737909.1332839
+    }
+  },
+  "handback": {
+    "at": 1792738044.1449206,
+    "passed": true,
+    "core": {
+      "HMI.GatewayId": "NG-HUB-2152-01",
+      "HMI.ManagementMode": "HUB_MANAGED",
+      "HMI.Managed": true,
+      "HMI.LocalChanges": false,
+      "HMI.LocalRevision": "9",
+      "HMI.UiMaintenance": "当前由平台管理。需要本地编辑时，请手动进入维护。",
+      "HMI.UiStatus": "管理模式已保存并生效，请查看上方的管理说明。",
+      "HMI.UiPersistence": "已保存到控制器 · 保存序号 59 · 重启后自动恢复",
+      "HMI.Connection": "CONNECTED",
+      "MainInstance.BootId": "ng-d4f61b3085b97c5e3831983b-22",
+      "MainInstance.Store.Busy": false,
+      "MainInstance.Store.Error": false,
+      "MainInstance.Durable.HasHubBaseline": true,
+      "MainInstance.Durable.Generation": 59,
+      "MainInstance.Durable.LocalRevision": 9,
+      "MainInstance.Durable.LocalChanges": false,
+      "MainInstance.Active.Version": 9,
+      "MainInstance.Active.MessageId": "cfg-12d3f296-5082-40ce-9a3f-1da1494d3e21",
+      "MainInstance.Active.DeviceCount": 50,
+      "MainInstance.Active.PointCount": 250,
+      "MainInstance.QueueCount": 4,
+      "MainInstance.Dropped": 0,
+      "HMI.InvalidAcks": 0,
+      "at": 1792738044.1570847
+    }
+  },
+  "ntpRecovery": {
+    "passed": true,
+    "restartedAt": 1792738747.9673312,
+    "postRestartRequests": [
+      {
+        "at": 1792738833.7651076,
+        "requests": 1
+      },
+      {
+        "at": 1792738934.8277009,
+        "requests": 2
+      },
+      {
+        "at": 1792739035.6998937,
+        "requests": 4
+      },
+      {
+        "at": 1792739126.0925462,
+        "requests": 5
+      }
+    ],
+    "raw": [
+      {
+        "at": 1792738646.1160297,
+        "exitCode": 0,
+        "clients": "Hostname                      NTP   Drop Int IntL Last     Cmd   Drop Int  Last\n===============================================================================\n172.17.0.1                     19      0   6   -    28       0      0   -     -"
+      },
+      {
+        "at": 1792738732.298451,
+        "exitCode": 0,
+        "clients": "Hostname                      NTP   Drop Int IntL Last     Cmd   Drop Int  Last\n===============================================================================\n172.17.0.1                     20      0   6   -    50       0      0   -     -"
+      },
+      {
+        "at": 1792738747.9673312,
+        "event": "container-restart",
+        "container": "nativegateway-ntp"
+      },
+      {
+        "at": 1792738833.7651076,
+        "exitCode": 0,
+        "clients": "Hostname                      NTP   Drop Int IntL Last     Cmd   Drop Int  Last\n===============================================================================\n172.17.0.1                      1      0   -   -    21       0      0   -     -"
+      },
+      {
+        "at": 1792738934.8277009,
+        "exitCode": 0,
+        "clients": "Hostname                      NTP   Drop Int IntL Last     Cmd   Drop Int  Last\n===============================================================================\n172.17.0.1                      2      0   6   -    58       0      0   -     -"
+      },
+      {
+        "at": 1792739035.6998937,
+        "exitCode": 0,
+        "clients": "Hostname                      NTP   Drop Int IntL Last     Cmd   Drop Int  Last\n===============================================================================\n172.17.0.1                      4      0   6   -    29       0      0   -     -"
+      },
+      {
+        "at": 1792739126.0925462,
+        "exitCode": 0,
+        "clients": "Hostname                      NTP   Drop Int IntL Last     Cmd   Drop Int  Last\n===============================================================================\n172.17.0.1                      5      0   6   -    54       0      0   -     -"
+      }
+    ]
+  },
+  "continuousObservation": {
+    "startedAt": 1792738640.8219612,
+    "finishedAt": 1792739126.0936027,
+    "actualSeconds": 485.27,
+    "plcPassed": true,
+    "errors": [],
+    "samples": 29,
+    "devices": 50,
+    "points": 250,
+    "activeVersion": 11,
+    "bootId": "ng-d4f61b3085b97c5e3831983b-22",
+    "ntpRestartTest": true,
+    "ntpRestarted": true,
+    "clockMinOffsetSeconds": -1.118,
+    "clockMaxOffsetSeconds": -0.078,
+    "maxPointAgeSeconds": 5.08,
+    "cpuRange": [
+      36.0,
+      72.0
+    ],
+    "actualMemoryRange": [
+      69,
+      69
+    ],
+    "maxQueueBatches": 13,
+    "mqtt": {
+      "counts": {
+        "data": 374,
+        "data/ack": 367,
+        "heartbeat": 16,
+        "config/get": 16
+      },
+      "coverage": 250,
+      "heartbeatMaxGapSeconds": 30.079936981201172
+    },
+    "hubReceipts": {
+      "storedBatches": 366,
+      "ackMaxSeconds": 16.477848291397095,
+      "unacknowledgedBatches": 8,
+      "note": "Hub persistence latency is recorded separately; not a Hub stability pass."
+    }
+  },
+  "hubStatus": "Issues handed over; no claim of Hub stability. Experimental source and runtime retained; no Hub commit or push.",
+  "fullEightHourTestPassed": false,
+  "rawEvidence": "tests/time-locking-20261023 (local workstation only)"
+}

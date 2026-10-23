@@ -26,6 +26,8 @@
 
 其他脚本包含历史版本的容量、增删、配置和重启测试，并非可一次性全量运行的单元测试套件。不要直接批量执行此目录的程序。
 
+持续校时验证新增：`continuous_time_verify.py` 是带前提的维护分阶段测试，会改配置，`reboot` 会重启 PLC；`plc_time_stability.py` 默认只读，指定 `--restart-ntp` 会重启本机 `nativegateway-ntp` 容器；`time_locking_acceptance.py publish` 会通过真实 Hub 修改隔离 fixture 周期，可能超时，不应批量重跑，检查已有发布结果后再处理。后者整组验收未完成，不作为 Hub 修复通过证据。记录器可用仓库根目录 `tools/start_lab_recorder.py` 启动，它不发送业务回执。
+
 ## 验收材料
 
 `validation/` 保存最终版本的精简验收结果。原始持续采样、原始报文、SQLite 数据库、启动日志、历史截图、旧测试段及虚拟环境保留在原工作站，已从 Git 排除；项目文档中的这些证据路径用于定位原工作站文件。原 8 小时测试提前停止，不代表已通过 8 小时稳定性测试。
