@@ -13,6 +13,8 @@ AXC F 2152 的原生 IEC/ST + PLCnext Engineer Web HMI 网关，支持 Modbus TC
 - [PLC 持续校时与恢复](docs/PLC持续校时与恢复-20261023.md)：局域网 NTP、UTC 零偏移、整机重启恢复及 250 点短时验证。
 - [Hub 问题交接](docs/Hub入库问题交接-20261023.md)：锁等待、快照查询放大、时间边界、实验补丁与本机运行版本；后续由 Hub 项目处理。
 - [PLC 有界采样缓冲与补传方案](docs/PLC有界采样缓冲与补传方案.md)：5 分钟 RAM 缓冲目标、可选文件日志、容量淘汰、乱序回执、补传限速和时序完整性验收。
+- [Hub、Python IoT、原生 PLC 协同实施计划](docs/Hub-IoT-PLC协同实施计划.md)：三方责任、报文前缓冲与持久化差异、两份方案优先级和分阶段验收。
+- [MQTT 平台授时共同方案](docs/MQTT平台授时方案.md)：公共授时契约、启动及失效门槛、Python Outbox 重试/过期/重启恢复。
 
 打开工程：`NativeGateway.pcwex`。当前测试 HMI：<https://192.168.0.8/ehmi/hmiapp.html>。
 
