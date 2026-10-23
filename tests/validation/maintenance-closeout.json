@@ -1,0 +1,45 @@
+{
+  "at": 1792736188.2672691,
+  "passed": true,
+  "controller": {
+    "HMI.GatewayId": "NG-HUB-2152-01",
+    "HMI.ManagementMode": "HUB_MANAGED",
+    "HMI.Managed": true,
+    "HMI.LocalChanges": false,
+    "HMI.LocalRevision": "6",
+    "HMI.UiMaintenance": "当前由平台管理。需要本地编辑时，请手动进入维护。",
+    "HMI.UiStatus": "管理模式已保存并生效，请查看上方的管理说明。",
+    "HMI.UiPersistence": "已保存到控制器 · 保存序号 54 · 重启后自动恢复",
+    "HMI.Connection": "CONNECTED",
+    "MainInstance.BootId": "ng-d4f61b3085b97c5e3831983b-21",
+    "MainInstance.Store.Busy": false,
+    "MainInstance.Store.Error": false,
+    "MainInstance.Durable.HasHubBaseline": true,
+    "MainInstance.Durable.Generation": 54,
+    "MainInstance.Durable.LocalRevision": 6,
+    "MainInstance.Durable.LocalChanges": false,
+    "MainInstance.Active.Version": 9,
+    "MainInstance.Active.MessageId": "cfg-12d3f296-5082-40ce-9a3f-1da1494d3e21",
+    "MainInstance.Active.DeviceCount": 50,
+    "MainInstance.Active.PointCount": 250,
+    "MainInstance.QueueCount": 0,
+    "MainInstance.Dropped": 0,
+    "HMI.InvalidAcks": 0,
+    "at": 1792736162.8839076
+  },
+  "hmi": {
+    "HMI.English": false,
+    "HMI.View": 13,
+    "MainInstance.Editor.ModeReviewOpen": false
+  },
+  "hub": {
+    "gatewayId": "NG-HUB-2152-01",
+    "devicePatchSupported": true,
+    "configDrift": false,
+    "activeConfigVersion": 9,
+    "desiredVersion": 9,
+    "reportedActiveVersion": 9,
+    "releaseInFlightStatus": null,
+    "draftDirty": false
+  }
+}

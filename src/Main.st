@@ -25,6 +25,11 @@ VAR
     BootHash : NG_SHA256;
     BootNamespace : STRING[24];
     IdentityChanged : BOOL;
+    ProtocolConfig : NG_Config;
+    HubActiveVersion : ULINT;
+    HubActiveMessageId : NG_Id;
+    TelemetryAllowed : BOOL;
+    AckMessage : STRING[160];
     BlankConfig : NG_Config;
     EmptyPacket : NG_Packet;
     AckReader : NG_ReadAck;
@@ -214,6 +219,7 @@ ELSE HMI.Persistence := CONCAT('Persisted generation ',TO_STRING(Durable.Generat
 HMI.ResourceStatus := 'CPU/RAM recorded externally; offline detected by Hub heartbeat timeout.';
 IF Store.Done THEN
     Durable := Store.Active; Active := Durable.Config; Bootstrap := Durable.Bootstrap;
+    IF Durable.Managed THEN HMI.ManagementMode:='HUB_MANAGED'; ELSE HMI.ManagementMode:='STANDALONE'; END_IF;
     IF (SaveReason = 1) OR (SaveReason = 2) THEN
         ResetMeters := TRUE;
         BatchSweep := FALSE;
@@ -232,7 +238,12 @@ IF Store.Done THEN
             FOR p:=1 TO 320 DO Samples[p]:=EmptySample; END_FOR;
             IdentityChanged:=FALSE;
         END_IF;
-        Reconnect:=TRUE; HMI.Status:='Broker/mode saved; identity changes reset local baseline.';
+        Reconnect:=TRUE; HMI.Status:='Broker settings saved; configuration ownership is unchanged.';
+    ELSIF SaveReason = 6 THEN
+        ResetMeters := TRUE; BatchSweep := FALSE;
+        FOR p := 1 TO 320 DO Samples[p] := EmptySample; END_FOR;
+        HeartbeatPending := TRUE; GetPending := TRUE;
+        HMI.Status := 'Management mode saved. Check the ownership guidance above.';
     ELSIF SaveReason = 5 THEN
         BootId:=CONCAT('ng-',BootNamespace,'-',TO_STRING(Durable.BootCounter,'{0:d}'));
         SessionId:=BootId; StartupReady:=TRUE; StartupStage:=4; HMI.Status:='Startup identity persisted; MQTT starting.';
@@ -260,6 +271,14 @@ IF NOT StartupReady THEN
     Mqtt(Enable:=FALSE,Reconnect:=TRUE,NowMs:=NowMs,Bootstrap:=Bootstrap,BootId:=BootId,TxRequest:=FALSE,TxTopic:='',TxLength:=0,TxRetain:=FALSE,RxAccept:=FALSE,TxBuffer:=Tx,RxBuffer:=Rx);
     RETURN;
 END_IF;
+TelemetryAllowed := NOT Durable.LocalChanges OR NOT Durable.HasHubBaseline;
+HubActiveVersion := Active.Version; HubActiveMessageId := Active.MessageId;
+IF Durable.LocalChanges AND Durable.HasHubBaseline THEN HubActiveVersion := 0; HubActiveMessageId := ''; END_IF;
+IF Durable.Managed AND NOT Durable.HasHubBaseline AND Durable.LocalChanges THEN HubActiveVersion := 0; HubActiveMessageId := ''; TelemetryAllowed := FALSE; END_IF;
+IF RxStage=30 THEN
+    ProtocolConfig := Active;
+    IF Durable.Managed AND NOT Durable.HasHubBaseline AND Durable.LocalChanges THEN ProtocolConfig := BlankConfig; END_IF;
+END_IF;
 Header := CONCAT('{"schemaVersion":1,"gatewayId":',NG_Quote(Bootstrap.GatewayId),',"timestamp":',TO_STRING(UnixMs, '{0:d}'));
 IF (RxStage = 0) AND Mqtt.RxReady AND NOT AckPending AND NOT Store.Busy AND (SaveReason = 0) THEN
     RxTopic := Mqtt.RxTopic; RxLength := Mqtt.RxLength; RxRetain := Mqtt.RxRetained;
@@ -269,7 +288,7 @@ IF (RxStage = 0) AND Mqtt.RxReady AND NOT AckPending AND NOT Store.Busy AND (Sav
 END_IF;
 Parser(Execute := RxStage = 10, Length := RxLength, Buffer := Rx, Doc := Doc);
 Hash(Execute := RxStage = 20, Length := RxLength, Buffer := Rx);
-Command(Execute := RxStage = 30, IsPatch := IsPatch, Retained := RxRetain, GatewayId := Bootstrap.GatewayId, Doc := Doc, Active := Active);
+Command(Execute := RxStage = 30, IsPatch := IsPatch, Retained := RxRetain, GatewayId := Bootstrap.GatewayId, Doc := Doc, Active := ProtocolConfig);
 CASE RxStage OF
 10:
     IF Parser.Error THEN HMI.ConfigResult := Parser.ErrorText; RxAccept := TRUE; RxStage := 0;
@@ -300,7 +319,10 @@ CASE RxStage OF
 30:
     IF Command.Done THEN
         RequestId := Command.RequestId; RequestVersion := Command.RequestVersion; ErrorCode := Command.ErrorCode;
-        Result := 'REJECTED'; Replay := FALSE; HMI.ReceivedConfigs := HMI.ReceivedConfigs+1;
+        Result := 'REJECTED'; Replay := FALSE; AckMessage := 'Configuration rejected; inspect HMI diagnostics.'; HMI.ReceivedConfigs := HMI.ReceivedConfigs+1;
+        IF NOT Durable.Managed THEN
+            ErrorCode := 'VERSION_CONFLICT'; AckMessage := 'Local maintenance is active. Configuration was not applied. Return ownership to Hub, then retry this release.';
+        ELSE
         FOR i := 1 TO 32 DO
             IF (RequestId <> '') AND (Durable.Requests[i].MessageId = RequestId) THEN
                 IF (Durable.Requests[i].Digest = Hash.Digest) AND (Durable.Requests[i].IsPatch = IsPatch) AND (Durable.Requests[i].Version = RequestVersion) THEN
@@ -311,11 +333,13 @@ CASE RxStage OF
             END_IF;
         END_FOR;
         IF NOT Replay AND (ErrorCode = '') THEN
-            IF RequestVersion < Active.Version THEN ErrorCode := 'STALE_VERSION';
-            ELSIF RequestVersion = Active.Version THEN ErrorCode := 'VERSION_CONFLICT'; END_IF;
+            IF RequestVersion < ProtocolConfig.Version THEN ErrorCode := 'STALE_VERSION';
+            ELSIF RequestVersion = ProtocolConfig.Version THEN ErrorCode := 'VERSION_CONFLICT'; END_IF;
+        END_IF;
         END_IF;
         IF (ErrorCode = '') AND NOT Replay THEN
             Pending := Durable; Pending.Config := Command.Candidate;
+            Pending.HubConfig := Pending.Config; Pending.HasHubBaseline := TRUE; Pending.LocalChanges := FALSE;
             Pending.ReplayIndex := Pending.ReplayIndex+1; IF Pending.ReplayIndex > 32 THEN Pending.ReplayIndex := 1; END_IF;
             i := Pending.ReplayIndex; Pending.Requests[i].MessageId := RequestId; Pending.Requests[i].Version := RequestVersion; Pending.Requests[i].Digest := Hash.Digest; Pending.Requests[i].IsPatch := IsPatch;
             Save := TRUE; SaveReason := 1; RxStage := 40;
@@ -324,14 +348,14 @@ CASE RxStage OF
 40: (* Wait for the durable commit. *)
 90:
     IF (RequestId <> '') AND (RequestVersion > 0) THEN
-        AckPayload := CONCAT(Header,',"messageId":',NG_Quote(RequestId),',"configVersion":',TO_STRING(RequestVersion, '{0:d}'),',"activeConfigVersion":',TO_STRING(Active.Version, '{0:d}'),',"status":',NG_Quote(Result),',"errors":[');
-        IF ErrorCode <> '' THEN WireError:=NG_WireCode(ErrorCode,IsPatch); AckPayload := CONCAT(AckPayload,'{"code":',NG_Quote(WireError),',"path":"/","message":"Configuration rejected; inspect HMI diagnostics."}'); END_IF;
+        AckPayload := CONCAT(Header,',"messageId":',NG_Quote(RequestId),',"configVersion":',TO_STRING(RequestVersion, '{0:d}'),',"activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"status":',NG_Quote(Result),',"errors":[');
+        IF ErrorCode <> '' THEN WireError:=NG_WireCode(ErrorCode,IsPatch); AckPayload := CONCAT(AckPayload,'{"code":',NG_Quote(WireError),',"path":"/","message":',NG_Quote(AckMessage),'}'); END_IF;
         AckPayload := CONCAT(AckPayload,']');
         IF IsPatch THEN
             AckTopic := CONCAT(Prefix,'config/patch/ack');
             IF Result = 'APPLIED' THEN AckPayload := CONCAT(AckPayload,',"appliedConfigVersion":',TO_STRING(RequestVersion, '{0:d}')); ELSE AckPayload := CONCAT(AckPayload,',"appliedConfigVersion":null'); END_IF;
             AckPayload := CONCAT(AckPayload,',"activeMessageId":');
-            IF Active.Version > 0 THEN AckPayload := CONCAT(AckPayload,NG_Quote(Active.MessageId)); ELSE AckPayload := CONCAT(AckPayload,'null'); END_IF;
+            IF HubActiveVersion > 0 THEN AckPayload := CONCAT(AckPayload,NG_Quote(HubActiveMessageId)); ELSE AckPayload := CONCAT(AckPayload,'null'); END_IF;
         ELSE AckTopic := CONCAT(Prefix,'config/ack'); END_IF;
         AckPayload := CONCAT(AckPayload,'}'); AckPending := TRUE;
     END_IF;
@@ -403,6 +427,10 @@ CASE GW_Nav OF
 62: HMI.Navigation := 'REPORTPICK';
 63: HMI.Navigation := 'GATEWAY';
 64: HMI.Navigation := 'POINTBACK';
+65: HMI.Navigation := 'MODEPAGE';
+66: HMI.Navigation := 'MODEKEEP';
+67: HMI.Navigation := 'MODECLEAR';
+68: HMI.Navigation := 'MODECOMMIT';
 END_CASE; GW_Nav := 0;
 HMI.LoadPoint := HMI.LoadPoint OR GW_LoadPoint; GW_LoadPoint := FALSE;
 HMI.SaveDevice := HMI.SaveDevice OR GW_SaveDevice; GW_SaveDevice := FALSE;
@@ -411,14 +439,35 @@ HMI.RemoveDevice := HMI.RemoveDevice OR GW_RemoveDevice; GW_RemoveDevice := FALS
 HMI.RemovePoint := HMI.RemovePoint OR GW_RemovePoint; GW_RemovePoint := FALSE;
 HMI.Apply := HMI.Apply OR GW_Apply; GW_Apply := FALSE;
 HMI.SaveBroker := HMI.SaveBroker OR GW_SaveBroker; GW_SaveBroker := FALSE;
-Editor(Managed:=Durable.Managed, Busy := Store.Busy OR (RxStage <> 0) OR AckPending OR (SaveReason <> 0), NowMs := NowMs, Hmi := HMI, Active := Active, Bootstrap := Bootstrap, States := Meters, Samples := Samples);
+Editor(Managed:=Durable.Managed, LocalRevision:=Durable.LocalRevision, Busy := Store.Busy OR (RxStage <> 0) OR AckPending OR (SaveReason <> 0), NowMs := NowMs, Hmi := HMI, Active := Active, Bootstrap := Bootstrap, States := Meters, Samples := Samples);
 IF Editor.Submit AND NOT Durable.Managed AND (SaveReason = 0) THEN
     Pending := Durable; Pending.Config := Editor.Draft;
-    Pending.Config.MessageId := CONCAT('hmi-',TO_STRING(Pending.Config.Version, '{0:d}'),'-',TO_STRING(UnixMs, '{0:d}')); Save := TRUE; SaveReason := 2;
+    Pending.LocalRevision := Durable.LocalRevision+1; Pending.LocalChanges := TRUE;
+    IF NOT Durable.HasHubBaseline THEN
+        Pending.Config.Version := Active.Version+1; Pending.Config.MessageId := CONCAT('hmi-',TO_STRING(Pending.LocalRevision,'{0:d}'),'-',TO_STRING(UnixMs,'{0:d}'));
+    END_IF;
+    Save := TRUE; SaveReason := 2;
+ELSIF Editor.SubmitMode AND (SaveReason = 0) THEN
+    Pending := Durable; Pending.Managed := Editor.NewManaged;
+    IF Pending.Managed THEN
+        IF Durable.HasHubBaseline THEN Pending.Config := Durable.HubConfig; Pending.LocalChanges := FALSE;
+        ELSE
+            Pending.LocalChanges := TRUE; Pending.ReplayIndex := 0;
+            FOR i := 1 TO 32 DO Pending.Requests[i].MessageId := ''; END_FOR;
+        END_IF;
+    ELSIF Durable.Managed THEN
+        IF NOT Durable.LocalChanges AND (Active.Version > 0) THEN Pending.HubConfig := Active; Pending.HasHubBaseline := TRUE; END_IF;
+        IF Editor.ClearConfig THEN
+            Pending.Config := BlankConfig; Pending.Config.Version := Active.Version; Pending.Config.MessageId := Active.MessageId;
+            Pending.Config.batchIntervalMs := 1000; Pending.Config.maxBatchPoints := 32; Pending.LocalChanges := TRUE;
+        END_IF;
+    END_IF;
+    Pending.LocalRevision := Durable.LocalRevision+1; Save := TRUE; SaveReason := 6;
 ELSIF Editor.SubmitBroker AND (SaveReason = 0) THEN
-    Pending:=Durable; Pending.Bootstrap:=Editor.NewBroker; Pending.Managed:=Editor.NewManaged;
+    Pending:=Durable; Pending.Bootstrap:=Editor.NewBroker;
     IdentityChanged:=Pending.Bootstrap.GatewayId<>Bootstrap.GatewayId;
     IF IdentityChanged THEN
+        Pending.HubConfig:=BlankConfig; Pending.HasHubBaseline:=FALSE; Pending.LocalChanges:=FALSE; Pending.LocalRevision:=0;
         Pending.Config:=BlankConfig; Pending.Config.batchIntervalMs:=1000; Pending.Config.maxBatchPoints:=32;
         Pending.ReplayIndex:=0; FOR i:=1 TO 32 DO Pending.Requests[i].MessageId:=''; END_FOR;
     END_IF;
@@ -483,10 +532,10 @@ IF NowMs >= LastGet+30000 THEN GetPending := TRUE; END_IF;
    50 state writes in Hub; sending it every five seconds starves telemetry. *)
 IF (Durable.Managed AND (NowMs>=LastHeartbeat+30000)) OR
    (NOT Durable.Managed AND (NowMs>=LastHeartbeat+5000)) THEN HeartbeatPending:=TRUE; END_IF;
-IF Active.enabled AND NOT BatchSweep AND (NowMs >= LastBatch+Active.batchIntervalMs) AND (Active.Version > 0) THEN
+IF TelemetryAllowed AND Active.enabled AND NOT BatchSweep AND (NowMs >= LastBatch+Active.batchIntervalMs) AND (Active.Version > 0) THEN
     LastBatch := NowMs; BatchSweep := TRUE; SweepDevice := 1; SweepPoint := 1;
 END_IF;
-IF NOT Active.enabled THEN BatchSweep := FALSE; END_IF;
+IF NOT Active.enabled OR NOT TelemetryAllowed THEN BatchSweep := FALSE; END_IF;
 // Apply backpressure before advancing report cursors. Keep queued batches intact
 // while configuration parsing/storage temporarily delays business ACK handling.
 IF BatchSweep AND (QueueCount < 16) THEN
@@ -550,7 +599,7 @@ IF TxActive THEN
     ELSIF NOT Mqtt.Connected THEN TxActive := FALSE; END_IF;
 END_IF;
 DeviceEventPending:=FALSE;
-IF (Active.Version>0) AND NOT HeartbeatPending THEN
+IF TelemetryAllowed AND (Active.Version>0) AND NOT HeartbeatPending THEN
     FOR d:=1 TO Active.DeviceCount DO
         Status:=Meters[d].StateText; EnabledPoints:=0;
         FOR p:=1 TO Active.Devices[d].PointCount DO IF Active.Points[Active.Devices[d].PointStart+p-1].enabled THEN EnabledPoints:=EnabledPoints+1; END_IF; END_FOR;
@@ -573,17 +622,18 @@ HMI.DeadBatches:=TO_STRING(DeadCount,'{0:d}');
 IF NOT TxActive AND Mqtt.Connected AND NOT Mqtt.TxBusy THEN
     TxKind := 0; TxRetain := FALSE;
     IF AckPending THEN TxKind := 1; TxPayload := AckPayload; TxTopic := AckTopic;
-    ELSIF GetPending AND NOT HeartbeatPending THEN
+    ELSIF GetPending AND Durable.Managed AND NOT HeartbeatPending THEN
         TxKind := 2; TxTopic := CONCAT(Prefix,'config/get');
         GetSequence:=GetSequence+1;
-        TxPayload := CONCAT(Header,',"messageId":',NG_Quote(CONCAT('g-',BootNamespace,'-',TO_STRING(Durable.BootCounter,'{0:d}'),'-',TO_STRING(GetSequence,'{0:d}'))),',"activeConfigVersion":',TO_STRING(Active.Version, '{0:d}'),',"sessionId":',NG_Quote(SessionId),',"configCapabilities":["devicePatchV1"],"activeMessageId":');
-        IF Active.Version = 0 THEN TxPayload := CONCAT(TxPayload,'null}'); ELSE TxPayload := CONCAT(TxPayload,NG_Quote(Active.MessageId),'}'); END_IF;
+        TxPayload := CONCAT(Header,',"messageId":',NG_Quote(CONCAT('g-',BootNamespace,'-',TO_STRING(Durable.BootCounter,'{0:d}'),'-',TO_STRING(GetSequence,'{0:d}'))),',"activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"sessionId":',NG_Quote(SessionId),',"configCapabilities":["devicePatchV1"],"activeMessageId":');
+        IF HubActiveVersion = 0 THEN TxPayload := CONCAT(TxPayload,'null}'); ELSE TxPayload := CONCAT(TxPayload,NG_Quote(HubActiveMessageId),'}'); END_IF;
     ELSIF StatusPending AND NOT HeartbeatPending THEN
         TxKind := 3; TxTopic := CONCAT(Prefix,'status'); TxRetain := TRUE;
         TxPayload := CONCAT(Header,',"online":true,"reason":"connected","sessionId":',NG_Quote(SessionId),'}');
     ELSIF HeartbeatPending THEN
         QueueBytes := 0; FOR q := 1 TO 16 DO IF Outbox[q].MessageId <> '' THEN QueueBytes := QueueBytes+Outbox[q].Length; END_IF; END_FOR;
         TxKind := 4; TxTopic := CONCAT(Prefix,'heartbeat'); DevicesJson := ''; Total := 0; GoodCount := 0;
+        IF TelemetryAllowed THEN
         FOR d := 1 TO Active.DeviceCount DO
             IF d>1 THEN DevicesJson := CONCAT(DevicesJson,','); END_IF;
             Status:=Meters[d].StateText; EnabledPoints:=0;
@@ -598,8 +648,9 @@ IF NOT TxActive AND Mqtt.Connected AND NOT Mqtt.TxBusy THEN
                 FOR p := 1 TO Active.Devices[d].PointCount DO IF Active.Points[Active.Devices[d].PointStart+p-1].enabled THEN Total := Total+1; IF Samples[Active.Devices[d].PointStart+p-1].Quality='GOOD' THEN GoodCount := GoodCount+1; END_IF; END_IF; END_FOR;
             END_IF;
         END_FOR;
-        IF Active.Version=0 THEN StateName := 'WAITING_CONFIG'; ELSIF Active.enabled THEN StateName := 'RUNNING'; ELSE StateName := 'DISABLED'; END_IF;
-        TxPayload := CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"bootId":',NG_Quote(BootId),',"agentVersion":"native-0.4.0","activeConfigVersion":',TO_STRING(Active.Version, '{0:d}'),',"uptimeSeconds":',TO_STRING(NowMs/1000, '{0:d}'),',"agentState":',NG_Quote(StateName),',"devices":[',DevicesJson,'],"points":{"total":',TO_STRING(Total, '{0:d}'),',"good":',TO_STRING(GoodCount, '{0:d}'),',"bad":',TO_STRING(Total-GoodCount, '{0:d}'),'},"queue":{"batches":',TO_STRING(QueueCount, '{0:d}'),',"payloadBytes":',TO_STRING(QueueBytes, '{0:d}'),',"droppedBatches":',TO_STRING(Dropped, '{0:d}'),'}}');
+        END_IF;
+        IF NOT TelemetryAllowed OR (Active.Version=0) THEN StateName := 'WAITING_CONFIG'; ELSIF Active.enabled THEN StateName := 'RUNNING'; ELSE StateName := 'DISABLED'; END_IF;
+        TxPayload := CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"bootId":',NG_Quote(BootId),',"agentVersion":"native-0.5.0","activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"uptimeSeconds":',TO_STRING(NowMs/1000, '{0:d}'),',"agentState":',NG_Quote(StateName),',"devices":[',DevicesJson,'],"points":{"total":',TO_STRING(Total, '{0:d}'),',"good":',TO_STRING(GoodCount, '{0:d}'),',"bad":',TO_STRING(Total-GoodCount, '{0:d}'),'},"queue":{"batches":',TO_STRING(QueueCount, '{0:d}'),',"payloadBytes":',TO_STRING(QueueBytes, '{0:d}'),',"droppedBatches":',TO_STRING(Dropped, '{0:d}'),'}}');
     ELSIF DeviceEventPending THEN
         TxKind:=7; TxTopic:=CONCAT(Prefix,'device/status');
         EventTxIndex:=DeviceEventIndex; EventTxSignature:=DeviceEventSignature;
@@ -652,6 +703,14 @@ ELSIF HMI.English THEN HMI.UiPersistence:=NG_UiJoin("Saved to controller · gene
 ELSE HMI.UiPersistence:=NG_UiJoin("已保存到控制器 · 保存序号 ",TO_WSTRING(Durable.Generation,"{0:d}")," · 重启后自动恢复","","","","",""); END_IF;
 IF NOT StartupReady THEN HMI.UiLiveStatus:=NG_UiText('Restoring saved configuration...',HMI.English);
 ELSIF NOT Mqtt.Connected THEN HMI.UiLiveStatus:=NG_UiText('Broker unavailable. Retrying automatically; local acquisition continues.',HMI.English);
+ELSIF NOT TelemetryAllowed THEN HMI.UiLiveStatus:=NG_UiText('Local changes active. Acquisition continues; Hub data reporting is paused.',HMI.English);
 ELSIF HMI.English THEN HMI.UiLiveStatus:=NG_UiJoin("Connected · collecting ",TO_WSTRING(HMI.TotalPoints,"")," points · awaiting storage ACK: ",TO_WSTRING(HMI.QueueCount,""),"","","","");
 ELSE HMI.UiLiveStatus:=NG_UiJoin("已连接 · 正在采集 ",TO_WSTRING(HMI.TotalPoints,"")," 个点位 · 待平台入库确认 ",TO_WSTRING(HMI.QueueCount,"")," 批","","",""); END_IF;
+HMI.LocalChanges := Durable.LocalChanges;
+HMI.LocalRevision := TO_STRING(Durable.LocalRevision,'{0:d}');
+HMI.HubBaselineVersion := TO_STRING(Durable.HubConfig.Version,'{0:d}');
+IF Durable.Managed AND NOT Durable.HasHubBaseline AND Durable.LocalChanges THEN HMI.UiMaintenance := NG_UiText('Waiting for initial Hub configuration. Existing local acquisition is retained.',HMI.English);
+ELSIF Durable.Managed THEN HMI.UiMaintenance := NG_UiText('Hub owns configuration. Local maintenance requires manual confirmation.',HMI.English);
+ELSIF Durable.HasHubBaseline AND Durable.LocalChanges THEN HMI.UiMaintenance := NG_UiText('Local changes active. Acquisition continues; Hub data reporting is paused.',HMI.English);
+ELSE HMI.UiMaintenance := NG_UiText('Local maintenance active. Hub configuration is locked until you return ownership.',HMI.English); END_IF;
 END_PROGRAM

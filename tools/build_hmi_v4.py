@@ -6,7 +6,7 @@ TYPE='{http://www.w3.org/2001/XMLSchema-instance}type';E.register_namespace('xsi
 APP='PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application'
 NAVS=['LIST','MQTT','DEDIT','PEDIT','DPREV','DNEXT','PPREV','PNEXT','DDEL','PDEL','CANCEL','DNEW','PNEW','PERIOD']+[f'D{i}' for i in range(1,9)]+[f'P{i}' for i in range(1,9)]+['ZH','EN','REFRESH','DISCARD','REVIEW','COMMIT','DEVON','DEVOFF','POINTON','POINTOFF','MODEHUB','MODELOCAL','CYCLIC','CHANGE','BOTH','HOLDING','INPUT','COIL','DISCRETE','UINT16','INT16','UINT32','INT32','FLOAT32','BOOL','ADVANCED','BROKERREVIEW','BROKERCOMMIT','HELP','TYPEPICK','AREAPICK','REPORTPICK']
 C={'ink':'#FF202629','muted':'#FF526365','bg':'#FFF3F6F5','white':'#FFFFFFFF','teal':'#FF007D80','light':'#FFE3F3F0','green':'#FF8AC640','line':'#FFD3DEDA','red':'#FFB43D37'}
-NAVS+=['GATEWAY','POINTBACK']
+NAVS+=['GATEWAY','POINTBACK','MODEPAGE','MODEKEEP','MODECLEAR','MODECOMMIT']
 def build():
     with zipfile.ZipFile(ROOT/'reference/NativeGateway.before-implementation.pcwex') as z:original=E.fromstring(z.read(APP+'/Login.hmi/Definition.hmipagedef'))
     templates={}
@@ -57,11 +57,12 @@ def build():
     button(1124,22,128,'English',nav='EN',hide='HMI.English');button(1124,22,128,'中文',nav='ZH',hide='NOT HMI.English')
     box(0,88,1280,64)
     text(0,150,1280,3,fill=C['green'])
-    for x,label,nav,views in [(24,('设备与点位','Devices & points'),'LIST',[0,1,2,4,5,6,9,10,11]),(216,('连接设置','Connection'),'MQTT',[3,7]),(408,('使用说明','How it works'),'HELP',[8])]:
+    for x,label,nav,views in [(24,('设备与点位','Devices & points'),'LIST',[0,1,2,4,5,6,9,10,11]),(216,('连接设置','Connection'),'MQTT',[3,7,13,14,15]),(408,('使用说明','How it works'),'HELP',[8])]:
         active=' OR '.join('HMI.View = '+str(v) for v in views)
         button(x,98,180,label,nav=nav,hide=active);button(x,98,180,label,nav=nav,primary=True,hide='NOT ('+active+')')
+    button(600,98,180,('管理与维护','Ownership'),nav='MODEPAGE')
     text(790,100,462,40,field='GatewayId',size=20,color=C['muted'])
-    for x,w,label,field in [(24,270,('消息服务器','Broker'),'UiConnection'),(310,170,('运行版本','Config version'),'ActiveVersion'),(496,130,('设备','Devices'),'DeviceCount'),(642,130,('点位','Points'),'TotalPoints'),(788,200,('待入库确认 / 批','Awaiting storage / batches'),'QueueCount'),(1004,248,('本地修改状态','Local changes'),'UiDraftState')]:
+    for x,w,label,field in [(24,270,('消息服务器','Broker'),'UiConnection'),(310,170,('平台配置版本','Hub config version'),'ActiveVersion'),(496,130,('设备','Devices'),'DeviceCount'),(642,130,('点位','Points'),'TotalPoints'),(788,200,('待入库确认 / 批','Awaiting storage / batches'),'QueueCount'),(1004,248,('本地修改状态','Local changes'),'UiDraftState')]:
         box(x,170,w,88);text(x+14,180,w-28,24,label,15,color=C['muted']);text(x+14,211,w-28,32,field=field,size=20)
     text(32,271,1216,25,field='UiConfigSource',size=17,color=C['teal'])
     box(24,310,490,484,view=0);box(530,310,722,484,view=0)
@@ -75,7 +76,7 @@ def build():
         text(546,y,690,46,field='PointRow'+str(i+1),view=0,size=17,fill=bg);button(1156,y+1,80,('查看','View'),nav='P'+str(i+1),view=0,hide=f'HMI.PointRow{i+1} = ""')
     for x,field,prev,nxt in [(40,'DevicePages','DPREV','DNEXT'),(546,'PointPages','PPREV','PNEXT')]:button(x,806,110,('上一页','Previous'),nav=prev,view=0);text(x+126,814,100,30,field=field,view=0);button(x+238,806,110,('下一页','Next'),nav=nxt,view=0)
     button(1014,806,222,('使配置生效','Review & activate'),nav='REVIEW',view=0,primary=True)
-    heading(('设备连接详情','Device connection'),('平台管理时仅供查看；独立使用时，先保存设备，再添加点位。','Read-only in Hub mode. In standalone mode, save the device before adding points.'),1)
+    heading(('设备连接详情','Device connection'),('平台管理时仅供查看；本地维护时，先保存设备，再添加点位。','Read-only in Hub mode. In standalone mode, save the device before adding points.'),1)
     fs=[(('设备标识（唯一）','Device ID (unique)'),'DeviceId'),(('设备名称','Device name'),'DeviceName'),(('设备地址','IPv4 address'),'Host'),(('端口','TCP port'),'Port'),(('站号','Modbus unit ID'),'UnitId'),(('连接超时 / 毫秒','Connect timeout / ms'),'ConnectTimeoutMs'),(('请求超时 / 毫秒','Request timeout / ms'),'RequestTimeoutMs'),(('重试次数','Retry count'),'RetryCount')]
     for i,(label,field) in enumerate(fs):input(32+(i%4)*310,402+(i//4)*90,286,label,field,1,readonly=True)
     text(32,592,260,24,('设备开关','Device enabled'),16,view=1,color=C['muted']);text(32,625,140,35,field='UiDeviceEnabled',view=1)
@@ -93,9 +94,9 @@ def build():
     heading(('连接消息服务器','Connect to your broker'),('连接参数单独保存；断线后自动重试，无需反复点击保存。','Settings are saved separately. Reconnection is automatic after a network failure.'),3)
     for x,y,label,field in [(32,402,('服务器地址，例如 tcp://192.168.0.5:1883','Broker URI, e.g. tcp://192.168.0.5:1883'),'BrokerUri'),(652,402,('客户端标识（服务器内唯一）','Client ID (unique on broker)'),'ClientId'),(32,496,('用户名（匿名连接留空）','Username (blank for anonymous)'),'UserName'),(652,496,('密码（留空保留原密码）','Password (blank keeps saved password)'),'Password')]:input(x,y,596,label,field,3)
     text(32,590,1216,28,('设备、点位与采集上报周期：请在 Hub 编辑后发布。','Devices, points and periods: edit and publish in Hub.'),18,view=3,hide='NOT HMI.Managed',color=C['teal'])
-    button(32,638,250,('高级：身份、模式与时区','Advanced: identity & mode'),nav='ADVANCED',view=3);text(302,646,946,26,('一般无需修改。更换网关身份会清空本机点表，等待新配置。','Usually unchanged. A new gateway ID clears local points and waits for new configuration.'),16,view=3,color=C['muted'])
+    button(32,638,250,('高级：身份、模式与时区','Advanced: identity & mode'),nav='ADVANCED',view=3);text(302,646,946,26,('模式切换请用“管理与维护”，保留网关标识和现有点表。','Use Ownership to switch modes without changing gateway ID or clearing points.'),16,view=3,color=C['muted'])
     input(32,700,388,('网关标识','Gateway ID'),'BrokerGatewayId',3,hide='NOT HMI.Advanced');input(444,700,388,('时区偏移 / 分钟（中国 480）','UTC offset / minutes (China 480)'),'UtcOffsetMinutes',3,hide='NOT HMI.Advanced')
-    text(856,700,392,24,('配置管理方式','Configuration ownership'),16,view=3,hide='NOT HMI.Advanced',color=C['muted']);text(856,733,392,30,field='UiManagementMode',view=3,hide='NOT HMI.Advanced');button(856,770,184,('平台管理','Hub managed'),nav='MODEHUB',view=3,hide='NOT HMI.Advanced');button(1052,770,184,('本地独立','Standalone'),nav='MODELOCAL',view=3,hide='NOT HMI.Advanced')
+    text(856,700,392,24,('配置管理方式','Configuration ownership'),16,view=3,hide='NOT HMI.Advanced',color=C['muted']);text(856,733,392,30,field='UiManagementMode',view=3,hide='NOT HMI.Advanced');button(856,770,380,('管理模式与本地维护…','Ownership & local maintenance…'),nav='MODEPAGE',view=3,hide='NOT HMI.Advanced')
     button(32,838,300,('检查并保存连接…','Review connection settings…'),nav='BROKERREVIEW',view=3,primary=True)
     button(356,838,300,('本地采集与组批设置','Local collection & batching'),nav='GATEWAY',view=3)
     heading(('本地采集与组批','Local collection & batching'),('周期单位为毫秒。设置后检查设备点位，再确认配置生效。','Periods are in milliseconds. Review devices and points, then activate the draft.'),12)
@@ -110,9 +111,33 @@ def build():
     button(48,640,300,('放弃修改并更新显示','Discard draft & refresh'),nav='DISCARD',view=5,danger=True);button(372,640,200,('保留修改，返回','Keep changes'),nav='LIST',view=5)
     text(48,554,1184,70,('连接设置与设备点表分开保存。此操作只使设备与点位配置生效。','Connection settings are separate. This action activates devices and points.'),21,view=6);button(48,696,330,('确认生效并保存到控制器','Activate & save to controller'),nav='COMMIT',view=6,primary=True);button(402,696,200,('返回继续检查','Back to review'),nav='LIST',view=6)
     for y,label,field in [(418,('服务器地址','Broker URI'),'BrokerUri'),(508,('网关标识','Gateway ID'),'BrokerGatewayId'),(598,('管理模式','Management mode'),'UiManagementMode')]:text(48,y,1184,28,label,17,view=7,color=C['muted']);text(48,y+32,1184,40,field=field,view=7,size=23)
-    text(48,690,1184,56,('切换模式必须使用新网关标识；这会移除原身份的本地点表。','A mode change needs a new gateway ID and clears the old local point configuration.'),19,view=7,color=C['red']);button(48,786,330,('确认保存并自动重连','Save & reconnect automatically'),nav='BROKERCOMMIT',view=7,primary=True);button(402,786,200,('返回修改','Back to edit'),nav='MQTT',view=7)
-    heading(('使用流程与自动恢复','Workflow & automatic recovery'),('平台统一管理为主，本地维护用于独立运行场景。','Use Hub as the primary owner. Local editing is intended for standalone use.'),8)
-    for y,title,body in [(410,('01  平台管理（推荐）','01  Hub managed (recommended)'),('在 Hub 添加设备与点位，设置采集、上报周期并发布。\n网关自动接收、校验、保存并回执；此页自动显示最新配置。','Add devices and points in Hub, set periods, then publish.\nThe gateway validates, saves and acknowledges the configuration. This UI updates automatically.')),(540,('02  独立运行','02  Standalone operation'),('新增设备 → 保存设备 → 新增点位 → 保存点位 → 使配置生效。\n“保存到待生效配置”还不会改变采集；“放弃修改”恢复当前运行配置。','Add device → save device → add points → save points → activate.\nSaving a draft does not change acquisition. Discard restores the running configuration.')),(670,('03  断线与重启','03  Connection loss & restart'),('断线后自动重连，恢复网络后继续上报；重启自动恢复已保存配置。\n内存队列不跨重启保存；断网期间不保证每次采样都留存。','Reconnection, reporting and saved configuration restore automatically.\nThe RAM queue does not survive restart or retain every offline sample.'))]:text(48,y,1184,32,title,23,view=8);text(48,y+46,1184,78,body,19,view=8,color=C['muted'])
+    text(48,690,1184,56,('连接保存不切换管理模式。仅更换网关标识会重置本地点表，请谨慎操作。','Saving a connection does not change ownership. Changing gateway ID resets local points.'),19,view=7,color=C['red']);button(48,786,330,('确认保存并自动重连','Save & reconnect automatically'),nav='BROKERCOMMIT',view=7,primary=True);button(402,786,200,('返回修改','Back to edit'),nav='MQTT',view=7)
+    heading(('使用流程与自动恢复','Workflow & automatic recovery'),('平台统一管理为主，本地维护用于本地维护场景。','Use Hub as the primary owner. Local editing is intended for standalone use.'),8)
+    for y,title,body in [(410,('01  平台管理（推荐）','01  Hub managed (recommended)'),('在 Hub 添加设备与点位，设置采集、上报周期并发布。\n网关自动接收、校验、保存并回执；此页自动显示最新配置。','Add devices and points in Hub, set periods, then publish.\nThe gateway validates, saves and acknowledges the configuration. This UI updates automatically.')),(540,('02  本地维护','02  Standalone operation'),('先从“管理与维护”进入维护，默认保留点表，再编辑并确认生效。\n本地改动不上传平台；交还时恢复平台配置，再在 Hub 重试受阻发布。','Add device → save device → add points → save points → activate.\nSaving a draft does not change acquisition. Discard restores the running configuration.')),(670,('03  断线与重启','03  Connection loss & restart'),('断线后自动重连，恢复网络后继续上报；重启自动恢复已保存配置。\n内存队列不跨重启保存；断网期间不保证每次采样都留存。','Reconnection, reporting and saved configuration restore automatically.\nThe RAM queue does not survive restart or retain every offline sample.'))]:text(48,y,1184,32,title,23,view=8);text(48,y+46,1184,78,body,19,view=8,color=C['muted'])
+    heading(('配置管理与本地维护','Configuration ownership'),('切换无需更换网关标识。模式和已生效配置都会保存，重启后自动恢复。','Keep the gateway ID. Ownership and active settings persist across restart.'),13)
+    text(48,418,1184,84,field='UiMaintenance',view=13,size=22,color=C['teal'])
+    text(48,520,510,28,('最近平台配置版本','Saved Hub version'),18,view=13,color=C['muted']);text(590,520,630,34,field='HubBaselineVersion',view=13)
+    text(48,570,510,28,('本地维护修订号（独立计数）','Local maintenance revision'),18,view=13,color=C['muted']);text(590,570,630,34,field='LocalRevision',view=13)
+    text(48,632,1184,112,('平台管理：在 Hub 发布点表，HMI 查看和诊断。\n本地维护：手动接管；平台配置会收到冲突回执，不会覆盖本地修改。\n本地点表改变后继续采集，暂停写入 Hub，交还平台后恢复。','Hub owns normal configuration; HMI provides viewing and diagnostics.\nMaintenance locks incoming configuration with an explicit conflict receipt.\nLocal edits keep acquisition running but pause Hub telemetry until handback.'),20,view=13)
+    button(48,790,340,('进入本地维护…','Enter local maintenance…'),nav='MODELOCAL',view=13,primary=True,hide='NOT HMI.Managed')
+    button(48,790,340,('交还平台管理…','Return ownership to Hub…'),nav='MODEHUB',view=13,primary=True,hide='HMI.Managed')
+    button(412,790,220,('返回设备列表','Back to devices'),nav='LIST',view=13)
+    heading(('进入本地维护','Enter local maintenance'),('默认保留当前设备和点位；只有主动选择清空才移除本地点表。','Current devices and points are retained by default. Clearing is optional.'),14)
+    text(48,412,1184,104,('网关标识保持不变。平台配置先备份，随后暂停应用平台下发。\n模式切换会放弃未生效草稿；已生效点表按下面的选项处理。','Gateway ID stays unchanged. The Hub configuration is saved before locking updates.\nUnapplied draft edits are discarded. Choose how to handle the active point table.'),21,view=14)
+    button(48,542,560,('保留设备与点位（推荐）','Keep devices & points (recommended)'),nav='MODEKEEP',view=14,primary=True,hide='HMI.ClearOnMaintenance')
+    button(48,542,560,('保留设备与点位（推荐）','Keep devices & points (recommended)'),nav='MODEKEEP',view=14,hide='NOT HMI.ClearOnMaintenance')
+    button(636,542,560,('清空本地点表，重新配置','Clear local points and start fresh'),nav='MODECLEAR',view=14,hide='HMI.ClearOnMaintenance')
+    button(636,542,560,('清空本地点表，重新配置','Clear local points and start fresh'),nav='MODECLEAR',view=14,danger=True,hide='NOT HMI.ClearOnMaintenance')
+    text(48,620,1184,92,('已选择保留：进入后继续按当前点表采集，不删除设备和点位。','Keep selected: collection continues with the current devices and points.'),22,view=14,hide='HMI.ClearOnMaintenance',color=C['teal'])
+    text(48,620,1184,92,('已选择清空：确认后停止现有点表采集，但保留平台备份。\n该操作不删除 Hub 中的设备；交还平台时可恢复平台点表。','Clear selected: collection stops for the local table; the Hub backup is kept.\nHub devices are not deleted. Handback restores the saved Hub table.'),22,view=14,hide='NOT HMI.ClearOnMaintenance',color=C['red'])
+    button(48,780,400,('保留点表并进入维护','Keep points & enter maintenance'),nav='MODECOMMIT',view=14,primary=True,hide='HMI.ClearOnMaintenance')
+    button(48,780,400,('确认清空并进入维护','Confirm clear & enter maintenance'),nav='MODECOMMIT',view=14,danger=True,hide='NOT HMI.ClearOnMaintenance')
+    button(476,780,240,('取消，保持当前模式','Cancel; keep current mode'),nav='MODEPAGE',view=14)
+    heading(('交还平台管理','Return ownership to Hub'),('本地修改不会自动写回 Hub。确认后恢复平台点表，再继续接收平台发布。','Local changes are not uploaded to Hub. Confirm to restore Hub ownership and its saved table.'),15)
+    text(48,420,1184,180,('若已有平台备份：恢复进入维护前最后生效的平台设备、点位和周期。\n本地生效修改与未生效草稿会放弃；网关标识不变，不清空平台点表。\n若没有平台备份：保留本地采集，等待平台首次发布建立基线。','With a Hub backup: restore the last applied Hub devices, points and periods.\nLocal edits and unapplied draft changes are discarded; gateway ID stays unchanged.\nWithout a backup: keep local collection while awaiting initial Hub configuration.'),22,view=15)
+    text(48,640,1184,90,('维护期间收到冲突回执的发布，请在 Hub 点击重试。\n后续增量配置按平台版本和消息标识校验，不与本地修订混用。','Retry any release rejected during maintenance from Hub.\nPatch validation uses the Hub version and message ID, independently of local revisions.'),21,view=15,color=C['teal'])
+    button(48,780,450,('确认恢复平台配置并交还管理','Restore Hub configuration & hand back'),nav='MODECOMMIT',view=15,primary=True)
+    button(526,780,240,('取消，继续本地维护','Cancel; stay in maintenance'),nav='MODEPAGE',view=15)
     pickers=[(9,('选择数据类型','Choose data type'),[('16 位无符号整数','16-bit unsigned','UINT16'),('16 位有符号整数','16-bit signed','INT16'),('32 位无符号整数','32-bit unsigned','UINT32'),('32 位有符号整数','32-bit signed','INT32'),('32 位浮点数','32-bit float','FLOAT32'),('布尔值','Boolean','BOOL')]),(10,('选择寄存器区域','Choose register area'),[('保持寄存器','Holding register','HOLDING'),('输入寄存器','Input register','INPUT'),('线圈','Coil','COIL'),('离散输入','Discrete input','DISCRETE')]),(11,('选择上报方式','Choose report mode'),[('定时：按上报周期发送','Cyclic: at the report interval','CYCLIC'),('变化：超过死区后发送','On change: beyond the deadband','CHANGE'),('变化或定时：任一条件满足即发送','Change or cyclic: either condition','BOTH')])]
     for v,title,items in pickers:
         heading(title,('点击选项后返回点位详情，仍需保存点位。','Choose an option, then save the point.'),v)

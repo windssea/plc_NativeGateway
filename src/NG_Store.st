@@ -17,6 +17,8 @@ END_VAR
 VAR
     LegacyRecord : NG1_File;
     V2Record : NG2_File;
+    V3Record : NG3_File;
+    V3 : BOOL;
     V2 : BOOL;
     Legacy : BOOL;
     StateLength : UDINT;
@@ -35,9 +37,9 @@ VAR
     Handle : UINT;
     Record : NG_File;
     Verify : NG_File;
-    Bytes : NG_Bytes;
+    Bytes : NG_StorageBytes;
     CopyBytes : BUF_TO_BYTE;
-    Hash : NG_SHA256;
+    Hash : NG_StorageHash;
     Valid : BOOL;
     Saving : BOOL;
     OperationFailed : BOOL;
@@ -49,8 +51,11 @@ IF Legacy THEN
 ELSIF V2 THEN
     IF Slot = 1 THEN Name := '/opt/plcnext/NativeGateway-v2-A.bin'; ELSE Name := '/opt/plcnext/NativeGateway-v2-B.bin'; END_IF;
     StateLength := SIZEOF(V2Record.State);
-ELSE
+ELSIF V3 THEN
     IF Slot = 1 THEN Name := '/opt/plcnext/NativeGateway-v3-A.bin'; ELSE Name := '/opt/plcnext/NativeGateway-v3-B.bin'; END_IF;
+    StateLength := SIZEOF(V3Record.State);
+ELSE
+    IF Slot = 1 THEN Name := '/opt/plcnext/NativeGateway-v4-A.bin'; ELSE Name := '/opt/plcnext/NativeGateway-v4-B.bin'; END_IF;
     StateLength := SIZEOF(Record.State);
 END_IF;
 OpenFile(Execute := (Stage = 10) OR (Stage = 60) OR (Stage = 90), Name := Name);
@@ -58,6 +63,8 @@ IF Legacy THEN
     ReadFile(Execute := Stage = 20, Handle := Handle, MaxLength := SIZEOF(LegacyRecord), Buffer := LegacyRecord);
 ELSIF V2 THEN
     ReadFile(Execute := Stage = 20, Handle := Handle, MaxLength := SIZEOF(V2Record), Buffer := V2Record);
+ELSIF V3 THEN
+    ReadFile(Execute := Stage = 20, Handle := Handle, MaxLength := SIZEOF(V3Record), Buffer := V3Record);
 ELSE
     ReadFile(Execute := (Stage = 20) OR (Stage = 100), Handle := Handle, MaxLength := SIZEOF(Record), Buffer := Record);
 END_IF;
@@ -67,6 +74,8 @@ IF Legacy THEN
     CopyBytes(REQ := Stage = 35, BUF_FORMAT := FALSE, BUF_OFFS := 0, BUF_CNT := StateLength, BUFFER := LegacyRecord.State, DST := Bytes);
 ELSIF V2 THEN
     CopyBytes(REQ := Stage = 35, BUF_FORMAT := FALSE, BUF_OFFS := 0, BUF_CNT := StateLength, BUFFER := V2Record.State, DST := Bytes);
+ELSIF V3 THEN
+    CopyBytes(REQ := Stage = 35, BUF_FORMAT := FALSE, BUF_OFFS := 0, BUF_CNT := StateLength, BUFFER := V3Record.State, DST := Bytes);
 ELSE
     CopyBytes(REQ := (Stage = 35) OR (Stage = 50) OR (Stage = 115), BUF_FORMAT := FALSE, BUF_OFFS := 0, BUF_CNT := StateLength, BUFFER := Record.State, DST := Bytes);
 END_IF;
@@ -81,7 +90,8 @@ CASE Stage OF
     IF ReadFile.Error OR ReadFile.Done THEN
         IF Legacy THEN Valid := ReadFile.Done AND (ReadFile.LengthRead = SIZEOF(LegacyRecord)) AND (LegacyRecord.Magic = DWORD#16#4E475731) AND (LegacyRecord.FormatVersion = 1);
         ELSIF V2 THEN Valid := ReadFile.Done AND (ReadFile.LengthRead = SIZEOF(V2Record)) AND (V2Record.Magic = DWORD#16#4E475732) AND (V2Record.FormatVersion = 2);
-        ELSE Valid := ReadFile.Done AND (ReadFile.LengthRead = SIZEOF(Record)) AND (Record.Magic = DWORD#16#4E475733) AND (Record.FormatVersion = 3); END_IF;
+        ELSIF V3 THEN Valid := ReadFile.Done AND (ReadFile.LengthRead = SIZEOF(V3Record)) AND (V3Record.Magic = DWORD#16#4E475733) AND (V3Record.FormatVersion = 3);
+        ELSE Valid := ReadFile.Done AND (ReadFile.LengthRead = SIZEOF(Record)) AND (Record.Magic = DWORD#16#4E475734) AND (Record.FormatVersion = 4); END_IF;
         Stage := 30;
     END_IF;
 30:
@@ -122,12 +132,22 @@ CASE Stage OF
                 Active.Config := V2Record.State.Config; Active.Requests := V2Record.State.Requests; Active.ReplayIndex := V2Record.State.ReplayIndex;
                 Active.Managed := FALSE; Active.BootCounter := 0; NeedsMigration := TRUE;
             END_IF;
+        ELSIF V3 THEN
+            IF (Hash.Digest = V3Record.Digest) AND (V3Record.State.Generation > Active.Generation) THEN
+                Active.Generation := V3Record.State.Generation; Active.Managed := V3Record.State.Managed;
+                Active.BootCounter := V3Record.State.BootCounter; Active.Bootstrap := V3Record.State.Bootstrap;
+                Active.Config := V3Record.State.Config; Active.Requests := V3Record.State.Requests; Active.ReplayIndex := V3Record.State.ReplayIndex;
+                Active.HasHubBaseline := Active.Managed AND (Active.Config.Version > 0);
+                IF Active.HasHubBaseline THEN Active.HubConfig := Active.Config; END_IF;
+                Active.LocalChanges := FALSE; Active.LocalRevision := 0; NeedsMigration := TRUE;
+            END_IF;
         ELSIF (Hash.Digest = Record.Digest) AND (Record.State.Generation > Active.Generation) THEN Active := Record.State; ActiveSlot := Slot; END_IF;
         Stage := 45;
     END_IF;
 45:
     IF Slot = 1 THEN Slot := 2; Stage := 10;
-    ELSIF (Active.Generation = 0) AND NOT Legacy AND NOT V2 THEN V2 := TRUE; Slot := 1; Stage := 10;
+    ELSIF (Active.Generation = 0) AND NOT Legacy AND NOT V2 AND NOT V3 THEN V3 := TRUE; Slot := 1; Stage := 10;
+    ELSIF (Active.Generation = 0) AND V3 THEN V3 := FALSE; V2 := TRUE; Slot := 1; Stage := 10;
     ELSIF (Active.Generation = 0) AND V2 THEN V2 := FALSE; Legacy := TRUE; Slot := 1; Stage := 10;
     ELSE Ready := TRUE; Busy := FALSE; Stage := 200; END_IF;
 50: IF CopyBytes.DONE THEN Stage := 55; ELSIF CopyBytes.ERROR THEN Error := TRUE; ErrorText := 'STORAGE_ERROR'; Busy := FALSE; Stage := 200; END_IF;
@@ -151,7 +171,7 @@ CASE Stage OF
     ELSIF OpenFile.Done THEN Handle := OpenFile.Handle; Stage := 100; END_IF;
 100:
     IF ReadFile.Error OR ReadFile.Done THEN
-        Valid := ReadFile.Done AND (ReadFile.LengthRead = SIZEOF(Record)) AND (Record.Magic = Verify.Magic) AND (Record.FormatVersion = 3) AND (Record.State.Generation = Verify.State.Generation);
+        Valid := ReadFile.Done AND (ReadFile.LengthRead = SIZEOF(Record)) AND (Record.Magic = Verify.Magic) AND (Record.FormatVersion = 4) AND (Record.State.Generation = Verify.State.Generation);
         Stage := 110;
     END_IF;
 110:
@@ -170,8 +190,8 @@ CASE Stage OF
 200:
     IF Save AND NOT Prev THEN
         Error := FALSE; ErrorText := ''; Busy := TRUE;
-        Legacy := FALSE; V2 := FALSE;
-        Record.Magic := DWORD#16#4E475733; Record.FormatVersion := 3;
+        Legacy := FALSE; V2 := FALSE; V3 := FALSE;
+        Record.Magic := DWORD#16#4E475734; Record.FormatVersion := 4;
         Record.State := Candidate; Record.State.Generation := Active.Generation+1;
         IF ActiveSlot = 1 THEN Slot := 2; ELSE Slot := 1; END_IF;
         Stage := 50;

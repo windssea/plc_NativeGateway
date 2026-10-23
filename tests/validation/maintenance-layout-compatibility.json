@@ -1,0 +1,9 @@
+{
+  "NG_Config": true,
+  "NG_Device": true,
+  "NG_Point": true,
+  "NG_Bootstrap": true,
+  "NG2_Durable": true,
+  "NG2_File": true,
+  "v3Migration": true
+}

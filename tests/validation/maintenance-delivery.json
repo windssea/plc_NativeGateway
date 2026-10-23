@@ -1,0 +1,16 @@
+{
+  "software": "native-0.5.0",
+  "observedCompilerResult": {
+    "errors": 0,
+    "warnings": 0,
+    "application": "PLCnext Engineer 2026.0",
+    "downloadedTo": "192.168.0.8"
+  },
+  "projectSha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154",
+  "finalBootId": "ng-d4f61b3085b97c5e3831983b-21",
+  "finalUiPassed": true,
+  "realHubPublishAndStoredPassed": true,
+  "maintenanceOsRebootPassed": true,
+  "optionalClearExecuted": false,
+  "eightHourSoakResumed": false
+}

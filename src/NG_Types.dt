@@ -4,6 +4,7 @@ TYPE
     NG_Id : STRING[64];
     NG_Json : STRING[16380];
     NG_Bytes : ARRAY[0..262143] OF BYTE;
+    NG_StorageBytes : ARRAY[0..524287] OF BYTE;
     NG_ProcBytes : ARRAY[0..8191] OF BYTE;
     NG_ProcText : STRING[8192];
     NG_Token : STRUCT
@@ -87,7 +88,26 @@ TYPE
         Digest : STRING[64];
         IsPatch : BOOL;
     END_STRUCT;
+    NG3_Durable : STRUCT
+        Generation : ULINT;
+        Managed : BOOL := TRUE;
+        BootCounter : ULINT;
+        Bootstrap : NG_Bootstrap;
+        Config : NG_Config;
+        ReplayIndex : INT;
+        Requests : ARRAY[1..32] OF NG_Replay;
+    END_STRUCT;
+    NG3_File : STRUCT
+        Magic : DWORD;
+        FormatVersion : UDINT;
+        State : NG3_Durable;
+        Digest : STRING[64];
+    END_STRUCT;
     NG_Durable : STRUCT
+        HubConfig : NG_Config;
+        HasHubBaseline : BOOL;
+        LocalChanges : BOOL;
+        LocalRevision : ULINT;
         Generation : ULINT;
         Managed : BOOL := TRUE;
         BootCounter : ULINT;
@@ -117,6 +137,12 @@ TYPE
     END_STRUCT;
     NG_UiLabel : WSTRING[256];
     NG_Hmi : STRUCT
+        ClearOnMaintenance : BOOL;
+        SwitchMode : BOOL;
+        LocalChanges : BOOL;
+        LocalRevision : STRING[24];
+        HubBaselineVersion : STRING[24];
+        UiMaintenance : NG_UiLabel;
         English : BOOL;
         Advanced : BOOL;
         UiStatus : NG_UiLabel;

@@ -4,7 +4,7 @@ import json,re,urllib.request,urllib.error
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'tests/hub-runtime'
 class HubApi:
-    def __init__(self):self.token=None
+    def __init__(self,read_timeout=45):self.token=None;self.read_timeout=read_timeout
     def request(self,method,path,body=None):
         headers={'Content-Type':'application/json'}
         if self.token:headers['Authorization']='Bearer '+self.token
@@ -12,7 +12,7 @@ class HubApi:
         req=urllib.request.Request('http://127.0.0.1:8080'+path,raw,headers,method=method)
         try:
             slow=(method=='POST' and '/device-releases' in path) or (method=='PUT' and path.endswith('/iot-gateway'))
-            with urllib.request.urlopen(req,timeout=180 if slow else 45) as r:value=json.load(r)
+            with urllib.request.urlopen(req,timeout=max(180,self.read_timeout) if slow else self.read_timeout) as r:value=json.load(r)
         except urllib.error.HTTPError as e:
             try:value=json.loads(e.read())
             except ValueError:raise RuntimeError('HTTP '+str(e.code)) from None

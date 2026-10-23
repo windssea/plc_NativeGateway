@@ -21,6 +21,8 @@
 | `ui_workflow_probe.py` | 验证 HMI 标签与导航；会操作测试界面状态 |
 | `recovery_suite.py` | 有故障注入：停止测试 broker、暂停 mock 或重启控制器。仅在维护窗口执行 |
 | `hub_fixture.py` / `hub_closed_loop.py` 等 | 会发布或修改 Hub 测试配置；执行前核对隔离网关身份 |
+| `maintenance_mode_verify.py PHASE` | 原生维护模式分阶段验收。会切换配置归属、修改一个点的周期、发布 Hub 配置；`reboot` 会重启控制器 OS。`final-ui` 选择清空后取消，不执行清空。依赖本机已建立的 50×5 隔离 fixture 和前序状态文件，不能跳过前提批量运行 |
+| `tools/summarize_maintenance.py --check-hub`（仓库根目录下） | 只读核对当前验收证据、IoT 契约、真实 STORED 覆盖和 50 台设备最新值；不生成回执 |
 
 其他脚本包含历史版本的容量、增删、配置和重启测试，并非可一次性全量运行的单元测试套件。不要直接批量执行此目录的程序。
 

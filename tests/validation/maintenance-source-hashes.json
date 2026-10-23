@@ -1,0 +1,12 @@
+{
+  "communicationAndStorageUnchangedAfterUiFix": true,
+  "sha256": {
+    "Main.st": "54faa0772c6ce446edb23486cb15441dcd246922552311c5fbe91e5290e95fba",
+    "NG_Store.st": "cc0e7c9d9d7ed1a7606005a1bc77d8dc2842c2703a8f5d3dbe1bdfbe61467733",
+    "NG_Command.st": "50b2ec2cc27dc56706f2d86016965467bce4a7784f0b2967f03b0b2364913292",
+    "NG_Mqtt.st": "b87f89f6a96d236e1de8070e69fa3c3aac9754c9eba42a463e6f1415df8f2d95",
+    "NG_Modbus.st": "c54b9e22be78ba5f74b6a26d4b74465d35570d69b7766dffcb3305c139d59c18",
+    "NG_Types.dt": "f1cfafc7801889f62c1cfc70fecf7895116a66ad7fa2c0f21f079232fdf16821"
+  },
+  "finalProjectSha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154"
+}

@@ -2,11 +2,23 @@
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 T={
+'Open the management mode confirmation before saving.':'请先打开模式切换确认页，检查选项后再确认。',
+'Waiting for initial Hub configuration. Existing local acquisition is retained.':'正在等待平台首次配置；现有本地采集保留，暂不向平台上报。',
+'Invalid management mode.':'管理模式无效，请重新选择平台管理或本地维护。',
+'MAINTENANCE - incoming platform configuration locked':'本地维护：平台配置暂不应用；修改后请交还平台，避免两端配置冲突。',
+'Hub owns configuration. Local maintenance requires manual confirmation.':'当前由平台管理。需要本地编辑时，请手动进入维护。',
+'Local changes active. Acquisition continues; Hub data reporting is paused.':'本地改动已生效：继续采集，暂停写入平台；交还时恢复平台配置。',
+'Local maintenance active. Hub configuration is locked until you return ownership.':'本地维护中：平台配置暂不应用。维护完成后请交还平台。',
+'The selected management mode is already active.':'已处于所选模式，无需重复切换。',
+'Saving management mode; existing identity is retained.':'正在保存管理模式，保留当前网关标识。',
+'Management mode saved. Check the ownership guidance above.':'管理模式已保存并生效，请查看上方的管理说明。',
+'Check broker URI, gateway ID, client ID and time zone.':'请检查服务器地址、网关标识、客户端标识与时区。',
+'Broker settings saved; configuration ownership is unchanged.':'连接设置已保存，正在重连；管理模式保持不变。',
 'CONNECTED':'已连接','CONNECTING':'正在连接','ONLINE':'在线','OFFLINE':'离线','DEGRADED':'部分异常','DISABLED':'已停用','UNCONFIGURED':'未配置','DRAFT':'待生效',
 'GOOD':'正常','BAD':'异常','STALE':'已过期','UNKNOWN':'暂无数据','BAD_COMMUNICATION':'通信异常','BAD_CONFIGURATION':'配置有误',
 'true':'启用','TRUE':'启用','false':'停用','FALSE':'停用',
 'PERSISTED':'已保存，无待生效修改','UNSAVED DRAFT':'有待生效的修改','VERSION CONFLICT':'配置已变更，请放弃旧草稿',
-'HUB_MANAGED':'平台统一管理','STANDALONE':'本地独立管理',
+'HUB_MANAGED':'平台统一管理','STANDALONE':'本地维护',
 'HUB_MANAGED - local device/point changes blocked':'平台管理：在 Hub 编辑设备、点位与周期并发布；此处查看和维护连接。',
 'STANDALONE - local maintenance enabled':'本地管理：编辑设备和点位 → 保存到待生效配置 → 确认生效并保存。',
 'holding_register':'保持寄存器','input_register':'输入寄存器','coil':'线圈','discrete_input':'离散输入',
@@ -52,7 +64,7 @@ T={
 def q(v):return "'"+v.replace("'","''")+"'"
 def w(v):return chr(34)+v.replace(chr(34),'$"')+chr(34)
 lines=['FUNCTION NG_UiText : NG_UiLabel','VAR_INPUT','    Value : NG_Text;','    English : BOOL;','END_VAR','NG_UiText:=TO_WSTRING(Value,"");','IF English THEN']
-friendly={'PERSISTED':'Saved · no changes','UNSAVED DRAFT':'Unapplied changes','VERSION CONFLICT':'Configuration changed','CONNECTED':'Connected','CONNECTING':'Connecting','HUB_MANAGED':'Hub managed','STANDALONE':'Standalone','holding_register':'Holding register','input_register':'Input register','discrete_input':'Discrete input','cyclic':'Cyclic','change':'On change','change_or_cyclic':'Change or cyclic','Startup identity persisted; MQTT starting.':'Saved configuration restored automatically. No need to save again.','true':'Enabled','TRUE':'Enabled','false':'Disabled','FALSE':'Disabled','HUB_MANAGED - local device/point changes blocked':'Managed by Hub: edit and publish devices, points and periods in Hub. Connection maintenance is available here.','STANDALONE - local maintenance enabled':'Standalone: edit devices and points → save to draft → review and activate.'}
+friendly={'PERSISTED':'Saved · no changes','UNSAVED DRAFT':'Unapplied changes','VERSION CONFLICT':'Configuration changed','CONNECTED':'Connected','CONNECTING':'Connecting','HUB_MANAGED':'Hub managed','STANDALONE':'Local maintenance','holding_register':'Holding register','input_register':'Input register','discrete_input':'Discrete input','cyclic':'Cyclic','change':'On change','change_or_cyclic':'Change or cyclic','Startup identity persisted; MQTT starting.':'Saved configuration restored automatically. No need to save again.','true':'Enabled','TRUE':'Enabled','false':'Disabled','FALSE':'Disabled','HUB_MANAGED - local device/point changes blocked':'Managed by Hub: edit and publish devices, points and periods in Hub. Connection maintenance is available here.','STANDALONE - local maintenance enabled':'Standalone: edit devices and points → save to draft → review and activate.'}
 for i,(key,value) in enumerate(friendly.items()):lines.append(('IF' if i==0 else 'ELSIF')+' Value='+q(key)+' THEN NG_UiText:='+w(value)+';')
 lines+=['END_IF;','RETURN;','END_IF;']
 for i,(en,zh) in enumerate(T.items()):

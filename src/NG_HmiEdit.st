@@ -2,6 +2,7 @@ FUNCTION_BLOCK NG_HmiEdit
 VAR_INPUT
     Busy : BOOL;
     Managed : BOOL;
+    LocalRevision : ULINT;
     NowMs : ULINT;
 END_VAR
 VAR_IN_OUT
@@ -14,6 +15,8 @@ END_VAR
 VAR_OUTPUT
     Submit : BOOL;
     SubmitBroker : BOOL;
+    SubmitMode : BOOL;
+    ClearConfig : BOOL;
     Draft : NG_Config;
     NewBroker : NG_Bootstrap;
     NewManaged : BOOL;
@@ -24,6 +27,9 @@ VAR
     BlankPoint : NG_Point;
     BlankDevice : NG_Device;
     BaseVersion : ULINT;
+    BaseRevision : ULINT;
+    ModeTargetManaged : BOOL;
+    ModeReviewOpen : BOOL;
     Initialized : BOOL;
     Dirty : BOOL;
     Awaiting : BOOL;
@@ -49,7 +55,7 @@ VAR
     value : STRING[64];
     cmd : BOOL;
 END_VAR
-Submit := FALSE; SubmitBroker := FALSE; LoadDevice := FALSE; LoadPoint := FALSE;
+Submit := FALSE; SubmitBroker := FALSE; SubmitMode := FALSE; ClearConfig := FALSE; LoadDevice := FALSE; LoadPoint := FALSE;
 Nav := Hmi.Navigation; Hmi.Navigation := '';
 IF Nav='ZH' THEN Hmi.English:=FALSE;
 ELSIF Nav='EN' THEN Hmi.English:=TRUE;
@@ -61,8 +67,14 @@ ELSIF Nav='DEVON' THEN Hmi.DeviceEnabled:='true';
 ELSIF Nav='DEVOFF' THEN Hmi.DeviceEnabled:='false';
 ELSIF Nav='POINTON' THEN Hmi.PointEnabled:='true';
 ELSIF Nav='POINTOFF' THEN Hmi.PointEnabled:='false';
-ELSIF Nav='MODEHUB' THEN Hmi.ManagementMode:='HUB_MANAGED';
-ELSIF Nav='MODELOCAL' THEN Hmi.ManagementMode:='STANDALONE';
+ELSIF Nav='MODEPAGE' THEN ModeReviewOpen:=FALSE; Hmi.View:=13;
+ELSIF Nav='MODEHUB' THEN ModeTargetManaged:=TRUE; ModeReviewOpen:=TRUE; Hmi.ClearOnMaintenance:=FALSE; Hmi.View:=15;
+ELSIF Nav='MODELOCAL' THEN ModeTargetManaged:=FALSE; ModeReviewOpen:=TRUE; Hmi.ClearOnMaintenance:=FALSE; Hmi.View:=14;
+ELSIF Nav='MODEKEEP' THEN Hmi.ClearOnMaintenance:=FALSE;
+ELSIF Nav='MODECLEAR' THEN Hmi.ClearOnMaintenance:=TRUE;
+ELSIF Nav='MODECOMMIT' THEN
+    IF ModeReviewOpen AND ((Hmi.View=14) OR (Hmi.View=15)) THEN Hmi.SwitchMode:=TRUE;
+    ELSE Hmi.Status:='Open the management mode confirmation before saving.'; END_IF;
 ELSIF Nav='CYCLIC' THEN Hmi.ReportMode:='cyclic';
 ELSIF Nav='CHANGE' THEN Hmi.ReportMode:='change';
 ELSIF Nav='BOTH' THEN Hmi.ReportMode:='change_or_cyclic';
@@ -88,17 +100,18 @@ ELSIF Nav='POINTBACK' THEN Hmi.View:=2;
 END_IF;
 IF (Nav='CYCLIC') OR (Nav='CHANGE') OR (Nav='BOTH') OR (Nav='HOLDING') OR (Nav='INPUT') OR (Nav='COIL') OR (Nav='DISCRETE') OR (Nav='UINT16') OR (Nav='INT16') OR (Nav='UINT32') OR (Nav='INT32') OR (Nav='FLOAT32') OR (Nav='BOOL') THEN Hmi.View:=2; END_IF;
 Hmi.Managed:=Managed;
+IF Managed THEN Hmi.ManagementMode:='HUB_MANAGED'; ELSE Hmi.ManagementMode:='STANDALONE'; END_IF;
 IF Managed AND ((Nav='DNEW') OR (Nav='PNEW') OR (Nav='DDEL') OR (Nav='PDEL') OR (Nav='PERIOD') OR Hmi.SaveDevice OR Hmi.SavePoint OR Hmi.RemoveDevice OR Hmi.RemovePoint OR Hmi.Apply) THEN
     Nav := ''; Hmi.SaveDevice:=FALSE; Hmi.SavePoint:=FALSE; Hmi.RemoveDevice:=FALSE; Hmi.RemovePoint:=FALSE; Hmi.Apply:=FALSE;
     Hmi.View:=0; Hmi.Status:='HUB_MANAGED: publish device and point changes from Hub.';
 END_IF;
-IF Managed THEN Hmi.ConfigSource:='HUB_MANAGED - local device/point changes blocked'; ELSE Hmi.ConfigSource:='STANDALONE - local maintenance enabled'; END_IF;
+IF Managed THEN Hmi.ConfigSource:='HUB_MANAGED - local device/point changes blocked'; ELSE Hmi.ConfigSource:='MAINTENANCE - incoming platform configuration locked'; END_IF;
 IF NOT Initialized THEN Reload := TRUE; Initialized := TRUE; END_IF;
 IF Awaiting AND (Active.Version = Draft.Version) AND NOT Busy THEN Dirty := FALSE; Awaiting := FALSE; Reload := TRUE; Hmi.View:=0; END_IF;
-IF (Active.Version <> BaseVersion) AND NOT Dirty AND NOT Awaiting AND NOT Busy THEN Reload := TRUE; END_IF;
+IF ((Active.Version <> BaseVersion) OR (LocalRevision <> BaseRevision)) AND NOT Dirty AND NOT Awaiting AND NOT Busy THEN Reload := TRUE; END_IF;
 IF Hmi.Load AND NOT Busy THEN Reload := TRUE; Hmi.View:=0; Hmi.Status := 'Display refreshed from active configuration. Unapplied draft discarded.'; END_IF;
 IF Reload THEN
-    Draft := Active; BaseVersion := Active.Version; Dirty := FALSE; Reload := FALSE;
+    Draft := Active; BaseVersion := Active.Version; BaseRevision := LocalRevision; Dirty := FALSE; Reload := FALSE;
     Hmi.Enabled := TO_STRING(Draft.enabled,''); Hmi.BatchIntervalMs := TO_STRING(Draft.batchIntervalMs,'{0:d}'); Hmi.MaxBatchPoints := TO_STRING(Draft.maxBatchPoints,'{0:d}');
     IF NOT NG_Range(Hmi.DeviceIndex,1,50,TRUE) THEN Hmi.DeviceIndex := '1'; END_IF;
     Hmi.PointIndex := '1'; LoadDevice := TRUE; LoadPoint := TRUE;
@@ -164,7 +177,7 @@ IF LoadPoint AND (d <= Draft.DeviceCount) THEN
         Hmi.DevicePollMs := Hmi.PollIntervalMs; Hmi.DeviceReportMs := Hmi.ReportIntervalMs;
     END_IF;
 END_IF;
-cmd := Hmi.SaveDevice OR Hmi.SavePoint OR Hmi.RemoveDevice OR Hmi.RemovePoint OR Hmi.Apply OR Hmi.SaveBroker OR (Nav = 'PERIOD');
+cmd := Hmi.SaveDevice OR Hmi.SavePoint OR Hmi.RemoveDevice OR Hmi.RemovePoint OR Hmi.Apply OR Hmi.SaveBroker OR Hmi.SwitchMode OR (Nav = 'PERIOD');
 IF cmd AND Busy THEN Hmi.Status := 'Busy: configuration transaction in progress. Try again shortly.';
 ELSIF cmd THEN
     IF NOT NG_Range(Hmi.DeviceIndex,1,50,TRUE) OR NOT NG_Range(Hmi.PointIndex,1,32,TRUE) THEN Hmi.Status := 'Device index 1..50; point index 1..32.';
@@ -213,31 +226,40 @@ ELSIF cmd THEN
             END_IF;
         END_IF;
         IF Hmi.Apply THEN
-            IF BaseVersion <> Active.Version THEN Hmi.Status := 'VERSION_CONFLICT: reload active configuration before applying.';
+            IF (BaseVersion <> Active.Version) OR (BaseRevision <> LocalRevision) THEN Hmi.Status := 'VERSION_CONFLICT: reload active configuration before applying.';
             ELSIF NOT NG_Range(Hmi.BatchIntervalMs,1,86400000,TRUE) OR NOT NG_Range(Hmi.MaxBatchPoints,1,64,TRUE) THEN Hmi.Status := 'Invalid gateway batch settings.';
             ELSE
                 Draft.enabled := (Hmi.Enabled='true') OR (Hmi.Enabled='TRUE'); Draft.batchIntervalMs := TO_UDINT(Hmi.BatchIntervalMs); Draft.maxBatchPoints := TO_UINT(Hmi.MaxBatchPoints); Hmi.Status := NG_CheckConfig(Draft);
-                IF Hmi.Status = '' THEN Draft.Version := Active.Version+1; Submit := TRUE; Awaiting := TRUE; Dirty := TRUE; Hmi.Status := 'Saving, hashing and reading back configuration...'; END_IF;
+                IF Hmi.Status = '' THEN Draft.Version := Active.Version; Submit := TRUE; Awaiting := TRUE; Dirty := TRUE; Hmi.Status := 'Saving, hashing and reading back configuration...'; END_IF;
+            END_IF;
+        END_IF;
+        IF Hmi.SwitchMode THEN
+            NewManaged := ModeTargetManaged;
+            IF NewManaged = Managed THEN Hmi.Status := 'The selected management mode is already active.';
+            ELSE
+                ClearConfig := NOT NewManaged AND Hmi.ClearOnMaintenance;
+                SubmitMode := TRUE; ModeReviewOpen:=FALSE; Dirty := FALSE; Awaiting := FALSE; Reload := TRUE;
+                Hmi.View := 13; Hmi.Status := 'Saving management mode; existing identity is retained.';
             END_IF;
         END_IF;
         IF Hmi.SaveBroker THEN
             ValidBroker := FALSE;
             IF LEN(Hmi.BrokerUri) >= 6 THEN ValidBroker := (LEFT(Hmi.BrokerUri,6)='tcp://') OR (LEFT(Hmi.BrokerUri,6)='ssl://'); END_IF;
-            IF NOT ValidBroker OR NOT NG_ValidId(Hmi.BrokerGatewayId) OR ((Hmi.ManagementMode<>'HUB_MANAGED') AND (Hmi.ManagementMode<>'STANDALONE')) OR ((Managed<>(Hmi.ManagementMode='HUB_MANAGED')) AND (Hmi.BrokerGatewayId=Bootstrap.GatewayId)) OR (LEN(Hmi.ClientId)=0) OR NOT NG_Range(Hmi.UtcOffsetMinutes,-840,840,TRUE) THEN Hmi.Status := 'Check broker/mode/ID. Mode change requires a new Gateway ID to isolate configuration history.';
+            IF NOT ValidBroker OR NOT NG_ValidId(Hmi.BrokerGatewayId) OR ((Hmi.ManagementMode<>'HUB_MANAGED') AND (Hmi.ManagementMode<>'STANDALONE')) OR (LEN(Hmi.ClientId)=0) OR NOT NG_Range(Hmi.UtcOffsetMinutes,-840,840,TRUE) THEN Hmi.Status := 'Check broker URI, gateway ID, client ID and time zone.';
             ELSE
-                NewManaged := Hmi.ManagementMode='HUB_MANAGED'; NewBroker := Bootstrap; NewBroker.GatewayId:=Hmi.BrokerGatewayId; NewBroker.BrokerUri := Hmi.BrokerUri; NewBroker.ClientId := Hmi.ClientId; NewBroker.UserName := Hmi.UserName; NewBroker.UtcOffsetMinutes := TO_INT(Hmi.UtcOffsetMinutes);
+                NewManaged := Managed; NewBroker := Bootstrap; NewBroker.GatewayId:=Hmi.BrokerGatewayId; NewBroker.BrokerUri := Hmi.BrokerUri; NewBroker.ClientId := Hmi.ClientId; NewBroker.UserName := Hmi.UserName; NewBroker.UtcOffsetMinutes := TO_INT(Hmi.UtcOffsetMinutes);
                 IF Hmi.Password <> '' THEN NewBroker.Password := Hmi.Password; END_IF;
                 SubmitBroker := TRUE; Hmi.Password := ''; Hmi.View:=3; Hmi.Status := 'Saving broker settings...';
             END_IF;
         END_IF;
     END_IF;
 END_IF;
-Hmi.Load := FALSE; Hmi.LoadPoint := FALSE; Hmi.SaveDevice := FALSE; Hmi.SavePoint := FALSE; Hmi.RemoveDevice := FALSE; Hmi.RemovePoint := FALSE; Hmi.Apply := FALSE; Hmi.SaveBroker := FALSE;
+Hmi.Load := FALSE; Hmi.LoadPoint := FALSE; Hmi.SaveDevice := FALSE; Hmi.SavePoint := FALSE; Hmi.RemoveDevice := FALSE; Hmi.RemovePoint := FALSE; Hmi.Apply := FALSE; Hmi.SaveBroker := FALSE; Hmi.SwitchMode := FALSE;
 Hmi.UiStatus:=NG_UiText(Hmi.Status,Hmi.English);
 Hmi.UiDeviceEnabled:=NG_UiText(Hmi.DeviceEnabled,Hmi.English); Hmi.UiPointEnabled:=NG_UiText(Hmi.PointEnabled,Hmi.English);
 Hmi.UiArea:=NG_UiText(Hmi.Area,Hmi.English); Hmi.UiReportMode:=NG_UiText(Hmi.ReportMode,Hmi.English); Hmi.UiManagementMode:=NG_UiText(Hmi.ManagementMode,Hmi.English);
 IF Dirty THEN Hmi.DraftState := 'UNSAVED DRAFT'; ELSE Hmi.DraftState := 'PERSISTED'; END_IF;
-IF Dirty AND (BaseVersion <> Active.Version) AND NOT Awaiting THEN Hmi.DraftState := 'VERSION CONFLICT'; END_IF;
+IF Dirty AND ((BaseVersion <> Active.Version) OR (BaseRevision <> LocalRevision)) AND NOT Awaiting THEN Hmi.DraftState := 'VERSION CONFLICT'; END_IF;
 Hmi.UiDraftState:=NG_UiText(Hmi.DraftState,Hmi.English);
 Hmi.UiConfigSource:=NG_UiText(Hmi.ConfigSource,Hmi.English);
 Hmi.TotalPoints := TO_STRING(Active.PointCount,'{0:d}');

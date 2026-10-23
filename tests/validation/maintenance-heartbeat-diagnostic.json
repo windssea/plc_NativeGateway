@@ -1,0 +1,160 @@
+{
+  "gatewayId": "NG-HUB-2152-01",
+  "readOnlyEvidence": true,
+  "hubCodeChanged": false,
+  "databaseWrittenByProbe": false,
+  "manualClockSynchronization": "Engineer Cockpit write current PC system time",
+  "postSyncEvidenceStarts": "2026-10-23T14:08:00+08:00",
+  "preSyncFutureHeartbeatCount": 95,
+  "postSyncHeartbeatCount": 20,
+  "postSyncFutureHeartbeatCount": 0,
+  "postSyncMinDeltaSeconds": -2.0561,
+  "postSyncMaxDeltaSeconds": -0.7099,
+  "postSyncHeartbeats": [
+    {
+      "receivedAt": 1792735683.3872406,
+      "timestamp": 1792735682000,
+      "deltaSeconds": -1.3872,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 8
+    },
+    {
+      "receivedAt": 1792735713.4455743,
+      "timestamp": 1792735712000,
+      "deltaSeconds": -1.4456,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 8
+    },
+    {
+      "receivedAt": 1792735743.5062797,
+      "timestamp": 1792735742000,
+      "deltaSeconds": -1.5063,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 8
+    },
+    {
+      "receivedAt": 1792735773.5730605,
+      "timestamp": 1792735772000,
+      "deltaSeconds": -1.5731,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 8
+    },
+    {
+      "receivedAt": 1792735784.4555526,
+      "timestamp": 1792735783000,
+      "deltaSeconds": -1.4556,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735814.5091057,
+      "timestamp": 1792735813000,
+      "deltaSeconds": -1.5091,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735834.5754893,
+      "timestamp": 1792735833000,
+      "deltaSeconds": -1.5755,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735839.6314487,
+      "timestamp": 1792735838000,
+      "deltaSeconds": -1.6314,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735844.6919296,
+      "timestamp": 1792735843000,
+      "deltaSeconds": -1.6919,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735850.056074,
+      "timestamp": 1792735848000,
+      "deltaSeconds": -2.0561,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 0
+    },
+    {
+      "receivedAt": 1792735855.1242418,
+      "timestamp": 1792735854000,
+      "deltaSeconds": -1.1242,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 0
+    },
+    {
+      "receivedAt": 1792735860.1906874,
+      "timestamp": 1792735859000,
+      "deltaSeconds": -1.1907,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 0
+    },
+    {
+      "receivedAt": 1792735865.2526364,
+      "timestamp": 1792735864000,
+      "deltaSeconds": -1.2526,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 0
+    },
+    {
+      "receivedAt": 1792735870.5964043,
+      "timestamp": 1792735869000,
+      "deltaSeconds": -1.5964,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735900.6481464,
+      "timestamp": 1792735899000,
+      "deltaSeconds": -1.6481,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735930.709852,
+      "timestamp": 1792735930000,
+      "deltaSeconds": -0.7099,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735960.770481,
+      "timestamp": 1792735960000,
+      "deltaSeconds": -0.7705,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792735990.8296463,
+      "timestamp": 1792735990000,
+      "deltaSeconds": -0.8296,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792736020.889752,
+      "timestamp": 1792736020000,
+      "deltaSeconds": -0.8898,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    },
+    {
+      "receivedAt": 1792736050.94886,
+      "timestamp": 1792736050000,
+      "deltaSeconds": -0.9489,
+      "sessionId": "ng-d4f61b3085b97c5e3831983b-21-1",
+      "activeConfigVersion": 9
+    }
+  ],
+  "ongoingNtpConfigured": false,
+  "databaseLockWaitObserved": true,
+  "hubLifetimeStateExecuteMaxSeconds": 83.7410996,
+  "hubLifetimeStateQueueWaitMaxSeconds": 127.9739638,
+  "note": "Lifetime maxima are Hub diagnostics, not all attributable to this maintenance test. Database clock differs from Hub host; use Hub time to assess heartbeat age."
+}
