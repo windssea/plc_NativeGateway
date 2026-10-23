@@ -1,0 +1,13 @@
+{
+  "config-set-demo.json": "configSet",
+  "config-patch-add-demo.json": "configPatch",
+  "config-patch-replace-demo.json": "configPatch",
+  "config-patch-remove-demo.json": "configPatch",
+  "config-patch-remove-point-demo.json": "configPatch",
+  "config-patch-gateway-demo.json": "configPatch",
+  "config-ack-demo.json": "configAck",
+  "config-patch-ack-demo.json": "configPatchAck",
+  "config-get-demo.json": "configGet",
+  "data-demo.json": "data",
+  "data-ack-demo.json": "dataAck"
+}

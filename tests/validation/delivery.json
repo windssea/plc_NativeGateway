@@ -1,0 +1,19 @@
+{
+  "software": "native-0.4.0",
+  "observedCompilerResult": {
+    "errors": 0,
+    "warnings": 0,
+    "application": "PLCnext Engineer 2026.0.4",
+    "downloadedTo": "192.168.0.8"
+  },
+  "projectSha256": "b78ba0efd0f8f79558143d58f3eb141512876690b2eda2a641e96ba3a3cbaddf",
+  "uiWorkflowPassed": true,
+  "networkRecoveryPassed": true,
+  "controllerOsRebootPassed": true,
+  "mockRunningAfterTest": true,
+  "lastStringErrorBeforeFix": "2026-10-23 12:24:56",
+  "afterFixLogEvidence": [
+    "final/online-log-after-blackout.png",
+    "verified/online-log-after-os-reboot.png"
+  ]
+}

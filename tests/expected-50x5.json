@@ -1,0 +1,1252 @@
+{
+  "soak-meter-001/voltage": {
+    "value": 230.1,
+    "tolerance": 0.001,
+    "unitId": 1
+  },
+  "soak-meter-001/current": {
+    "value": 12.4,
+    "tolerance": 0.001,
+    "unitId": 1
+  },
+  "soak-meter-001/frequency": {
+    "value": 50.01,
+    "tolerance": 0.001,
+    "unitId": 1
+  },
+  "soak-meter-001/power": {
+    "value": 1235,
+    "tolerance": 0.001,
+    "unitId": 1
+  },
+  "soak-meter-001/energy": {
+    "value": 100001,
+    "tolerance": 0.001,
+    "unitId": 1
+  },
+  "soak-meter-002/voltage": {
+    "value": 230.2,
+    "tolerance": 0.001,
+    "unitId": 2
+  },
+  "soak-meter-002/current": {
+    "value": 12.5,
+    "tolerance": 0.001,
+    "unitId": 2
+  },
+  "soak-meter-002/frequency": {
+    "value": 50.02,
+    "tolerance": 0.001,
+    "unitId": 2
+  },
+  "soak-meter-002/power": {
+    "value": 1236,
+    "tolerance": 0.001,
+    "unitId": 2
+  },
+  "soak-meter-002/energy": {
+    "value": 100002,
+    "tolerance": 0.001,
+    "unitId": 2
+  },
+  "soak-meter-003/voltage": {
+    "value": 230.3,
+    "tolerance": 0.001,
+    "unitId": 3
+  },
+  "soak-meter-003/current": {
+    "value": 12.600000000000001,
+    "tolerance": 0.001,
+    "unitId": 3
+  },
+  "soak-meter-003/frequency": {
+    "value": 50.03,
+    "tolerance": 0.001,
+    "unitId": 3
+  },
+  "soak-meter-003/power": {
+    "value": 1237,
+    "tolerance": 0.001,
+    "unitId": 3
+  },
+  "soak-meter-003/energy": {
+    "value": 100003,
+    "tolerance": 0.001,
+    "unitId": 3
+  },
+  "soak-meter-004/voltage": {
+    "value": 230.4,
+    "tolerance": 0.001,
+    "unitId": 4
+  },
+  "soak-meter-004/current": {
+    "value": 12.700000000000001,
+    "tolerance": 0.001,
+    "unitId": 4
+  },
+  "soak-meter-004/frequency": {
+    "value": 50.04,
+    "tolerance": 0.001,
+    "unitId": 4
+  },
+  "soak-meter-004/power": {
+    "value": 1238,
+    "tolerance": 0.001,
+    "unitId": 4
+  },
+  "soak-meter-004/energy": {
+    "value": 100004,
+    "tolerance": 0.001,
+    "unitId": 4
+  },
+  "soak-meter-005/voltage": {
+    "value": 230.5,
+    "tolerance": 0.001,
+    "unitId": 5
+  },
+  "soak-meter-005/current": {
+    "value": 12.8,
+    "tolerance": 0.001,
+    "unitId": 5
+  },
+  "soak-meter-005/frequency": {
+    "value": 50.050000000000004,
+    "tolerance": 0.001,
+    "unitId": 5
+  },
+  "soak-meter-005/power": {
+    "value": 1239,
+    "tolerance": 0.001,
+    "unitId": 5
+  },
+  "soak-meter-005/energy": {
+    "value": 100005,
+    "tolerance": 0.001,
+    "unitId": 5
+  },
+  "soak-meter-006/voltage": {
+    "value": 230.6,
+    "tolerance": 0.001,
+    "unitId": 6
+  },
+  "soak-meter-006/current": {
+    "value": 12.9,
+    "tolerance": 0.001,
+    "unitId": 6
+  },
+  "soak-meter-006/frequency": {
+    "value": 50.06,
+    "tolerance": 0.001,
+    "unitId": 6
+  },
+  "soak-meter-006/power": {
+    "value": 1240,
+    "tolerance": 0.001,
+    "unitId": 6
+  },
+  "soak-meter-006/energy": {
+    "value": 100006,
+    "tolerance": 0.001,
+    "unitId": 6
+  },
+  "soak-meter-007/voltage": {
+    "value": 230.7,
+    "tolerance": 0.001,
+    "unitId": 7
+  },
+  "soak-meter-007/current": {
+    "value": 13.0,
+    "tolerance": 0.001,
+    "unitId": 7
+  },
+  "soak-meter-007/frequency": {
+    "value": 50.07,
+    "tolerance": 0.001,
+    "unitId": 7
+  },
+  "soak-meter-007/power": {
+    "value": 1241,
+    "tolerance": 0.001,
+    "unitId": 7
+  },
+  "soak-meter-007/energy": {
+    "value": 100007,
+    "tolerance": 0.001,
+    "unitId": 7
+  },
+  "soak-meter-008/voltage": {
+    "value": 230.8,
+    "tolerance": 0.001,
+    "unitId": 8
+  },
+  "soak-meter-008/current": {
+    "value": 13.100000000000001,
+    "tolerance": 0.001,
+    "unitId": 8
+  },
+  "soak-meter-008/frequency": {
+    "value": 50.08,
+    "tolerance": 0.001,
+    "unitId": 8
+  },
+  "soak-meter-008/power": {
+    "value": 1242,
+    "tolerance": 0.001,
+    "unitId": 8
+  },
+  "soak-meter-008/energy": {
+    "value": 100008,
+    "tolerance": 0.001,
+    "unitId": 8
+  },
+  "soak-meter-009/voltage": {
+    "value": 230.9,
+    "tolerance": 0.001,
+    "unitId": 9
+  },
+  "soak-meter-009/current": {
+    "value": 13.200000000000001,
+    "tolerance": 0.001,
+    "unitId": 9
+  },
+  "soak-meter-009/frequency": {
+    "value": 50.09,
+    "tolerance": 0.001,
+    "unitId": 9
+  },
+  "soak-meter-009/power": {
+    "value": 1243,
+    "tolerance": 0.001,
+    "unitId": 9
+  },
+  "soak-meter-009/energy": {
+    "value": 100009,
+    "tolerance": 0.001,
+    "unitId": 9
+  },
+  "soak-meter-010/voltage": {
+    "value": 231.0,
+    "tolerance": 0.001,
+    "unitId": 10
+  },
+  "soak-meter-010/current": {
+    "value": 13.3,
+    "tolerance": 0.001,
+    "unitId": 10
+  },
+  "soak-meter-010/frequency": {
+    "value": 50.1,
+    "tolerance": 0.001,
+    "unitId": 10
+  },
+  "soak-meter-010/power": {
+    "value": 1244,
+    "tolerance": 0.001,
+    "unitId": 10
+  },
+  "soak-meter-010/energy": {
+    "value": 100010,
+    "tolerance": 0.001,
+    "unitId": 10
+  },
+  "soak-meter-011/voltage": {
+    "value": 231.1,
+    "tolerance": 0.001,
+    "unitId": 11
+  },
+  "soak-meter-011/current": {
+    "value": 13.4,
+    "tolerance": 0.001,
+    "unitId": 11
+  },
+  "soak-meter-011/frequency": {
+    "value": 50.11,
+    "tolerance": 0.001,
+    "unitId": 11
+  },
+  "soak-meter-011/power": {
+    "value": 1245,
+    "tolerance": 0.001,
+    "unitId": 11
+  },
+  "soak-meter-011/energy": {
+    "value": 100011,
+    "tolerance": 0.001,
+    "unitId": 11
+  },
+  "soak-meter-012/voltage": {
+    "value": 231.2,
+    "tolerance": 0.001,
+    "unitId": 12
+  },
+  "soak-meter-012/current": {
+    "value": 13.5,
+    "tolerance": 0.001,
+    "unitId": 12
+  },
+  "soak-meter-012/frequency": {
+    "value": 50.120000000000005,
+    "tolerance": 0.001,
+    "unitId": 12
+  },
+  "soak-meter-012/power": {
+    "value": 1246,
+    "tolerance": 0.001,
+    "unitId": 12
+  },
+  "soak-meter-012/energy": {
+    "value": 100012,
+    "tolerance": 0.001,
+    "unitId": 12
+  },
+  "soak-meter-013/voltage": {
+    "value": 231.3,
+    "tolerance": 0.001,
+    "unitId": 13
+  },
+  "soak-meter-013/current": {
+    "value": 13.600000000000001,
+    "tolerance": 0.001,
+    "unitId": 13
+  },
+  "soak-meter-013/frequency": {
+    "value": 50.13,
+    "tolerance": 0.001,
+    "unitId": 13
+  },
+  "soak-meter-013/power": {
+    "value": 1247,
+    "tolerance": 0.001,
+    "unitId": 13
+  },
+  "soak-meter-013/energy": {
+    "value": 100013,
+    "tolerance": 0.001,
+    "unitId": 13
+  },
+  "soak-meter-014/voltage": {
+    "value": 231.4,
+    "tolerance": 0.001,
+    "unitId": 14
+  },
+  "soak-meter-014/current": {
+    "value": 13.700000000000001,
+    "tolerance": 0.001,
+    "unitId": 14
+  },
+  "soak-meter-014/frequency": {
+    "value": 50.14,
+    "tolerance": 0.001,
+    "unitId": 14
+  },
+  "soak-meter-014/power": {
+    "value": 1248,
+    "tolerance": 0.001,
+    "unitId": 14
+  },
+  "soak-meter-014/energy": {
+    "value": 100014,
+    "tolerance": 0.001,
+    "unitId": 14
+  },
+  "soak-meter-015/voltage": {
+    "value": 231.5,
+    "tolerance": 0.001,
+    "unitId": 15
+  },
+  "soak-meter-015/current": {
+    "value": 13.8,
+    "tolerance": 0.001,
+    "unitId": 15
+  },
+  "soak-meter-015/frequency": {
+    "value": 50.15,
+    "tolerance": 0.001,
+    "unitId": 15
+  },
+  "soak-meter-015/power": {
+    "value": 1249,
+    "tolerance": 0.001,
+    "unitId": 15
+  },
+  "soak-meter-015/energy": {
+    "value": 100015,
+    "tolerance": 0.001,
+    "unitId": 15
+  },
+  "soak-meter-016/voltage": {
+    "value": 231.6,
+    "tolerance": 0.001,
+    "unitId": 16
+  },
+  "soak-meter-016/current": {
+    "value": 13.9,
+    "tolerance": 0.001,
+    "unitId": 16
+  },
+  "soak-meter-016/frequency": {
+    "value": 50.160000000000004,
+    "tolerance": 0.001,
+    "unitId": 16
+  },
+  "soak-meter-016/power": {
+    "value": 1250,
+    "tolerance": 0.001,
+    "unitId": 16
+  },
+  "soak-meter-016/energy": {
+    "value": 100016,
+    "tolerance": 0.001,
+    "unitId": 16
+  },
+  "soak-meter-017/voltage": {
+    "value": 231.7,
+    "tolerance": 0.001,
+    "unitId": 17
+  },
+  "soak-meter-017/current": {
+    "value": 14.0,
+    "tolerance": 0.001,
+    "unitId": 17
+  },
+  "soak-meter-017/frequency": {
+    "value": 50.17,
+    "tolerance": 0.001,
+    "unitId": 17
+  },
+  "soak-meter-017/power": {
+    "value": 1251,
+    "tolerance": 0.001,
+    "unitId": 17
+  },
+  "soak-meter-017/energy": {
+    "value": 100017,
+    "tolerance": 0.001,
+    "unitId": 17
+  },
+  "soak-meter-018/voltage": {
+    "value": 231.8,
+    "tolerance": 0.001,
+    "unitId": 18
+  },
+  "soak-meter-018/current": {
+    "value": 14.100000000000001,
+    "tolerance": 0.001,
+    "unitId": 18
+  },
+  "soak-meter-018/frequency": {
+    "value": 50.18,
+    "tolerance": 0.001,
+    "unitId": 18
+  },
+  "soak-meter-018/power": {
+    "value": 1252,
+    "tolerance": 0.001,
+    "unitId": 18
+  },
+  "soak-meter-018/energy": {
+    "value": 100018,
+    "tolerance": 0.001,
+    "unitId": 18
+  },
+  "soak-meter-019/voltage": {
+    "value": 231.9,
+    "tolerance": 0.001,
+    "unitId": 19
+  },
+  "soak-meter-019/current": {
+    "value": 14.200000000000001,
+    "tolerance": 0.001,
+    "unitId": 19
+  },
+  "soak-meter-019/frequency": {
+    "value": 50.19,
+    "tolerance": 0.001,
+    "unitId": 19
+  },
+  "soak-meter-019/power": {
+    "value": 1253,
+    "tolerance": 0.001,
+    "unitId": 19
+  },
+  "soak-meter-019/energy": {
+    "value": 100019,
+    "tolerance": 0.001,
+    "unitId": 19
+  },
+  "soak-meter-020/voltage": {
+    "value": 232.0,
+    "tolerance": 0.001,
+    "unitId": 20
+  },
+  "soak-meter-020/current": {
+    "value": 14.3,
+    "tolerance": 0.001,
+    "unitId": 20
+  },
+  "soak-meter-020/frequency": {
+    "value": 50.2,
+    "tolerance": 0.001,
+    "unitId": 20
+  },
+  "soak-meter-020/power": {
+    "value": 1254,
+    "tolerance": 0.001,
+    "unitId": 20
+  },
+  "soak-meter-020/energy": {
+    "value": 100020,
+    "tolerance": 0.001,
+    "unitId": 20
+  },
+  "soak-meter-021/voltage": {
+    "value": 232.1,
+    "tolerance": 0.001,
+    "unitId": 21
+  },
+  "soak-meter-021/current": {
+    "value": 14.4,
+    "tolerance": 0.001,
+    "unitId": 21
+  },
+  "soak-meter-021/frequency": {
+    "value": 50.21,
+    "tolerance": 0.001,
+    "unitId": 21
+  },
+  "soak-meter-021/power": {
+    "value": 1255,
+    "tolerance": 0.001,
+    "unitId": 21
+  },
+  "soak-meter-021/energy": {
+    "value": 100021,
+    "tolerance": 0.001,
+    "unitId": 21
+  },
+  "soak-meter-022/voltage": {
+    "value": 232.2,
+    "tolerance": 0.001,
+    "unitId": 22
+  },
+  "soak-meter-022/current": {
+    "value": 14.5,
+    "tolerance": 0.001,
+    "unitId": 22
+  },
+  "soak-meter-022/frequency": {
+    "value": 50.22,
+    "tolerance": 0.001,
+    "unitId": 22
+  },
+  "soak-meter-022/power": {
+    "value": 1256,
+    "tolerance": 0.001,
+    "unitId": 22
+  },
+  "soak-meter-022/energy": {
+    "value": 100022,
+    "tolerance": 0.001,
+    "unitId": 22
+  },
+  "soak-meter-023/voltage": {
+    "value": 232.3,
+    "tolerance": 0.001,
+    "unitId": 23
+  },
+  "soak-meter-023/current": {
+    "value": 14.600000000000001,
+    "tolerance": 0.001,
+    "unitId": 23
+  },
+  "soak-meter-023/frequency": {
+    "value": 50.230000000000004,
+    "tolerance": 0.001,
+    "unitId": 23
+  },
+  "soak-meter-023/power": {
+    "value": 1257,
+    "tolerance": 0.001,
+    "unitId": 23
+  },
+  "soak-meter-023/energy": {
+    "value": 100023,
+    "tolerance": 0.001,
+    "unitId": 23
+  },
+  "soak-meter-024/voltage": {
+    "value": 232.4,
+    "tolerance": 0.001,
+    "unitId": 24
+  },
+  "soak-meter-024/current": {
+    "value": 14.700000000000001,
+    "tolerance": 0.001,
+    "unitId": 24
+  },
+  "soak-meter-024/frequency": {
+    "value": 50.24,
+    "tolerance": 0.001,
+    "unitId": 24
+  },
+  "soak-meter-024/power": {
+    "value": 1258,
+    "tolerance": 0.001,
+    "unitId": 24
+  },
+  "soak-meter-024/energy": {
+    "value": 100024,
+    "tolerance": 0.001,
+    "unitId": 24
+  },
+  "soak-meter-025/voltage": {
+    "value": 232.5,
+    "tolerance": 0.001,
+    "unitId": 25
+  },
+  "soak-meter-025/current": {
+    "value": 14.8,
+    "tolerance": 0.001,
+    "unitId": 25
+  },
+  "soak-meter-025/frequency": {
+    "value": 50.25,
+    "tolerance": 0.001,
+    "unitId": 25
+  },
+  "soak-meter-025/power": {
+    "value": 1259,
+    "tolerance": 0.001,
+    "unitId": 25
+  },
+  "soak-meter-025/energy": {
+    "value": 100025,
+    "tolerance": 0.001,
+    "unitId": 25
+  },
+  "soak-meter-026/voltage": {
+    "value": 232.6,
+    "tolerance": 0.001,
+    "unitId": 26
+  },
+  "soak-meter-026/current": {
+    "value": 14.9,
+    "tolerance": 0.001,
+    "unitId": 26
+  },
+  "soak-meter-026/frequency": {
+    "value": 50.26,
+    "tolerance": 0.001,
+    "unitId": 26
+  },
+  "soak-meter-026/power": {
+    "value": 1260,
+    "tolerance": 0.001,
+    "unitId": 26
+  },
+  "soak-meter-026/energy": {
+    "value": 100026,
+    "tolerance": 0.001,
+    "unitId": 26
+  },
+  "soak-meter-027/voltage": {
+    "value": 232.7,
+    "tolerance": 0.001,
+    "unitId": 27
+  },
+  "soak-meter-027/current": {
+    "value": 15.0,
+    "tolerance": 0.001,
+    "unitId": 27
+  },
+  "soak-meter-027/frequency": {
+    "value": 50.27,
+    "tolerance": 0.001,
+    "unitId": 27
+  },
+  "soak-meter-027/power": {
+    "value": 1261,
+    "tolerance": 0.001,
+    "unitId": 27
+  },
+  "soak-meter-027/energy": {
+    "value": 100027,
+    "tolerance": 0.001,
+    "unitId": 27
+  },
+  "soak-meter-028/voltage": {
+    "value": 232.8,
+    "tolerance": 0.001,
+    "unitId": 28
+  },
+  "soak-meter-028/current": {
+    "value": 15.100000000000001,
+    "tolerance": 0.001,
+    "unitId": 28
+  },
+  "soak-meter-028/frequency": {
+    "value": 50.28,
+    "tolerance": 0.001,
+    "unitId": 28
+  },
+  "soak-meter-028/power": {
+    "value": 1262,
+    "tolerance": 0.001,
+    "unitId": 28
+  },
+  "soak-meter-028/energy": {
+    "value": 100028,
+    "tolerance": 0.001,
+    "unitId": 28
+  },
+  "soak-meter-029/voltage": {
+    "value": 232.9,
+    "tolerance": 0.001,
+    "unitId": 29
+  },
+  "soak-meter-029/current": {
+    "value": 15.200000000000001,
+    "tolerance": 0.001,
+    "unitId": 29
+  },
+  "soak-meter-029/frequency": {
+    "value": 50.29,
+    "tolerance": 0.001,
+    "unitId": 29
+  },
+  "soak-meter-029/power": {
+    "value": 1263,
+    "tolerance": 0.001,
+    "unitId": 29
+  },
+  "soak-meter-029/energy": {
+    "value": 100029,
+    "tolerance": 0.001,
+    "unitId": 29
+  },
+  "soak-meter-030/voltage": {
+    "value": 233.0,
+    "tolerance": 0.001,
+    "unitId": 30
+  },
+  "soak-meter-030/current": {
+    "value": 15.3,
+    "tolerance": 0.001,
+    "unitId": 30
+  },
+  "soak-meter-030/frequency": {
+    "value": 50.300000000000004,
+    "tolerance": 0.001,
+    "unitId": 30
+  },
+  "soak-meter-030/power": {
+    "value": 1264,
+    "tolerance": 0.001,
+    "unitId": 30
+  },
+  "soak-meter-030/energy": {
+    "value": 100030,
+    "tolerance": 0.001,
+    "unitId": 30
+  },
+  "soak-meter-031/voltage": {
+    "value": 233.1,
+    "tolerance": 0.001,
+    "unitId": 31
+  },
+  "soak-meter-031/current": {
+    "value": 15.4,
+    "tolerance": 0.001,
+    "unitId": 31
+  },
+  "soak-meter-031/frequency": {
+    "value": 50.31,
+    "tolerance": 0.001,
+    "unitId": 31
+  },
+  "soak-meter-031/power": {
+    "value": 1265,
+    "tolerance": 0.001,
+    "unitId": 31
+  },
+  "soak-meter-031/energy": {
+    "value": 100031,
+    "tolerance": 0.001,
+    "unitId": 31
+  },
+  "soak-meter-032/voltage": {
+    "value": 233.2,
+    "tolerance": 0.001,
+    "unitId": 32
+  },
+  "soak-meter-032/current": {
+    "value": 15.5,
+    "tolerance": 0.001,
+    "unitId": 32
+  },
+  "soak-meter-032/frequency": {
+    "value": 50.32,
+    "tolerance": 0.001,
+    "unitId": 32
+  },
+  "soak-meter-032/power": {
+    "value": 1266,
+    "tolerance": 0.001,
+    "unitId": 32
+  },
+  "soak-meter-032/energy": {
+    "value": 100032,
+    "tolerance": 0.001,
+    "unitId": 32
+  },
+  "soak-meter-033/voltage": {
+    "value": 233.3,
+    "tolerance": 0.001,
+    "unitId": 33
+  },
+  "soak-meter-033/current": {
+    "value": 15.600000000000001,
+    "tolerance": 0.001,
+    "unitId": 33
+  },
+  "soak-meter-033/frequency": {
+    "value": 50.33,
+    "tolerance": 0.001,
+    "unitId": 33
+  },
+  "soak-meter-033/power": {
+    "value": 1267,
+    "tolerance": 0.001,
+    "unitId": 33
+  },
+  "soak-meter-033/energy": {
+    "value": 100033,
+    "tolerance": 0.001,
+    "unitId": 33
+  },
+  "soak-meter-034/voltage": {
+    "value": 233.4,
+    "tolerance": 0.001,
+    "unitId": 34
+  },
+  "soak-meter-034/current": {
+    "value": 15.700000000000001,
+    "tolerance": 0.001,
+    "unitId": 34
+  },
+  "soak-meter-034/frequency": {
+    "value": 50.34,
+    "tolerance": 0.001,
+    "unitId": 34
+  },
+  "soak-meter-034/power": {
+    "value": 1268,
+    "tolerance": 0.001,
+    "unitId": 34
+  },
+  "soak-meter-034/energy": {
+    "value": 100034,
+    "tolerance": 0.001,
+    "unitId": 34
+  },
+  "soak-meter-035/voltage": {
+    "value": 233.5,
+    "tolerance": 0.001,
+    "unitId": 35
+  },
+  "soak-meter-035/current": {
+    "value": 15.8,
+    "tolerance": 0.001,
+    "unitId": 35
+  },
+  "soak-meter-035/frequency": {
+    "value": 50.35,
+    "tolerance": 0.001,
+    "unitId": 35
+  },
+  "soak-meter-035/power": {
+    "value": 1269,
+    "tolerance": 0.001,
+    "unitId": 35
+  },
+  "soak-meter-035/energy": {
+    "value": 100035,
+    "tolerance": 0.001,
+    "unitId": 35
+  },
+  "soak-meter-036/voltage": {
+    "value": 233.6,
+    "tolerance": 0.001,
+    "unitId": 36
+  },
+  "soak-meter-036/current": {
+    "value": 15.9,
+    "tolerance": 0.001,
+    "unitId": 36
+  },
+  "soak-meter-036/frequency": {
+    "value": 50.36,
+    "tolerance": 0.001,
+    "unitId": 36
+  },
+  "soak-meter-036/power": {
+    "value": 1270,
+    "tolerance": 0.001,
+    "unitId": 36
+  },
+  "soak-meter-036/energy": {
+    "value": 100036,
+    "tolerance": 0.001,
+    "unitId": 36
+  },
+  "soak-meter-037/voltage": {
+    "value": 233.7,
+    "tolerance": 0.001,
+    "unitId": 37
+  },
+  "soak-meter-037/current": {
+    "value": 16.0,
+    "tolerance": 0.001,
+    "unitId": 37
+  },
+  "soak-meter-037/frequency": {
+    "value": 50.370000000000005,
+    "tolerance": 0.001,
+    "unitId": 37
+  },
+  "soak-meter-037/power": {
+    "value": 1271,
+    "tolerance": 0.001,
+    "unitId": 37
+  },
+  "soak-meter-037/energy": {
+    "value": 100037,
+    "tolerance": 0.001,
+    "unitId": 37
+  },
+  "soak-meter-038/voltage": {
+    "value": 233.8,
+    "tolerance": 0.001,
+    "unitId": 38
+  },
+  "soak-meter-038/current": {
+    "value": 16.1,
+    "tolerance": 0.001,
+    "unitId": 38
+  },
+  "soak-meter-038/frequency": {
+    "value": 50.38,
+    "tolerance": 0.001,
+    "unitId": 38
+  },
+  "soak-meter-038/power": {
+    "value": 1272,
+    "tolerance": 0.001,
+    "unitId": 38
+  },
+  "soak-meter-038/energy": {
+    "value": 100038,
+    "tolerance": 0.001,
+    "unitId": 38
+  },
+  "soak-meter-039/voltage": {
+    "value": 233.9,
+    "tolerance": 0.001,
+    "unitId": 39
+  },
+  "soak-meter-039/current": {
+    "value": 16.2,
+    "tolerance": 0.001,
+    "unitId": 39
+  },
+  "soak-meter-039/frequency": {
+    "value": 50.39,
+    "tolerance": 0.001,
+    "unitId": 39
+  },
+  "soak-meter-039/power": {
+    "value": 1273,
+    "tolerance": 0.001,
+    "unitId": 39
+  },
+  "soak-meter-039/energy": {
+    "value": 100039,
+    "tolerance": 0.001,
+    "unitId": 39
+  },
+  "soak-meter-040/voltage": {
+    "value": 234.0,
+    "tolerance": 0.001,
+    "unitId": 40
+  },
+  "soak-meter-040/current": {
+    "value": 16.3,
+    "tolerance": 0.001,
+    "unitId": 40
+  },
+  "soak-meter-040/frequency": {
+    "value": 50.4,
+    "tolerance": 0.001,
+    "unitId": 40
+  },
+  "soak-meter-040/power": {
+    "value": 1274,
+    "tolerance": 0.001,
+    "unitId": 40
+  },
+  "soak-meter-040/energy": {
+    "value": 100040,
+    "tolerance": 0.001,
+    "unitId": 40
+  },
+  "soak-meter-041/voltage": {
+    "value": 234.1,
+    "tolerance": 0.001,
+    "unitId": 41
+  },
+  "soak-meter-041/current": {
+    "value": 16.400000000000002,
+    "tolerance": 0.001,
+    "unitId": 41
+  },
+  "soak-meter-041/frequency": {
+    "value": 50.410000000000004,
+    "tolerance": 0.001,
+    "unitId": 41
+  },
+  "soak-meter-041/power": {
+    "value": 1275,
+    "tolerance": 0.001,
+    "unitId": 41
+  },
+  "soak-meter-041/energy": {
+    "value": 100041,
+    "tolerance": 0.001,
+    "unitId": 41
+  },
+  "soak-meter-042/voltage": {
+    "value": 234.2,
+    "tolerance": 0.001,
+    "unitId": 42
+  },
+  "soak-meter-042/current": {
+    "value": 16.5,
+    "tolerance": 0.001,
+    "unitId": 42
+  },
+  "soak-meter-042/frequency": {
+    "value": 50.42,
+    "tolerance": 0.001,
+    "unitId": 42
+  },
+  "soak-meter-042/power": {
+    "value": 1276,
+    "tolerance": 0.001,
+    "unitId": 42
+  },
+  "soak-meter-042/energy": {
+    "value": 100042,
+    "tolerance": 0.001,
+    "unitId": 42
+  },
+  "soak-meter-043/voltage": {
+    "value": 234.3,
+    "tolerance": 0.001,
+    "unitId": 43
+  },
+  "soak-meter-043/current": {
+    "value": 16.6,
+    "tolerance": 0.001,
+    "unitId": 43
+  },
+  "soak-meter-043/frequency": {
+    "value": 50.43,
+    "tolerance": 0.001,
+    "unitId": 43
+  },
+  "soak-meter-043/power": {
+    "value": 1277,
+    "tolerance": 0.001,
+    "unitId": 43
+  },
+  "soak-meter-043/energy": {
+    "value": 100043,
+    "tolerance": 0.001,
+    "unitId": 43
+  },
+  "soak-meter-044/voltage": {
+    "value": 234.4,
+    "tolerance": 0.001,
+    "unitId": 44
+  },
+  "soak-meter-044/current": {
+    "value": 16.7,
+    "tolerance": 0.001,
+    "unitId": 44
+  },
+  "soak-meter-044/frequency": {
+    "value": 50.44,
+    "tolerance": 0.001,
+    "unitId": 44
+  },
+  "soak-meter-044/power": {
+    "value": 1278,
+    "tolerance": 0.001,
+    "unitId": 44
+  },
+  "soak-meter-044/energy": {
+    "value": 100044,
+    "tolerance": 0.001,
+    "unitId": 44
+  },
+  "soak-meter-045/voltage": {
+    "value": 234.5,
+    "tolerance": 0.001,
+    "unitId": 45
+  },
+  "soak-meter-045/current": {
+    "value": 16.8,
+    "tolerance": 0.001,
+    "unitId": 45
+  },
+  "soak-meter-045/frequency": {
+    "value": 50.45,
+    "tolerance": 0.001,
+    "unitId": 45
+  },
+  "soak-meter-045/power": {
+    "value": 1279,
+    "tolerance": 0.001,
+    "unitId": 45
+  },
+  "soak-meter-045/energy": {
+    "value": 100045,
+    "tolerance": 0.001,
+    "unitId": 45
+  },
+  "soak-meter-046/voltage": {
+    "value": 234.6,
+    "tolerance": 0.001,
+    "unitId": 46
+  },
+  "soak-meter-046/current": {
+    "value": 16.900000000000002,
+    "tolerance": 0.001,
+    "unitId": 46
+  },
+  "soak-meter-046/frequency": {
+    "value": 50.46,
+    "tolerance": 0.001,
+    "unitId": 46
+  },
+  "soak-meter-046/power": {
+    "value": 1280,
+    "tolerance": 0.001,
+    "unitId": 46
+  },
+  "soak-meter-046/energy": {
+    "value": 100046,
+    "tolerance": 0.001,
+    "unitId": 46
+  },
+  "soak-meter-047/voltage": {
+    "value": 234.7,
+    "tolerance": 0.001,
+    "unitId": 47
+  },
+  "soak-meter-047/current": {
+    "value": 17.0,
+    "tolerance": 0.001,
+    "unitId": 47
+  },
+  "soak-meter-047/frequency": {
+    "value": 50.47,
+    "tolerance": 0.001,
+    "unitId": 47
+  },
+  "soak-meter-047/power": {
+    "value": 1281,
+    "tolerance": 0.001,
+    "unitId": 47
+  },
+  "soak-meter-047/energy": {
+    "value": 100047,
+    "tolerance": 0.001,
+    "unitId": 47
+  },
+  "soak-meter-048/voltage": {
+    "value": 234.8,
+    "tolerance": 0.001,
+    "unitId": 48
+  },
+  "soak-meter-048/current": {
+    "value": 17.1,
+    "tolerance": 0.001,
+    "unitId": 48
+  },
+  "soak-meter-048/frequency": {
+    "value": 50.480000000000004,
+    "tolerance": 0.001,
+    "unitId": 48
+  },
+  "soak-meter-048/power": {
+    "value": 1282,
+    "tolerance": 0.001,
+    "unitId": 48
+  },
+  "soak-meter-048/energy": {
+    "value": 100048,
+    "tolerance": 0.001,
+    "unitId": 48
+  },
+  "soak-meter-049/voltage": {
+    "value": 234.9,
+    "tolerance": 0.001,
+    "unitId": 49
+  },
+  "soak-meter-049/current": {
+    "value": 17.2,
+    "tolerance": 0.001,
+    "unitId": 49
+  },
+  "soak-meter-049/frequency": {
+    "value": 50.49,
+    "tolerance": 0.001,
+    "unitId": 49
+  },
+  "soak-meter-049/power": {
+    "value": 1283,
+    "tolerance": 0.001,
+    "unitId": 49
+  },
+  "soak-meter-049/energy": {
+    "value": 100049,
+    "tolerance": 0.001,
+    "unitId": 49
+  },
+  "soak-meter-050/voltage": {
+    "value": 235.0,
+    "tolerance": 0.001,
+    "unitId": 50
+  },
+  "soak-meter-050/current": {
+    "value": 17.3,
+    "tolerance": 0.001,
+    "unitId": 50
+  },
+  "soak-meter-050/frequency": {
+    "value": 50.5,
+    "tolerance": 0.001,
+    "unitId": 50
+  },
+  "soak-meter-050/power": {
+    "value": 1284,
+    "tolerance": 0.001,
+    "unitId": 50
+  },
+  "soak-meter-050/energy": {
+    "value": 100050,
+    "tolerance": 0.001,
+    "unitId": 50
+  }
+}

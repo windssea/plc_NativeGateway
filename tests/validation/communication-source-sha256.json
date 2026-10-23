@@ -1,0 +1,6 @@
+{
+  "src/Main.st": "6a5d094d5af518ae55605089e1dc0e6c7c5c7ccefcff1412954d96655af299cf",
+  "src/NG_Mqtt.st": "b87f89f6a96d236e1de8070e69fa3c3aac9754c9eba42a463e6f1415df8f2d95",
+  "src/NG_Modbus.st": "c54b9e22be78ba5f74b6a26d4b74465d35570d69b7766dffcb3305c139d59c18",
+  "src/NG_Store.st": "aab287fe13a0007a2995de971b4187994fe135b1563ea1e2ef8b15b3cb229be9"
+}

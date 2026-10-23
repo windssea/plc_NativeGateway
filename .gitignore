@@ -1,0 +1,48 @@
+# Local environments, caches and generated output
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.class
+*.log
+*.jsonl
+*.db
+*.db-*
+*.sqlite*
+*.pid
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/tmp/
+/output/
+
+# Vendor distributions and historical project backups stay on this workstation.
+/reference/*
+!/reference/README.md
+!/reference/NativeGateway.before-implementation.pcwex
+!/reference/NativeGateway.logo-import.pcwex
+!/reference/NativeGateway.DataList.dl
+!/reference/hmi-logo-template.xml
+!/reference/HMI-Datum.xml
+/NATIVE-GATEWAY.txt
+
+# Test programs and reproducible fixtures; exclude live evidence, venv, databases,
+# generated snapshots and numbered, one-off browser automation transcripts.
+/tests/*
+!/tests/*.py
+!/tests/*.java
+!/tests/config*.json
+!/tests/expected*.json
+!/tests/mock*.json
+!/tests/mock*.yaml
+!/tests/README.md
+!/tests/validation/
+
+# Editor and OS metadata
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini
+*.bak

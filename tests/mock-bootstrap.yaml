@@ -1,0 +1,13 @@
+version: 1
+random_seed: 2152
+web:
+  host: 0.0.0.0
+  port: 18080
+opcua:
+  enabled: false
+mqtt:
+  enabled: false
+modbus:
+  enabled: true
+  host: 0.0.0.0
+  port: 11502

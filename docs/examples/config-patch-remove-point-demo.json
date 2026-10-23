@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "gatewayId": "PLC-DEMO-01",
+  "timestamp": 1792719125000,
+  "messageId": "demo-point-remove-5",
+  "configVersion": 5,
+  "baseConfigVersion": 4,
+  "baseMessageId": "demo-remove-4",
+  "operations": [
+    {
+      "op": "replace",
+      "deviceId": "meter-01",
+      "device": {
+        "deviceId": "meter-01",
+        "name": "Demo Meter 01",
+        "enabled": true,
+        "protocol": "modbus_tcp",
+        "connection": {
+          "host": "192.168.0.5",
+          "port": 11502,
+          "unitId": 1,
+          "connectTimeoutMs": 5000,
+          "requestTimeoutMs": 1500,
+          "retryCount": 0
+        },
+        "points": [
+          {
+            "pointId": "voltage",
+            "name": "voltage",
+            "enabled": true,
+            "dataType": "float32",
+            "pollIntervalMs": 1000,
+            "scale": 1,
+            "offset": 0,
+            "unit": "V",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 20000,
+            "modbus": {
+              "area": "input_register",
+              "address": 0,
+              "byteOrder": "ABCD"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

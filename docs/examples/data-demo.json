@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "gatewayId": "PLC-DEMO-01",
+  "timestamp": 1792719125000,
+  "messageId": "demo-data-1",
+  "bootId": "demo-boot-1",
+  "sequence": 1,
+  "configVersion": 1,
+  "values": [
+    {
+      "deviceId": "meter-01",
+      "pointId": "voltage",
+      "value": 230.1,
+      "quality": "GOOD",
+      "timestamp": 1792719125000
+    },
+    {
+      "deviceId": "meter-01",
+      "pointId": "current",
+      "value": 12.4,
+      "quality": "GOOD",
+      "timestamp": 1792719125000
+    }
+  ]
+}

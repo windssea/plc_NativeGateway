@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "gatewayId": "PLC-DEMO-01",
+  "timestamp": 1792719125000,
+  "messageId": "demo-get-1",
+  "activeConfigVersion": 6,
+  "sessionId": "demo-session-1",
+  "activeMessageId": "demo-gateway-6",
+  "configCapabilities": [
+    "devicePatchV1"
+  ]
+}

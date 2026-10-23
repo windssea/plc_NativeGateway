@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "gatewayId": "PLC-DEMO-01",
+  "timestamp": 1792719125000,
+  "messageId": "demo-gateway-6",
+  "configVersion": 6,
+  "baseConfigVersion": 5,
+  "baseMessageId": "demo-point-remove-5",
+  "operations": [],
+  "gateway": {
+    "enabled": true,
+    "report": {
+      "batchIntervalMs": 500,
+      "maxBatchPoints": 16
+    }
+  }
+}

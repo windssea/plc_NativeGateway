@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "gatewayId": "PLC-DEMO-01",
+  "timestamp": 1792719125000,
+  "messageId": "demo-remove-4",
+  "configVersion": 4,
+  "activeConfigVersion": 4,
+  "appliedConfigVersion": 4,
+  "activeMessageId": "demo-remove-4",
+  "status": "APPLIED",
+  "errors": []
+}

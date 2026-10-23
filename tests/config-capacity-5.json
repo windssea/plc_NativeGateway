@@ -1,0 +1,694 @@
+{
+  "schemaVersion": 1,
+  "gatewayId": "PLC-ENG-01",
+  "timestamp": 1792659258171,
+  "messageId": "native-test-capacity-5",
+  "configVersion": 5,
+  "config": {
+    "enabled": true,
+    "report": {
+      "batchIntervalMs": 1000,
+      "maxBatchPoints": 32
+    },
+    "devices": [
+      {
+        "deviceId": "native-meter-01",
+        "name": "Native Test Meter",
+        "enabled": true,
+        "protocol": "modbus_tcp",
+        "connection": {
+          "host": "192.168.0.5",
+          "port": 11502,
+          "unitId": 1,
+          "connectTimeoutMs": 3000,
+          "requestTimeoutMs": 1000,
+          "retryCount": 0
+        },
+        "points": [
+          {
+            "pointId": "voltage",
+            "name": "Voltage",
+            "enabled": true,
+            "dataType": "float32",
+            "pollIntervalMs": 1000,
+            "scale": 1,
+            "offset": 0,
+            "unit": "V",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "input_register",
+              "address": 0,
+              "byteOrder": "ABCD"
+            }
+          },
+          {
+            "pointId": "current",
+            "name": "Current",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-03",
+            "name": "Current 03",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-04",
+            "name": "Current 04",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-05",
+            "name": "Current 05",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-06",
+            "name": "Current 06",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-07",
+            "name": "Current 07",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-08",
+            "name": "Current 08",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-09",
+            "name": "Current 09",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-10",
+            "name": "Current 10",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-11",
+            "name": "Current 11",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-12",
+            "name": "Current 12",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-13",
+            "name": "Current 13",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-14",
+            "name": "Current 14",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-15",
+            "name": "Current 15",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-16",
+            "name": "Current 16",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-17",
+            "name": "Current 17",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-18",
+            "name": "Current 18",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-19",
+            "name": "Current 19",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-20",
+            "name": "Current 20",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-21",
+            "name": "Current 21",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-22",
+            "name": "Current 22",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-23",
+            "name": "Current 23",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-24",
+            "name": "Current 24",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-25",
+            "name": "Current 25",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-26",
+            "name": "Current 26",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-27",
+            "name": "Current 27",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-28",
+            "name": "Current 28",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-29",
+            "name": "Current 29",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-30",
+            "name": "Current 30",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-31",
+            "name": "Current 31",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          },
+          {
+            "pointId": "current-32",
+            "name": "Current 32",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          }
+        ]
+      },
+      {
+        "deviceId": "native-meter-02",
+        "name": "Second logical meter",
+        "enabled": true,
+        "protocol": "modbus_tcp",
+        "connection": {
+          "host": "192.168.0.5",
+          "port": 11502,
+          "unitId": 1,
+          "connectTimeoutMs": 3000,
+          "requestTimeoutMs": 1000,
+          "retryCount": 0
+        },
+        "points": [
+          {
+            "pointId": "voltage",
+            "name": "Voltage",
+            "enabled": true,
+            "dataType": "float32",
+            "pollIntervalMs": 1000,
+            "scale": 1,
+            "offset": 0,
+            "unit": "V",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "input_register",
+              "address": 0,
+              "byteOrder": "ABCD"
+            }
+          },
+          {
+            "pointId": "current",
+            "name": "Current",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 1000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 1000,
+            "deadband": 0,
+            "staleAfterMs": 5000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

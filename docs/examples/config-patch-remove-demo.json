@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "gatewayId": "PLC-DEMO-01",
+  "timestamp": 1792719125000,
+  "messageId": "demo-remove-4",
+  "configVersion": 4,
+  "baseConfigVersion": 3,
+  "baseMessageId": "demo-replace-3",
+  "operations": [
+    {
+      "op": "remove",
+      "deviceId": "meter-02"
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+TYPE
+    NG_Quoted : STRING[520];
+    NG_Text : STRING[256];
+    NG_Id : STRING[64];
+    NG_Json : STRING[16380];
+    NG_Bytes : ARRAY[0..262143] OF BYTE;
+    NG_ProcBytes : ARRAY[0..8191] OF BYTE;
+    NG_ProcText : STRING[8192];
+    NG_Token : STRUCT
+        Kind : INT; (* 1 object, 2 array, 3 string, 4 number, 5 bool, 6 null *)
+        Parent : INT;
+        NextToken : INT;
+        Key : STRING[64];
+        Text : STRING[256];
+        TextLength : INT; (* Decoded byte length, before display truncation. *)
+        Number : LREAL;
+        Start : DINT;
+        Count : DINT;
+    END_STRUCT;
+    NG_Document : STRUCT
+        Count : INT;
+        Tokens : ARRAY[0..8192] OF NG_Token;
+    END_STRUCT;
+    NG_Point : STRUCT
+        pointId : NG_Id;
+        name : STRING[128];
+        enabled : BOOL;
+        dataType : STRING[16];
+        pollIntervalMs : UDINT;
+        scale : LREAL;
+        offset : LREAL;
+        unit : STRING[32];
+        reportMode : STRING[24];
+        reportIntervalMs : UDINT;
+        deadband : LREAL;
+        staleAfterMs : UDINT;
+        area : STRING[24];
+        address : UINT;
+        byteOrder : STRING[4];
+    END_STRUCT;
+    NG_Device : STRUCT
+        deviceId : NG_Id;
+        name : STRING[128];
+        enabled : BOOL;
+        host : STRING[253];
+        port : UINT;
+        unitId : USINT;
+        connectTimeoutMs : UDINT;
+        requestTimeoutMs : UDINT;
+        retryCount : USINT;
+        PointCount : INT;
+        PointStart : INT;
+    END_STRUCT;
+    NG_Config : STRUCT
+        Version : ULINT;
+        MessageId : NG_Id;
+        enabled : BOOL;
+        batchIntervalMs : UDINT;
+        maxBatchPoints : UINT;
+        DeviceCount : INT;
+        Devices : ARRAY[1..50] OF NG_Device;
+        PointCount : INT;
+        Points : ARRAY[1..320] OF NG_Point;
+    END_STRUCT;
+    NG_Sample : STRUCT
+        Value : LREAL;
+        Quality : STRING[24];
+        Timestamp : ULINT;
+        LastGoodMs : ULINT;
+        NextPollMs : ULINT;
+        LastReportMs : ULINT;
+        ReportValue : LREAL;
+        ReportQuality : STRING[24];
+        Fresh : BOOL;
+    END_STRUCT;
+    NG_Bootstrap : STRUCT
+        GatewayId : NG_Id;
+        BrokerUri : STRING[200];
+        ClientId : STRING[128];
+        UserName : STRING[80];
+        Password : STRING[80];
+        UtcOffsetMinutes : INT;
+    END_STRUCT;
+    NG_Replay : STRUCT
+        MessageId : NG_Id;
+        Version : ULINT;
+        Digest : STRING[64];
+        IsPatch : BOOL;
+    END_STRUCT;
+    NG_Durable : STRUCT
+        Generation : ULINT;
+        Managed : BOOL := TRUE;
+        BootCounter : ULINT;
+        Bootstrap : NG_Bootstrap;
+        Config : NG_Config;
+        ReplayIndex : INT;
+        Requests : ARRAY[1..32] OF NG_Replay;
+    END_STRUCT;
+    NG_File : STRUCT
+        Magic : DWORD;
+        FormatVersion : UDINT;
+        State : NG_Durable;
+        Digest : STRING[64];
+    END_STRUCT;
+    NG2_Durable : STRUCT
+        Generation : ULINT;
+        Bootstrap : NG_Bootstrap;
+        Config : NG_Config;
+        ReplayIndex : INT;
+        Requests : ARRAY[1..32] OF NG_Replay;
+    END_STRUCT;
+    NG2_File : STRUCT
+        Magic : DWORD;
+        FormatVersion : UDINT;
+        State : NG2_Durable;
+        Digest : STRING[64];
+    END_STRUCT;
+    NG_UiLabel : WSTRING[256];
+    NG_Hmi : STRUCT
+        English : BOOL;
+        Advanced : BOOL;
+        UiStatus : NG_UiLabel;
+        UiConnection : NG_UiLabel;
+        UiPersistence : NG_UiLabel;
+        UiDraftState : NG_UiLabel;
+        UiConfigSource : NG_UiLabel;
+        UiDeviceEnabled : NG_UiLabel;
+        UiPointEnabled : NG_UiLabel;
+        UiArea : NG_UiLabel;
+        UiReportMode : NG_UiLabel;
+        UiManagementMode : NG_UiLabel;
+        UiQuality : NG_UiLabel;
+        UiLiveStatus : NG_UiLabel;
+        Navigation : STRING[16];
+        ManagementMode : STRING[16] := 'HUB_MANAGED';
+        Managed : BOOL;
+        ConfigSource : STRING[80];
+        BrokerGatewayId : NG_Id;
+        ActiveMessageId : NG_Id;
+        ProtocolStatus : NG_Text;
+        InvalidAcks : UDINT;
+        DeadBatches : STRING[12];
+        View : INT;
+        DevicePage : INT := 1;
+        PointPage : INT := 1;
+        DevicePages : STRING[24];
+        PointPages : STRING[24];
+        DeviceRow1 : NG_UiLabel;
+        DeviceRow2 : NG_UiLabel;
+        DeviceRow3 : NG_UiLabel;
+        DeviceRow4 : NG_UiLabel;
+        DeviceRow5 : NG_UiLabel;
+        DeviceRow6 : NG_UiLabel;
+        DeviceRow7 : NG_UiLabel;
+        DeviceRow8 : NG_UiLabel;
+        PointRow1 : NG_UiLabel;
+        PointRow2 : NG_UiLabel;
+        PointRow3 : NG_UiLabel;
+        PointRow4 : NG_UiLabel;
+        PointRow5 : NG_UiLabel;
+        PointRow6 : NG_UiLabel;
+        PointRow7 : NG_UiLabel;
+        PointRow8 : NG_UiLabel;
+        SelectedDevice : NG_UiLabel;
+        SelectedPoint : NG_UiLabel;
+        Persistence : NG_Text;
+        DraftState : STRING[40];
+        TotalPoints : STRING[12];
+        DeleteKind : INT;
+        DevicePollMs : STRING[12] := '5000';
+        DeviceReportMs : STRING[12] := '5000';
+        ResourceStatus : NG_Text;
+        DeviceIndex : STRING[4] := '1';
+        PointIndex : STRING[4] := '1';
+        DeviceId : NG_Id;
+        DeviceName : STRING[128];
+        DeviceEnabled : STRING[8] := 'true';
+        Host : STRING[80];
+        Port : STRING[8] := '502';
+        UnitId : STRING[8] := '1';
+        ConnectTimeoutMs : STRING[12] := '3000';
+        RequestTimeoutMs : STRING[12] := '1000';
+        RetryCount : STRING[4] := '0';
+        PointId : NG_Id;
+        PointName : STRING[128];
+        PointEnabled : STRING[8] := 'true';
+        DataType : STRING[16] := 'float32';
+        PollIntervalMs : STRING[12] := '1000';
+        Scale : STRING[32] := '1';
+        Offset : STRING[32] := '0';
+        Unit : STRING[32];
+        ReportMode : STRING[24] := 'change_or_cyclic';
+        ReportIntervalMs : STRING[12] := '5000';
+        Deadband : STRING[32] := '0';
+        StaleAfterMs : STRING[12] := '5000';
+        Area : STRING[24] := 'holding_register';
+        Address : STRING[8] := '0';
+        ByteOrder : STRING[4] := 'ABCD';
+        Enabled : STRING[8] := 'true';
+        BatchIntervalMs : STRING[12] := '1000';
+        MaxBatchPoints : STRING[8] := '32';
+        BrokerUri : STRING[200] := 'tcp://192.168.0.5:1883';
+        ClientId : STRING[128] := 'PLC-ENG-01-native';
+        UserName : STRING[80];
+        Password : STRING[80];
+        UtcOffsetMinutes : STRING[8] := '0';
+        Load : BOOL;
+        LoadPoint : BOOL;
+        SaveDevice : BOOL;
+        SavePoint : BOOL;
+        RemoveDevice : BOOL;
+        RemovePoint : BOOL;
+        Apply : BOOL;
+        SaveBroker : BOOL;
+        Status : NG_Text;
+        ActiveVersion : STRING[24];
+        GatewayId : NG_Id;
+        Connection : STRING[24];
+        DeviceCount : STRING[8];
+        QueueCount : STRING[8];
+        Dropped : STRING[20];
+        LastValue : STRING[64];
+        LastQuality : STRING[24];
+        LastTimestamp : STRING[24];
+        DeviceStatus : STRING[16];
+        ConfigResult : NG_Text;
+        ReceivedConfigs : UDINT;
+        PublishedBatches : UDINT;
+        ConfirmedBatches : UDINT;
+    END_STRUCT;
+    NG_Packet : STRUCT
+        MessageId : NG_Id;
+        Payload : NG_Json;
+        Length : UDINT;
+        LastSentMs : ULINT;
+        RetryAtMs : ULINT;
+        WasSent : BOOL;
+        Attempts : UDINT;
+        Dead : BOOL;
+        LastError : NG_Text;
+    END_STRUCT;
+END_TYPE
+
+TYPE
+    NG_MeterState : STRUCT
+        StateText : STRING[16];
+        LastError : STRING[24];
+        LastGoodTimestamp : ULINT;
+        Completed : UDINT;
+    END_STRUCT;
+END_TYPE
+
+(* Binary v1 records remain readable during the shared-point-pool migration. *)
+TYPE
+    NG1_Device : STRUCT
+        deviceId : NG_Id;
+        name : STRING[128];
+        enabled : BOOL;
+        host : STRING[253];
+        port : UINT;
+        unitId : USINT;
+        connectTimeoutMs : UDINT;
+        requestTimeoutMs : UDINT;
+        retryCount : USINT;
+        PointCount : INT;
+        Points : ARRAY[1..32] OF NG_Point;
+    END_STRUCT;
+    NG1_Config : STRUCT
+        Version : ULINT;
+        MessageId : NG_Id;
+        enabled : BOOL;
+        batchIntervalMs : UDINT;
+        maxBatchPoints : UINT;
+        DeviceCount : INT;
+        Devices : ARRAY[1..8] OF NG1_Device;
+    END_STRUCT;
+    NG1_Durable : STRUCT
+        Generation : ULINT;
+        Bootstrap : NG_Bootstrap;
+        Config : NG1_Config;
+        ReplayIndex : INT;
+        Requests : ARRAY[1..32] OF NG_Replay;
+    END_STRUCT;
+    NG1_File : STRUCT
+        Magic : DWORD;
+        FormatVersion : UDINT;
+        State : NG1_Durable;
+        Digest : STRING[64];
+    END_STRUCT;
+END_TYPE

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "gatewayId": "PLC-DEMO-01",
+  "timestamp": 1792719125000,
+  "messageId": "demo-set-1",
+  "configVersion": 1,
+  "config": {
+    "enabled": true,
+    "report": {
+      "batchIntervalMs": 1000,
+      "maxBatchPoints": 32
+    },
+    "devices": [
+      {
+        "deviceId": "meter-01",
+        "name": "Demo Meter 01",
+        "enabled": true,
+        "protocol": "modbus_tcp",
+        "connection": {
+          "host": "192.168.0.5",
+          "port": 11502,
+          "unitId": 1,
+          "connectTimeoutMs": 5000,
+          "requestTimeoutMs": 1500,
+          "retryCount": 0
+        },
+        "points": [
+          {
+            "pointId": "voltage",
+            "name": "voltage",
+            "enabled": true,
+            "dataType": "float32",
+            "pollIntervalMs": 5000,
+            "scale": 1,
+            "offset": 0,
+            "unit": "V",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 5000,
+            "deadband": 0,
+            "staleAfterMs": 20000,
+            "modbus": {
+              "area": "input_register",
+              "address": 0,
+              "byteOrder": "ABCD"
+            }
+          },
+          {
+            "pointId": "current",
+            "name": "current",
+            "enabled": true,
+            "dataType": "uint16",
+            "pollIntervalMs": 5000,
+            "scale": 0.1,
+            "offset": 0,
+            "unit": "A",
+            "reportMode": "cyclic",
+            "reportIntervalMs": 5000,
+            "deadband": 0,
+            "staleAfterMs": 20000,
+            "modbus": {
+              "area": "holding_register",
+              "address": 10,
+              "byteOrder": "AB"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

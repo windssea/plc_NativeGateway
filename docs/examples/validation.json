@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-23T13:16:26",
+  "mode": "offline-only",
+  "passed": true,
+  "results": {
+    "config-set-demo.json": {
+      "kind": "configSet",
+      "passed": true,
+      "issues": []
+    },
+    "config-patch-add-demo.json": {
+      "kind": "configPatch",
+      "passed": true,
+      "issues": []
+    },
+    "config-patch-replace-demo.json": {
+      "kind": "configPatch",
+      "passed": true,
+      "issues": []
+    },
+    "config-patch-remove-demo.json": {
+      "kind": "configPatch",
+      "passed": true,
+      "issues": []
+    },
+    "config-patch-remove-point-demo.json": {
+      "kind": "configPatch",
+      "passed": true,
+      "issues": []
+    },
+    "config-patch-gateway-demo.json": {
+      "kind": "configPatch",
+      "passed": true,
+      "issues": []
+    },
+    "config-ack-demo.json": {
+      "kind": "configAck",
+      "passed": true,
+      "issues": []
+    },
+    "config-patch-ack-demo.json": {
+      "kind": "configPatchAck",
+      "passed": true,
+      "issues": []
+    },
+    "config-get-demo.json": {
+      "kind": "configGet",
+      "passed": true,
+      "issues": []
+    },
+    "data-demo.json": {
+      "kind": "data",
+      "passed": true,
+      "issues": []
+    },
+    "data-ack-demo.json": {
+      "kind": "dataAck",
+      "passed": true,
+      "issues": []
+    }
+  },
+  "versionChain": [
+    {
+      "version": 2,
+      "devices": 2,
+      "points": 4
+    },
+    {
+      "version": 3,
+      "devices": 2,
+      "points": 4
+    },
+    {
+      "version": 4,
+      "devices": 1,
+      "points": 2
+    },
+    {
+      "version": 5,
+      "devices": 1,
+      "points": 1
+    },
+    {
+      "version": 6,
+      "devices": 1,
+      "points": 1
+    }
+  ],
+  "note": "Schema/semantic fixtures and version-chain checks; not a PLC integration test."
+}

@@ -1,0 +1,10 @@
+* text=auto
+*.st text eol=lf
+*.dt text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.pcwex binary
+*.pcwlx binary
+*.png binary
+**/Source binary
+**/Thumbnail binary

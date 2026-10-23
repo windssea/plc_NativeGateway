@@ -1,0 +1,29 @@
+<HmiObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="HmiImage" Rotation="0" ID="Image1" IsTabSelectable="false" TabOrder="0" LineColor="#FFCCD0D2" LineWidth="1" FontFamily="Arial" FontSize="18" FontStyle="normal" FontWeight="400" FontColor="#FF3E3D40" IsTextWrapping="false" TextDirection="LeftToRight" HorizontalTextAlignment="Left" GuiStyle="Flat" TextMarginTop="0" TextMarginBottom="0" TextMarginLeft="0" TextMarginRight="0" EndCapType="Square" ImageId="1566aeaf-053c-4b8f-8a5d-aa68352e2adb" ImageScaling="Fit">
+          <Origin>
+            <X>270</X>
+            <Y>140</Y>
+          </Origin>
+          <Location>
+            <X>270</X>
+            <Y>140</Y>
+          </Location>
+          <TransformCenter>
+            <X>0</X>
+            <Y>0</Y>
+          </TransformCenter>
+          <EnableSecurityScope>Always</EnableSecurityScope>
+          <EnableSecurityScopeOperator>Equal</EnableSecurityScopeOperator>
+          <EnableSecurityScopeLevel>0</EnableSecurityScopeLevel>
+          <VisibleSecurityScope>Always</VisibleSecurityScope>
+          <VisibleSecurityScopeOperator>Equal</VisibleSecurityScopeOperator>
+          <VisibleSecurityScopeLevel>0</VisibleSecurityScopeLevel>
+          <DashStyle>
+            <Offset>0</Offset>
+            <Dashes />
+          </DashStyle>
+          <Size>
+            <Width>255</Width>
+            <Height>44</Height>
+          </Size>
+        </HmiObject>
+      

@@ -1,0 +1,5713 @@
+{
+  "version": 1,
+  "config_revision": 0,
+  "random_seed": 2152,
+  "web": {
+    "host": "0.0.0.0",
+    "port": 18080
+  },
+  "opcua": {
+    "enabled": false,
+    "host": "0.0.0.0",
+    "port": 4840,
+    "endpoint_path": "/iot-simulator/",
+    "server_name": "IoT Simulator",
+    "application_uri": "urn:iot-simulator:server",
+    "namespace_uri": "urn:iot-simulator:devices"
+  },
+  "mqtt": {
+    "enabled": false,
+    "host": "127.0.0.1",
+    "port": 1883,
+    "protocol_version": "3.1.1",
+    "client_id": "iot-simulator",
+    "keepalive": 60,
+    "username": null,
+    "password": null,
+    "password_env": null,
+    "transport": "tcp",
+    "tls_enabled": false,
+    "reconnect_min_seconds": 1,
+    "reconnect_max_seconds": 60,
+    "max_inflight_messages": 20,
+    "max_queued_messages": 1000
+  },
+  "mqtt_connections": [
+    {
+      "enabled": false,
+      "host": "127.0.0.1",
+      "port": 1883,
+      "protocol_version": "3.1.1",
+      "client_id": "iot-simulator",
+      "keepalive": 60,
+      "username": null,
+      "password": null,
+      "password_env": null,
+      "transport": "tcp",
+      "tls_enabled": false,
+      "reconnect_min_seconds": 1,
+      "reconnect_max_seconds": 60,
+      "max_inflight_messages": 20,
+      "max_queued_messages": 1000,
+      "id": "default",
+      "name": "Default MQTT"
+    }
+  ],
+  "modbus": {
+    "enabled": true,
+    "host": "0.0.0.0",
+    "port": 11502
+  },
+  "devices": [
+    {
+      "id": "mock-meter-001",
+      "name": "Soak Meter 001",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 1
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.1,
+            "max": 230.1,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 124,
+            "max": 124,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5001,
+            "max": 5001,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1235,
+            "max": 1235,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100001,
+            "max": 100001,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-002",
+      "name": "Soak Meter 002",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 2
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.2,
+            "max": 230.2,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 125,
+            "max": 125,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5002,
+            "max": 5002,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1236,
+            "max": 1236,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100002,
+            "max": 100002,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-003",
+      "name": "Soak Meter 003",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 3
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.3,
+            "max": 230.3,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 126,
+            "max": 126,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5003,
+            "max": 5003,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1237,
+            "max": 1237,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100003,
+            "max": 100003,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-004",
+      "name": "Soak Meter 004",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 4
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.4,
+            "max": 230.4,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 127,
+            "max": 127,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5004,
+            "max": 5004,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1238,
+            "max": 1238,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100004,
+            "max": 100004,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-005",
+      "name": "Soak Meter 005",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 5
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.5,
+            "max": 230.5,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 128,
+            "max": 128,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5005,
+            "max": 5005,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1239,
+            "max": 1239,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100005,
+            "max": 100005,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-006",
+      "name": "Soak Meter 006",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 6
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.6,
+            "max": 230.6,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 129,
+            "max": 129,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5006,
+            "max": 5006,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1240,
+            "max": 1240,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100006,
+            "max": 100006,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-007",
+      "name": "Soak Meter 007",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 7
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.7,
+            "max": 230.7,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 130,
+            "max": 130,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5007,
+            "max": 5007,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1241,
+            "max": 1241,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100007,
+            "max": 100007,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-008",
+      "name": "Soak Meter 008",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 8
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.8,
+            "max": 230.8,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 131,
+            "max": 131,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5008,
+            "max": 5008,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1242,
+            "max": 1242,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100008,
+            "max": 100008,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-009",
+      "name": "Soak Meter 009",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 9
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 230.9,
+            "max": 230.9,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 132,
+            "max": 132,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5009,
+            "max": 5009,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1243,
+            "max": 1243,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100009,
+            "max": 100009,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-010",
+      "name": "Soak Meter 010",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 10
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.0,
+            "max": 231.0,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 133,
+            "max": 133,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5010,
+            "max": 5010,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1244,
+            "max": 1244,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100010,
+            "max": 100010,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-011",
+      "name": "Soak Meter 011",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 11
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.1,
+            "max": 231.1,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 134,
+            "max": 134,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5011,
+            "max": 5011,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1245,
+            "max": 1245,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100011,
+            "max": 100011,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-012",
+      "name": "Soak Meter 012",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 12
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.2,
+            "max": 231.2,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 135,
+            "max": 135,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5012,
+            "max": 5012,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1246,
+            "max": 1246,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100012,
+            "max": 100012,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-013",
+      "name": "Soak Meter 013",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 13
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.3,
+            "max": 231.3,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 136,
+            "max": 136,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5013,
+            "max": 5013,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1247,
+            "max": 1247,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100013,
+            "max": 100013,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-014",
+      "name": "Soak Meter 014",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 14
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.4,
+            "max": 231.4,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 137,
+            "max": 137,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5014,
+            "max": 5014,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1248,
+            "max": 1248,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100014,
+            "max": 100014,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-015",
+      "name": "Soak Meter 015",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 15
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.5,
+            "max": 231.5,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 138,
+            "max": 138,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5015,
+            "max": 5015,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1249,
+            "max": 1249,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100015,
+            "max": 100015,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-016",
+      "name": "Soak Meter 016",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 16
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.6,
+            "max": 231.6,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 139,
+            "max": 139,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5016,
+            "max": 5016,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1250,
+            "max": 1250,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100016,
+            "max": 100016,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-017",
+      "name": "Soak Meter 017",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 17
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.7,
+            "max": 231.7,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 140,
+            "max": 140,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5017,
+            "max": 5017,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1251,
+            "max": 1251,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100017,
+            "max": 100017,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-018",
+      "name": "Soak Meter 018",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 18
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.8,
+            "max": 231.8,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 141,
+            "max": 141,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5018,
+            "max": 5018,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1252,
+            "max": 1252,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100018,
+            "max": 100018,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-019",
+      "name": "Soak Meter 019",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 19
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 231.9,
+            "max": 231.9,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 142,
+            "max": 142,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5019,
+            "max": 5019,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1253,
+            "max": 1253,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100019,
+            "max": 100019,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-020",
+      "name": "Soak Meter 020",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 20
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.0,
+            "max": 232.0,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 143,
+            "max": 143,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5020,
+            "max": 5020,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1254,
+            "max": 1254,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100020,
+            "max": 100020,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-021",
+      "name": "Soak Meter 021",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 21
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.1,
+            "max": 232.1,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 144,
+            "max": 144,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5021,
+            "max": 5021,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1255,
+            "max": 1255,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100021,
+            "max": 100021,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-022",
+      "name": "Soak Meter 022",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 22
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.2,
+            "max": 232.2,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 145,
+            "max": 145,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5022,
+            "max": 5022,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1256,
+            "max": 1256,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100022,
+            "max": 100022,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-023",
+      "name": "Soak Meter 023",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 23
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.3,
+            "max": 232.3,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 146,
+            "max": 146,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5023,
+            "max": 5023,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1257,
+            "max": 1257,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100023,
+            "max": 100023,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-024",
+      "name": "Soak Meter 024",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 24
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.4,
+            "max": 232.4,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 147,
+            "max": 147,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5024,
+            "max": 5024,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1258,
+            "max": 1258,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100024,
+            "max": 100024,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-025",
+      "name": "Soak Meter 025",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 25
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.5,
+            "max": 232.5,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 148,
+            "max": 148,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5025,
+            "max": 5025,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1259,
+            "max": 1259,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100025,
+            "max": 100025,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-026",
+      "name": "Soak Meter 026",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 26
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.6,
+            "max": 232.6,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 149,
+            "max": 149,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5026,
+            "max": 5026,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1260,
+            "max": 1260,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100026,
+            "max": 100026,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-027",
+      "name": "Soak Meter 027",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 27
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.7,
+            "max": 232.7,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 150,
+            "max": 150,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5027,
+            "max": 5027,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1261,
+            "max": 1261,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100027,
+            "max": 100027,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-028",
+      "name": "Soak Meter 028",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 28
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.8,
+            "max": 232.8,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 151,
+            "max": 151,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5028,
+            "max": 5028,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1262,
+            "max": 1262,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100028,
+            "max": 100028,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-029",
+      "name": "Soak Meter 029",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 29
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 232.9,
+            "max": 232.9,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 152,
+            "max": 152,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5029,
+            "max": 5029,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1263,
+            "max": 1263,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100029,
+            "max": 100029,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-030",
+      "name": "Soak Meter 030",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 30
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.0,
+            "max": 233.0,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 153,
+            "max": 153,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5030,
+            "max": 5030,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1264,
+            "max": 1264,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100030,
+            "max": 100030,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-031",
+      "name": "Soak Meter 031",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 31
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.1,
+            "max": 233.1,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 154,
+            "max": 154,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5031,
+            "max": 5031,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1265,
+            "max": 1265,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100031,
+            "max": 100031,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-032",
+      "name": "Soak Meter 032",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 32
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.2,
+            "max": 233.2,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 155,
+            "max": 155,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5032,
+            "max": 5032,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1266,
+            "max": 1266,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100032,
+            "max": 100032,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-033",
+      "name": "Soak Meter 033",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 33
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.3,
+            "max": 233.3,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 156,
+            "max": 156,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5033,
+            "max": 5033,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1267,
+            "max": 1267,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100033,
+            "max": 100033,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-034",
+      "name": "Soak Meter 034",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 34
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.4,
+            "max": 233.4,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 157,
+            "max": 157,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5034,
+            "max": 5034,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1268,
+            "max": 1268,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100034,
+            "max": 100034,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-035",
+      "name": "Soak Meter 035",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 35
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.5,
+            "max": 233.5,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 158,
+            "max": 158,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5035,
+            "max": 5035,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1269,
+            "max": 1269,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100035,
+            "max": 100035,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-036",
+      "name": "Soak Meter 036",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 36
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.6,
+            "max": 233.6,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 159,
+            "max": 159,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5036,
+            "max": 5036,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1270,
+            "max": 1270,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100036,
+            "max": 100036,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-037",
+      "name": "Soak Meter 037",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 37
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.7,
+            "max": 233.7,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 160,
+            "max": 160,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5037,
+            "max": 5037,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1271,
+            "max": 1271,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100037,
+            "max": 100037,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-038",
+      "name": "Soak Meter 038",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 38
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.8,
+            "max": 233.8,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 161,
+            "max": 161,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5038,
+            "max": 5038,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1272,
+            "max": 1272,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100038,
+            "max": 100038,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-039",
+      "name": "Soak Meter 039",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 39
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 233.9,
+            "max": 233.9,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 162,
+            "max": 162,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5039,
+            "max": 5039,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1273,
+            "max": 1273,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100039,
+            "max": 100039,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-040",
+      "name": "Soak Meter 040",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 40
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.0,
+            "max": 234.0,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 163,
+            "max": 163,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5040,
+            "max": 5040,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1274,
+            "max": 1274,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100040,
+            "max": 100040,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-041",
+      "name": "Soak Meter 041",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 41
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.1,
+            "max": 234.1,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 164,
+            "max": 164,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5041,
+            "max": 5041,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1275,
+            "max": 1275,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100041,
+            "max": 100041,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-042",
+      "name": "Soak Meter 042",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 42
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.2,
+            "max": 234.2,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 165,
+            "max": 165,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5042,
+            "max": 5042,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1276,
+            "max": 1276,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100042,
+            "max": 100042,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-043",
+      "name": "Soak Meter 043",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 43
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.3,
+            "max": 234.3,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 166,
+            "max": 166,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5043,
+            "max": 5043,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1277,
+            "max": 1277,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100043,
+            "max": 100043,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-044",
+      "name": "Soak Meter 044",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 44
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.4,
+            "max": 234.4,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 167,
+            "max": 167,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5044,
+            "max": 5044,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1278,
+            "max": 1278,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100044,
+            "max": 100044,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-045",
+      "name": "Soak Meter 045",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 45
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.5,
+            "max": 234.5,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 168,
+            "max": 168,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5045,
+            "max": 5045,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1279,
+            "max": 1279,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100045,
+            "max": 100045,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-046",
+      "name": "Soak Meter 046",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 46
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.6,
+            "max": 234.6,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 169,
+            "max": 169,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5046,
+            "max": 5046,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1280,
+            "max": 1280,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100046,
+            "max": 100046,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-047",
+      "name": "Soak Meter 047",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 47
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.7,
+            "max": 234.7,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 170,
+            "max": 170,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5047,
+            "max": 5047,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1281,
+            "max": 1281,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100047,
+            "max": 100047,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-048",
+      "name": "Soak Meter 048",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 48
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.8,
+            "max": 234.8,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 171,
+            "max": 171,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5048,
+            "max": 5048,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1282,
+            "max": 1282,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100048,
+            "max": 100048,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-049",
+      "name": "Soak Meter 049",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 49
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 234.9,
+            "max": 234.9,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 172,
+            "max": 172,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5049,
+            "max": 5049,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1283,
+            "max": 1283,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100049,
+            "max": 100049,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mock-meter-050",
+      "name": "Soak Meter 050",
+      "protocol": "modbus",
+      "protocol_config": {
+        "unit_id": 50
+      },
+      "enabled": true,
+      "desired_state": "running",
+      "default_interval_ms": 1000,
+      "signals": [
+        {
+          "id": "voltage",
+          "name": "voltage",
+          "unit": "V",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 235.0,
+            "max": 235.0,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 0,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "current",
+          "name": "current",
+          "unit": "A",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 173,
+            "max": 173,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 10,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "frequency",
+          "name": "frequency",
+          "unit": "Hz",
+          "value_type": "uint16",
+          "generator": {
+            "type": "random_range",
+            "min": 5050,
+            "max": 5050,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 11,
+            "wire_type": "uint16",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "power",
+          "name": "power",
+          "unit": "W",
+          "value_type": "float32",
+          "generator": {
+            "type": "random_range",
+            "min": 1284,
+            "max": 1284,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "input_register",
+            "address": 2,
+            "wire_type": "float32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        },
+        {
+          "id": "energy",
+          "name": "energy",
+          "unit": "kWh",
+          "value_type": "uint32",
+          "generator": {
+            "type": "random_range",
+            "min": 100050,
+            "max": 100050,
+            "precision": 3
+          },
+          "binding": {
+            "type": "modbus",
+            "table": "holding_register",
+            "address": 20,
+            "wire_type": "uint32",
+            "byte_order": "big",
+            "word_order": "big"
+          }
+        }
+      ]
+    }
+  ]
+}

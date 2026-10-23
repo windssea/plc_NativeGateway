@@ -1,0 +1,76 @@
+{
+  "at": 1792730505.4855328,
+  "software": "native-0.4.0",
+  "projectSha256": "b78ba0efd0f8f79558143d58f3eb141512876690b2eda2a641e96ba3a3cbaddf",
+  "blackout": {
+    "connectedAt": 4.03,
+    "all250GoodAt": 4.03,
+    "firstDataSeconds": 2.36,
+    "firstStoredSeconds": 11.53,
+    "full250StoredSeconds": 24.36
+  },
+  "reboot": {
+    "connectedAt": 134.28,
+    "all250GoodAt": 131.15,
+    "firstDataSeconds": 133.12,
+    "firstStoredSeconds": 134.95,
+    "full250StoredSeconds": 145.1
+  },
+  "beforeBoot": 17,
+  "afterBoot": 18,
+  "configuration": {
+    "version": 7,
+    "devices": 50,
+    "points": 250,
+    "messageId": "cfg-09c1cf3d-ce80-41ec-be4f-88b942f0a24b",
+    "receivedConfigsAfterReboot": 0
+  },
+  "resources": {
+    "samples": 52,
+    "observationSeconds": 626.66,
+    "cpu": {
+      "min": 32.0,
+      "max": 65.0,
+      "mean": 44.21,
+      "first": 40.0,
+      "last": 59.0
+    },
+    "actualMemory": {
+      "min": 57,
+      "max": 70,
+      "mean": 69.13,
+      "first": 70,
+      "last": 69
+    },
+    "iecProgram": {
+      "min": 0.0,
+      "max": 9.0,
+      "mean": 8.83,
+      "first": 9.0,
+      "last": 9.0
+    },
+    "iecData": {
+      "min": 0.0,
+      "max": 39.0,
+      "mean": 36.77,
+      "first": 38.0,
+      "last": 37.0
+    }
+  },
+  "hub": {
+    "at": 1792730505.4855328,
+    "durationSeconds": 21.28223943710327,
+    "bootId": "ng-d4f61b3085b97c5e3831983b-18",
+    "devices": 50,
+    "points": 250,
+    "historicalRowsExcluded": 1,
+    "incorrect": [],
+    "minAgeSeconds": 9.244904518127441,
+    "maxAgeSeconds": 19.03416681289673,
+    "passed": true
+  },
+  "expectedRscOutageSamples": 10,
+  "noSchemaErrors": true,
+  "noIncorrectValues": true,
+  "passed": true
+}

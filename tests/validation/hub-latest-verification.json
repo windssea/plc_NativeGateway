@@ -1,0 +1,12 @@
+{
+  "at": 1792730505.4855328,
+  "durationSeconds": 21.28223943710327,
+  "bootId": "ng-d4f61b3085b97c5e3831983b-18",
+  "devices": 50,
+  "points": 250,
+  "historicalRowsExcluded": 1,
+  "incorrect": [],
+  "minAgeSeconds": 9.244904518127441,
+  "maxAgeSeconds": 19.03416681289673,
+  "passed": true
+}

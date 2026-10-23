@@ -1,0 +1,24 @@
+NativeGateway v104 short-duration stability evidence
+Result: USER STOPPED EARLY. NOT an eight-hour pass.
+Start: 2026-10-23T09:32:05 Asia/Shanghai
+Last observed: 2026-10-23T10:10:56 Asia/Shanghai
+Actual observed duration: 2330.6 seconds
+Originally planned end: 2026-10-23T17:32:05
+Reason: user requested immediate Hub-compatible development and maintenance/download.
+Devices/points: 50 / 250; latest GOOD: 250
+Unique batches: 3492; values: 109416; GOOD: 109416
+Schema errors: 0; incorrect values: 0
+Boot changes: 0; session changes: 0
+CPU range: 32.0..59.0 percent
+Actual memory: 69..69 percent
+IEC program: 8.0..8.0 percent
+IEC data: 35.0..36.0 percent
+Queue peak: 4; drops: 0
+Max point update gap: 6.198 seconds
+Known HMI availability incident: 09:33:19 to recovered by 09:34:50; 443 refusal/timeout.
+No PLC reboot or data interruption was observed during that incident. Cause unresolved.
+PLC collection/MQTT observations above cover only the actual short window.
+No conclusion about eight-hour PLC stability or complete HMI availability is justified.
+Original schedule/control and all wire/resource/web evidence retained in:
+D:\work\code\PLCnext-Engineer\tests\soak\segments\20261023-093205-v104-user-ended-101121
+HMI: https://192.168.0.8/ehmi/hmiapp.html

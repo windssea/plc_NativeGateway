@@ -1,0 +1,18 @@
+flowchart TB
+    Platform[PLCnext-Hub-Backend：既有 IoT 发布 / 事务入库 / ACK] <-->|MQTT QoS1 JSON| Broker[Docker broker 192.168.0.5:1883]
+    Browser[浏览器 Web HMI] -->|HTTPS 443 / HMI 标签| Edit
+    subgraph PLC[AXC F 2152 / 原生 IEC-ST / Main 20ms]
+      Mqtt[NG_Mqtt] --> Parse[JSON / NG_Command / 校验与版本]
+      Parse --> Store[NG_Store 双槽写入与 SHA256 回读]
+      Edit[NG_HmiEdit：Hub模式只读点表 / 独立模式本地草稿] --> Store
+      Store --> Active[活动配置：50设备 / 共享320点池 / v3管理模式与启动计数]
+      Active --> Modbus[NG_Modbus × 50 / 独立TCP / 台内逐点读取]
+      Modbus --> Sample[数值 / 时间 / 质量 / 采集与上报调度]
+      Sample --> Queue[跨设备组批 ≤64点且值区约12KB / 16批RAM队列]
+      Queue --> Mqtt
+      Mqtt -->|STORED移除 / 重试30至60秒 / 永久拒绝死信| Queue
+    end
+    Broker <-->|config / patch / data / ACK / heartbeat| Mqtt
+    Modbus <-->|Modbus TCP FC1-4| Meters[电表 / mock 192.168.0.5:11502]
+    PC[PC测试：只读报文观察 / RSC资源 / Web可用性] -.只读观察，Hub联调不模拟ACK.-> Broker
+    PC -.资源采样.-> PLC

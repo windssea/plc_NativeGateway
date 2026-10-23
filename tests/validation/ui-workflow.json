@@ -1,0 +1,30 @@
+{
+  "at": 1792730516.4369357,
+  "before": {
+    "GatewayId": "NG-HUB-2152-01",
+    "ActiveVersion": "7",
+    "TotalPoints": "250",
+    "ManagementMode": "HUB_MANAGED"
+  },
+  "chinese": {
+    "UiConnection": "已连接",
+    "DeviceRow1": "> Native mock meter 001 | 在线\n192.168.0.5:11502 / 站号 1 / 5 个点位",
+    "PointRow1": "> 电压  |  230.100 V  |  正常\n输入寄存器 @0 / 采集 5000 / 上报 5000 毫秒",
+    "UiConfigSource": "平台管理：在 Hub 编辑设备、点位与周期并发布；此处查看和维护连接。",
+    "UiPersistence": "已保存到控制器 · 保存序号 43 · 重启后自动恢复"
+  },
+  "english": {
+    "UiConnection": "Connected",
+    "DeviceRow1": "> Native mock meter 001 | ONLINE\n192.168.0.5:11502 / Unit 1 / 5 points",
+    "PointRow1": "> voltage  |  230.100 V  |  GOOD\nInput register @0 / Poll 5000 / Send 5000 ms",
+    "UiConfigSource": "Managed by Hub: edit and publish devices, points and periods in Hub. Connection maintenance is available here.",
+    "UiPersistence": "Saved to controller · generation 43 · restores automatically after restart"
+  },
+  "hubGuardedCommands": [
+    "GW_SaveDevice",
+    "GW_SavePoint",
+    "GW_Apply"
+  ],
+  "passed": true,
+  "notes": "Read-only pages and review navigation tested; no config republish or persistence changes."
+}

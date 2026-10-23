@@ -1,0 +1,10 @@
+{
+  "NG_Point": true,
+  "NG_Device": true,
+  "NG_Config": true,
+  "NG_Bootstrap": true,
+  "NG_Durable": true,
+  "NG_File": true,
+  "NG2_Durable": true,
+  "NG2_File": true
+}

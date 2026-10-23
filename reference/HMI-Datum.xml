@@ -1,0 +1,20 @@
+<Datum Uuid="6f09d85b-da3a-4a76-aaa6-6876dfd07d48">
+      <FunctionText />
+      <Role TypeName="OutPort" ObjectId="55c56c9d-da8f-5e91-a258-7e59dae2ec05" SourceId="226ab768-d4d8-481f-b42f-29c775287a70.L7_2">
+        <ComponentInstance>Arp.Plc.Eclr</ComponentInstance>
+        <DataType>NG_Hmi</DataType>
+        <Index />
+        <IsHmi>False</IsHmi>
+        <IsOpc>False</IsOpc>
+        <IsProficloud>False</IsProficloud>
+        <IsRedundant>False</IsRedundant>
+        <IsRetain>False</IsRetain>
+        <Name>HMI</Name>
+        <PortDataType>NG_Hmi</PortDataType>
+        <PortDataTypeDomain>Iec</PortDataTypeDomain>
+        <PortMultiplicity>1</PortMultiplicity>
+        <Program>Arp.Plc.Eclr / </Program>
+        <ProgramInstance />
+      </Role>
+    </Datum>
+    
