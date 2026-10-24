@@ -33,3 +33,5 @@
 `validation/` 保存最终版本的精简验收结果。原始持续采样、原始报文、SQLite 数据库、启动日志、历史截图、旧测试段及虚拟环境保留在原工作站，已从 Git 排除；项目文档中的这些证据路径用于定位原工作站文件。原 8 小时测试提前停止，不代表已通过 8 小时稳定性测试。
 
 完整结论及限制见 `docs/HMI与自动恢复-20261023.md`、`docs/Hub-接入验收-20261023.md` 和主项目说明。
+
+P01/P02 新增 `phase1_capture_test.st` 是纯 IEC 断言入口，使用 `tools/build_phase1_capture_test.py OUTPUT.pcwex` 生成隔离工程，再由 Engineer 编译/明确选定测试控制器。它不运行 MQTT/配置存储/物理 I/O；下载会暂时替换当前程序，须按本轮授权及维护流程执行。`tools/phase1_plc_probe.py before|after|test OUTPUT.json` 只读；`quiesce|candidate` 会在 RAM 暂停采集并等待业务队列排空，成功后保持暂停以便 Engineer 恢复原工程，不保存配置。候选模式还核对真实入口/GOOD 点及稳定计数。`tools/inspect_phase1_compiled.ps1` 只检查编译元数据，不执行程序。结果及恢复边界见 [P01/P02 报告](../docs/阶段1-P01-P02实现与验证-20261024.md)，不要批量运行所有历史测试。

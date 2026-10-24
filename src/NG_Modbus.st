@@ -9,6 +9,7 @@ VAR_IN_OUT
     Device : NG_Device;
     Points : ARRAY[1..320] OF NG_Point;
     Samples : ARRAY[1..320] OF NG_Sample;
+    Buffer : NG_Buffer;
 END_VAR
 VAR_OUTPUT
     StateText : STRING[16];
@@ -48,10 +49,33 @@ VAR
     OperationFailed : BOOL;
     FailQuality : STRING[24];
     host : STRING;
+    Accepted : BOOL;
+    SourceState : NG_SourceState;
+    SourceResult : NG_SourceResult;
+    PollSlot : NG_PollSlot;
+    Index : UINT;
+    NominalDueMs : ULINT;
+    RequestSlot : UINT;
+    RequestConfigGeneration : UDINT;
+    RequestSamplingGeneration : ULINT;
 END_VAR
 OperationFailed := FALSE;
 host := Device.host;
-IF Reset OR NOT Enable OR NOT Device.enabled THEN State := 90; END_IF;
+IF Reset OR NOT Enable OR NOT Device.enabled THEN
+    IF (State>=18) AND (State<=40) THEN
+        Buffer.CancelledReadsTotal:=NG_SafeAdd(Buffer.CancelledReadsTotal,ULINT#1);
+        Buffer.CancellationReason:=2;
+    END_IF;
+    State:=90; Selected:=0;
+END_IF;
+(* Initialize enabled sources before dispatch. No MQTT/storage call in this path. *)
+IF NOT Reset THEN
+    FOR i:=1 TO Device.PointCount DO
+        Index:=TO_UINT(Device.PointStart+i-1);
+        SourceState(Index:=Index, Enabled:=Enable AND Device.enabled AND Points[Index].enabled, NowMs:=NowMs, UnixMs:=UnixMs, StaleAfterMs:=Points[Index].staleAfterMs, CheckStale:=FALSE, Samples:=Samples, Buffer:=Buffer);
+        Accepted:=SourceState.Accepted;
+    END_FOR;
+END_IF;
 Socket(ACTIVATE := (State <> 90) AND Enable AND Device.enabled AND (NowMs >= RetryAt), IS_SRV := FALSE, BIND_IP := '', BIND_PORT := UINT#0, DEST_IP := host, DEST_PORT := Device.port, START_TLS := FALSE);
 Send(REQ := (State = 20) OR (State = 21), HANDLE := Socket.HANDLE, DATA_CNT := UDINT#12, SEND_SECURE := FALSE, DATA := Tx);
 Receive(EN_R := (State = 30) AND Socket.ACTIVE, HANDLE := Socket.HANDLE, EXP_DATA_CNT := UDINT#0, RECEIVE_SECURE := FALSE, DATA := Chunk);
@@ -64,7 +88,13 @@ CASE State OF
     ELSIF NowMs >= Deadline THEN
         StateText := 'OFFLINE'; LastError := 'BAD_CONNECTION'; RetryAt := NowMs + 2000; State := 90;
         FOR i := 1 TO Device.PointCount DO
-            IF Points[Device.PointStart+i-1].enabled THEN Samples[Device.PointStart+i-1].Quality := 'BAD_CONNECTION'; Samples[Device.PointStart+i-1].Timestamp := UnixMs; Samples[Device.PointStart+i-1].Fresh := TRUE; END_IF;
+            Index:=TO_UINT(Device.PointStart+i-1);
+            IF Points[Index].enabled AND (NowMs>=Buffer.Cursors[Index].NextDueMonoMs) THEN
+                PollSlot(NowMs:=NowMs, PeriodMs:=Points[Index].pollIntervalMs, Cursor:=Buffer.Cursors[Index], Buffer:=Buffer);
+        NominalDueMs:=PollSlot.NominalDueMs;
+                SourceResult(Index:=Index, Value:=LREAL#0.0, Quality:='BAD_CONNECTION', NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=NominalDueMs, ConfigSlot:=Buffer.ActiveSlot, ConfigGeneration:=Buffer.Configs[Buffer.ActiveSlot].Generation, SamplingGeneration:=Buffer.SamplingGeneration, Samples:=Samples, Buffer:=Buffer);
+        Accepted:=SourceResult.Accepted;
+            END_IF;
         END_FOR;
     END_IF;
 15:
@@ -76,7 +106,13 @@ CASE State OF
             IF Points[Device.PointStart+Scan-1].enabled AND (NowMs >= Samples[Device.PointStart+Scan-1].NextPollMs) THEN Selected := Scan; EXIT; END_IF;
         END_FOR;
         IF Selected > 0 THEN
-            Point := Points[Device.PointStart+Selected-1]; Retry := 0; State := 18;
+            Point:=Points[Device.PointStart+Selected-1]; Retry:=0;
+            Index:=TO_UINT(Device.PointStart+Selected-1);
+            PollSlot(NowMs:=NowMs, PeriodMs:=Point.pollIntervalMs, Cursor:=Buffer.Cursors[Index], Buffer:=Buffer);
+        NominalDueMs:=PollSlot.NominalDueMs;
+            Samples[Index].NextPollMs:=Buffer.Cursors[Index].NextDueMonoMs;
+            RequestSlot:=Buffer.ActiveSlot; RequestConfigGeneration:=Buffer.Configs[RequestSlot].Generation;
+            RequestSamplingGeneration:=Buffer.SamplingGeneration; State:=18;
         END_IF;
     END_IF;
 18:
@@ -154,11 +190,12 @@ CASE State OF
                 END_IF;
             END_IF;
             IF NOT OperationFailed THEN
-                Samples[Device.PointStart+Selected-1].Value := Value*Point.scale + Point.offset;
-                Samples[Device.PointStart+Selected-1].Quality := 'GOOD'; Samples[Device.PointStart+Selected-1].Timestamp := UnixMs;
-                Samples[Device.PointStart+Selected-1].LastGoodMs := NowMs; Samples[Device.PointStart+Selected-1].Fresh := TRUE;
-                Samples[Device.PointStart+Selected-1].NextPollMs := NowMs + Point.pollIntervalMs;
-                LastGoodTimestamp := UnixMs; StateText := 'ONLINE'; LastError := ''; Completed := Completed + 1; State := 15;
+                Index:=TO_UINT(Device.PointStart+Selected-1);
+                SourceResult(Index:=Index, Value:=Value*Point.scale+Point.offset, Quality:='GOOD', NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=NominalDueMs, ConfigSlot:=RequestSlot, ConfigGeneration:=RequestConfigGeneration, SamplingGeneration:=RequestSamplingGeneration, Samples:=Samples, Buffer:=Buffer);
+        Accepted:=SourceResult.Accepted;
+                IF Samples[Index].Quality='GOOD' THEN LastGoodTimestamp:=UnixMs; StateText:='ONLINE'; LastError:='';
+                ELSE StateText:='DEGRADED'; LastError:=Samples[Index].Quality; END_IF;
+                IF Completed<UDINT#4294967295 THEN Completed:=Completed+1; END_IF; State:=15;
             END_IF;
         END_IF;
     END_IF;
@@ -172,18 +209,21 @@ END_CASE;
 IF OperationFailed THEN
     IF (Retry < Device.retryCount) AND (FailQuality = 'BAD_PROTOCOL') THEN Retry := TO_USINT(Retry + 1); State := 18;
     ELSE
-        Samples[Device.PointStart+Selected-1].Quality := FailQuality; Samples[Device.PointStart+Selected-1].Timestamp := UnixMs; Samples[Device.PointStart+Selected-1].Fresh := TRUE;
-        Samples[Device.PointStart+Selected-1].NextPollMs := NowMs + Point.pollIntervalMs;
+        Index:=TO_UINT(Device.PointStart+Selected-1);
+        SourceResult(Index:=Index, Value:=LREAL#0.0, Quality:=FailQuality, NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=NominalDueMs, ConfigSlot:=RequestSlot, ConfigGeneration:=RequestConfigGeneration, SamplingGeneration:=RequestSamplingGeneration, Samples:=Samples, Buffer:=Buffer);
+        Accepted:=SourceResult.Accepted;
         LastError := FailQuality; StateText := 'DEGRADED';
         IF (FailQuality = 'BAD_TIMEOUT') OR (FailQuality = 'BAD_CONNECTION') THEN
             StateText := 'OFFLINE'; RetryAt := NowMs + 1000; State := 90;
         ELSE State := 15; END_IF;
     END_IF;
 END_IF;
-FOR i := 1 TO Device.PointCount DO
-    IF Points[Device.PointStart+i-1].enabled AND (Samples[Device.PointStart+i-1].Quality = 'GOOD') AND (NowMs > Samples[Device.PointStart+i-1].LastGoodMs + Points[Device.PointStart+i-1].staleAfterMs) THEN
-        Samples[Device.PointStart+i-1].Quality := 'STALE'; Samples[Device.PointStart+i-1].Timestamp := UnixMs; Samples[Device.PointStart+i-1].Fresh := TRUE;
-    END_IF;
-END_FOR;
+(* Final physical results above win at the same scan; BAD also refreshes liveness. *)
+IF NOT Reset THEN
+    FOR i:=1 TO Device.PointCount DO
+        Index:=TO_UINT(Device.PointStart+i-1);
+        SourceState(Index:=Index, Enabled:=Enable AND Device.enabled AND Points[Index].enabled, NowMs:=NowMs, UnixMs:=UnixMs, StaleAfterMs:=Points[Index].staleAfterMs, CheckStale:=TRUE, Samples:=Samples, Buffer:=Buffer);
+        Accepted:=SourceState.Accepted;
+    END_FOR;
+END_IF;
 END_FUNCTION_BLOCK
-

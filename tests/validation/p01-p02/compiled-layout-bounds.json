@@ -1,0 +1,187 @@
+{
+  "evidenceLevel": "COMPILED_CIL_METADATA_BOUNDS",
+  "binaryDirectory": "C:\\Users\\windssea\\Documents\\PLCnext Engineer\\Binaries\\NativeGateway.p01-p02-final-v3@binary\\RES_23CA7F267545404C9FED5DC977A6399F",
+  "valueSizes": {
+    "NG_CaptureEvent": 72,
+    "NG_Buffer": 2933480,
+    "NG_CaptureConfig": 144768,
+    "NG_Config": 144616,
+    "NG_SourceCursor": 48,
+    "NG_CaptureGap": 304,
+    "NG_Packet": 16752
+  },
+  "mqttStateUpperBound": 9432,
+  "mqttStateReserved": 16384,
+  "captureHelperUpperBound": 31496,
+  "helperAndScratchReserved": 65536,
+  "sdkPayloadReserve": 135680,
+  "recordCapacity": 28800,
+  "ingressCapacity": 512,
+  "note": "IEC/value layout and FB metadata bounds; opaque native SDK heap and task timing remain P06 measurements.",
+  "hashes": [
+    {
+      "name": "Main.dll",
+      "sha256": "7ef9e968405e6607093ed6688e65201ca6839b98d1d329e2b7fe2c410d65df18"
+    },
+    {
+      "name": "NG_Add4.dll",
+      "sha256": "faff403c0d3d04e58bc7409f8687b256e5422c4a4506d2769a062d5a2b978834"
+    },
+    {
+      "name": "NG_Allowed.dll",
+      "sha256": "ea87411da856383893953ca2a5461ce5ceff2c17d32898a46ee3d3c1116e61d5"
+    },
+    {
+      "name": "NG_Bool.dll",
+      "sha256": "9715ee6052febb203328e5215de2ddf954ac496a45830d5ec6811b4080a81b57"
+    },
+    {
+      "name": "NG_Capture.dll",
+      "sha256": "120f5598cca89f58109035651cc769758c3eb0e2a904d4922df9a2b78eb8f782"
+    },
+    {
+      "name": "NG_Char.dll",
+      "sha256": "578e0a931bfd7a3918e72c51bd1611261d83cb7768bdc711d616dfba006410d9"
+    },
+    {
+      "name": "NG_CheckConfig.dll",
+      "sha256": "b9840e082c82bd0a4e8e39b72a9e05a8b144303b30453dea68bcc67e4e6a33b4"
+    },
+    {
+      "name": "NG_Clip.dll",
+      "sha256": "8051d3077b1d47ab3151173bbd82762d0f69108012785e05c0d5cae61ec21f0c"
+    },
+    {
+      "name": "NG_Command.dll",
+      "sha256": "0ada4e130741665127dd499615411197c16298e17ee3852f4457d15c1b9a3b23"
+    },
+    {
+      "name": "NG_ConfigSlot.dll",
+      "sha256": "70e0cd40c4fd56a3da8ad7f5dac9dacecad14e2b97bc95dece5b2e6f3391d12d"
+    },
+    {
+      "name": "NG_EditDevice.dll",
+      "sha256": "9e4879f1f5e901549d4397f7c651bb0c3b5ac7c511784ad4f331dc82c5366428"
+    },
+    {
+      "name": "NG_HmiEdit.dll",
+      "sha256": "697e014f30508911594ffe34f930b2969110ed0d0caec41ba24589c67dd5c4ea"
+    },
+    {
+      "name": "NG_IPv4.dll",
+      "sha256": "94e59d809e97bacd24ca6dc2a52fb3f5d97d002aaa8a67b816c843a93b78d4be"
+    },
+    {
+      "name": "NG_JsonParse.dll",
+      "sha256": "ab0f0032a541dfffbac2bda756f2b3d406afae83fd700f94e093e200315a2a3e"
+    },
+    {
+      "name": "NG_Member.dll",
+      "sha256": "6ecaa5ec65bd2a2c841d454c1fc80f57c10c92c574fee2ccacaa7d1ed361ef58"
+    },
+    {
+      "name": "NG_Modbus.dll",
+      "sha256": "b978866403ac7901389c392c58dcae53e30f26054582bd194a40ce410f40f9e2"
+    },
+    {
+      "name": "NG_Mqtt.dll",
+      "sha256": "33a6e02b2d7bdc3b0438313a864d66e6b100d488876c9fb13958e0ae2a3fb0ae"
+    },
+    {
+      "name": "NG_NumberValid.dll",
+      "sha256": "054f15acbdd6157328357ff0af2c33aefa3378226bcc062629f50a75b38f6390"
+    },
+    {
+      "name": "NG_PollSlot.dll",
+      "sha256": "9df1375a5552768c49662507a4bca1e980deb1322e4efc2566e4225bc773b87a"
+    },
+    {
+      "name": "NG_ProcNumber.dll",
+      "sha256": "f42cf2ff0d591325e77108ff396a451faddc9a506ef9427f131b409d6174b084"
+    },
+    {
+      "name": "NG_QualityCode.dll",
+      "sha256": "29081a5c6c405859390e3b953670be8a6f61de2138b478e742db12ae35c65fea"
+    },
+    {
+      "name": "NG_Quote.dll",
+      "sha256": "6e400539ce43e957c7191ae11692a343377c82b9ca104b09e6919c74387ce84c"
+    },
+    {
+      "name": "NG_Range.dll",
+      "sha256": "2303f484afec3367aff744f0e9d8598d37b853201d1a17bf95d86865907d37b8"
+    },
+    {
+      "name": "NG_ReadAck.dll",
+      "sha256": "6026059ad716b3e228df5064da930936d9344d9f641bf767002b935d14d54d8d"
+    },
+    {
+      "name": "NG_ReadConfig.dll",
+      "sha256": "190772d965097acc0bb59a218ed958d233defb336067939f18a896a78585b1df"
+    },
+    {
+      "name": "NG_ReadDevice.dll",
+      "sha256": "bc5e126e61fc7945d56b648ba92cfaaebc39385558abae92c46c97c8070d616d"
+    },
+    {
+      "name": "NG_ReadPoint.dll",
+      "sha256": "c61a4e3ad7002642811229e13f3b401af4124612bac923b7092957bbae2bf6e4"
+    },
+    {
+      "name": "NG_Resources.dll",
+      "sha256": "e64c5971a0bb75289dd490377c425dd6f424e2092cd93a554fa91f524c132310"
+    },
+    {
+      "name": "NG_SafeAdd.dll",
+      "sha256": "62287e9cfb64c9c7bddfe86d08b66352dd3d80515d4914fed3e609744f38cccd"
+    },
+    {
+      "name": "NG_SameConfig.dll",
+      "sha256": "4d69e4cbe07a2fb5e22bba3cd70b86a1658c3f3ac197edc2ecb24976e33a8412"
+    },
+    {
+      "name": "NG_SHA256.dll",
+      "sha256": "2367b0b4d1569d40af86f1205f02fe1652695e5fea44a9693bdd004d3b9816a0"
+    },
+    {
+      "name": "NG_SourceResult.dll",
+      "sha256": "ef1d8c207fb17e433ca573121c39b64e05092172f2c32652870e878ffa91aff9"
+    },
+    {
+      "name": "NG_SourceState.dll",
+      "sha256": "cdd304cb863fdb35ec45aed3d581f5683ba4893805c0fd70850ee5817917b691"
+    },
+    {
+      "name": "NG_StorageHash.dll",
+      "sha256": "8f88f36d49d818b41435caad2c1e6de0ec93d38ce50c8cf98856f84bdd1083f3"
+    },
+    {
+      "name": "NG_Store.dll",
+      "sha256": "f70c6d87d964c6a86e23acb8ac883d3b687ca1d0bffc2f77e939216256620992"
+    },
+    {
+      "name": "NG_UiJoin.dll",
+      "sha256": "59efc4e680a235c6776ef6aefde9dfe77127f152947f9eaafea990669d22bde7"
+    },
+    {
+      "name": "NG_UiText.dll",
+      "sha256": "3cd795727b57c9156e36dfe6a07b4b9eee96fa6f159002c44b087146fe83aeb8"
+    },
+    {
+      "name": "NG_Unix.dll",
+      "sha256": "87dfbd3d1f037752a8126a0ddb755dbebd2e372f46eb0c129cb04d0fd0ca0b65"
+    },
+    {
+      "name": "NG_ValidId.dll",
+      "sha256": "a8b7e9f4f3d93212799d52c8aaa335cbb20b1e11a54a28f29e2f462e99906238"
+    },
+    {
+      "name": "NG_WireCode.dll",
+      "sha256": "339b1d24b977ac4f2e84407483624e47916fdd4cbb8561af2217f950c60c2c33"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.Common.dll",
+      "sha256": "6eec67f6a52dda20e3ab37234a3a1bba67eac545ba84c6ced75e41d5085a543e"
+    }
+  ]
+}

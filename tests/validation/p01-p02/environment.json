@@ -1,0 +1,18 @@
+{
+  "checkedAtUtc": "2026-10-24T07:25:25.5898117Z",
+  "backendCount": 1,
+  "backendPids": [
+    34208
+  ],
+  "frontendPids": [
+    4088
+  ],
+  "resourceRecorderCount": 0,
+  "backendJarSha256": "34f1a01e324f1911e0cb2527e96130eefc7bed67a5ac13a31d6b626fefd25cd1",
+  "temporaryDatabaseCreated": false,
+  "backendSwitched": false,
+  "plcOsRestarted": false,
+  "plcProjectDownloadedForIsolatedAssertions": true,
+  "plcCandidateSourceIntegrationTested": true,
+  "plcOriginalProjectRestored": true
+}

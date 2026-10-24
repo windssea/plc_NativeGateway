@@ -1,0 +1,85 @@
+(* P01/P02: volatile only. Do not add these types to NG_Durable/NG_File.
+   All references are (slot,generation); generation exhaustion fails closed. *)
+TYPE
+    NG_CaptureEvent : STRUCT
+        SampleSeq : ULINT;
+        Value : LREAL;
+        CapturedUtcMs : ULINT; (* Flags bit 0 present, bit 1 trusted, bit 3 SYSTEM_RTC; never backfilled *)
+        CompletedMonoMs : ULINT;
+        NominalDueMonoMs : ULINT; (* absent for QUALITY_STATE, Flags bit 2 *)
+        ClockRevision : ULINT;
+        SamplingGeneration : ULINT;
+        ConfigGeneration : UDINT;
+        ConfigSlot : UINT;
+        PointIndex : UINT;
+        Quality : USINT; (* 1 UNKNOWN,2 GOOD,3 STALE,4 CONNECTION,5 TIMEOUT,6 PROTOCOL,7 DECODE *)
+        Kind : USINT; (* 1 PHYSICAL_RESULT,2 QUALITY_STATE *)
+        Flags : WORD;
+    END_STRUCT;
+    NG_CaptureConfig : STRUCT
+        Config : NG_Config;
+        GatewayId : NG_Id;
+        CaptureBootId : NG_Id;
+        Generation : UDINT;
+        References : UDINT;
+        Reserved : BOOL;
+    END_STRUCT;
+    NG_SourceCursor : STRUCT
+        Generation : ULINT;
+        ActivatedMonoMs : ULINT;
+        LastPhysicalMonoMs : ULINT;
+        NextDueMonoMs : ULINT;
+        LastPhysicalUtcMs : ULINT;
+        Quality : USINT;
+        Enabled : BOOL;
+        HasPhysical : BOOL;
+        HasPhysicalUtc : BOOL;
+    END_STRUCT;
+    NG_CaptureGap : STRUCT
+        SampleSeq : ULINT;
+        ConfigVersion : ULINT;
+        CompletedMonoMs : ULINT;
+        GatewayId : NG_Id;
+        CaptureBootId : NG_Id;
+        DeviceId : NG_Id;
+        PointId : NG_Id;
+        Reason : USINT; (* 1 CAPTURE_OVERFLOW,2 VERSION_DISCARD,3 identity/sequence exhausted *)
+    END_STRUCT;
+    NG_Buffer : STRUCT
+        Records : ARRAY[1..28800] OF NG_CaptureEvent; (* P03 admitted FIFO pool; actual quota, not 32768 nominal *)
+        FreeSlots : ARRAY[1..28800] OF UINT;
+        RecordGenerations : ARRAY[1..28800] OF UDINT;
+        RecordStates : ARRAY[1..28800] OF USINT;
+        Ingress : ARRAY[1..512] OF NG_CaptureEvent;
+        Configs : ARRAY[1..4] OF NG_CaptureConfig;
+        Cursors : ARRAY[1..320] OF NG_SourceCursor;
+        Gaps : ARRAY[1..64] OF NG_CaptureGap;
+        (* P04 reserves bounded event references and generation-fenced batch/tombstones. *)
+        BatchRefs : ARRAY[1..1024] OF UINT; (* (batchSlot-1)*64+valueIndex *)
+        BatchGenerations : ARRAY[1..16] OF UDINT;
+        TombstoneGenerations : ARRAY[1..64] OF UDINT;
+        TombstoneIds : ARRAY[1..64] OF NG_Id;
+        Scratch : NG_CaptureEvent;
+        Head : UINT := 1;
+        Tail : UINT := 1;
+        IngressCount : UINT;
+        ActiveSlot : UINT;
+        NextConfigGeneration : UDINT;
+        SamplingGeneration : ULINT;
+        NextSampleSeq : ULINT;
+        CapturedEventsTotal : ULINT;
+        CaptureOverflowEventsTotal : ULINT;
+        UndecidedLostEventsTotal : ULINT;
+        MissedPollCyclesTotal : ULINT;
+        SourceTimestampRepeatTotal : ULINT;
+        CancelledReadsTotal : ULINT;
+        GapIndex : UINT;
+        DetailTruncated : BOOL;
+        CounterOverflow : BOOL;
+        CaptureStopped : BOOL;
+        CancellationReason : USINT; (* 2 VERSION_DISCARD; no completed point event is invented *)
+        LayoutValid : BOOL;
+        LayoutBytes : UDINT;
+        RecordBytes : UDINT;
+    END_STRUCT;
+END_TYPE
