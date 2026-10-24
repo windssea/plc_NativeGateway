@@ -2,6 +2,8 @@
 
 日期：2026-10-23。三方协同入口：[Hub、Python IoT、原生 PLC 协同实施计划](Hub-IoT-PLC协同实施计划.md)。本文保留 NativeGateway 的 PLC/vPLC 原生 IEC/ST 容量、任务与日志细节；采样完整性、时间有效性、真实回执和缺口语义由三方共同约定。Python 也须覆盖采集入口到 SQLite Outbox 之前的缓冲边界，但不照搬原生数据结构或资源参数。本文是设计方案，容量和任务耗时须经各自实现和实机验证后定版，本轮仅修订文档。
 
+共同接口、reportPolicyV1、16 项计数、独立诊断和验收已按[阶段 0 P0/2 定稿](阶段0-三方接口与验收定稿.md)于 2026-10-24 复核修订。资源预算仍需编译/实测，但共同语义不再留给各项目另行选择；本文件旧的局部描述与共同定稿冲突时以后者为准。
+
 ## 目标与方案选择
 
 保持现有 50 台子设备、250 点、`cyclic` 模式、5000 ms 采集及上报周期，网关组批间隔 1000 ms、每批最多 64 点、既有 IoT DATA 和 STORED 协议不变。
@@ -63,7 +65,11 @@ flowchart LR
 
 当前 5000/5000 ms 的 cyclic 配置下，每个采集周期的最终结果进入待上报历史一次。周期调度使用单调时间和固定到期基准，避免用“上次组包完成时间 + 周期”不断推迟截止时间。Modbus 耗时造成的实际采样抖动保留原时间，不补造一个恰好 5 秒的样本，也不集中补做已经错过的物理采集。
 
-其他配置仍遵循既有上报意图：change 只保存满足变化条件的事件；poll 比 report 更快时，按明确的上报选择策略决定哪些采样需要发送，不能默认把全部原始采样补传而改变网络上报周期。cyclic 到期却没有新采样时，应区分重复快照和新采样，在本地诊断中计数；不得改写旧样本时间伪装新采样。
+其他配置按阶段 0 reportPolicyV1：FIRST 和质量变化在所有模式触发，change/change_or_cyclic 按严格大于 deadband 或 bool 变化选择，cyclic/change_or_cyclic 选择名义报告到期后的首个最终结果。poll 比 report 更快时其余事件明确计为策略过滤；不能把全部原始采样都发出。没有新结果不重复发送旧 GOOD 快照，UNKNOWN/STALE 作为一次明确状态转换事件保留检测时间；周期、资格与组包线程完全分开。这是两种 Agent 的目标行为升级，不代表旧程序已经满足。
+
+网格原点为配置/有效采样代际激活时调度计划的首个名义槽，不由首个 UNKNOWN、完成或接纳时刻决定。周期资格决策消费到期槽，即使接纳失败也按应报损失记账，不能再算同一槽漏报；跨 n 个到期槽以真实结果服务最后一槽，前 n-1 个计 missedReportSlots。QUALITY_STATE 不消费周期槽。missedPollCycles 按点/名义槽计，整块 N 点跳过一轮计 N，停用期间不计。完整黄金向量见共同 R01～R14。
+
+采样 UTC 为本地最终完成/状态检测时刻的 TimeProvider 快照，无效时为 null；不以名义截止点或 Hub 接收时刻替代。STALE 按最近最终物理结果后的无结果时长判断；持续 BAD 保留真实 BAD，不按最近 GOOD 年龄覆盖。值/质量基准取同一点/配置/有效代际最新已接纳事件，旧 shadow、落盘完成或 ACK 均不得回退基准。
 
 连接失败影响多个点、质量从 GOOD 转 STALE 等入口也必须接入事件机制。相同质量在每个扫描周期重复赋值不代表新的采样事件，禁止由此把 50 点/秒放大为数千事件/秒。
 
@@ -72,6 +78,8 @@ flowchart LR
 每条已接纳记录只处于一个逻辑位置：事件暂存区、采样 FIFO、不可变批次或死信区。HMI 最新值不是历史记录的所有者。
 
 组包完成并保存不可变 payload、messageId、原采样引用及摘要后，才能从采样 FIFO 移走相应记录；这是所有权转移，数据仍由批次持有。正常成功路径仅在匹配的 STORED 后结束该批数据的保留。超限淘汰及永久拒绝是另行记账的终止路径，不能记为已入库。
+
+时间失效不撤销已经成功的 RAM 接纳：FIFO 历史保持 P，若按明确策略终止才按 L/I/U 记账。恢复后重新生成当前任务令牌，核验原有效时间和历史所有权后物化，保留原样本身份/UTC；不要求捕获修订与当前修订相等。清理旧准备任务/无效 latest 不得静默删除历史，也不允许给未接纳的无效样本回填恢复时间。整机重启仍按 RAM 易失边界处理。
 
 ## 容量与资源预算
 
@@ -128,7 +136,7 @@ flowchart LR
 
 重启后已 PREPARED 的批次继续发送原 bootId 和原始字节；从未组成过批次的恢复记录可以使用新启动身份创建新消息，但采样时间和原 configVersion 不变。启动计数仍按现有逻辑先持久化，再开始 MQTT。
 
-采样接纳和同一发送类别内按本地 FIFO 选择；恢复后新数据与历史积压按下文公平预算调度，不再承诺全局严格 FIFO。Hub 可以并发提交并逆序返回 ACK，PLC 按 messageId 与槽位代际匹配，不能按“当前队头”或“最大已确认序号”批量删除。Hub 查询继续按采样时间排序。遇到时间偏差/回拨保留原时间及诊断，按平台授时方案关闭必要的形成/发送门槛，不修改历史值强制递增，也不因增加 clockAdjustment 诊断就宣称仍可正常发送。
+采样接纳按本地 FIFO，同一发送类别内按可发送项 FIFO 选择；等待确认/退避的项不阻塞其后可发送项。恢复后新数据与历史积压按下文公平预算调度，不再承诺全局严格 FIFO。Hub 可以并发提交并逆序返回 ACK，PLC 按 messageId 与槽位代际匹配，不能按“当前队头”或“最大已确认序号”批量删除。Hub 查询继续按采样时间排序。遇到时间偏差/回拨保留原时间及诊断，按平台授时方案关闭必要的形成/发送门槛，不修改历史值强制递增，也不因增加 clockAdjustment 诊断就宣称仍可正常发送。
 
 重启后的单调时间从新启动重新计数，不能用新的 NowMs 直接减去旧记录中的单调时间。文件恢复记录以可信 UTC 重建年龄；时间尚不可信时暂缓发送并显示 ageUnknown，等待已有校时流程恢复。字节和数量上限始终生效，不能因为时间不可信而无限保留。
 
@@ -141,11 +149,13 @@ flowchart LR
 | 从未发送的数据因容量或年龄被淘汰 | 删除最旧记录，写入缺口 | 已知没有送到 Hub，计入 knownUnsentLossSamples |
 | 已发送但未确认的批次必须淘汰 | 标记 ABANDONED，停止重试，保留有限 tombstone 后释放整批 | Hub 可能已经提交，计入 uncertainDeliverySamples，不声称确定丢失 |
 | 永久 REJECTED | 从正常发送窗口移到有独立配额的死信区 | 不增加 STORED；保留错误码、原消息摘要和样本范围 |
-| 死信区满或到期 | 淘汰最旧死信并累计数量和缺口 | 不让坏配置或坏消息永久占满正常发送窗口 |
+| 死信区满或到期 | 淘汰最旧死信并累计修剪数量 | 原事件已终止，不重复增加 isolated/knownUnsent/uncertain 或生成同一损失的新缺口；有限对账证据被修剪的限制可见 |
 | 事件暂存区或写入入口失败 | 立即记录未接纳数量及原因，继续采集 | 不更新成“已缓存成功”，不能静默合并最新值 |
 | 已淘汰批次后来收到 STORED | 通过 tombstone 识别迟到结果 | 不删除槽位中后来复用的新批次；更新仍可关联的不确定交付记录 |
 
-缺口原因至少区分 `CAPACITY_EVICTION`、`AGE_EXPIRED`、`CAPTURE_OVERFLOW`、`PERMANENT_REJECT`、`STORAGE_ERROR` 和 `IDENTITY_CHANGE`。记录采样数量、最早/最晚采样时间、涉及配置和点位范围；这些是本地缺口元数据，不填入合法点值冒充样本。
+缺口 reason/outcome、事件/尝试/快照计数及互斥对账按阶段 0 第 4 节；还须涵盖 TIME_INVALID、VERSION_DISCARD 和 VOLATILE_RESTART。本文 knownUnsentLossSamples、uncertainDeliverySamples、deadSamples 等旧本地标签只可作为展示别名，必须映射共同字段及其 Total/gauge 含义，不能另起统计语义。记录数量、时间、配置和点位范围；未知用 null 并标记不完整，不填入合法点值冒充样本。
+
+旧展示别名固定映射：knownUnsentLossSamples=knownUnsentEventsTotal，uncertainDeliverySamples=uncertainDeliveryEventsTotal（均为本 epoch 曾发生事实，迟到确认不减）；deadSamples=buffer.deadEvents、pendingSamples=buffer.pendingEvents（均为当前快照，可为 null）。前两项不能与当前 pending/dead 相加对账；对账使用共同 E/S/P/L/I/U 集合。
 
 缺口明细本身也固定容量：候选保留最近 64 条，合并相同原因的相邻缺口；明细压缩或淘汰时保留累计计数并标记 detailTruncated。合并后的首尾时间仅表示覆盖范围，不能伪称其间每个采样都丢失。
 
@@ -230,7 +240,9 @@ RAM 模式下计划下载或重启前先排空，无法排空时将本次有界�
 
 HMI/RSC 至少提供：mode、pendingSamples、bufferBytes/maxBytes、oldestPendingAge、预计可覆盖时间、activeBatches、inFlight、knownUnsentLossSamples、uncertainDeliverySamples、deadSamples、gapCount、最后缺口时间和原因、captureOverflow、sourceTimestampRepeatCount，以及文件模式的 durableSeq、volatileSamples、storageError、writtenBytes。
 
-保持现有 heartbeat.queue 三个字段的含义：batches 和 payloadBytes 统计已物化但未结束的批次；droppedBatches 统计被明确丢弃的已物化批次。未组包采样的丢失不能随意折算为批次数，也不能用 droppedBatches=0 宣称无采样缺口。
+保持已部署 heartbeat.queue 结构和各端既有语义：batches/payloadBytes 描述物化队列，不能涵盖采样 FIFO；Python droppedBatches 实际是拒绝入队尝试数，原生 Dropped 不覆盖从未组包的中间样本，二者不能横向等同。新统一统计只进入阶段 0 的 bufferDiagnosticsV1，未组包采样损失不能折成旧批次数，不能以 droppedBatches=0 宣称完整。
+
+按共同定义，16 项 Total 为当前 counterEpoch 已知事实累计下界，不用 null；未知 gauge/缺口数量才用 null，并将 accountingComplete=false 保持到本 epoch 结束。跨线程快照不重复计算 FIFO→冻结批次的所有权转移；重复/倒序诊断不刷新 Hub 的 90 秒新鲜度。完整验收必须保有独立入口记录及事件→原批次→真实收据关联，不能仅以队列统计或曲线点数放行。
 
 现有 v1 DATA、heartbeat 的 schema 均禁止额外字段。因此核心缓冲可先保持旧协议兼容，完整的远程缓冲/缺口展示需要一个明确的最小 Hub 配套：两种 Agent 共用的独立 `diagnostics/buffer` topic、版本化 schema 及 Hub 消费/展示。三方先定最小字段、计数单位和能力差异，不能形成原生与 Python 各自不可比较的缺口口径。旧 Hub 不识别该 topic 时，数据入库仍可工作，但只能依靠本地 HMI/RSC/Python 诊断和导出缺口证据，不能声称平台已有远程缺口告警。该协同不改变现有 DATA/ACK 语义，也不把诊断数据写成采样值。
 

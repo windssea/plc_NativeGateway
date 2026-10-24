@@ -15,6 +15,7 @@ AXC F 2152 的原生 IEC/ST + PLCnext Engineer Web HMI 网关，支持 Modbus TC
 - [PLC 有界采样缓冲与补传方案](docs/PLC有界采样缓冲与补传方案.md)：5 分钟 RAM 缓冲目标、可选文件日志、容量淘汰、乱序回执、补传限速和时序完整性验收。
 - [Hub、Python IoT、原生 PLC 协同实施计划](docs/Hub-IoT-PLC协同实施计划.md)：三方责任、报文前缓冲与持久化差异、两份方案优先级和分阶段验收。
 - [MQTT 平台授时共同方案](docs/MQTT平台授时方案.md)：公共授时契约、启动及失效门槛、Python Outbox 重试/过期/重启恢复。
+- [阶段 0 三方接口与验收定稿](docs/阶段0-三方接口与验收定稿.md)：P0/2 唯一共同规范，含启动门槛、报告网格、历史所有权、缺口计数及黄金样例；只完成设计，未实施。
 
 打开工程：`NativeGateway.pcwex`。当前测试 HMI：<https://192.168.0.8/ehmi/hmiapp.html>。
 
