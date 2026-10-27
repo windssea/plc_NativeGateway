@@ -1,0 +1,121 @@
+{
+  "schema": "joint-m12-reception/v1",
+  "atUtc": "2026-10-26T13:46:42.158051+00:00",
+  "status": "OFFLINE_CORE_RECEIVED_PHYSICAL_STARTUP_BLOCKED_M12_S",
+  "mcpVersion": "0.6.4",
+  "toolCount": 78,
+  "candidateLocalPlan": {
+    "planId": "47e183dc098d43d9918837a9e1c33b9b",
+    "planSha256": "8f64b7827b678356d4de34b47c6797b22a8cc198de6bcf9befc7560989400961",
+    "projectId": "f40a214f31ea4ec28b5d9fd39c77c5ee",
+    "sourceSha256": "b585662abf3d86a1d0445d59e9ed4354723edebafd1f0fcb4b81647a7fe80d41",
+    "symbolCount": 17074,
+    "expectedBootId": "ng-d4f61b3085b97c5e3831983b-63",
+    "scope": "LOCAL_ONLY_HISTORICAL_BOOT63_DO_NOT_EXECUTE",
+    "authorized": false,
+    "executed": false
+  },
+  "originalAuditPrepare": "EXPECTED_REJECT_AUDIT_PROFILE_UNSUPPORTED",
+  "physical": {
+    "currentBootId": "ng-d4f61b3085b97c5e3831983b-64",
+    "configVersion": 13,
+    "readOnly": true,
+    "controlRequestsSent": false,
+    "writeRequestsSent": false,
+    "forceRequestsSent": false,
+    "qualityCoverage": {
+      "requested": 250,
+      "read": 250,
+      "good": 250,
+      "all_requested_good": true,
+      "atomic_snapshot": false,
+      "expected_point_count": 250,
+      "complete_expected_point_coverage": true
+    },
+    "observationSha256": "9b5da1c9acd04e15ee8c3c5168c65f28b8f4fbfd1f223e218e6ce341013c4768",
+    "loadedIdentity": {
+      "status": "unknown",
+      "package_sha256": null,
+      "reason": "ProjectName, source symbols and disk manifests do not attest the memory-loaded image."
+    },
+    "configurationDigest": {
+      "sha256": "54d0db9e1c564e96fa8fb618a0bc1f6a73afaa7eb331b815a49079b8770a20ab",
+      "field_count": 1006,
+      "scope": "only_returned_active_fields",
+      "full_sampling_configuration_verified": false
+    },
+    "downloadsThisTurn": false,
+    "auditAcksThisTurn": false
+  },
+  "services": {
+    "atUtc": "2026-10-26T13:45:58.6698878Z",
+    "listeners": [
+      {
+        "LocalPort": 8080,
+        "OwningProcess": 27204
+      },
+      {
+        "LocalPort": 18080,
+        "OwningProcess": 23716
+      },
+      {
+        "LocalPort": 11502,
+        "OwningProcess": 23716
+      },
+      {
+        "LocalPort": 8090,
+        "OwningProcess": 35404
+      }
+    ],
+    "backendInstanceCount": 1,
+    "backendPids": [
+      27204
+    ],
+    "mock": {
+      "configRevision": 5,
+      "configError": null,
+      "modbusState": "running",
+      "deviceCount": 50,
+      "runningDevices": 50,
+      "pointCount": 250,
+      "goodPoints": 250
+    }
+  },
+  "remainingGap": "D:/work/code/PLCnext-Engineer-mcp/docs/M12启动协作与恢复租约缺口-20261026.md",
+  "nativeFullEventCohort": "BLOCKED_M12_S",
+  "performanceRetestsPaused": true,
+  "temporaryDatabaseCreated": false,
+  "productionCodeChangedThisTurn": false,
+  "mcpSourceChangedByThisTurn": false,
+  "testBridgeChanged": "Plain-text public MCP errors persist as structured error envelopes; expected negative tools exit after closing session.",
+  "rawEvidence": [
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12\\list-tools.json",
+      "sha256": "12a412fd2d43b5aba345ca4e3f46d2cd2bba1db042abe1bd34707ba1e7f9b7ee"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12\\capabilities.json",
+      "sha256": "d1c1c0340ac315e3e6410913860afa7a7de9d0fbd3989643912cc9c510efac75"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12\\prepare-candidate-audit.json",
+      "sha256": "97719698e893bbb1a336134c12ffe4c2ec172c7ed3a646103581e65d3340bc47"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12\\inspect-candidate-audit.json",
+      "sha256": "282d686a8641f93f0408b3a3f14345c71a14a98ff69c0ab9d72b816a8682ce8d"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12\\prepare-original-audit-checked.json",
+      "sha256": "5ae4adfbc198234fbb44264e001d047d24d4a2c3fe2721d42eb7bfde9bc9281a"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12\\original-final.json",
+      "sha256": "b82640bdbdec27d1ec1efe95eec1eafa244291f0f5a72562488d761f6d276c03"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12\\service-final.json",
+      "sha256": "b7781d696d8f1012abf4558df7205f829099922d327ea56dbcbaf1dc33a3c851"
+    }
+  ]
+}

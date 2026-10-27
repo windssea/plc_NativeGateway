@@ -1,0 +1,1123 @@
+{
+  "schema": "joint-m12s-v067-real-audit/v1",
+  "atUtc": "2026-10-26T15:13:22.476982+00:00",
+  "status": "MCP_RAW_AUDIT_REAL_PASS_ORIGINAL_RESTORED_NATIVE_DELIVERY_TAIL_6_UNCLOSED",
+  "mcpVersion": "0.6.7",
+  "toolCount": 79,
+  "offlineAcceptance": {
+    "testsPassed": 56,
+    "durationSeconds": 13.802,
+    "scope": "OWNED_LOCAL_TLS_PARENT_AUDIT_EXPORT_RECONCILIATION",
+    "frozenRealDiagnosticSnapshotExactMatch": true,
+    "log": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067-recovery\\offline-m12-tests.log"
+  },
+  "initialRecovery": {
+    "executionId": "632e6a88c53f4e9393ef438d8aa8d04c",
+    "bootId": "ng-d4f61b3085b97c5e3831983b-68",
+    "originalRestored": true,
+    "databaseProof": {
+      "scope": "CAPTURED_WINDOW_REAL_RECEIPTS_AND_SAMPLE_MULTISET",
+      "gatewayId": "NG-HUB-2152-01",
+      "bootIds": [
+        "ng-d4f61b3085b97c5e3831983b-68"
+      ],
+      "receiptHashesVerified": 43,
+      "committedSampleMultisetVerified": 2692,
+      "wireValues": 2692,
+      "distinctPoints": 250,
+      "timeRequestCount": 0,
+      "timeResponsesExactEchoVerified": 0,
+      "dataAfterObservedTimeResponses": null,
+      "normalizedTwoAgentConfigEqual": true,
+      "configDevices": 50,
+      "configPoints": 250,
+      "fullEventCohortComplete": false,
+      "nativeLocalReleaseAllProven": false,
+      "performanceAccepted": false,
+      "databaseWrites": false,
+      "temporaryDatabaseCreated": false,
+      "fakeDataOrAckPublished": false
+    }
+  },
+  "candidate": {
+    "projectId": "f40a214f31ea4ec28b5d9fd39c77c5ee",
+    "executionId": "048ba22de9da4451b7b375fa4eed07e4",
+    "operationId": "a36a0920731e4e06bd3b4210cef2c338",
+    "planId": "6234f6dee8644441a9799e6e5c1ac327",
+    "reviewSha256": "3c24c1f802b5575b5b107dcb0d9e35eff5ee16cfbca340baaf34b0e85bc4fa04",
+    "status": "original_loaded_runtime_observed",
+    "endpointLeaseRetained": false,
+    "outcomeUnknown": false,
+    "audit": {
+      "ack_write_attempts": 212,
+      "actual_file_sha256": "02f09dd4ff0b0cdb9a389056d560fe74631aafa9735f94ec6aae26133b7bb382",
+      "association": 47,
+      "audit_plan_id": "d368c3aa28cc4b089bcd1d00ef04058b",
+      "audit_plan_sha256": "ea05744cd90b8cfedbca32b1bf9cd9dd090d14ef5c796a7ebc2af69dc49988c3",
+      "automatic_restore": false,
+      "boot_observation_delay_seconds": 24.68699999997625,
+      "boot_source": "same_parent_start_observed_not_predicted",
+      "capture": 1758,
+      "cleanup_error_class": null,
+      "complete": true,
+      "device_control_sent_by_audit": false,
+      "durable_bytes": 919568,
+      "durable_cursors": {
+        "Association": 47,
+        "Audit": 1758
+      },
+      "first_sample_seq": 1,
+      "gapDetailTruncated": true,
+      "globalAccountingComplete": false,
+      "journal_sha256": "02f09dd4ff0b0cdb9a389056d560fe74631aafa9735f94ec6aae26133b7bb382",
+      "load_receipt_sha256": "4a9fc2e31cc4ea68a348f0864794228c92323825ca1f8418771b23ca8c271345",
+      "max_association_backlog": 8,
+      "max_capture_backlog": 394,
+      "observed_boot_id": "ng-d4f61b3085b97c5e3831983b-69",
+      "outcome_unknown": false,
+      "output_path": "D:\\PLCnext-MCP-Workspace\\f40a214f31ea4ec28b5d9fd39c77c5ee\\audit-exports\\d368c3aa28cc4b089bcd1d00ef04058b\\events.jsonl",
+      "parent_plan_id": "6234f6dee8644441a9799e6e5c1ac327",
+      "parent_review_sha256": "3c24c1f802b5575b5b107dcb0d9e35eff5ee16cfbca340baaf34b0e85bc4fa04",
+      "polls": 38,
+      "post_start_package_reads": 0,
+      "pre_start_boot": "",
+      "restartLossUnknown": true,
+      "schema": "plcnext-parent-audit-result/v1",
+      "shared_parent_lease": true,
+      "start_result": {
+        "aci_used": false,
+        "ack_received": true,
+        "action": "start",
+        "action_sent": true,
+        "automatic_retry": false,
+        "cancelled": false,
+        "cleanup_error_class": null,
+        "collection_verified": false,
+        "computer_use_used": false,
+        "controller_connected": true,
+        "elapsed_monotonic_seconds": 7.577999999979511,
+        "engineer_started": false,
+        "final_state_raw": 3,
+        "initial_state_raw": 1048578,
+        "inverse_action_sent": false,
+        "last_state_raw": 3,
+        "loaded_identity_evidence": {
+          "device_loaded_module_hash_read": false,
+          "fresh_plc_state_raw": 1048578,
+          "fresh_project_name_matches": true,
+          "journal_binding_verified": true,
+          "lease_held_continuously": true,
+          "load_execution_id": "048ba22de9da4451b7b375fa4eed07e4",
+          "load_journal_prefix_bytes": 69531,
+          "load_journal_sha256": "14df69ef9787f76d30e9298a67cfd195c6e3268b0b5a82c7ad43200c1a1ab597",
+          "load_receipt_sha256": "4a9fc2e31cc4ea68a348f0864794228c92323825ca1f8418771b23ca8c271345",
+          "load_state_verified": true,
+          "loaded_package_identity_verified": true,
+          "observed_loaded_inventory_sha256": "24a9ac623503167d7c4a094924bd13a11927a7b8c652d2d6f5c8f51b1fb64d5f",
+          "outside_tool_changes_excluded": false,
+          "plan_id": "6234f6dee8644441a9799e6e5c1ac327",
+          "project_name_observation": {
+            "value": "NativeGateway",
+            "wire_tag": 19,
+            "wire_type": "utf8"
+          },
+          "readback_all_files_verified": true,
+          "source": "same_plan_verified_load",
+          "target": {
+            "address": "192.168.0.8",
+            "authentication_mode": "anonymous",
+            "certificate_policy": "explicit_sha256_pin",
+            "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+            "port": 41100
+          }
+        },
+        "loaded_package_identity_verified": true,
+        "outcome_unknown": false,
+        "peer": {
+          "certificate_pin_verified": true,
+          "certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+          "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+          "pki_chain_and_hostname_verified": false,
+          "tls_version": "TLSv1.2"
+        },
+        "peer_connected": true,
+        "physical_output_behavior_verified": false,
+        "plan_id": "6234f6dee8644441a9799e6e5c1ac327",
+        "request_attempt_count": 1,
+        "review_sha256": "3a95f6f8b20b3f20449162082f3dd2bd857f51b27506d3ad72a3543615a8e738",
+        "schema": "plcnext-controller-control-result/v1",
+        "scope": "mcp_authorized",
+        "stage": "completed",
+        "start_command_sent": true,
+        "start_kind": "cold",
+        "status": "control_completed",
+        "stop_command_sent": false,
+        "target": {
+          "address": "192.168.0.8",
+          "authentication_mode": "anonymous",
+          "certificate_policy": "explicit_sha256_pin",
+          "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+          "port": 41100
+        },
+        "terminal_state_verified": true,
+        "trace": [
+          {
+            "operation": "Connect",
+            "response_received": true
+          },
+          {
+            "operation": "GetServiceHandles",
+            "response_received": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 2,
+            "mutating": true,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          },
+          {
+            "method": 5,
+            "mutating": false,
+            "operation": "Invoke",
+            "response_received": true,
+            "send_attempted": true,
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService"
+          }
+        ]
+      },
+      "status": "audit_export_completed",
+      "tail": [
+        1758,
+        47
+      ]
+    },
+    "rawPrefixIndependentCohort": {
+      "scope": "FINITE_RAW_PREFIX_FROZEN_EQUAL_CYCLIC_PROFILE",
+      "bootId": "ng-d4f61b3085b97c5e3831983b-69",
+      "captured": 1758,
+      "eligible": 1758,
+      "filtered": 0,
+      "timeInvalid": 708,
+      "admitted": 1050,
+      "associated": 1044,
+      "externallyStoredObserved": 1044,
+      "unassociatedTail": 6,
+      "associatedWithoutObservedStored": 0,
+      "associationMissingWire": [],
+      "batches": 47,
+      "sourcePrefixAndTailComplete": true,
+      "independentCyclicSelectionMatched": true,
+      "oracleConfigFromHubRelease": true,
+      "decisionTimeClockSeparatelyAttested": false,
+      "missedSlotsIndependentlyVerified": false,
+      "localReleaseAllProven": false,
+      "fullDeliveryCohortComplete": false,
+      "globalAccountingComplete": false,
+      "previousRamRestartLoss": "UNKNOWN",
+      "performanceAccepted": false
+    },
+    "associatedOwnerRetirementProof": {
+      "scope": "SOURCE_MODEL_RETIRED_OWNERS_FOR_AUDITED_ASSOCIATION_SUBSET",
+      "bootId": "ng-d4f61b3085b97c5e3831983b-69",
+      "batches": 47,
+      "events": 1044,
+      "allAssociatedBatchIdsAbsentFromCurrentOutbox": true,
+      "terminalOwnersNonzero": 0,
+      "postAdmissionKnownUnsentObserved": 0,
+      "isolatedOrUncertainObserved": 0,
+      "readOnlyGuardedNonAtomic": true,
+      "associatedSubsetLocalReleaseProven": true,
+      "fullCohortLocalReleaseProven": false,
+      "unassociatedTail": 6,
+      "sourceModel": "NG_EndBatch STORED retires owner; other retirement paths excluded by current-boot counters and terminal owners.",
+      "observationSha256": "d72f2327c759b93de53755d19515e54f85e65b8ae8ad0bd0e9f5035fa410b009",
+      "globalAccountingComplete": false
+    },
+    "externalWindowProof": {
+      "scope": "CAPTURED_WINDOW_REAL_RECEIPTS_AND_SAMPLE_MULTISET",
+      "gatewayId": "NG-HUB-2152-01",
+      "bootIds": [
+        "ng-d4f61b3085b97c5e3831983b-69"
+      ],
+      "receiptHashesVerified": 201,
+      "committedSampleMultisetVerified": 4034,
+      "wireValues": 4034,
+      "distinctPoints": 250,
+      "timeRequestCount": 4,
+      "timeResponsesExactEchoVerified": 3,
+      "dataAfterObservedTimeResponses": true,
+      "normalizedTwoAgentConfigEqual": true,
+      "configDevices": 50,
+      "configPoints": 250,
+      "fullEventCohortComplete": false,
+      "nativeLocalReleaseAllProven": false,
+      "performanceAccepted": false,
+      "databaseWrites": false,
+      "temporaryDatabaseCreated": false,
+      "fakeDataOrAckPublished": false
+    },
+    "associationReceiptSubset": {
+      "subsetOfAllVerifiedWindowIds": true,
+      "batches": 47,
+      "events": 1044
+    },
+    "unclosedAdmittedTail": 6,
+    "fullDeliveryCohortComplete": false,
+    "priorSameCandidateBoot67TimeAssertions": 47,
+    "timeAssertionsDirectlyReadOnBoot69": false
+  },
+  "finalRestore": {
+    "projectId": "17ae4361baa846868b14775bf1de15ea",
+    "planId": "bb387b6fed3a42db9f3785798058f01c",
+    "reviewSha256": "a07c133e71fa6ac62bd3454c75f79f7623328c6312dbb84124d54d84770a7efd",
+    "operationId": "15a3863c05c248ebb00a260095335a48",
+    "executionId": "84494e9560124c10b452f5840cb8bb66",
+    "status": "original_loaded_runtime_observed",
+    "originalProgramRestored": true,
+    "originalConfigurationVerified": true,
+    "endpointLeaseRetained": false,
+    "outcomeUnknown": false,
+    "runtime": "native-0.5.0",
+    "bootId": "ng-d4f61b3085b97c5e3831983b-70",
+    "qualityCoverage": {
+      "requested": 250,
+      "read": 250,
+      "good": 250,
+      "all_requested_good": true,
+      "atomic_snapshot": false,
+      "expected_point_count": 250,
+      "complete_expected_point_coverage": true
+    },
+    "observationSha256": "7c6f48013c4fd539b8f37d2cedaa9231838619de6912279db16d70ee02db69a9",
+    "loadedIdentity": {
+      "status": "unknown",
+      "package_sha256": null,
+      "reason": "ProjectName, source symbols and disk manifests do not attest the memory-loaded image."
+    },
+    "configurationDigest": {
+      "sha256": "54d0db9e1c564e96fa8fb618a0bc1f6a73afaa7eb331b815a49079b8770a20ab",
+      "field_count": 1006,
+      "scope": "only_returned_active_fields",
+      "full_sampling_configuration_verified": false
+    },
+    "databaseProof": {
+      "scope": "CAPTURED_WINDOW_REAL_RECEIPTS_AND_SAMPLE_MULTISET",
+      "gatewayId": "NG-HUB-2152-01",
+      "bootIds": [
+        "ng-d4f61b3085b97c5e3831983b-70"
+      ],
+      "receiptHashesVerified": 39,
+      "committedSampleMultisetVerified": 2442,
+      "wireValues": 2442,
+      "distinctPoints": 250,
+      "timeRequestCount": 0,
+      "timeResponsesExactEchoVerified": 0,
+      "dataAfterObservedTimeResponses": null,
+      "normalizedTwoAgentConfigEqual": true,
+      "configDevices": 50,
+      "configPoints": 250,
+      "fullEventCohortComplete": false,
+      "nativeLocalReleaseAllProven": false,
+      "performanceAccepted": false,
+      "databaseWrites": false,
+      "temporaryDatabaseCreated": false,
+      "fakeDataOrAckPublished": false
+    }
+  },
+  "services": {
+    "atUtc": "2026-10-26T15:06:56.3817643Z",
+    "backendInstances": 1,
+    "backendPids": [
+      27204
+    ],
+    "listeners": [
+      {
+        "LocalPort": 8080,
+        "OwningProcess": 27204
+      },
+      {
+        "LocalPort": 18080,
+        "OwningProcess": 23716
+      },
+      {
+        "LocalPort": 11502,
+        "OwningProcess": 23716
+      },
+      {
+        "LocalPort": 8090,
+        "OwningProcess": 35404
+      }
+    ],
+    "mockDevices": 50,
+    "mockRunning": 50,
+    "mockGood": 250,
+    "mockConfigError": null,
+    "remainingTestObservers": 0
+  },
+  "globalAccountingComplete": false,
+  "priorVolatileRestartLoss": "UNKNOWN",
+  "performanceRetestsPaused": true,
+  "temporaryDatabaseCreated": false,
+  "businessCodeChangedThisTurn": false,
+  "mcpSourceChangedThisTurn": false,
+  "gitCommitted": false,
+  "publicReadLimitNote": "A same-host read helper failed to serialize a tool error. Separate public calls and the required endpoint interval recovered; late ring snapshots are not used to invent the six missing associations.",
+  "rawEvidence": [
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\associated-owner-retirement-proof.json",
+      "sha256": "e2f2555e499e1b848c0e6c95602229f41584770332b67dc2ae7e1b6095defbca"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\association-a-prepare.json",
+      "sha256": "aae5c2ca46121b9026504db657e4ff3292423bc1cea1e288493a4e757ddff511"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\association-a-read-request.json",
+      "sha256": "708585b22be183be14592438894c3da9a53071aca7e6d578ad6dbb364bb41c46"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\association-a-read.json",
+      "sha256": "8269c0f76b397b4c2ac5177bca9c13c8f7f93fe5b02c0bd09ef011b4429cc78b"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\association-b-prepare.json",
+      "sha256": "286659ce671d0d751634ae295b799b185175fdcb4925a6d1af87e94fb447f57e"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\association-b-read-request.json",
+      "sha256": "85b47a36a35e4c44461178a7412e31c397725b4119db8a1863c101f66353b2ba"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\association-b-read.json",
+      "sha256": "9291283ba183d36ad4ae6069034a63dddc8a3d6f61c7c9f351b0ab367f6d39b1"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\audit-inspect-request.json",
+      "sha256": "77d6b62a5a5819fcf6e1a929229e4bd47c05337b805c73ef7a686c38423dd132"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\audit-inspect.json",
+      "sha256": "fc6862be2bd315c6166931ddb4ddf051297ee0aaa9431430cbb5a55e35686fd9"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\candidate-authorize-request.json",
+      "sha256": "47669bf6a61ad990078479ecab7fed4c4906c55ec9f08b4d1cd0baec6917f4d8"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\candidate-authorize.json",
+      "sha256": "0effc5ddcea2d762cc9a462e7441ed2aecffd0e86d966a62923588bfedb05f97"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\candidate-execute-request.json",
+      "sha256": "a462dc026aba9317cbf46f5cb3c0b3abf1a410b894573d40edbb67822ef5a770"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\candidate-execute.json",
+      "sha256": "66ff51144d66831ed1c670ffd70a2c57bdf51f1b9ea43bb325de4131554cc45f"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\candidate-inspect-request.json",
+      "sha256": "5186a3fc1f96416fc655b4606e1e0728812b3f8f97bee6850b12a9ef824b65da"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\candidate-inspect.json",
+      "sha256": "0340ccad63dc4fc1c0703d7f8e8088268e79c8b944ffb97763c50d64feef95fb"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\candidate-prepare-request.json",
+      "sha256": "a60db08851648f807acd231b0637cbfe1e0d2e4249ec345e5e8eb6e762a9ae12"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\candidate-prepare.json",
+      "sha256": "c59a9a48bd17015b54ab7d7063c26c44ef40a2bde1acb84c6bcf5b2a924861c3"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\capabilities.json",
+      "sha256": "3da3014eb71aea70c1c227c46e75ef57df2b2019b21586257894dac42e3b8a55"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\original-final.json",
+      "sha256": "4e25b105d449a7cf326f5bfd210143c4c71b762f7c1af798045f4b96075f3d72"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\owners-prepare.json",
+      "sha256": "2b14d558c28ca83418b2d3a4f323aed6d92faacad76e0d6a642b4fc73c64d8d3"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\owners-read-after-interval.json",
+      "sha256": "ad527760bcf2f3f90cbf9294ca6a29f43ed7e2cd84950869730093b7e6078671"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\owners-read-request.json",
+      "sha256": "adeb68b8eafffb04dde39c46663857e24549b1f4b02d2e5f619cdff4026a5a12"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\owners-read.json",
+      "sha256": "60169dee32db72bcb517d6899c46a38ee7bb92ab238ac2448fb77a46bb0e3651"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\restore-authorize-request.json",
+      "sha256": "191d17d49853929e99918d733368d06ebb19b9ae8b26a680c4ce65f9fc584aab"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\restore-authorize.json",
+      "sha256": "47b27899aad55359fbfb4c14ba75e007091d6235210e1525a76fea8981fbac5c"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\restore-execute-request.json",
+      "sha256": "fc6c99c061aede63e106290665a84a51c57ca5ae33dbc7e4b9c1593029d33ee8"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\restore-execute.json",
+      "sha256": "93fae165d5dfbbd8f3e82ac465acd2f6590d65a9633b0fff26ce8be12d0d8fc7"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\restore-inspect-request.json",
+      "sha256": "c9e8a753cb3f9ad04ed2e2a8b267cf98690dc4f6bd00a657232fc12cc13d3bc9"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\restore-inspect.json",
+      "sha256": "2eae7880f45cb2ddc54b3c853e7f2a6bc782f604f32b80381dc147be16b9e679"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\restore-prepare-request.json",
+      "sha256": "c2e898e4614f6f3d399f64ab2af6e5f1f3d92f9bbb583819164e5a6effbb09b7"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\restore-prepare.json",
+      "sha256": "c8a300de14bc5f2c51046147d7914b84f648eb7c324e03a112740b955db2a382"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\service-final.json",
+      "sha256": "4aeed8b1b5f8474e12f7eb2859b1813a74419fcc380e55ca4766f337bcc08ba8"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067-recovery\\reconcile-inspect.json",
+      "sha256": "9205f7688be808246ec173fbdd4af0e289a382a5565db53b09790c3057df5291"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067-recovery\\offline-m12-tests.log",
+      "sha256": "f2262b6f81ef35fe53030f19ce526c209c0e715cddf7ebaee5fcca8c42885379"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\m12s-v067-native-cohort.json",
+      "sha256": "299f4413c79e72d3e9a20097adb946231cbeb61ecd3643c3f5a7824582c5a5b2"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\m12s-v067-native-cohort.mapping.json",
+      "sha256": "72db8f9c86b26d1cfce58bcc06b9411db0c72312fd835aa7ffdc0754e3a7c2fe"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\m12s-v067-candidate-wire.json",
+      "sha256": "ece72dff31bf339a136370561c8dcda924e5500dc716f9cd5e80782b38df8380"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\m12s-v067-boot69-db-proof.json",
+      "sha256": "e85207a262f1d3c7312aa5e443854c469df9db5fd403da99dae8eb1b47c25b02"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\m12s-v067-final-restore-wire.json",
+      "sha256": "c8f58203de5d32911b2232cc0bfc4bd67326ee9c50275d820b0ec3e56b57641a"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\m12s-v067-final-restore-boot70-db-proof.json",
+      "sha256": "3617bf54e2d5d1921917da00186fc511547fd649ee8309325c4ee3ca1484dbbb"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\f40a214f31ea4ec28b5d9fd39c77c5ee\\audit-exports\\d368c3aa28cc4b089bcd1d00ef04058b\\events.jsonl",
+      "sha256": "02f09dd4ff0b0cdb9a389056d560fe74631aafa9735f94ec6aae26133b7bb382"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\f40a214f31ea4ec28b5d9fd39c77c5ee\\audit-exports\\d368c3aa28cc4b089bcd1d00ef04058b\\result.json",
+      "sha256": "86a49331b02c40ace5d329e7fc10189a0d7794252ba281e2a9569a5d4410a0e5"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\f40a214f31ea4ec28b5d9fd39c77c5ee\\audit-exports\\d368c3aa28cc4b089bcd1d00ef04058b\\transport.jsonl",
+      "sha256": "59f377dbef1a3509ce94bb2b383c7cbcd9b98c962384064f62658b9b5207c5c7"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\f40a214f31ea4ec28b5d9fd39c77c5ee\\audit-exports\\d368c3aa28cc4b089bcd1d00ef04058b\\ack-journal.jsonl",
+      "sha256": "82c755893b3fcc2fe98c0f218205b1ab002cbe42ab8094408c5d4c77d67b623a"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\f40a214f31ea4ec28b5d9fd39c77c5ee\\controller-recoveries\\048ba22de9da4451b7b375fa4eed07e4\\result.json",
+      "sha256": "857b8405ef2365df28a235b03c348ffc28bf34f09d7472bec4716e1b0cf5409d"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\f40a214f31ea4ec28b5d9fd39c77c5ee\\controller-recoveries\\048ba22de9da4451b7b375fa4eed07e4\\journal.jsonl",
+      "sha256": "a63b76ac03ad806d6c181c47b18b4012a17058869044eb605090f7e2f32bc7cf"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\controller-recoveries\\84494e9560124c10b452f5840cb8bb66\\result.json",
+      "sha256": "4333b91294476c0f2b74db74fa3635068a88b37f124661a82510de0b5950d192"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\controller-recoveries\\84494e9560124c10b452f5840cb8bb66\\journal.jsonl",
+      "sha256": "d329448d6edce9da680cdd683c35ce949ef75db3d603660de19b23bf0c35f3f1"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\frozen-tools\\native_event_cohort.py",
+      "sha256": "da5c02d5471b4cd2013f24fe38c5a25e635b7e597b9f4b0e6aa360380f51a0f9",
+      "originalMutableSourcePath": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\native_event_cohort.py"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m12s-v067\\frozen-tools\\test_native_event_cohort.py",
+      "sha256": "a29f7c74fafcb135720c2a895f036076eafd54a219609d6f0cc322368f1698ad",
+      "originalMutableSourcePath": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\test_native_event_cohort.py"
+    }
+  ],
+  "independentOracleRegression": {
+    "nativeTestsPassed": 15,
+    "pythonTestsPassed": 13,
+    "totalPassed": 28,
+    "scope": "PURE_OFFLINE_EVIDENCE_CORRUPTION_AND_SELECTION_BOUNDARIES"
+  },
+  "historicalToolSnapshotNote": "Before M13 development, exact previously hashed verifier sources were preserved as immutable acceptance snapshots. Runtime/event evidence and prior results are unchanged."
+}

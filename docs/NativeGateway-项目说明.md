@@ -1,5 +1,7 @@
 # NativeGateway 项目说明
 
+> 工程与版本以[统一下载入口](../projects/README.md)为准：根工程为授时候选，恢复旧运行程序须选stable归档；本文历史版本说明不代表最终发布。
+
 原生 IEC/ST + PLCnext Engineer Web HMI 的 Modbus TCP / MQTT 采集网关
 
 文档版本：1.4　|　程序版本：native-0.5.0　|　日期：2026-10-23

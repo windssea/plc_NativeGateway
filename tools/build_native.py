@@ -150,7 +150,9 @@ def build():
     if hmi.exists():
         for p in hmi.rglob('*'):
             if p.is_file():files[p.relative_to(hmi).as_posix()]=p.read_bytes()
-    dest=ROOT/'NativeGateway.pcwex'
+    # Frozen inputs and the reviewed root alias are never build outputs.
+    dest=ROOT/'output/NativeGateway.development.pcwex'
+    dest.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(dest,'w',zipfile.ZIP_DEFLATED) as z:
         for n,data in files.items():z.writestr(n,data)
     print(f'Built {dest} ({dest.stat().st_size} bytes)')

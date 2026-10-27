@@ -1,0 +1,77 @@
+{
+  "atUtc": "2026-10-26T10:36:26.109525+00:00",
+  "status": "T05_COMPILE_PASS_DOWNLOAD_BLOCKED_T06_PARTIAL_REAL_PASS",
+  "performanceRetestsPaused": true,
+  "temporaryDatabaseCreated": false,
+  "backendInstances": 1,
+  "plc": {
+    "projectId": "f40a214f31ea4ec28b5d9fd39c77c5ee",
+    "revision": 1,
+    "projectSha256": "b585662abf3d86a1d0445d59e9ed4354723edebafd1f0fcb4b81647a7fe80d41",
+    "projectPath": "D:\\PLCnext-MCP-Workspace\\f40a214f31ea4ec28b5d9fd39c77c5ee\\revision-0001.pcwex",
+    "coldBuildJob": "fbe65cb0a0ab476b9446b2f3742772a2",
+    "pouCount": 66,
+    "compiled": true,
+    "errors": 0,
+    "warnings": 0,
+    "nativeAssertionsExecuted": false,
+    "nativeAssertionsPending": 47,
+    "controllerDownloaded": false,
+    "downloadFailure": "endpoint_busy_or_quarantined",
+    "controllerChanged": false,
+    "packageJob": "d8ffa5d9a23c46cba17ee31be144c889",
+    "inventorySha256": "24a9ac623503167d7c4a094924bd13a11927a7b8c652d2d6f5c8f51b1fb64d5f",
+    "generatedAssertionSourcesMatchCompiledCandidate": true,
+    "rootProjectUnchangedThisTurn": true,
+    "timeStateUpperBoundBytes": 14928,
+    "timeStateReservedBytes": 16384,
+    "fullBudgetEstimateBytes": 4187229,
+    "budgetRuntimeMeasured": false,
+    "driftScope": "DEVELOPMENT_FUNCTIONAL_OBSERVATION_ONLY"
+  },
+  "originalRuntime": {
+    "observedAtUtc": "2026-10-26T10:27:54.795394+00:00",
+    "bootId": "ng-d4f61b3085b97c5e3831983b-62",
+    "baseState": 3,
+    "configVersion": 13,
+    "devices": 50,
+    "points": 250,
+    "enabled": true,
+    "quality": {
+      "requested": 250,
+      "read": 250,
+      "good": 250,
+      "all_requested_good": true,
+      "atomic_snapshot": false,
+      "expected_point_count": 250,
+      "complete_expected_point_coverage": true
+    },
+    "loadedIdentity": {
+      "status": "unknown",
+      "package_sha256": null,
+      "reason": "ProjectName, source symbols and disk manifests do not attest the memory-loaded image."
+    },
+    "configurationDigest": {
+      "sha256": "54d0db9e1c564e96fa8fb618a0bc1f6a73afaa7eb331b815a49079b8770a20ab",
+      "field_count": 1006,
+      "scope": "only_returned_active_fields",
+      "full_sampling_configuration_verified": false
+    },
+    "observationSha256": "638cf6a7b261edd0d56cdf0e2edc19e68cde21635782dda90e4a531b3fbcee0e",
+    "originalBusinessCollectionRestored": true,
+    "sourceIdentityAttestsMemoryImage": false,
+    "priorRamRestartLoss": "UNKNOWN"
+  },
+  "mock": {
+    "healthyDevices": 50,
+    "listenerPid": 23716,
+    "supervisorPid": 62800,
+    "database": "existing nativegateway-soak.db",
+    "exitCause": "UNKNOWN",
+    "restartFailureCause": "Old venv referenced removed Python 3.14",
+    "runtimePython": "3.12.13",
+    "supervisorChecksPassed": 4
+  },
+  "pythonEvidence": "D:\\work\\code\\PLCnext-iot\\doc\\verification\\2026-10-26-t06-live-evidence.json",
+  "mcpGap": "D:\\work\\code\\PLCnext-Engineer-mcp\\docs\\端点租约受控核销缺口-20261026.md"
+}

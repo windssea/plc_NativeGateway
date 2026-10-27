@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-26",
+  "scope": "Offline clock components and assertion harness; not a production gateway",
+  "source": {
+    "path": "D:/work/code/PLCnext-Engineer/NativeGateway.pcwex",
+    "sha256": "4916dd7dc52bd01fe0317fd0d69ea40a6e03ddcec3d879ae65d323afd41e7d58",
+    "unchanged": true
+  },
+  "project": {
+    "project_id": "1805b367b78b4f9eb338104d249bbbca",
+    "revision": 4,
+    "sha256": "d6a47259927a8aa8c02fd6560266fbefa04e4280bef140799c62dfdd45bb8a1b",
+    "path": "D:\\PLCnext-MCP-Workspace\\1805b367b78b4f9eb338104d249bbbca\\revision-0004.pcwex",
+    "pouCount": 65
+  },
+  "build": {
+    "job_id": "132ca4cce6564f688f9e0c243566defb",
+    "status": "compiled",
+    "compiled": true,
+    "buildMode": "cold",
+    "syntaxErrors": 0,
+    "semanticErrors": 0,
+    "semanticWarnings": 56,
+    "reportPath": "D:\\PLCnext-MCP-Workspace\\1805b367b78b4f9eb338104d249bbbca\\builds\\132ca4cce6564f688f9e0c243566defb\\result.json",
+    "astSeedUsed": false,
+    "wholeProjectRebuilt": false
+  },
+  "assertions": {
+    "clockAndPermit": 24,
+    "response": 23,
+    "compiled": true,
+    "executed": false,
+    "passed": null
+  },
+  "controllerConnected": false,
+  "controllerDownloaded": false,
+  "productionMainWired": false,
+  "physicalIntegrationAccepted": false,
+  "performanceRetested": false
+}

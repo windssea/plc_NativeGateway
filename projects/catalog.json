@@ -1,0 +1,40 @@
+{
+  "schema": "nativegateway-project-catalog/v1",
+  "date": "2026-10-27",
+  "entryPoint": "projects/README.md",
+  "defaultArtifactId": "native-0.7.0-timesync-candidate.1",
+  "rootAlias": "NativeGateway.pcwex",
+  "archivesImmutable": true,
+  "plcDownloadedThisChange": false,
+  "entries": [
+    {
+      "artifactId": "native-0.5.0",
+      "path": "projects/stable/native-0.5.0/NativeGateway.pcwex",
+      "sha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154",
+      "embeddedAgentVersion": "native-0.5.0",
+      "status": "STABLE_RESTORE",
+      "downloadPurpose": "恢复已验证的原运行程序；旧RTC兼容时间路径，不用于证明新授时。",
+      "pouCount": 32,
+      "verifiedPackageId": "f7fc619d55ba42c091f4ca0efed23e73"
+    },
+    {
+      "artifactId": "native-0.7.0-timesync-candidate.1",
+      "path": "projects/candidates/native-0.7.0-timesync-candidate.1/NativeGateway.pcwex",
+      "sha256": "b585662abf3d86a1d0445d59e9ed4354723edebafd1f0fcb4b81647a7fe80d41",
+      "embeddedAgentVersion": "native-0.7.0-p05p06",
+      "status": "FUNCTIONAL_CANDIDATE",
+      "downloadPurpose": "Hub/IoT/PLC授时及缓冲补传功能联调；完整矩阵、生产漂移、P06尚未放行。",
+      "pouCount": 66,
+      "verifiedPackageId": "d8ffa5d9a23c46cba17ee31be144c889"
+    },
+    {
+      "artifactId": "p06-before-entry-unification",
+      "path": "projects/experimental/p06-before-entry-unification/NativeGateway.pcwex",
+      "sha256": "4916dd7dc52bd01fe0317fd0d69ea40a6e03ddcec3d879ae65d323afd41e7d58",
+      "embeddedAgentVersion": "native-0.7.0-p05p06",
+      "status": "HISTORICAL_EXPERIMENT",
+      "downloadPurpose": "保留归档前根目录的P06试验输入，禁止作为默认下载工程。",
+      "pouCount": 61
+    }
+  ]
+}

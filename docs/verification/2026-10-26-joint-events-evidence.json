@@ -1,0 +1,95 @@
+{
+  "atUtc": "2026-10-26T13:22:26.359822+00:00",
+  "status": "PYTHON_SOURCE_COHORT_REAL_PASS_NATIVE_AUDIT_MCP_GAP",
+  "pythonEvidence": "D:\\work\\code\\PLCnext-iot\\doc\\verification\\2026-10-26-events-reconnect-evidence.json",
+  "pythonCohort": {
+    "scope": "CURRENT_BOOT_SOURCE_POLICY_WIRE_ACK_LOCAL_RELEASE",
+    "bootId": "boot-88420ac8e87a43ec89d2e41bfcdca892",
+    "captured": 2436,
+    "eligible": 2436,
+    "filtered": 0,
+    "stored": 2096,
+    "knownUnsent": 340,
+    "timeInvalid": 340,
+    "batches": 37,
+    "missedReportSlots": 2,
+    "sessions": 2,
+    "sourcePrefixAndTailComplete": true,
+    "independentSelectionMatched": true,
+    "currentBootCohortComplete": true,
+    "globalAccountingComplete": false,
+    "priorVolatileRestartLoss": "UNKNOWN",
+    "oracleConfigFromHubRelease": true,
+    "databaseProofAttached": true,
+    "performanceAccepted": false,
+    "databaseProof": {
+      "scope": "CAPTURED_WINDOW_REAL_RECEIPTS_AND_SAMPLE_MULTISET",
+      "gatewayId": "PLC-UI-DEMO",
+      "bootIds": [
+        "boot-88420ac8e87a43ec89d2e41bfcdca892"
+      ],
+      "receiptHashesVerified": 37,
+      "committedSampleMultisetVerified": 2096,
+      "wireValues": 2096,
+      "distinctPoints": 250,
+      "timeRequestCount": 10,
+      "timeResponsesExactEchoVerified": 6,
+      "dataAfterObservedTimeResponses": false,
+      "normalizedTwoAgentConfigEqual": true,
+      "configDevices": 50,
+      "configPoints": 250,
+      "fullEventCohortComplete": false,
+      "nativeLocalReleaseAllProven": false,
+      "performanceAccepted": false,
+      "databaseWrites": false,
+      "temporaryDatabaseCreated": false,
+      "fakeDataOrAckPublished": false
+    },
+    "missedPollCycles": 314
+  },
+  "plc": {
+    "currentBoot": "ng-d4f61b3085b97c5e3831983b-64",
+    "runtime": "original native-0.5.0",
+    "configVersion": 13,
+    "quality": {
+      "requested": 250,
+      "read": 250,
+      "good": 250,
+      "all_requested_good": true,
+      "atomic_snapshot": false,
+      "expected_point_count": 250,
+      "complete_expected_point_coverage": true
+    },
+    "readOnly": true,
+    "controllerWritesThisTurn": false,
+    "downloadsThisTurn": false,
+    "observationSha256": "30853e7c24c641cafc3190988e52e46b85b491ccf2952f6ca64e0a02aadf27da",
+    "configurationDigest": {
+      "sha256": "54d0db9e1c564e96fa8fb618a0bc1f6a73afaa7eb331b815a49079b8770a20ab",
+      "field_count": 1006,
+      "scope": "only_returned_active_fields",
+      "full_sampling_configuration_verified": false
+    },
+    "loadedIdentity": {
+      "status": "unknown",
+      "package_sha256": null,
+      "reason": "ProjectName, source symbols and disk manifests do not attest the memory-loaded image."
+    },
+    "independentFullEventCohort": "BLOCKED_M12"
+  },
+  "mcp": {
+    "toolCount": 73,
+    "auditExportSupported": false,
+    "gap": "D:\\work\\code\\PLCnext-Engineer-mcp\\docs\\独立事件审计导出缺口-20261026.md"
+  },
+  "backendPid": 27204,
+  "backendInstances": 1,
+  "frontendPid": 35404,
+  "mockListenerPid": 23716,
+  "mockDevices": 50,
+  "temporaryDatabaseCreated": false,
+  "performanceRetestsPaused": true,
+  "productionCodeChanged": false,
+  "pureOracleTestsPassed": 13,
+  "localSqliteRestored": true
+}
