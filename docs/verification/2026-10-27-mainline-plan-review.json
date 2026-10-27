@@ -1,0 +1,113 @@
+{
+  "schema": "three-project-mainline-document-review/v1",
+  "localDate": "2026-10-27",
+  "timezone": "Asia/Shanghai",
+  "plan": "MAINLINE/1",
+  "technicalPlan": "JOINT-PLAN/15",
+  "implementationTaskPlan": "S1-PLAN/4",
+  "reviewedStages": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "originalTaskIds": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "H01",
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "I01",
+    "I02",
+    "I03",
+    "I04",
+    "I05",
+    "I06",
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06"
+  ],
+  "originalTaskCount": 21,
+  "timeTaskCount": 7,
+  "jointMilestoneCount": 8,
+  "acceptanceRequirementCount": 16,
+  "allOriginalIdsRetained": true,
+  "allPlansCompleted": false,
+  "currentPriority": "HUB_USER_FLOW_GATEWAY_STEADY_UPLOAD_AND_RESTART_RECOVERY",
+  "mcpRole": "DEVELOPMENT_TOOL",
+  "m14Role": "OPTIONAL_DIAGNOSTIC_EVIDENCE",
+  "p06Status": "NOT_PASSED_DEFERRED",
+  "nativeTelemetryFileJournalImplemented": false,
+  "temporaryDatabaseCreated": false,
+  "databaseAccessedThisReview": false,
+  "plcAccessed": false,
+  "servicesChanged": false,
+  "testExecuted": false,
+  "sourceFilesCompared": 2630,
+  "sourceFilesChanged": 0,
+  "localLinksChecked": 149,
+  "localLinksBroken": 0,
+  "documents": [
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\docs\\三方主线开发与联调计划.md",
+      "sha256": "aabfb09eee361c765cb99fdae6d7b3987ba52f0162579922343e2c312c0b566d"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\docs\\Hub-IoT-PLC协同实施计划.md",
+      "sha256": "c51fab650a964c623a76006f2006fb42ddf0b653d9fb3bf7e427f045b4a9dfd9"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\docs\\三方联调实施与统一验收-20261026.md",
+      "sha256": "23ffb9b5ab0be8f870a049e403f9515a8bb9c671c9602ef0b6164fe62bfd790a"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\docs\\阶段1-三方实施任务与顺序.md",
+      "sha256": "b7b9ed309b344c655a54bf07fcdb0e9bc318595d476cbee50411514e4e9b687f"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\README.md",
+      "sha256": "b5acaef017c92d13556ddef1aacca0beb95fc02c0ee857c87f6e5d5e268cc98b"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\tests\\README.md",
+      "sha256": "02465ed93368f82b5683795cc6336c7022b55e19c50b4c934f6a68ea11a60d4d"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\docs\\MQTT平台授时方案.md",
+      "sha256": "b08344c29d4e788dd77b094796946cb9eb18dda650d8693014b49f5e6aa216ed"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\docs\\PLC有界采样缓冲与补传方案.md",
+      "sha256": "f1f0dcbf5dd5a2858377b13ea57dc5f05d3351fb19eebe9af2bf443891ca2aeb"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\docs\\T05-PLC授时离线组件与接入边界-20261026.md",
+      "sha256": "469aa964a93d8b82b844e5819575ea9e07104fc8f43583d6603b6abfab62ffc5"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\docs\\后台服务检查-2026-10-24.md",
+      "sha256": "894ed234eed860f80bcf8c482ff27e6db18a7085a3612a4c3a112be01c63d795"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\docs\\architecture\\hub-iot-phase0.md",
+      "sha256": "2bf46a74886522240ae3183626a7741d8bb4ba40ff0404db68b9bad730333de3"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-iot\\doc\\三方阶段0接口定稿.md",
+      "sha256": "e5032508aedef4085f888ab8b6e0c1a945abfd0a85cd3c7e88ae8a3a61df1ed7"
+    }
+  ],
+  "sourceManifest": {
+    "before": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-review-20261027\\source-before.json",
+    "after": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-review-20261027\\source-after.json",
+    "sha256": "0eb3465a59b87e84db1e18bffe3cac4286a7f99b4edb90be33871b7ca3db9d47"
+  },
+  "committed": false
+}
