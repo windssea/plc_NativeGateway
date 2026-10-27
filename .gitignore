@@ -39,7 +39,22 @@ __pycache__/
 !/tests/mock*.yaml
 !/tests/README.md
 !/tests/phase1_capture_test.st
+!/tests/phase1_pipeline_test.st
+!/tests/phase1_pipeline_slice_checks.st
+!/tests/phase1_diagnostics_test.st
+!/tests/phase1_performance_test.st
 !/tests/validation/
+
+# Raw P05/P06 wire and expanded per-value mappings remain local; compact
+# cohort/DB proofs and the SHA-256 evidence manifest are reviewable in Git.
+/tests/validation/p05-p06/*wire*.json
+/tests/validation/p05-p06/*.mapping.json
+/tests/validation/p05-p06/batch64/*-boot*.jsonl
+/tests/validation/p05-p06/batch64/wire-*.json
+/tests/validation/p05-p06/batch64/cohort-*.mapping.json
+/tests/validation/p05-p06/ablation/*-boot*.jsonl
+/tests/validation/p05-p06/ablation/wire-*.json
+/tests/validation/p05-p06/ablation/cohort-*.mapping.json
 
 # Editor and OS metadata
 .idea/
@@ -47,3 +62,11 @@ __pycache__/
 Thumbs.db
 Desktop.ini
 *.bak
+/tests
+!/tests/
+!/tests/time-sync-cases.json
+!/tests/platform_time_test.st
+!/tests/NG_TimeResponseTest.st
+
+# Offline audit-v2 IEC assertion source.
+!/tests/audit_facts_test.st

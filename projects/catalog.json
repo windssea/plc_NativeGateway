@@ -35,6 +35,18 @@
       "status": "HISTORICAL_EXPERIMENT",
       "downloadPurpose": "保留归档前根目录的P06试验输入，禁止作为默认下载工程。",
       "pouCount": 61
+    },
+    {
+      "artifactId": "native-0.7.1-audit-candidate.2",
+      "path": "projects/candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex",
+      "sha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4",
+      "embeddedAgentVersion": "native-0.7.1-audit-candidate.2",
+      "pouCount": 66,
+      "status": "OFFLINE_COMPILED_PENDING_MCP_EXPORT_AND_REAL_VALIDATION",
+      "downloadPurpose": "仅离线开发/审查；本轮禁止下载。不用于恢复，不替换当前默认候选。",
+      "verifiedPackageId": "9ccf64a8e3824990bd738a19f70dd550",
+      "controllerDownloaded": false,
+      "default": false
     }
   ]
 }

@@ -5576,7 +5576,8 @@
     "rootAlias": "NativeGateway.pcwex",
     "defaultCandidate": "projects/candidates/native-0.7.0-timesync-candidate.1/NativeGateway.pcwex",
     "stableRestore": "projects/stable/native-0.5.0/NativeGateway.pcwex",
-    "plcDownloadedThisChange": false
+    "plcDownloadedThisChange": false,
+    "auditOnlyCandidate": "projects/candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex"
   },
   "pythonStartupFix20261027": {
     "evidence": "D:\\work\\code\\PLCnext-iot\\doc\\verification\\2026-10-27-project-entry-python-startup-evidence.json",
@@ -5748,5 +5749,173 @@
       "correctedEntry": "tools/run_startup_regression.py",
       "correctedEntryRejectsAllSqliteConnections": true
     }
+  },
+  "latestOfflineDevelopment": {
+    "atUtc": "2026-10-27T01:57:26.248338+00:00",
+    "status": "OFFLINE_IMPLEMENTED_COMPILED_PUBLIC_EXPORT_ADAPTATION_PENDING",
+    "evidence": "D:\\work\\code\\PLCnext-Engineer\\docs\\verification\\2026-10-27-audit-v2-offline-evidence.json",
+    "report": "D:\\work\\code\\PLCnext-Engineer\\docs\\PLC逐事件决策时钟与漏槽审计-20261027.md",
+    "candidate": "projects/candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex",
+    "defaultRootCandidateUnchanged": true,
+    "plcAccessed": false,
+    "plcDownloaded": false,
+    "performanceRetestsPaused": true
+  },
+  "auditV2Offline20261027": {
+    "candidate": {
+      "projectId": "82123e07e30b4ad195c8fd5b69544eeb",
+      "sourceSha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4",
+      "buildJobId": "80eaa616ba754896b3b660f9a70ba52f",
+      "compiled": true,
+      "pouCount": 66,
+      "semanticErrors": 0,
+      "semanticWarnings": 0,
+      "controllerConnected": false,
+      "controllerDownloaded": false,
+      "plcExecuted": false
+    },
+    "harness": {
+      "projectId": "cfb730348a044d3bb8742bc5ae573fa0",
+      "sourceSha256": "1f1a5e83d98d6e8aa216fffaf06c29112bb495d27e16b3ca451f7f5e9b3e7176",
+      "buildJobId": "ffa526165d2a43b2994f525ef824e393",
+      "compiled": true,
+      "pouCount": 8,
+      "semanticErrors": 0,
+      "semanticWarnings": 0,
+      "controllerConnected": false,
+      "controllerDownloaded": false,
+      "plcExecuted": false,
+      "checksDefined": 20,
+      "checksExecuted": false,
+      "unusedPouWarningsRemovedByReachabilityPruning": true
+    },
+    "package": {
+      "packageJobId": "9ccf64a8e3824990bd738a19f70dd550",
+      "fileCount": 48,
+      "inventorySha256": "ab59bec77361546284f17640a57ccf3ae14d1f796721f4ac8c18ee81ba0bb62a",
+      "runtimeBindingsVerified": true,
+      "signaturesGenerated": false,
+      "controllerAcceptanceVerified": false
+    },
+    "layout": {
+      "scope": "PUBLIC_OFFLINE_NATIVE_LAYOUT_AND_EXPLICIT_CAPTURE_BUDGET",
+      "sourceProjectSha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4",
+      "packageJobId": "9ccf64a8e3824990bd738a19f70dd550",
+      "sizes": {
+        "NG_CaptureEvent": 72,
+        "NG_SourceCursor": 48,
+        "NG_AuditEvent": 80
+      },
+      "offsets": {
+        "NG_CaptureEvent": {
+          "PollSkippedBefore": 68
+        },
+        "NG_SourceCursor": {
+          "PollSkippedPending": 44
+        },
+        "NG_AuditEvent": {
+          "Decision": 72,
+          "Reason": 73,
+          "DecisionFlags": 74,
+          "DecisionRevisionDelta": 75,
+          "DecisionDelayLo": 76,
+          "DecisionDelayHi": 78,
+          "ReportSkipped": 79
+        }
+      },
+      "sourceFbCounts": {
+        "Main": 1,
+        "NG_Store": 1,
+        "NG_StorageHash": 1,
+        "NG_ReportPolicy": 1,
+        "NG_GapLog": 57,
+        "NG_AuditDecision": 53,
+        "NG_BufferMaintenance": 1,
+        "NG_EndBatch": 3,
+        "NG_FreeRecord": 10,
+        "NG_PruneTerminal": 4,
+        "NG_BatchBuilder": 1,
+        "NG_StringSHA256": 3,
+        "NG_AuditAssociation": 1,
+        "NG_DeliveryParallel": 1,
+        "NG_Delivery": 2,
+        "NG_AuditDrain": 1,
+        "NG_Diagnostics": 1,
+        "NG_CheckCounters": 1,
+        "NG_SameConfig": 2,
+        "NG_ConfigSlot": 1,
+        "NG_SourceState": 1,
+        "NG_SourceStateCore": 2,
+        "NG_CaptureCore": 52,
+        "NG_AuditCapture": 52,
+        "NG_SHA256": 2,
+        "NG_ReadAck": 1,
+        "NG_AckFields": 2,
+        "NG_Mqtt": 1,
+        "NG_TimePermit": 2,
+        "NG_PlatformTime": 2,
+        "NG_PlatformTimeChecks": 1,
+        "NG_TimeResponseChecks": 1,
+        "NG_JsonParse": 2,
+        "NG_Char": 2,
+        "NG_TimeResponse": 2,
+        "NG_Resources": 1,
+        "NG_Modbus": 50,
+        "NG_SourceResult": 50,
+        "NG_SourceResultCore": 50,
+        "NG_Capture": 50,
+        "NG_PollSlot": 50,
+        "NG_HmiEdit": 1,
+        "NG_EditDevice": 3,
+        "NG_Command": 1,
+        "NG_ReadConfig": 1,
+        "NG_ReadDevice": 2,
+        "NG_ReadPoint": 2
+      },
+      "sourceFbGrowth": [
+        {
+          "name": "Main",
+          "instances": 1,
+          "before": 7983664,
+          "after": 7983672,
+          "growth": 8
+        },
+        {
+          "name": "NG_ReportPolicy",
+          "instances": 1,
+          "before": 128,
+          "after": 168,
+          "growth": 40
+        },
+        {
+          "name": "NG_AuditDecision",
+          "instances": 53,
+          "before": 32,
+          "after": 64,
+          "growth": 1696
+        }
+      ],
+      "nonBufferFbGrowth": 1736,
+      "extraReserved": 2048,
+      "bufferGrowth": 8,
+      "baselineBudget": 4191151,
+      "newExplicitBudget": 4193207,
+      "explicitMargin": 1097,
+      "layoutSource": "D:\\PLCnext-MCP-Workspace\\82123e07e30b4ad195c8fd5b69544eeb\\deployments\\9ccf64a8e3824990bd738a19f70dd550\\runtime-layout",
+      "mainClassSizeIsNotFourMiBBudget": true,
+      "privateSdkHeapProven": false,
+      "controllerConnected": false,
+      "plcProgramExecuted": false,
+      "performanceAccepted": false
+    },
+    "independentTests": {
+      "passed": 89,
+      "newFactUnitVectors": 21,
+      "newFullOracleIntegrationTests": 3,
+      "sqliteConnectForbidden": true,
+      "socketConnectForbidden": true
+    },
+    "mcpV2ExporterImplemented": false,
+    "newAuditWorkCommitted": false
   }
 }

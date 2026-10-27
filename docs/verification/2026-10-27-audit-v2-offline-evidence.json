@@ -1,0 +1,484 @@
+{
+  "schema": "plc-audit-v2-offline/v1",
+  "localDate": "2026-10-27",
+  "timezone": "Asia/Shanghai",
+  "atUtc": "2026-10-27T01:57:26.248338+00:00",
+  "status": "OFFLINE_IMPLEMENTED_COMPILED_PUBLIC_EXPORT_ADAPTATION_PENDING",
+  "prerequisiteCommits": [
+    {
+      "repository": "PLCnext-iot",
+      "sha": "2c26529",
+      "scope": "logical clock and durable Outbox prerequisite"
+    },
+    {
+      "repository": "PLCnext-iot",
+      "sha": "4f6d0be",
+      "scope": "bounded connection startup fix"
+    },
+    {
+      "repository": "PLCnext-Engineer",
+      "sha": "8d9f58d",
+      "scope": "fixed engineering inputs and verification docs"
+    },
+    {
+      "repository": "PLCnext-Hub-Backend",
+      "sha": "a9f8c11",
+      "scope": "independent verification tools"
+    }
+  ],
+  "candidate": {
+    "projectId": "82123e07e30b4ad195c8fd5b69544eeb",
+    "sourceSha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4",
+    "buildJobId": "80eaa616ba754896b3b660f9a70ba52f",
+    "compiled": true,
+    "pouCount": 66,
+    "semanticErrors": 0,
+    "semanticWarnings": 0,
+    "controllerConnected": false,
+    "controllerDownloaded": false,
+    "plcExecuted": false
+  },
+  "candidateArtifact": "projects/candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex",
+  "candidateEmbeddedVersion": "native-0.7.1-audit-candidate.2",
+  "harness": {
+    "projectId": "cfb730348a044d3bb8742bc5ae573fa0",
+    "sourceSha256": "1f1a5e83d98d6e8aa216fffaf06c29112bb495d27e16b3ca451f7f5e9b3e7176",
+    "buildJobId": "ffa526165d2a43b2994f525ef824e393",
+    "compiled": true,
+    "pouCount": 8,
+    "semanticErrors": 0,
+    "semanticWarnings": 0,
+    "controllerConnected": false,
+    "controllerDownloaded": false,
+    "plcExecuted": false,
+    "checksDefined": 20,
+    "checksExecuted": false,
+    "unusedPouWarningsRemovedByReachabilityPruning": true
+  },
+  "package": {
+    "packageJobId": "9ccf64a8e3824990bd738a19f70dd550",
+    "fileCount": 48,
+    "inventorySha256": "ab59bec77361546284f17640a57ccf3ae14d1f796721f4ac8c18ee81ba0bb62a",
+    "runtimeBindingsVerified": true,
+    "signaturesGenerated": false,
+    "controllerAcceptanceVerified": false
+  },
+  "layout": {
+    "scope": "PUBLIC_OFFLINE_NATIVE_LAYOUT_AND_EXPLICIT_CAPTURE_BUDGET",
+    "sourceProjectSha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4",
+    "packageJobId": "9ccf64a8e3824990bd738a19f70dd550",
+    "sizes": {
+      "NG_CaptureEvent": 72,
+      "NG_SourceCursor": 48,
+      "NG_AuditEvent": 80
+    },
+    "offsets": {
+      "NG_CaptureEvent": {
+        "PollSkippedBefore": 68
+      },
+      "NG_SourceCursor": {
+        "PollSkippedPending": 44
+      },
+      "NG_AuditEvent": {
+        "Decision": 72,
+        "Reason": 73,
+        "DecisionFlags": 74,
+        "DecisionRevisionDelta": 75,
+        "DecisionDelayLo": 76,
+        "DecisionDelayHi": 78,
+        "ReportSkipped": 79
+      }
+    },
+    "sourceFbCounts": {
+      "Main": 1,
+      "NG_Store": 1,
+      "NG_StorageHash": 1,
+      "NG_ReportPolicy": 1,
+      "NG_GapLog": 57,
+      "NG_AuditDecision": 53,
+      "NG_BufferMaintenance": 1,
+      "NG_EndBatch": 3,
+      "NG_FreeRecord": 10,
+      "NG_PruneTerminal": 4,
+      "NG_BatchBuilder": 1,
+      "NG_StringSHA256": 3,
+      "NG_AuditAssociation": 1,
+      "NG_DeliveryParallel": 1,
+      "NG_Delivery": 2,
+      "NG_AuditDrain": 1,
+      "NG_Diagnostics": 1,
+      "NG_CheckCounters": 1,
+      "NG_SameConfig": 2,
+      "NG_ConfigSlot": 1,
+      "NG_SourceState": 1,
+      "NG_SourceStateCore": 2,
+      "NG_CaptureCore": 52,
+      "NG_AuditCapture": 52,
+      "NG_SHA256": 2,
+      "NG_ReadAck": 1,
+      "NG_AckFields": 2,
+      "NG_Mqtt": 1,
+      "NG_TimePermit": 2,
+      "NG_PlatformTime": 2,
+      "NG_PlatformTimeChecks": 1,
+      "NG_TimeResponseChecks": 1,
+      "NG_JsonParse": 2,
+      "NG_Char": 2,
+      "NG_TimeResponse": 2,
+      "NG_Resources": 1,
+      "NG_Modbus": 50,
+      "NG_SourceResult": 50,
+      "NG_SourceResultCore": 50,
+      "NG_Capture": 50,
+      "NG_PollSlot": 50,
+      "NG_HmiEdit": 1,
+      "NG_EditDevice": 3,
+      "NG_Command": 1,
+      "NG_ReadConfig": 1,
+      "NG_ReadDevice": 2,
+      "NG_ReadPoint": 2
+    },
+    "sourceFbGrowth": [
+      {
+        "name": "Main",
+        "instances": 1,
+        "before": 7983664,
+        "after": 7983672,
+        "growth": 8
+      },
+      {
+        "name": "NG_ReportPolicy",
+        "instances": 1,
+        "before": 128,
+        "after": 168,
+        "growth": 40
+      },
+      {
+        "name": "NG_AuditDecision",
+        "instances": 53,
+        "before": 32,
+        "after": 64,
+        "growth": 1696
+      }
+    ],
+    "nonBufferFbGrowth": 1736,
+    "extraReserved": 2048,
+    "bufferGrowth": 8,
+    "baselineBudget": 4191151,
+    "newExplicitBudget": 4193207,
+    "explicitMargin": 1097,
+    "layoutSource": "D:\\PLCnext-MCP-Workspace\\82123e07e30b4ad195c8fd5b69544eeb\\deployments\\9ccf64a8e3824990bd738a19f70dd550\\runtime-layout",
+    "mainClassSizeIsNotFourMiBBudget": true,
+    "privateSdkHeapProven": false,
+    "controllerConnected": false,
+    "plcProgramExecuted": false,
+    "performanceAccepted": false
+  },
+  "auditFactSchema": 2,
+  "independentTests": {
+    "passed": 89,
+    "newFactUnitVectors": 21,
+    "newFullOracleIntegrationTests": 3,
+    "sqliteConnectForbidden": true,
+    "socketConnectForbidden": true
+  },
+  "pythonGuardedRegression": {
+    "passed": 55,
+    "sqliteConnectForbidden": true
+  },
+  "legacyBoot71": {
+    "scope": "FIXED_SOURCE_COHORT_EQUAL_CYCLIC_PROFILE",
+    "bootId": "ng-d4f61b3085b97c5e3831983b-71",
+    "gatewayId": "NG-HUB-2152-01",
+    "configVersion": 13,
+    "captured": 1782,
+    "eligible": 1782,
+    "filtered": 0,
+    "timeInvalid": 700,
+    "admitted": 1082,
+    "associated": 1082,
+    "externallyStoredObserved": 1082,
+    "unassociatedTail": 0,
+    "associatedWithoutObservedStored": 0,
+    "associationMissingWire": [],
+    "batches": 41,
+    "sourcePrefixAndTailComplete": true,
+    "exportedCaptured": 1826,
+    "exportedBatches": 43,
+    "outsideSourceCaptures": 44,
+    "sourceCohortAssociationsComplete": true,
+    "mixedBoundaryBatches": 1,
+    "independentCyclicSelectionMatched": true,
+    "oracleConfigFromHubRelease": true,
+    "decisionTimeClockSeparatelyAttested": false,
+    "missedSlotsIndependentlyVerified": false,
+    "decisionFactAvailability": "LEGACY_UNATTESTED",
+    "localReleaseAllProven": false,
+    "fullDeliveryCohortComplete": false,
+    "globalAccountingComplete": false,
+    "previousRamRestartLoss": "UNKNOWN",
+    "performanceAccepted": false
+  },
+  "services": {
+    "atUtc": "2026-10-27T01:54:17.7770378Z",
+    "backendPort": 8080,
+    "backendPids": [
+      27204
+    ],
+    "backendListenerCount": 1,
+    "frontend8090Pids": [
+      35404
+    ],
+    "mockListenerPids": [
+      23716
+    ],
+    "serviceStartedOrStopped": false,
+    "databaseOpened": false,
+    "plcAccessed": false
+  },
+  "acceptedScope": "Frozen equal cyclic profile; decision logical-clock frame and completed physical prefix/report decisions",
+  "trailingUncompletedPollWindowProven": false,
+  "otherReportModesProven": false,
+  "samplingReconfigurationMatrixProven": false,
+  "globalAccountingComplete": false,
+  "plcAccessed": false,
+  "plcDownloaded": false,
+  "newDatabaseCreated": false,
+  "applicationDatabaseOpened": false,
+  "sharedServicesRestarted": false,
+  "performanceAccepted": false,
+  "performanceRetestsPaused": true,
+  "defaultRootCandidateUnchanged": true,
+  "newAuditWorkCommitted": false,
+  "mcpVersion": "0.6.8",
+  "mcpV2ExporterImplemented": false,
+  "mcpAdaptationRequest": "D:/work/code/PLCnext-Engineer-mcp/docs/M14逐事件时钟与漏槽审计导出需求-20261027.md",
+  "frozenSources": [
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\00-NG_CaptureTypes.dt",
+      "sha256": "71f6fea79cad7e072d5449d495b1e9a9574cb3717f0ab39b151bb3f76eba44e2",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\src\\NG_CaptureTypes.dt"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\01-NG_AuditDecision.st",
+      "sha256": "47c16ee3d0b0814777fd234ecd1fbc82eb956d58a0ef8b547f78a4c0f1d1976f",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\src\\NG_AuditDecision.st"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\02-NG_AuditCapture.st",
+      "sha256": "b423265babc83cbb413f44e3e45587d56b1c318d3ebc3187eea50287ffa29f71",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\src\\NG_AuditCapture.st"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\03-NG_PollSlot.st",
+      "sha256": "ea49f6c12ddb64b4ee08a23b323050566f07cfcc35fedfb541cfada1f2be2b8b",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\src\\NG_PollSlot.st"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\04-NG_CaptureCore.st",
+      "sha256": "bced8fd7f9fabcee2eb33d33eea31f5c81c44fc922b05981e077c87a833bbe1c",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\src\\NG_CaptureCore.st"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\05-NG_SourceStateCore.st",
+      "sha256": "1d140dc426b1a9a3b1749eb4c841bf25baa3550f7cce820fc02b230394bc7aaf",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\src\\NG_SourceStateCore.st"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\06-NG_ReportPolicy.st",
+      "sha256": "43a64b89ba378cbec06b069726bc2f10a2fbe5a89451e996811fffdd67cbac35",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\src\\NG_ReportPolicy.st"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\07-Main.st",
+      "sha256": "9d1f4f6ac13109a5d17a952ef734e45af4ef0398c005c2548b141854221a3994",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\src\\Main.st"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\08-build_audit_facts_gateway.py",
+      "sha256": "709b230465e7f1ba4fcaecd762923d4788188905777618a12f5eaf48c58812b1",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\tools\\build_audit_facts_gateway.py"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\09-review_audit_facts_layout.py",
+      "sha256": "11c953c7f728d4b4dd5553eb913e9c4b1d49fce8f133e4676baee80481311bf8",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\tools\\review_audit_facts_layout.py"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\10-audit_facts_test.st",
+      "sha256": "6887bf4b441bd9554b16cb33522be50546e6a3a1c07a0852f58cab69fb56f2e0",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\tests\\audit_facts_test.st"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\11-native_audit_facts.py",
+      "sha256": "4299c047d539c55d78951bcc2bae4b0ac3ad1ad097f255f1d5b0ff7179887513",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\native_audit_facts.py"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\12-native_event_cohort.py",
+      "sha256": "b670ecd3215242a65ac0045d0420bb21f83379938e42c7101de3a986e2f4d55c",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\native_event_cohort.py"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\13-test_native_audit_facts.py",
+      "sha256": "6203e711992b9ec05e4c9794c268008a1ec34afecececbf8571ec9cf5c616746",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\test_native_audit_facts.py"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\14-test_native_event_cohort.py",
+      "sha256": "3a6c5b03802e2c8189182121b121be6a33df8c0cc7cd9354292a7f6497e2a25d",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\test_native_event_cohort.py"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\15-run_offline_audit_tests.py",
+      "sha256": "79b93bf458baf2a6a71949ad9da3320a2136e23c8fa611f96e8cf5d42d4918d8",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\run_offline_audit_tests.py"
+    }
+  ],
+  "rawEvidence": [
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\gateway-r3-import-request.json",
+      "sha256": "6459027138abef595ae2e13256c20f48d36308bf5ef4db54cda1de08f24d7c39"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\gateway-r3-import.json",
+      "sha256": "5fbcaccdf25fd1dbd2466673c69d5c752b4c0c4d948b194e1ad4e9023434730f"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\gateway-r3-compile-request.json",
+      "sha256": "fedafd82ac3f3534e5e00bb8e4c2f38ddbc331771f286d321163038ff747e758"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\gateway-r3-compile.json",
+      "sha256": "c18f038276256714264571648681d7d2c1f7a4635840a2520bb9e1db21e1065a"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\gateway-r3-package-request.json",
+      "sha256": "dff37f695d2fd48e020d4c92df9b5180adb88fbcfd0b928a3c089c85739146e6"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\gateway-r3-package.json",
+      "sha256": "aba27ede0c512e46770816f1877234eb0395f856b9d84f7183fca4df145f5c5d"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\harness-r5-import.json",
+      "sha256": "6bbe1c1144455bb951939b8cd8aa485ce54679399943cf0e37381b8ddfc50f43"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\harness-r5-compile-request.json",
+      "sha256": "7834ba38b0ea93aae794da2f05d1cb6bf03cb9e2541202eee5844e33582360b8"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\harness-r5-compile.json",
+      "sha256": "9fff983b46a94249e6e3d90e308c70a3b9217c98a50cc8bbbf9c4cac243e6fe3"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\NativeGateway.audit-v2-r3.json",
+      "sha256": "14707b12d8399d5c305e1a15b268d68b398a790b1e0c61bf00136893862f8817"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\NativeGateway.audit-v2-r3.pcwex",
+      "sha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\NativeGateway.audit-v2-harness-r5.pcwex",
+      "sha256": "1f1a5e83d98d6e8aa216fffaf06c29112bb495d27e16b3ca451f7f5e9b3e7176"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\layout-budget-final.json",
+      "sha256": "419eeda22c383855eda2e61b186b3bc8f69a7ce5dab2fa39a498452f9554eb1d"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\services-final.json",
+      "sha256": "5e8b22d8ab954d17bf549548ea2c5d4d9cabe3292fb9df781405b00cd1fa6eda"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\audit-v2-offline-entry.log",
+      "sha256": "66f94d9f91a0ce91fd4a9ca52189870be0b2a71f2403d8fc0ba902a7c2da7e6c"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\audit-v2-legacy-boot71.json",
+      "sha256": "14840797ee73ee3c858fca8b6804f8c0c550b925bef82ae94d46ceefa9de76dd"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-iot\\.local\\startup-20261027\\audit-v2-regression-guarded.log",
+      "sha256": "a91874bd2878032cae0c261be1b69e4c220ffa761d01b2d56b8136e5f5b729aa"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\projects\\candidates\\native-0.7.1-audit-candidate.2\\NativeGateway.pcwex",
+      "sha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\82123e07e30b4ad195c8fd5b69544eeb\\deployments\\9ccf64a8e3824990bd738a19f70dd550\\runtime-layout\\TypeInformation.json",
+      "sha256": "2b7f1340879ff943308c908d0f6fa05e916be69f3840d269c88b5f5718ec3d87"
+    },
+    {
+      "path": "D:\\PLCnext-MCP-Workspace\\82123e07e30b4ad195c8fd5b69544eeb\\deployments\\9ccf64a8e3824990bd738a19f70dd550\\runtime-layout\\runtime-types-report.json",
+      "sha256": "637a3609eb8a7fdf591820c1e4130ccbb1910400dd6c060175172597e162f1c7"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\00-NG_CaptureTypes.dt",
+      "sha256": "71f6fea79cad7e072d5449d495b1e9a9574cb3717f0ab39b151bb3f76eba44e2"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\01-NG_AuditDecision.st",
+      "sha256": "47c16ee3d0b0814777fd234ecd1fbc82eb956d58a0ef8b547f78a4c0f1d1976f"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\02-NG_AuditCapture.st",
+      "sha256": "b423265babc83cbb413f44e3e45587d56b1c318d3ebc3187eea50287ffa29f71"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\03-NG_PollSlot.st",
+      "sha256": "ea49f6c12ddb64b4ee08a23b323050566f07cfcc35fedfb541cfada1f2be2b8b"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\04-NG_CaptureCore.st",
+      "sha256": "bced8fd7f9fabcee2eb33d33eea31f5c81c44fc922b05981e077c87a833bbe1c"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\05-NG_SourceStateCore.st",
+      "sha256": "1d140dc426b1a9a3b1749eb4c841bf25baa3550f7cce820fc02b230394bc7aaf"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\06-NG_ReportPolicy.st",
+      "sha256": "43a64b89ba378cbec06b069726bc2f10a2fbe5a89451e996811fffdd67cbac35"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\07-Main.st",
+      "sha256": "9d1f4f6ac13109a5d17a952ef734e45af4ef0398c005c2548b141854221a3994"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\08-build_audit_facts_gateway.py",
+      "sha256": "709b230465e7f1ba4fcaecd762923d4788188905777618a12f5eaf48c58812b1"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\09-review_audit_facts_layout.py",
+      "sha256": "11c953c7f728d4b4dd5553eb913e9c4b1d49fce8f133e4676baee80481311bf8"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\10-audit_facts_test.st",
+      "sha256": "6887bf4b441bd9554b16cb33522be50546e6a3a1c07a0852f58cab69fb56f2e0"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\11-native_audit_facts.py",
+      "sha256": "4299c047d539c55d78951bcc2bae4b0ac3ad1ad097f255f1d5b0ff7179887513"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\12-native_event_cohort.py",
+      "sha256": "b670ecd3215242a65ac0045d0420bb21f83379938e42c7101de3a986e2f4d55c"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\13-test_native_audit_facts.py",
+      "sha256": "6203e711992b9ec05e4c9794c268008a1ec34afecececbf8571ec9cf5c616746"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\14-test_native_event_cohort.py",
+      "sha256": "3a6c5b03802e2c8189182121b121be6a33df8c0cc7cd9354292a7f6497e2a25d"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\audit-v2\\frozen-sources\\15-run_offline_audit_tests.py",
+      "sha256": "79b93bf458baf2a6a71949ad9da3320a2136e23c8fa611f96e8cf5d42d4918d8"
+    }
+  ]
+}

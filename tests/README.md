@@ -52,3 +52,7 @@ P05/P06 见[实现、实机验证与待验项](../docs/阶段1-P05-P06开发进�
 P06 验证变体由 `tools/build_phase1_performance_gateway.py OUTPUT.pcwex` 生成，生产源码无故障开关。`tools/phase1_performance_probe.py snapshot OUTPUT.json` 只读；其 hold/release、drop-ack/accept-ack、pause/resume/reset 均会写候选 RAM，必须提供 `--expect-boot` 精确匹配，且只对含 P06 字段的受测工程使用。`tools/phase1_fault_profile.py hold|drop-ack OUTPUT.jsonl --expect-boot BOOT --seconds 300` 在 finally 解除故障门，不能替代清理时的暂停/排空；不停止共享服务、不伪造 ACK。
 
 `tools/audit_phase1_native_cohort.py TRACE WIRE FINAL OUTPUT` 离线复核从原始入口起点开始、最终暂停排空的无损 cohort，逐点重算报告资格并核对关联/报文/真实 ACK。它不证明跨 RAM 重启完整性，也不自动出具性能通过。`tools/verify_phase1_hub_receipts.py WIRE COHORT OUTPUT` 使用 dev-data-check 的现有开发库连接，READ ONLY 查询精确批次收据和样本多重集；不初始化、清理、迁移或创建数据库。运行环境缺 psycopg 时可用 `uv run --python 3.12 --with 'psycopg[binary]' --with paho-mqtt python ...`；不得因此改成临时数据库。原始 JSONL、wire 和展开映射留本机，紧凑证明与 SHA 清单保留在 validation/p05-p06；重新复核原始证明需要这些本地文件。
+
+## 2026-10-27 审计v2离线约束
+
+`audit_facts_test.st`定义20项断言，8个可达POU已公开MCP冷编译，未执行；不得将冷编译写为20项实机通过。完整候选和固定目录见[PLC-AUDIT/2](../docs/PLC逐事件决策时钟与漏槽审计-20261027.md)。主机独立核验在Hub仓库执行`python tools/phase2/run_offline_audit_tests.py`（89项，禁止SQLite/网络）；Python既有采集/时钟组合用`tools/run_startup_regression.py`（55项，禁止SQLite）。不运行会创建临时数据库的全量discover，不下载PLC，不重启服务或恢复P06。
