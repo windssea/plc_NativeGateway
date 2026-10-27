@@ -1,0 +1,422 @@
+{
+  "schema": "m14-local-reception/v1",
+  "localDate": "2026-10-27",
+  "timezone": "Asia/Shanghai",
+  "atUtc": "2026-10-27T02:35:59.594985+00:00",
+  "status": "M14_LOCAL_ADAPTER_ACCEPTED_REAL_DEVICE_UNTESTED",
+  "priorWorkCommits": [
+    {
+      "repository": "PLCnext-Engineer",
+      "sha": "83d9874",
+      "scope": "audit-v2 offline source/artifact/docs"
+    },
+    {
+      "repository": "PLCnext-Hub-Backend",
+      "sha": "9919a16",
+      "scope": "independent audit-v2 oracle"
+    },
+    {
+      "repository": "PLCnext-iot",
+      "sha": "12cf6bf",
+      "scope": "historical catalog evidence pointer"
+    }
+  ],
+  "freshMcp": {
+    "version": "0.6.9",
+    "tools": 79,
+    "transport": "fresh public MCP stdio sessions",
+    "sourceRepository": "D:\\work\\code\\PLCnext-Engineer-mcp"
+  },
+  "staticReview": {
+    "mcpVersion": "0.6.9",
+    "tools": 79,
+    "parentChildBindingVerified": true,
+    "reviews": [
+      {
+        "mode": "decision_clock_slots_v2",
+        "parentPlan": "4f764c9cf9084b699016a22875d5e339",
+        "parentReviewSha": "502f64b172b7c53808cb819759e17d998dbc495df3ec39f5b9a870f826f4ca89",
+        "childPlan": "c38af31fcb224c628e78390032c22807",
+        "childSha": "49a60ef4e79b240ca071603b551fa4fac6b24f995b023536465bf93e696f0a79",
+        "symbols": 20148,
+        "onlyFourAuditAckFields": true,
+        "writeAuthorized": false,
+        "controllerConnected": false,
+        "memoryLoadedImageAttested": false,
+        "downloadMementoPolicy": "omit"
+      },
+      {
+        "mode": "legacy_v1",
+        "parentPlan": "6f6cd47afc834e1c804a9273f1905ce1",
+        "parentReviewSha": "78648c8423b852f128099010446862e224dfe5b35979b90f9ebb8cf04b5e2741",
+        "childPlan": "909f805c789543c5a3bd3ce1d014324d",
+        "childSha": "466a999423cabcb7b1615af573ba22c5782b45255c2b8908d35e6d355272f96e",
+        "symbols": 17074,
+        "onlyFourAuditAckFields": true,
+        "writeAuthorized": false,
+        "controllerConnected": false,
+        "memoryLoadedImageAttested": false,
+        "downloadMementoPolicy": "omit"
+      }
+    ],
+    "negativeWrongReviewHashRejected": true,
+    "negativeLegacySourceV2Rejected": true,
+    "prepareAndInspectOnly": true,
+    "authorizationIssued": false,
+    "controllerOperationsExecuted": 0,
+    "controllerDownloaded": false
+  },
+  "mcpGuardedTests": {
+    "atUtc": "2026-10-27T02:20:05.488504+00:00",
+    "testsRun": 72,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "successful": true,
+    "sqliteConnectionsForbidden": true,
+    "networkLoopbackOnly": true,
+    "observedConnectHosts": [
+      "127.0.0.1"
+    ],
+    "physicalPlcAccessed": false
+  },
+  "localTlsConsumerChain": {
+    "scope": "PRODUCTION_M14_TLS_TO_INDEPENDENT_ORACLE_SYNTHETIC_ONLY",
+    "rawRows": 10,
+    "captureCount": 3,
+    "associationCount": 3,
+    "fixedSourceBoundary": 3,
+    "rawV2FactsPreserved": true,
+    "independentFactsVerified": true,
+    "pollGaps": 2,
+    "reportGaps": 2,
+    "negativeCasesRejected": [
+      "missing_activation",
+      "wrong_poll_count",
+      "invalid_decision_admitted",
+      "mixed_schema"
+    ],
+    "auditFieldWrites": 8,
+    "onlyFourAuditFieldsWritten": true,
+    "fsyncedJournal": true,
+    "sqliteConnectionsForbidden": true,
+    "mqttPublished": false,
+    "realBusinessDeliveryVerified": false,
+    "databaseCreated": false,
+    "physicalPlcAccessed": false,
+    "simulatedWireFixture": true,
+    "successful": true
+  },
+  "independentTests": {
+    "passed": 89,
+    "sqliteForbidden": true,
+    "networkForbidden": true
+  },
+  "pythonGuardedTests": {
+    "passed": 55,
+    "sqliteForbidden": true
+  },
+  "services": {
+    "atUtc": "2026-10-27T02:33:51.7953830Z",
+    "backendPort": 8080,
+    "backendPids": [
+      27204
+    ],
+    "backendListenerCount": 1,
+    "frontendPids": [
+      35404
+    ],
+    "mockListenerPids": [
+      23716
+    ],
+    "serviceStartedOrStopped": false,
+    "applicationDatabaseOpened": false,
+    "plcAccessed": false
+  },
+  "candidateArtifact": "projects/candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex",
+  "candidateSha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4",
+  "defaultCandidate": "native-0.7.0-timesync-candidate.1",
+  "defaultRootProjectUnchanged": true,
+  "iecChecksDefined": 20,
+  "iecChecksExecuted": false,
+  "realDeviceAuditV2Verified": false,
+  "plcAccessed": false,
+  "plcDownloaded": false,
+  "authorizationIssued": false,
+  "applicationDatabaseOpened": false,
+  "newDatabaseCreated": false,
+  "performanceRetestsPaused": true,
+  "performanceAccepted": false,
+  "fullJointAcceptanceComplete": false,
+  "globalAccountingComplete": false,
+  "actualLastObservedPlcNotRefreshed": true,
+  "lastKnownPlcProgram": "native-0.5.0 / boot72 (prior real observation only)",
+  "receptionWorkCommitted": false,
+  "frozenSources": [
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\00-receive_m14_loopback.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\receive_m14_loopback.py",
+      "sha256": "b3655a5f2884e5252bf75218f725eafc08a7e232a6798e2ea6af0c4ce80024a0"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\01-native_audit_facts.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\native_audit_facts.py",
+      "sha256": "4299c047d539c55d78951bcc2bae4b0ac3ad1ad097f255f1d5b0ff7179887513"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\02-native_event_cohort.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Hub-Backend\\tools\\phase2\\native_event_cohort.py",
+      "sha256": "b670ecd3215242a65ac0045d0420bb21f83379938e42c7101de3a986e2f4d55c"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\03-plcnext_mcp_call.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer\\tools\\plcnext_mcp_call.py",
+      "sha256": "0eff95cb779e7adce289b7a26efe43a1bb3fe27c89c21b6ace0a2ed339bf9554"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\04-server.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\server.py",
+      "sha256": "e80b85a43f46f333e002f609fa6d9c02f22ce83fb2603d3ca87c3adad65b0052"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\05-audit_facts.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\audit_facts.py",
+      "sha256": "d1da7af716657cee81af0170e21d4c6e35dfda79ea3cf36eff4b8acff238ce75"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\06-audit_export.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\audit_export.py",
+      "sha256": "00ee81f89a9ef6b3dd95d36c9402ee761a1ed2ec657548ee2ce712b5d45565d1"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\07-audit_collector.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\audit_collector.py",
+      "sha256": "9431b563de61e6ab3fcd598edcc4aa393f5f47a70d290ed4bd08eaf2b9474334"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\08-audit_cohort.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\audit_cohort.py",
+      "sha256": "9756fb593a70dab21de9994c40aa43e1489fb649c634781d1bfeca6db6dbb5d3"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\09-recovery_audit.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\recovery_audit.py",
+      "sha256": "71640f97fa51432219cc8b3675900cb264f4fa0210842a665deb69232a924a70"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\10-controller_recovery.py",
+      "sourceLocation": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\controller_recovery.py",
+      "sha256": "88816a835b449c56a6ce6fc0bc7a1c308c6df8ddad186b74d14b74dac2a39c87"
+    }
+  ],
+  "rawEvidence": [
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\capabilities-request.json",
+      "sha256": "7b1c956f340c818baa7e8c0b39bd2243fc2c18300946786844acefff4e56aeb3"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\capabilities.json",
+      "sha256": "f2ab03ef3ff704e2a493d1d95420a2b1810b467cd636d2153cf01b0dbd8f541f"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\catalog-request.json",
+      "sha256": "6678d3f2b7089410378353d99f1f789a749409ac67081eeb9e87e3d30788dad6"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\catalog.json",
+      "sha256": "83185f0feb2a470dab88db4597db89f25780dcb833700ec5d845c21b0580dc11"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\child-legacy-inspect-request.json",
+      "sha256": "b56d525269cf197f85c4548b1efefa2c3a716b010d467466a588da0702be4934"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\child-legacy-inspect.json",
+      "sha256": "75db2caadca2e33891bc43814988cfc99eebb73d3fa22922e31cf65afc759b1e"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\child-v2-inspect-request.json",
+      "sha256": "c2deb03c5a9e1f63f177ffef3ce9e2d6d06ba68d32693aa7092921dc9818c0fd"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\child-v2-inspect.json",
+      "sha256": "61d69017a63bb367f90869c9b2011c8df159b862f77cb940cc0bf2b119f82741"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\legacy-source-v2-request.json",
+      "sha256": "da7ecf9dea7fbbd158d39ed6674512058d626354ee523ef4784cf91c58cd1838"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\legacy-source-v2.json",
+      "sha256": "5d25ace8a8cecdd4c6e85315ff8590426327353025a84d6115aa23c0f9acb1aa"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\loopback-reception.json",
+      "sha256": "7385cf927ccbd1a91da5aba0998e70b6f282af20970e7659e49491e8d5542ed9"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\mcp-tests.json",
+      "sha256": "0cfca68acf67a351499101a91d2bcd1a9abd0e2f9c635c128a6c0624aa7b5dee"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-legacy-inspect-request.json",
+      "sha256": "53cb4f18bac406a7b7be889a8b85a8889997842122fb16c72bde007e456afb1c"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-legacy-inspect.json",
+      "sha256": "2de57080e233549dff954ec7da550e6d1d649161fac4393e7e3958d7dc90e7ad"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-legacy-prepare-request.json",
+      "sha256": "5bf5fdd2d27159dcfbcbb834eee909fc37644b319ba82ea29502f440481f0bc5"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-legacy-prepare.json",
+      "sha256": "7503b5f544043a1544e765819cfac6b8f8646189a67a7feadc3aeb40d32c3304"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-v2-inspect-request.json",
+      "sha256": "b9d8cfcb88c86877238858988f8652e2410c5db16892d22051399e147fea5987"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-v2-inspect.json",
+      "sha256": "ac4e0b152dc225b381cd7bad13ac9fadf0549559326c86868cd69abf0a85d622"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-v2-prepare-request.json",
+      "sha256": "58bb0ea0af5b3a5546f4d4d7a63240a3d9b037aae5d4f4a272bbf3fefe2b09d0"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-v2-prepare.json",
+      "sha256": "e2d6e33b3e02dd5ed54e4f3d4940656837e45974c252e93d5fa1f4671762a65d"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\project-catalog-at-reception.json",
+      "sha256": "4e2b361e4bc191a5428e9e934fe4b7a10b33b7b615f0b468563e16b6616356b8"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\review-summary.json",
+      "sha256": "2d258f89969c274415646eed515743a8c8d1228c5b2e9639b8f27d72e1f88829"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\services-final.json",
+      "sha256": "642f639839743c2df99d50664dd2f536e362a894263d4ba5951fa279d95847e0"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\wrong-review-hash-request.json",
+      "sha256": "87aaf295f658be0928a22200686d0bfdfe69ea391267584d8dd46092407c95eb"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\wrong-review-hash.json",
+      "sha256": "bbdc594ae146515e0dce949833218ab23d60df1b4d5594ef4c993d75c2e6670a"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\capabilities.stderr.log",
+      "sha256": "df7b7bb6b9aa12efe8f0b2ea6287b54ee5b7554e0127c915122a7641ab37af11"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\catalog.stderr.log",
+      "sha256": "5a6c9b8841c84acbdf39e143c5b685ba4fa734d9a19baaa455389de78b19491a"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\child-legacy-inspect.stderr.log",
+      "sha256": "df7b7bb6b9aa12efe8f0b2ea6287b54ee5b7554e0127c915122a7641ab37af11"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\child-v2-inspect.stderr.log",
+      "sha256": "df7b7bb6b9aa12efe8f0b2ea6287b54ee5b7554e0127c915122a7641ab37af11"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\legacy-source-v2.stderr.log",
+      "sha256": "27e9165b5ebc683bb77fca3e36f6d0c05310a1bb993e8e4bedb82e8cd1912236"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\loopback-reception.log",
+      "sha256": "20893bfe89b78fce21b1147626cc069decb420bb0b6fe7a5540aa0d13ca4c6e2"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\mcp-tests.log",
+      "sha256": "85eb66bfeb47deace095c629b09d9298ef04285246c08372df62d335cdfefa52"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-legacy-inspect.stderr.log",
+      "sha256": "df7b7bb6b9aa12efe8f0b2ea6287b54ee5b7554e0127c915122a7641ab37af11"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-legacy-prepare.stderr.log",
+      "sha256": "df7b7bb6b9aa12efe8f0b2ea6287b54ee5b7554e0127c915122a7641ab37af11"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-v2-inspect.stderr.log",
+      "sha256": "df7b7bb6b9aa12efe8f0b2ea6287b54ee5b7554e0127c915122a7641ab37af11"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\parent-v2-prepare.stderr.log",
+      "sha256": "df7b7bb6b9aa12efe8f0b2ea6287b54ee5b7554e0127c915122a7641ab37af11"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\wrong-review-hash.stderr.log",
+      "sha256": "27e9165b5ebc683bb77fca3e36f6d0c05310a1bb993e8e4bedb82e8cd1912236"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\loopback-audit.jsonl",
+      "sha256": "5c9afe767d6967ace3e51bbfcaf2dc97174898db29560586db7af1413b4b07cd"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\00-receive_m14_loopback.py",
+      "sha256": "b3655a5f2884e5252bf75218f725eafc08a7e232a6798e2ea6af0c4ce80024a0"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\01-native_audit_facts.py",
+      "sha256": "4299c047d539c55d78951bcc2bae4b0ac3ad1ad097f255f1d5b0ff7179887513"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\02-native_event_cohort.py",
+      "sha256": "b670ecd3215242a65ac0045d0420bb21f83379938e42c7101de3a986e2f4d55c"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\03-plcnext_mcp_call.py",
+      "sha256": "0eff95cb779e7adce289b7a26efe43a1bb3fe27c89c21b6ace0a2ed339bf9554"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\04-server.py",
+      "sha256": "e80b85a43f46f333e002f609fa6d9c02f22ce83fb2603d3ca87c3adad65b0052"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\05-audit_facts.py",
+      "sha256": "d1da7af716657cee81af0170e21d4c6e35dfda79ea3cf36eff4b8acff238ce75"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\06-audit_export.py",
+      "sha256": "00ee81f89a9ef6b3dd95d36c9402ee761a1ed2ec657548ee2ce712b5d45565d1"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\07-audit_collector.py",
+      "sha256": "9431b563de61e6ab3fcd598edcc4aa393f5f47a70d290ed4bd08eaf2b9474334"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\08-audit_cohort.py",
+      "sha256": "9756fb593a70dab21de9994c40aa43e1489fb649c634781d1bfeca6db6dbb5d3"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\09-recovery_audit.py",
+      "sha256": "71640f97fa51432219cc8b3675900cb264f4fa0210842a665deb69232a924a70"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-reception\\frozen-sources\\10-controller_recovery.py",
+      "sha256": "88816a835b449c56a6ce6fc0bc7a1c308c6df8ddad186b74d14b74dac2a39c87"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\m14-independent-tests.log",
+      "sha256": "b2c05b8235d8cda89122661c0ac00ef17f5a74863fd08c0b81a764816b620f95"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-iot\\.local\\startup-20261027\\m14-guarded-regression.log",
+      "sha256": "9d0c09a7ba5792f4f1e5f7141deb3c2356b91d72001d8baf43b5bd6562f5df17"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\projects\\candidates\\native-0.7.1-audit-candidate.2\\NativeGateway.pcwex",
+      "sha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4"
+    }
+  ]
+}

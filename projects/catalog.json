@@ -42,11 +42,12 @@
       "sha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4",
       "embeddedAgentVersion": "native-0.7.1-audit-candidate.2",
       "pouCount": 66,
-      "status": "OFFLINE_COMPILED_PENDING_MCP_EXPORT_AND_REAL_VALIDATION",
-      "downloadPurpose": "仅离线开发/审查；本轮禁止下载。不用于恢复，不替换当前默认候选。",
+      "status": "OFFLINE_M14_ACCEPTED_PENDING_IEC_EXECUTION_AND_REAL_VALIDATION",
+      "downloadPurpose": "M14本机适配/受约束接收通过；IEC20项断言未执行、实机未验。本轮禁止下载，不用于恢复，不替换默认candidate.1。",
       "verifiedPackageId": "9ccf64a8e3824990bd738a19f70dd550",
       "controllerDownloaded": false,
-      "default": false
+      "default": false,
+      "mcpAcceptedVersion": "0.6.9"
     }
   ]
 }

@@ -7,7 +7,7 @@
 | `native-0.5.0` / STABLE_RESTORE | [稳定原工程](stable/native-0.5.0/NativeGateway.pcwex) | 恢复已验证的原运行程序，32 POU、旧 RTC 兼容路径；最近恢复为 boot72、250 GOOD、48 批 3000 值入库核验。不是平台授时最终版。 |
 | `native-0.7.0-timesync-candidate.1` / FUNCTIONAL_CANDIDATE | [授时集成候选](candidates/native-0.7.0-timesync-candidate.1/NativeGateway.pcwex) | 后续三方功能联调的默认输入，66 POU；47 项断言、M13 有限源窗口及共同槽分项通过。完整时间/故障矩阵、生产漂移和 P06 未放行，不等于最终发布。 |
 | `p06-before-entry-unification` / HISTORICAL_EXPERIMENT | [旧根目录试验输入](experimental/p06-before-entry-unification/NativeGateway.pcwex) | 仅保留历史 P06 输入，不作为默认下载工程。 |
-| `native-0.7.1-audit-candidate.2` / OFFLINE_COMPILED_PENDING_MCP_EXPORT_AND_REAL_VALIDATION | [审计v2离线候选](candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex) | 逐事件决策时钟/漏槽审计，66 POU冷编译及布局复核通过；公开MCP新字段导出、IEC断言执行及实机待验。本轮禁止下载，不替换默认candidate.1。 |
+| `native-0.7.1-audit-candidate.2` / OFFLINE_M14_ACCEPTED_PENDING_IEC_EXECUTION_AND_REAL_VALIDATION | [审计v2离线候选](candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex) | 逐事件决策时钟/漏槽审计，66 POU冷编译及布局复核通过；M14公开MCP本机接收及合成导出链路通过，IEC20项断言执行及实机待验。本轮禁止下载，不替换默认candidate.1。 |
 
 仓库根目录 [NativeGateway.pcwex](../NativeGateway.pcwex) 现在是授时集成候选的逐字节副本。**默认打开根工程是继续开发/联调；需要恢复旧运行程序时，必须明确选择稳定原工程。当前没有获准长期部署的最终授时发布版。**
 
@@ -26,3 +26,5 @@ python tools/verify_project_catalog.py
 已验证候选与原包的对应关系见 [M13 报告](../docs/三方联调-M13有限窗口闭合与逐槽对标-20261027.md)。实机当前状态仍以最后恢复证据为准，不能从本地根工程推断 PLC 已切换。
 
 审计v2离线进度、编码与预算见[PLC-AUDIT/2](../docs/PLC逐事件决策时钟与漏槽审计-20261027.md)；仅冷启动候选，不承诺保留旧RAM在线升级。
+
+M14本机接收及证据边界见[接收报告](../docs/M14本机适配接收与受约束验证-20261027.md)；本机通过不代表候选已执行或允许直接下载。

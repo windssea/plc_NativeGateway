@@ -5917,5 +5917,53 @@
     },
     "mcpV2ExporterImplemented": false,
     "newAuditWorkCommitted": false
+  },
+  "latestOfflineReception": {
+    "atUtc": "2026-10-27T02:35:59.594985+00:00",
+    "status": "M14_LOCAL_ADAPTER_ACCEPTED_REAL_DEVICE_UNTESTED",
+    "evidence": "D:\\work\\code\\PLCnext-Engineer\\docs\\verification\\2026-10-27-m14-local-reception-evidence.json",
+    "report": "D:\\work\\code\\PLCnext-Engineer\\docs\\M14本机适配接收与受约束验证-20261027.md",
+    "mcpVersion": "0.6.9",
+    "mcpTools": 79,
+    "candidate": "projects/candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex",
+    "defaultRootCandidateUnchanged": true,
+    "plcAccessed": false,
+    "plcDownloaded": false,
+    "performanceRetestsPaused": true
+  },
+  "m14LocalReception20261027": {
+    "priorWorkCommits": [
+      {
+        "repository": "PLCnext-Engineer",
+        "sha": "83d9874",
+        "scope": "audit-v2 offline source/artifact/docs"
+      },
+      {
+        "repository": "PLCnext-Hub-Backend",
+        "sha": "9919a16",
+        "scope": "independent audit-v2 oracle"
+      },
+      {
+        "repository": "PLCnext-iot",
+        "sha": "12cf6bf",
+        "scope": "historical catalog evidence pointer"
+      }
+    ],
+    "mcpV2ExporterImplemented": true,
+    "localAdapterAccepted": true,
+    "realDeviceValidated": false,
+    "iecAssertionsExecuted": false,
+    "mcpTestsPassed": 72,
+    "independentTestsPassed": 89,
+    "pythonRegressionPassed": 55,
+    "syntheticExportChainPassed": true,
+    "syntheticNegativeCasesRejected": 4,
+    "mqttPublished": false,
+    "databaseCreated": false,
+    "applicationDatabaseOpened": false,
+    "backendInstances": 1,
+    "servicesStartedOrStopped": false,
+    "controllerAuthorizationIssued": false,
+    "receptionWorkCommitted": false
   }
 }
