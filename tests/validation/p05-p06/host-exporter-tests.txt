@@ -1,0 +1,28 @@
+test_already_released_prefix_rejected (test_phase1_audit_export.ExportTests.test_already_released_prefix_rejected) ... ok
+test_association_is_independent_of_live_business_slots (test_phase1_audit_export.ExportTests.test_association_is_independent_of_live_business_slots) ... ok
+test_boot_change_in_split_read (test_phase1_audit_export.ExportTests.test_boot_change_in_split_read) ... ok
+test_config_generation_rejected (test_phase1_audit_export.ExportTests.test_config_generation_rejected) ... ok
+test_configuration_owner_missing (test_phase1_audit_export.ExportTests.test_configuration_owner_missing) ... ok
+test_disabled_audit (test_phase1_audit_export.ExportTests.test_disabled_audit) ... ok
+test_disk_failure_no_ack (test_phase1_audit_export.ExportTests.test_disk_failure_no_ack) ... ok
+test_durable_event_then_boot_fenced_ack (test_phase1_audit_export.ExportTests.test_durable_event_then_boot_fenced_ack) ... ok
+test_file_byte_cap_preserves_prior_records (test_phase1_audit_export.ExportTests.test_file_byte_cap_preserves_prior_records) ... ok
+test_file_is_exclusive (test_phase1_audit_export.ExportTests.test_file_is_exclusive) ... ok
+test_incomplete_flag (test_phase1_audit_export.ExportTests.test_incomplete_flag) ... ok
+test_invalid_slot_rejected (test_phase1_audit_export.ExportTests.test_invalid_slot_rejected) ... ok
+test_native_association_overflow (test_phase1_audit_export.ExportTests.test_native_association_overflow) ... ok
+test_native_capture_overflow (test_phase1_audit_export.ExportTests.test_native_capture_overflow) ... ok
+test_overwrite_during_dictionary_read (test_phase1_audit_export.ExportTests.test_overwrite_during_dictionary_read) ... ok
+test_overwritten_capture (test_phase1_audit_export.ExportTests.test_overwritten_capture) ... ok
+test_pending_decision_not_exported_or_acked (test_phase1_audit_export.ExportTests.test_pending_decision_not_exported_or_acked) ... ok
+test_real_sdk_uint64_cursor_encoding_without_device_connection (test_phase1_audit_export.ExportTests.test_real_sdk_uint64_cursor_encoding_without_device_connection) ... ok
+test_record_cap_preserves_file_without_partial_append (test_phase1_audit_export.ExportTests.test_record_cap_preserves_file_without_partial_append) ... ok
+test_sixty_four_events_use_bounded_bulk_reads (test_phase1_audit_export.ExportTests.test_sixty_four_events_use_bounded_bulk_reads) ... ok
+test_torn_diagnostic_revision_is_not_exported (test_phase1_audit_export.ExportTests.test_torn_diagnostic_revision_is_not_exported) ... ok
+test_unchanged_diagnostic_is_not_written_again (test_phase1_audit_export.ExportTests.test_unchanged_diagnostic_is_not_written_again) ... ok
+test_unknown_age_and_restart_loss_export_null (test_phase1_audit_export.ExportTests.test_unknown_age_and_restart_loss_export_null) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.063s
+
+OK

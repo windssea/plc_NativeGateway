@@ -1,0 +1,19 @@
+{
+  "dataBatches": 40,
+  "ackBatches": 40,
+  "dataValues": 2500,
+  "storedMatched": 40,
+  "storedValues": 2500,
+  "allBatchPointsUnique": true,
+  "maxPayloadBytes": 9490,
+  "allHashesMatch": true,
+  "bootIds": [
+    "ng-d4f61b3085b97c5e3831983b-27"
+  ],
+  "qualities": {
+    "UNKNOWN": 250,
+    "GOOD": 2250
+  },
+  "truncated": false,
+  "evidenceLevel": "PASSIVE_REAL_DATA_AND_STORED_NOT_INDEPENDENT_CAPTURE_AUDIT"
+}

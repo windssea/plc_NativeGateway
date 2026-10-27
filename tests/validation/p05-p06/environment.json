@@ -1,0 +1,22 @@
+{
+  "atUtc": "2026-10-24T08:48:53.7963834Z",
+  "backendInstanceCount": 1,
+  "backendPid": [
+    34208
+  ],
+  "listeners": [
+    {
+      "LocalPort": 8080,
+      "OwningProcess": 34208
+    },
+    {
+      "LocalPort": 8090,
+      "OwningProcess": 4088
+    }
+  ],
+  "resourceRecorderCount": 0,
+  "backendJarSha256": "34f1a01e324f1911e0cb2527e96130eefc7bed67a5ac13a31d6b626fefd25cd1",
+  "serviceRestarted": false,
+  "deviceDownloaded": false,
+  "databaseCreated": false
+}

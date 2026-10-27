@@ -1,0 +1,13 @@
+{
+  "BootId": "ng-d4f61b3085b97c5e3831983b-28",
+  "Active.Version": 13,
+  "Active.enabled": true,
+  "candidateUploaded": false,
+  "diagnosticBuild": {
+    "errors": 0,
+    "warnings": 0,
+    "project": "NativeGateway.p05-diagnostics-test-v2.pcwex"
+  },
+  "stopReason": "Computer Use stopped by physical Escape",
+  "atUtc": "2026-10-24T10:06:20Z"
+}

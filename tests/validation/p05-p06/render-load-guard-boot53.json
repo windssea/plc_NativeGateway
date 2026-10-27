@@ -1,0 +1,10 @@
+{
+  "expectedBoot": "ng-d4f61b3085b97c5e3831983b-53",
+  "complete": false,
+  "reason": "stop_requested",
+  "ready": false,
+  "baseline": null,
+  "snapshots": [],
+  "evidenceLevel": "READ_ONLY_MOCK_QUALITY_AND_COUNTER_LOAD_GUARD",
+  "performanceAccepted": false
+}

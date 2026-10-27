@@ -1,0 +1,14 @@
+{
+  "atUtc": "2026-10-26T03:00:24Z",
+  "bootId": "ng-d4f61b3085b97c5e3831983b-54",
+  "evidenceLevel": "RESTORED_ORIGINAL_PASSIVE_DATA_AND_STORED_TRAFFIC",
+  "dataBatchesObserved": 25,
+  "matchedStoredBatches": 24,
+  "matchedStoredValues": 1500,
+  "goodValues": 1250,
+  "wireWindowBoundaryDataWithoutAck": [
+    "d-ng-d4f61b3085b97c5e3831983b-54-25"
+  ],
+  "nativeCohortComplete": false,
+  "P06Accepted": false
+}

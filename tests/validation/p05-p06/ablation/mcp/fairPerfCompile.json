@@ -1,0 +1,2419 @@
+{
+  "project_id": "ede9c08a703c484cadec4f18941272a2",
+  "revision": 0,
+  "project_sha256": "13b8d41d368992f2ea6bc90e6967abc7afa7c274a9408a340be7b00e448c8134",
+  "project_path": "D:\\PLCnext-MCP-Workspace\\ede9c08a703c484cadec4f18941272a2\\revision-0000.pcwex",
+  "application_name": "NativeGateway.p06-performance-v29-fair",
+  "project_display_name": "NativeGateway.p06-performance-v29-fair",
+  "resource_name": "RES_23CA7F267545404C9FED5DC977A6399F",
+  "changed_source_members": [],
+  "pou_count": 61,
+  "pou_kinds": {
+    "Main": "Program",
+    "NG_AckFields": "FunctionBlock",
+    "NG_Add4": "Function",
+    "NG_Allowed": "Function",
+    "NG_AuditAssociation": "FunctionBlock",
+    "NG_AuditCapture": "FunctionBlock",
+    "NG_AuditDecision": "FunctionBlock",
+    "NG_AuditDrain": "FunctionBlock",
+    "NG_BatchBuilder": "FunctionBlock",
+    "NG_Bool": "Function",
+    "NG_BufferMaintenance": "FunctionBlock",
+    "NG_Capture": "FunctionBlock",
+    "NG_CaptureCore": "FunctionBlock",
+    "NG_Char": "FunctionBlock",
+    "NG_CheckConfig": "Function",
+    "NG_CheckCounters": "FunctionBlock",
+    "NG_Clip": "Function",
+    "NG_Command": "FunctionBlock",
+    "NG_ConfigSlot": "FunctionBlock",
+    "NG_Delivery": "FunctionBlock",
+    "NG_DeliveryParallel": "FunctionBlock",
+    "NG_Diagnostics": "FunctionBlock",
+    "NG_EditDevice": "FunctionBlock",
+    "NG_EndBatch": "FunctionBlock",
+    "NG_FreeRecord": "FunctionBlock",
+    "NG_GapLog": "FunctionBlock",
+    "NG_HmiEdit": "FunctionBlock",
+    "NG_IPv4": "Function",
+    "NG_JsonParse": "FunctionBlock",
+    "NG_Member": "Function",
+    "NG_Modbus": "FunctionBlock",
+    "NG_Mqtt": "FunctionBlock",
+    "NG_NumberValid": "Function",
+    "NG_PollSlot": "FunctionBlock",
+    "NG_ProcNumber": "Function",
+    "NG_PruneTerminal": "FunctionBlock",
+    "NG_QualityCode": "Function",
+    "NG_QualityName": "Function",
+    "NG_Quote": "Function",
+    "NG_Range": "Function",
+    "NG_ReadAck": "FunctionBlock",
+    "NG_ReadConfig": "FunctionBlock",
+    "NG_ReadDevice": "FunctionBlock",
+    "NG_ReadPoint": "FunctionBlock",
+    "NG_ReportPolicy": "FunctionBlock",
+    "NG_Resources": "FunctionBlock",
+    "NG_SafeAdd": "Function",
+    "NG_SameConfig": "FunctionBlock",
+    "NG_SHA256": "FunctionBlock",
+    "NG_SourceResult": "FunctionBlock",
+    "NG_SourceResultCore": "FunctionBlock",
+    "NG_SourceState": "FunctionBlock",
+    "NG_SourceStateCore": "FunctionBlock",
+    "NG_StorageHash": "FunctionBlock",
+    "NG_Store": "FunctionBlock",
+    "NG_StringSHA256": "FunctionBlock",
+    "NG_UiJoin": "Function",
+    "NG_UiText": "Function",
+    "NG_Unix": "Function",
+    "NG_ValidId": "Function",
+    "NG_WireCode": "Function"
+  },
+  "declared_application_cil": [
+    "Main.dll",
+    "NG_AckFields.dll",
+    "NG_Add4.dll",
+    "NG_Allowed.dll",
+    "NG_AuditAssociation.dll",
+    "NG_AuditCapture.dll",
+    "NG_AuditDecision.dll",
+    "NG_AuditDrain.dll",
+    "NG_BatchBuilder.dll",
+    "NG_Bool.dll",
+    "NG_BufferMaintenance.dll",
+    "NG_Capture.dll",
+    "NG_CaptureCore.dll",
+    "NG_Char.dll",
+    "NG_CheckConfig.dll",
+    "NG_CheckCounters.dll",
+    "NG_Clip.dll",
+    "NG_Command.dll",
+    "NG_ConfigSlot.dll",
+    "NG_Delivery.dll",
+    "NG_DeliveryParallel.dll",
+    "NG_Diagnostics.dll",
+    "NG_EditDevice.dll",
+    "NG_EndBatch.dll",
+    "NG_FreeRecord.dll",
+    "NG_GapLog.dll",
+    "NG_HmiEdit.dll",
+    "NG_IPv4.dll",
+    "NG_JsonParse.dll",
+    "NG_Member.dll",
+    "NG_Modbus.dll",
+    "NG_Mqtt.dll",
+    "NG_NumberValid.dll",
+    "NG_PollSlot.dll",
+    "NG_ProcNumber.dll",
+    "NG_PruneTerminal.dll",
+    "NG_QualityCode.dll",
+    "NG_QualityName.dll",
+    "NG_Quote.dll",
+    "NG_Range.dll",
+    "NG_ReadAck.dll",
+    "NG_ReadConfig.dll",
+    "NG_ReadDevice.dll",
+    "NG_ReadPoint.dll",
+    "NG_ReportPolicy.dll",
+    "NG_Resources.dll",
+    "NG_SHA256.dll",
+    "NG_SafeAdd.dll",
+    "NG_SameConfig.dll",
+    "NG_SourceResult.dll",
+    "NG_SourceResultCore.dll",
+    "NG_SourceState.dll",
+    "NG_SourceStateCore.dll",
+    "NG_StorageHash.dll",
+    "NG_Store.dll",
+    "NG_StringSHA256.dll",
+    "NG_UiJoin.dll",
+    "NG_UiText.dll",
+    "NG_Unix.dll",
+    "NG_ValidId.dll",
+    "NG_WireCode.dll"
+  ],
+  "required_application_cil": [
+    "Main.dll",
+    "RES_23CA7F267545404C9FED5DC977A6399F.Common.dll",
+    "RES_23CA7F267545404C9FED5DC977A6399F.exe"
+  ],
+  "capability": {
+    "device": "AXC F 2152",
+    "profile_revision": "00/2026.0.0",
+    "processor": "armthumb2",
+    "resource": "RES_23CA7F267545404C9FED5DC977A6399F",
+    "task": "Cyclic100",
+    "task_count": 1,
+    "en_eno_enabled": true,
+    "en_eno_source": "explicit_profile_default_true",
+    "gui_equivalence_established_for_independent_projects": false
+  },
+  "preservation_validation": {
+    "project_id": "ede9c08a703c484cadec4f18941272a2",
+    "revision": 0,
+    "project_sha256": "13b8d41d368992f2ea6bc90e6967abc7afa7c274a9408a340be7b00e448c8134",
+    "project_path": "D:\\PLCnext-MCP-Workspace\\ede9c08a703c484cadec4f18941272a2\\revision-0000.pcwex",
+    "preservation_passed": true,
+    "changed_members": [],
+    "unexpected_members": [],
+    "invalid_allowed_members": [],
+    "invalid_lifecycle_history": [],
+    "checked_unchanged_members": 265,
+    "all_other_payloads_byte_identical": true,
+    "compiled": false,
+    "controller_connected": false,
+    "limitations": [
+      "Structural checks are not IEC syntax/type checking or behavioral validation.",
+      "Unedited policy/signature payload bytes are copied unchanged; cryptographic/project integrity validity is not established."
+    ]
+  },
+  "job_id": "eaa57dd1e51942d793afbf16fa5bbc3c",
+  "job_directory": "D:\\PLCnext-MCP-Workspace\\ede9c08a703c484cadec4f18941272a2\\builds\\eaa57dd1e51942d793afbf16fa5bbc3c",
+  "compiled": true,
+  "status": "compiled",
+  "stage": "native",
+  "cache_assisted": false,
+  "ast_seed_used": false,
+  "iec_model_rebuilt_from_sources": true,
+  "precompiled_library_packages_used": true,
+  "build_mode": "cold",
+  "whole_project_rebuilt_from_pcwex": false,
+  "deployable": false,
+  "aci_used": false,
+  "computer_use_used": false,
+  "controller_connected": false,
+  "controller_downloaded": false,
+  "input_hashes": {
+    "sources/Main/Code.st": "a8b41e8107baa31b74093c7d3be1d4f83ee909cf9fd7b39598bedc9cac35d91a",
+    "sources/Main/Variables.var": "f5329eb366f68a92cbaaf5590e4ca59c0f02ffd741fcc7c63c69ca2e270a8e1b",
+    "sources/Main/Metadata.meta": "a8b23b5cec5d9a4d9814d30afc1c409478b3693dd2ef85e89e1afee6850f4de8",
+    "sources/NG_AckFields/Code.st": "56310abfe4bda75570123030f45918cab5044d147f1afad29d5543e6cf999628",
+    "sources/NG_AckFields/Variables.var": "968944286548e4722c1abed34811ede50c9da3dd5196e6b5e5343cee181b7429",
+    "sources/NG_AckFields/Metadata.meta": "2f35c610ab6958b18b49f34fe3000c1449f4f8f9fd289d068e2cb089032bc47f",
+    "sources/NG_Add4/Code.st": "f5d792a8af2067cbed3af678e44571607f7e53e0398a099b7ea5b5767f86f31e",
+    "sources/NG_Add4/Variables.var": "765b9fd73ea0733ab4f26d93dada095892059e8befb0aea75af663b6609faa15",
+    "sources/NG_Add4/Metadata.meta": "148580adf16736d11fb7bfaf074af19cb021838fdd6010b0804f2d5c9c6d0fa4",
+    "sources/NG_Allowed/Code.st": "b6b06cc0dfe3e2316cb8b1f2acaed6beb75684441dc57c8f5a0fc861b371e3fa",
+    "sources/NG_Allowed/Variables.var": "b9871cd58f321274590da4949e82854fd15a89a1ce09dc5a18342101ea6e69ce",
+    "sources/NG_Allowed/Metadata.meta": "79867b3c567e60e48ff3d68ab118485c01890a749b9994c8759a113263a6c84c",
+    "sources/NG_AuditAssociation/Code.st": "8fb33bfa492cedb3b470100f45cf86f99f4881b6a6e0c191e9005c4aaf560609",
+    "sources/NG_AuditAssociation/Variables.var": "cef4e6cdb2cbe6d5b382e8d4282d94d7c90da05a17b7b3b84c1f264700b1198d",
+    "sources/NG_AuditAssociation/Metadata.meta": "9d9f03c662684cd184703e2a63ea703f9039fdb6dc96f4dae33850cb8404d56e",
+    "sources/NG_AuditCapture/Code.st": "50b1c056ad1a37a381da8de6f447c066dda2df1d6845df52f970f2697d993016",
+    "sources/NG_AuditCapture/Variables.var": "17ac537726d24176e9d13672111b815653c7630e51a465d2f2c2464773134b7b",
+    "sources/NG_AuditCapture/Metadata.meta": "41556c48aeba42b711650b97ccd7b3192b28f6ffbea9401c966cddd35b4b9809",
+    "sources/NG_AuditDecision/Code.st": "e46edfe9fbc5a6179e315d1b4a5a0c55f3524b25f9e4cc8918c1f36f60d329c5",
+    "sources/NG_AuditDecision/Variables.var": "4941a294d6c107dbdd6db82c07a1c3984397d68eacbfebfd25094d9c4a3df587",
+    "sources/NG_AuditDecision/Metadata.meta": "cb30b64937b6915f3b8fb8cd683a69f0f09fe564956772c55c5c0c4bb5d8380a",
+    "sources/NG_AuditDrain/Code.st": "37b18bbc7d6660e90fd65dfabed6e2c7926a32a04f668ad0100aaeea1dbe94e5",
+    "sources/NG_AuditDrain/Variables.var": "07ce98894435335b6f1634df6caa0ece7dd75ff23ae0f110381424e4532ff8c5",
+    "sources/NG_AuditDrain/Metadata.meta": "37299e60c06eeacb3bfbaea6730fcf005c53a27f358971d3010acbfb2faa5072",
+    "sources/NG_BatchBuilder/Code.st": "d9eba304017adeb294f41f92dfc792428cc3d587eb17f057b4b66699a4d4f1a2",
+    "sources/NG_BatchBuilder/Variables.var": "e0b34555d6bd9fd35c315eede17e9f227d1237ac5b0158c142e99a42e354496b",
+    "sources/NG_BatchBuilder/Metadata.meta": "bd44f0507bb2d1dddff05665ac3671f34e5e4085a79b684415932c659b508b5e",
+    "sources/NG_Bool/Code.st": "4845b78dc78619a9e61a9a8ab3f9fcd6cfa784680204d1b00fe37cd7d3b7b406",
+    "sources/NG_Bool/Variables.var": "63e69ace964b55be1956e4a50415021f757d54b2f73427b8b618539789589f58",
+    "sources/NG_Bool/Metadata.meta": "2373735893924465916fd7823f79bc2fd6875e08f33ddd9d2baa5d564d0e9f37",
+    "sources/NG_BufferMaintenance/Code.st": "2b3cd47d1da46418c6dbeb543b131ab10b276978651b9d3d292f5243298a9885",
+    "sources/NG_BufferMaintenance/Variables.var": "10daf06450f652c706f3c454ff041e074fc9903eef09d2bde69c7b6f5bd9752a",
+    "sources/NG_BufferMaintenance/Metadata.meta": "7564cbe36f6ff519fd01106027d44025ff35020f096da3e72201a99acff48216",
+    "sources/NG_Capture/Code.st": "f57f0863cd7d186df1fa67f38778600f21eb75008529501c0a135770685bfe50",
+    "sources/NG_Capture/Variables.var": "7010c05a795866d283d2ff86a7ad8df13bf8be99d5c81450f284ec1230934b00",
+    "sources/NG_Capture/Metadata.meta": "adc6a47a39edaadbd9a3fe0d46065900b5cbe86bed9aba6fee1a1c01e39f0983",
+    "sources/NG_CaptureCore/Code.st": "3d74b4644bd9216a4b333c9e597bc1336ae0628e6e321c58df75472be3163f0b",
+    "sources/NG_CaptureCore/Variables.var": "a6d23b1a1a6513f7e86f473ceba82bbc1666aad6efea226bc9850bae17eaca66",
+    "sources/NG_CaptureCore/Metadata.meta": "25b537fb77d853f9725f38cb8333ce6b7bff38e640a5953460a5cd3039fdcbf4",
+    "sources/NG_Char/Code.st": "2588dc8904471ea9c8f0e3517d0673a48a481417324406cb1c8cce4fd8947620",
+    "sources/NG_Char/Variables.var": "e706e96f652e0e450293672de457dafa5150e953016d191ffccc091cb057c7ab",
+    "sources/NG_Char/Metadata.meta": "66895049f6dd8cc3975e7bd0feb301373ab3d5989b80597bd76966e1beae72b4",
+    "sources/NG_CheckConfig/Code.st": "993da15e72b549bfeaee97119133243939e82661fbbf055f623bbc60868dd7a4",
+    "sources/NG_CheckConfig/Variables.var": "9590e64dbf2a90641c89a557a3ab0fd44d28a22d543639839b3464577a14685b",
+    "sources/NG_CheckConfig/Metadata.meta": "7e8700acf22e7aaf3c9c1b2c0825ccabbb8198ec1f6d9d93f3dc5eada4a2c359",
+    "sources/NG_CheckCounters/Code.st": "474543e51c591b627fb3d371e83fa78d9c098f6f0f21afd50fa22e42a5bcd276",
+    "sources/NG_CheckCounters/Variables.var": "30493679d025d47f0a01e8ade5b4785ece21141c46055d1d0fdccb637e63ba60",
+    "sources/NG_CheckCounters/Metadata.meta": "a8b721847c076fee7cc2666f8de19f312f5d10007d320843c913d6bf01a70d4a",
+    "sources/NG_Clip/Code.st": "61b2d42aa4c69c014b1bc6a955e89e5f64a3eb4cb11820e676343cadfb004c82",
+    "sources/NG_Clip/Variables.var": "6282e11da8f110d963f1e08ce04bd80dabc68a6fd812f5adac96fa834be35ce6",
+    "sources/NG_Clip/Metadata.meta": "fd35dafb2f6211a5e854cee32f05263b0f8462c343b938e66b0a49ec6dadda2b",
+    "sources/NG_Command/Code.st": "56f7b7620f072b20964774c022dfc095128779b60c5f2aa08237adaf7aa83c0e",
+    "sources/NG_Command/Variables.var": "9158a35376bdd2ebe7e86fe48b584b45ecefa0dca46bfafdfbd7c079e4cafe38",
+    "sources/NG_Command/Metadata.meta": "48fa5b60e52e828e09da67fd3dc18febcc7f31265feeaccb88740f8691ce49dc",
+    "sources/NG_ConfigSlot/Code.st": "f27d82e5f10245bb25754f334957cde2ba433dbc08e19c04a7a84e56d627cb73",
+    "sources/NG_ConfigSlot/Variables.var": "41c881485fbe8d54ca621cb37a7d5818d13f657641cec93bcd3e6b0defd2cf98",
+    "sources/NG_ConfigSlot/Metadata.meta": "14c547dd66d8a56eb0e15239256a00910b1c89364ce7e960b7ff3f4e457a8874",
+    "sources/NG_Delivery/Code.st": "bfb710bb0593999a40b4e1174ac280d237a250a97075725951fa785cdcc1c241",
+    "sources/NG_Delivery/Variables.var": "77b5c0ddd0b7932f69d98f6e60d2b6e3badc086531d4fc6344e304c67a93fdec",
+    "sources/NG_Delivery/Metadata.meta": "51915e0f8b9b7761c79941b73dd4b5d1be6a2634ad17b4c8430b1246844c6546",
+    "sources/NG_DeliveryParallel/Code.st": "e70418b5f33e2979a09dd2683d8b68ca85ef802bb1adeecd769d49343edbe63a",
+    "sources/NG_DeliveryParallel/Variables.var": "23faf9534ceef7c17fdb188035fd34f8a1d638f3790f16d0cc46c317bed221a7",
+    "sources/NG_DeliveryParallel/Metadata.meta": "c482775e2d6cce8d229b4c6b74c8d5a3e8b282ed3fec7973ed7460a411796771",
+    "sources/NG_Diagnostics/Code.st": "2a0806420eac46cdbe104ad17439990b51789fd29e7c240d8bc03dbfeaef470e",
+    "sources/NG_Diagnostics/Variables.var": "d988b06d4efe10296cfc2d7d3d71eb5a9d3e3e6fdcbd2933268856cb651f5e1e",
+    "sources/NG_Diagnostics/Metadata.meta": "232bcf975d912c95b55951e9fe099b7f34f9707f2b07bfe1211cd8aadc7cada1",
+    "sources/NG_EditDevice/Code.st": "2892421e63d53101f1bebbdad6dda9475f720e0b45385078865d8bf85a85c70a",
+    "sources/NG_EditDevice/Variables.var": "9de4fd094d340f61877e70bb540b760d1136ba9a68ec059c3ef30949cd00e50b",
+    "sources/NG_EditDevice/Metadata.meta": "c6f7be257dc189cfb25784dd130228bd3da6ca526e370290e41b4b2b2579400c",
+    "sources/NG_EndBatch/Code.st": "9dd449a13d46b49f31972bb0f46aea0bff635f1ab4edb8b988c10634ef73b48a",
+    "sources/NG_EndBatch/Variables.var": "6ee93af703525e0729d011166d4f8cf940fddde1c5a504ef8c2f437791f325ae",
+    "sources/NG_EndBatch/Metadata.meta": "81c6f80b06da6b608fd87f033d3604aaa022f43e379b15d0be8e22595d41e16c",
+    "sources/NG_FreeRecord/Code.st": "fdbc11e9b6149fce72452c893eade168ac1bcf50f2a81e2cbd932f68ab4a40ed",
+    "sources/NG_FreeRecord/Variables.var": "560ec5570931c373e9db2ba4c825ece3bde16f43ab119c7ffdeca128cbff3e3f",
+    "sources/NG_FreeRecord/Metadata.meta": "12e3926b3b0e919c136c8fe1c67008b6bcb391e9a28c0fba23986eba138e5cf9",
+    "sources/NG_GapLog/Code.st": "85449cb7f75d949a082d32f09aa5977fa342246345a3683e72249cd494d99fd7",
+    "sources/NG_GapLog/Variables.var": "b541a9ee06331567fb4904da489b9666244ab6e139e094d33ad21a1dfe535e2f",
+    "sources/NG_GapLog/Metadata.meta": "9d2b30e1ba2cfc751b88011ad33d6d6afc6988b2fbe0440cfa51308bc47eb151",
+    "sources/NG_HmiEdit/Code.st": "ad4254abb1d2dd42fc4023c77a25b86706f7784edbf786af0b3bc9f3f9c26b53",
+    "sources/NG_HmiEdit/Variables.var": "fc257496f232e946acd00ec9fa90f9152b3ac5fbec989e9c9f3fcc577f7bd0bc",
+    "sources/NG_HmiEdit/Metadata.meta": "e77edd7fc2172369e1e254d5903110a0fafb467e77a60dc7d2c2df5ae06aaa56",
+    "sources/NG_IPv4/Code.st": "365ab57b1202c0946833a63af44e50a35cd2f0fe3cfb9c6fcc11a52574ff87a7",
+    "sources/NG_IPv4/Variables.var": "60e6d3a7fd43349e836ba730a9dc69fff9216e83ce3af4cab9dddfd9e08000e5",
+    "sources/NG_IPv4/Metadata.meta": "af59c19c5eb554cce98c4209422d21eb7ee7a883e7b223da0bfd8e1081ae5366",
+    "sources/NG_JsonParse/Code.st": "eb253a087359d6664875797995a23976f437995ec88d281c7067ea76a9f2d763",
+    "sources/NG_JsonParse/Variables.var": "6ad630a57bc8251e420f5d9590f5a7dd8cdd2332abce1cbb98714b26c9849e7f",
+    "sources/NG_JsonParse/Metadata.meta": "cff6c4e51f1629f965e9257c5a92bfb4f6c98e08a29fce8fdbdfebdb6d80cd58",
+    "sources/NG_Member/Code.st": "91c247e43b8e455016b5d4ff26a88b1641883f555ee4326be6fda7c0ad3fda8a",
+    "sources/NG_Member/Variables.var": "aa1af2a51b4617dcba1dd236d2062fcda992dabb0cb49b27881b3149fc7f1d1e",
+    "sources/NG_Member/Metadata.meta": "a087df235484e0222d6eaa192bcd62005b8e8d5af398f9453524d36c02a9b9cf",
+    "sources/NG_Modbus/Code.st": "9b677bd0993179a67eab4086f5b66f621e91af8dbc42ef62ccb7f0ae85c2269a",
+    "sources/NG_Modbus/Variables.var": "7b8c0e1222626dc1d55592473b57260300380fcb6ef33086e31e5a29b08e996a",
+    "sources/NG_Modbus/Metadata.meta": "7273e2993f6c25c2e0ab9e50c4f56fdb153ac795f54eb00c27a4171f73bcb173",
+    "sources/NG_Mqtt/Code.st": "088d3ae46b42c329bcb528d4d96ab363407f22bd12f9ea24c322b22a0629280f",
+    "sources/NG_Mqtt/Variables.var": "318d833567cb6ceb0adc448c4e3f883cfa9e89be540fefa580bb246402fb4811",
+    "sources/NG_Mqtt/Metadata.meta": "d63571eedf192ff4fb7d80cce634574303d93e0a1930ed66906c9d5c09906126",
+    "sources/NG_NumberValid/Code.st": "1b135f724f4a9b33abfab9f468fd00b6265d8fde04439e71cd4a1e85c59e4c11",
+    "sources/NG_NumberValid/Variables.var": "65441930cd29705b63a4043df81204604325abe219bf9da6f202e7fda78d0b0e",
+    "sources/NG_NumberValid/Metadata.meta": "4790a914fa93650b09be0c655c5e3c7187d52ee0d48b2091bc2956118666ccee",
+    "sources/NG_PollSlot/Code.st": "608077f7d07b367da6239f2bad206b102bd7e017e456efcf97fc02a6172b60c1",
+    "sources/NG_PollSlot/Variables.var": "b467faaa9e07d452cd6f88bcf3456b18197df227bb7caae7362af7cf9748da94",
+    "sources/NG_PollSlot/Metadata.meta": "7af94119e955600add65d1d9bb5d622ce6167815c325753bf810a5f410d7832c",
+    "sources/NG_ProcNumber/Code.st": "d9e3cf35f186e7bb3c270b4b51c0f970b755e6a75c6e4df37524949ea6147355",
+    "sources/NG_ProcNumber/Variables.var": "999fc3496205c499f47d30450c95e11f58789752998db55e3e3932e1ddd149f8",
+    "sources/NG_ProcNumber/Metadata.meta": "6197af1a62cb5e7650e2fa6dc4fe3f2ec67d33318df4b5b0db49039735e0d448",
+    "sources/NG_PruneTerminal/Code.st": "fb4952d51064e432a40279f2c8981b996ea53004143e7972b539e290990f8b46",
+    "sources/NG_PruneTerminal/Variables.var": "6464c91504ef719ed38bb5b93c9de43495556cb06191c1c078330c681f217baf",
+    "sources/NG_PruneTerminal/Metadata.meta": "c735e16a18d671d320a3eb66f150cbda32372eaa73c0c660a2461bd3cecac9c6",
+    "sources/NG_QualityCode/Code.st": "cd67ad798ef4d98ea9a797edf743f6c2c29d0517911453572993e53d2a6fee23",
+    "sources/NG_QualityCode/Variables.var": "ee5d7afd048cd47c378538c334e101cb46745fada2b0cba4f0fdab222cd559f0",
+    "sources/NG_QualityCode/Metadata.meta": "a7a014013e123e22c0a39edc973c60871463305d14c0102dc2c85fd1db2fd0ec",
+    "sources/NG_QualityName/Code.st": "c9170ae57d698e040113447c66a603f6f53605e60a2b74449e7b6652a778f7cd",
+    "sources/NG_QualityName/Variables.var": "e9377f88d09bd6607c39fde67e55f17391de060e8e341f5562b3e9b569abcf55",
+    "sources/NG_QualityName/Metadata.meta": "85e473df7535b1f7b617427a769c2acec2041743944367844b643cc683cc7126",
+    "sources/NG_Quote/Code.st": "46dd2c3e4ad778ef4a7d257fa8a1a1af10849525f413e9a93e2f8ac094b690fd",
+    "sources/NG_Quote/Variables.var": "bd237618a4ee70385829134975e45b0d66b4e49d37d6880cad3d95cd51f9fe0f",
+    "sources/NG_Quote/Metadata.meta": "42c51a0106b31362144f2036d27172c629b110fdcb2ec766aa444cf57d165e87",
+    "sources/NG_Range/Code.st": "c72e06a4c718a3852e092770cba58af7769b89eb2f5985e272666f544d520187",
+    "sources/NG_Range/Variables.var": "10b2803fa9bd04aa318e4eb72bb50af34a896cde6a6cca4ae5a93079ec2b8845",
+    "sources/NG_Range/Metadata.meta": "98f1d90e970e0334e9c498033be19aaeb81c24c5b485364db68b66e499d70f43",
+    "sources/NG_ReadAck/Code.st": "ebe4888806e8e76068ef1e615e927df61b536b7482d5f4898f265e986d1c9f8e",
+    "sources/NG_ReadAck/Variables.var": "ca4fcb4734862838f30bde8944d621a899c369328f7d8d6cd78baaba38ac0c26",
+    "sources/NG_ReadAck/Metadata.meta": "b6bc92d0d9fa30a49a1418a982738d11989aa8ab5d627aaaac9f3d8f54bf9110",
+    "sources/NG_ReadConfig/Code.st": "48d5305418be09540703a617b034e7b2549ec756690f6349d18f37afe7d411b8",
+    "sources/NG_ReadConfig/Variables.var": "6bfc7b13f2336d3de70d4277574c928235b49e4625374694005181524554c0a5",
+    "sources/NG_ReadConfig/Metadata.meta": "37898bf1c53ba4b27d8ebfdf231420e3d0ac8b79174e3eebbca0c59c72020cd3",
+    "sources/NG_ReadDevice/Code.st": "c3ab7b83252236dd8e325a02a218eab890a52def75b016b0c932ce8a2ef5bfda",
+    "sources/NG_ReadDevice/Variables.var": "ce27dbfd1c1019688d2c7d11251f712da0bfdf58332d3806f4a13ed3f0f62fff",
+    "sources/NG_ReadDevice/Metadata.meta": "48223a8f53cbbcad2a0b46b8d2b526ccd32998f420c96c2a296e9568d655e6ac",
+    "sources/NG_ReadPoint/Code.st": "143f461884ede227c5379a4356878a47bdd491d4963b3ced386af5ead14a4719",
+    "sources/NG_ReadPoint/Variables.var": "5b1f446736ec4ae0deb3f013dc111f267d79a8b6ebddfb2128ce256955fd62a7",
+    "sources/NG_ReadPoint/Metadata.meta": "9af63febdbc76805da60f0f57f2871a74602e7ddc56a292b1aabac7d772de92f",
+    "sources/NG_ReportPolicy/Code.st": "a893d4e8344dac201a957bfce065db2653a3707b0d0aa59c8744d81982b7d6e7",
+    "sources/NG_ReportPolicy/Variables.var": "ba24a9c91d91ec9196cf8fadb4c56e70d1d8ee5d74a211edab47640a41d43003",
+    "sources/NG_ReportPolicy/Metadata.meta": "5913e741a451f61ed6fe0e0f3e834c191c93c9f1127b84915b0812b6dda2cefd",
+    "sources/NG_Resources/Code.st": "b52d5934bc24c40ccdfcfd00d08188ba8e95d935ea55906818d7abdcd3f4bca0",
+    "sources/NG_Resources/Variables.var": "f64b363328af8c133c2777f1e942b3d2d9c720e85270ff4770c0b25fe5899c42",
+    "sources/NG_Resources/Metadata.meta": "1e8e27226c0a17218a19cd675b69994e65d48449846145af8cc09df4f588bc52",
+    "sources/NG_SHA256/Code.st": "15de26158dfc8003f9a6b9307b984658c96c34a1c7e51b1545160b956f8b4c5b",
+    "sources/NG_SHA256/Variables.var": "5e4d5b2b3997ddeedf0d310c38fc8235c9de85313034ea837130c36e23171e70",
+    "sources/NG_SHA256/Metadata.meta": "1e32adeaa4945e5c226a68fb8dfa91c0d387070ad9749509bc95581fcf4a3a4d",
+    "sources/NG_SafeAdd/Code.st": "79ff9033c223b2e73eb3821b97af8b437602a15f8e9cf396efb19cc3079f98ac",
+    "sources/NG_SafeAdd/Variables.var": "42c0d4d5ab1700f649e2b3fe34bce330545b8152fa0ae7c65de58b53c53df5f5",
+    "sources/NG_SafeAdd/Metadata.meta": "915e5ed0e7681b67cbb43146246180f637ccb5897e4034bb3401d29afce8ee46",
+    "sources/NG_SameConfig/Code.st": "e853d47900a04ab58356bfcc5d6694079c468374a6bd0aa4da20bc527e49927c",
+    "sources/NG_SameConfig/Variables.var": "6ea067af5e2bcf1e192f9de87ae3b9d02699eaca645498dbfce89c5fbbab155a",
+    "sources/NG_SameConfig/Metadata.meta": "f21f475353a907134be61fa3315a72e6faa6d9c8cb1958c8ab31b1231eafdbb5",
+    "sources/NG_SourceResult/Code.st": "54293729178213ee9b8b4895c9aceee17f4d2ff3033b4dd736bae78ca3a8fe81",
+    "sources/NG_SourceResult/Variables.var": "d9884b275c5871b647a6bee87db71b832d6c568665cbc867648f30a5515e6b9c",
+    "sources/NG_SourceResult/Metadata.meta": "88bd53b35f7dc8ed239f3a63e8fcf3838a62d6bf2039755ba91b8c7503005787",
+    "sources/NG_SourceResultCore/Code.st": "4fc124e0df285f41a212ecea74e5e6cc83f5dea8151592a7463248e4c19732fe",
+    "sources/NG_SourceResultCore/Variables.var": "078561719a4520dfcb09f971a610731b52a8cd27fe6f0eb82f6a8c12803b4976",
+    "sources/NG_SourceResultCore/Metadata.meta": "1aff72b7f711ece406136eb0f4143d1c40e9938a87988951d1be76fc5af60be1",
+    "sources/NG_SourceState/Code.st": "4e25e9e830a84c0290209b417e26e8767668b60b95b2dfbee5edf3321eb41110",
+    "sources/NG_SourceState/Variables.var": "b8749a708643a29231e8543aec9fd47005adb3ca1b953629fe681b3b1e57c7ce",
+    "sources/NG_SourceState/Metadata.meta": "fecbef29d9eb06088e40eae2ada41bb1ca79e2c3046dcafbf64b6c0ccdc99b06",
+    "sources/NG_SourceStateCore/Code.st": "f94099b92709d26b85d7ece90cb36bf88bb3ca900f9fedbce2abc4b9c31d172b",
+    "sources/NG_SourceStateCore/Variables.var": "9703cbd882d37fbe5cca18e62b3f5f543e3a04f54f1c570bba1b246878e0319c",
+    "sources/NG_SourceStateCore/Metadata.meta": "dabb3afccd04f2f256599c12a5c452e0077bbd6d1660cf0684581e893eed76f5",
+    "sources/NG_StorageHash/Code.st": "3feeca788b28d7fb166e8a494786ff43297dbece20f66ce68c00a8474a1bd230",
+    "sources/NG_StorageHash/Variables.var": "84ef8e68978e8c31723138a3d58a0d9f7519fae82ce07f06f93307e6597850f4",
+    "sources/NG_StorageHash/Metadata.meta": "acd7aa268874e591897221fd98f2b2587a01f42b025d3fe37bd454aa0528e9c0",
+    "sources/NG_Store/Code.st": "ba6b0a2fcea52318a081f348922371f917bd0a80d0f46449ccba6d243d5fc514",
+    "sources/NG_Store/Variables.var": "c8f76c5c50a68ce655b9c0511a7e3a74fe665f8a4dcfd32b7e02196a6aa6788e",
+    "sources/NG_Store/Metadata.meta": "58e542e8fbdc1124cfaa75dd757fe9f1919746d3297c026ec243b3b44a1a45ba",
+    "sources/NG_StringSHA256/Code.st": "5c62149c6f38e8bcba7df378740080df3cfab95afc49569fae0b28fd9cd69ed9",
+    "sources/NG_StringSHA256/Variables.var": "ad08195e66c7710755a650a79fff5d685e769064b7f4b60e996caa2766ab4d66",
+    "sources/NG_StringSHA256/Metadata.meta": "3b544b9d2490829b7a46225a63a1b3019cbb6c7bdb30e68fefe59ce9853b33cc",
+    "sources/NG_UiJoin/Code.st": "f49c4427ae6379ce4f05f9a7d0e5d69c7ff642e8f3c673345c16bb8f918189bc",
+    "sources/NG_UiJoin/Variables.var": "9f864afd76f5cdf645968922c504bd6467c0ac6d87d6113227288e6afe0083d0",
+    "sources/NG_UiJoin/Metadata.meta": "14cccae9043e309f244acffe8cc02c65d38b82b846a5b265952053ea946fbb98",
+    "sources/NG_UiText/Code.st": "40bd0058bf9635a80eead9bcbe9904013c1a0f110cb222d8fccce58b09cff309",
+    "sources/NG_UiText/Variables.var": "1125860629c5d97cd6f1c4f7230e3ba8cc97e11b8416af3bb5ce9d6c21985aaf",
+    "sources/NG_UiText/Metadata.meta": "40f986af8b7b85a22e01ee6a66bb8f8f1e14511c7ec1237b4a06d677aebc1bc0",
+    "sources/NG_Unix/Code.st": "83b20b85b9e8b4805ae094754a536a0c9495cb1fda42fc81b605b2971645d140",
+    "sources/NG_Unix/Variables.var": "16ceeb724eea072a659e4c70a2b837f4278244a7916cc272e5939cb2df7f680a",
+    "sources/NG_Unix/Metadata.meta": "3890e28c702caf7036b9e40cdd8089f317f806280a4a5af9ce3086c7a7040340",
+    "sources/NG_ValidId/Code.st": "40e4be4e0123bd1ccd3b4cae6820493f2980da213f2bfae570bdb803099e2f36",
+    "sources/NG_ValidId/Variables.var": "3b40bd2586a90169aabcc81318a63b004d7d85bdaedac450ca53a005a938e8cb",
+    "sources/NG_ValidId/Metadata.meta": "e98bd4bb1dbe944c8be8293f9277eb3acd2c26944cafd00ec1ece04708977041",
+    "sources/NG_WireCode/Code.st": "35a053f8b6f3f2d9cc51f4b632a96fd40ee11af9bce8f0cddced684526a4aae7",
+    "sources/NG_WireCode/Variables.var": "2f1b8bf769ec13cc1acb4a52369c10a73ae0f5c62f2e03662d76e07e7d203f7e",
+    "sources/NG_WireCode/Metadata.meta": "deeeaa276207e93e3bf4ac359fa918fecc043da69c41c0cf17f830256d7feca9",
+    "sources.xml": "34ae4a9ba86b089eb6a1b31ba1b29e643cbf15ed0faf13c77671ec564cb51af1",
+    "libraries/0000.pcwlx": "6871db126a070a324c427cafefa5c7c88d2d12ff00c6049d346ec543d304079d",
+    "libraries/0001.pcwlx": "aa1f8b047d28c5211bb46da0c5739debe76931108c1cb51831e981399afa4b77",
+    "library-inputs.xml": "d4b7d9142ade3582704d06b96ca2915e1435301e6e0d4d0ff7d14d4c748898e6",
+    "project/_properties/Core.xml": "acba6580f45d073579b5be172a5e608459a4de159d1e1cf60bfa374b141d85c9",
+    "project/_properties/Extended.xml": "e160c250abe7791aeb1fe496fff2bd872b5a4d02f4a0738ba82ac9bc99a517b7",
+    "project/_properties/Additional.xml": "b7a0e1a95312ccb6bfca5363530cb0b354503de3deea43f91c32c7df2a839200",
+    "project/Safety/PROJECT/Safety.area": "2dda6a8d3d620067db3efb3c7b6aecd723f2cf41c7c966fe399bea9836352a71",
+    "project/Safety/PROJECT/Inventories/SafetyInventory.xml": "7046680f321abdd9eb0016ef1d353233ca20b931f854a7f7ec1f3b76b1bd28dd",
+    "project/[Content_Types].xml": "e2ad906597c66bbd3d8951a580b19bc5d425c7546aaf8fcbdaa37a53c4c99333",
+    "project/_rels/.rels": "1bc6076b29cf77821c1416b90ddbfbe7e1559512e6b8225fb099e649cdbb7571",
+    "project/_properties/SubFileSystems.xml": "0bda306818def4de50a4a0d71d57f83b57dab4873eb0586cb47b64c302a80b6b",
+    "project/PROJECT/PROJECT.proj": "7af182372f1cdd1a73c74781aa94d2027d06458c69d6ebff0227aed0e20e2189",
+    "project/PROJECT/Hardware/83d6a9cc-314a-4ed2-bcb7-46e832952ff3.DataLink": "b7b9d305fdb045e00c53bb742f78305965a7964ebdb5e578d082c91e51adbd47",
+    "project/PROJECT/Hardware/83d6a9cc-314a-4ed2-bcb7-46e832952ff3.projset": "9b7f6247f12a38f89e5c19c9356e2c4b7ca50f80ea71b66cc651f38fb5c66664",
+    "project/PROJECT/Hardware/83d6a9cc-314a-4ed2-bcb7-46e832952ff3.Transport": "b82a1a0146cf4e8dbab5d5a867efa80e4c6bd9a726d1cb8ea85799ecd4e9b67f",
+    "project/PROJECT/Hardware/Description.en.html": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "project/PROJECT/Hardware/VersionHistory.usermeta": "c4b58749601953bf5677ebfd16e27a8564c10a0567eb186ca1c92115a90544eb",
+    "project/PROJECT/Logical%20Elements/GeneratedDataTypes.dt": "8739c35b6d76e20248e95952198eb9ea7ea9253368560ef80047946a1e3ec796",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/226ab768-d4d8-481f-b42f-29c775287a70.ds": "08668b44c35850d564c73d947c3f3f1bb7b9a96dc7fe6511bb79e13ae23a2b59",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/DataList.dl": "27d4e9f6a8360311ed7bdfde2512b2a3e933786c43e1b3bd134f84d36286cb02",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/DownloadSecuritySettings.dss": "a36ad89064a665b4bd33fa45238c25bbe9d7a5f2f2aa7faa119fad1e505ac303",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/PlmConfiguration.plmc": "e1e8e1c60dada9be0647a1292a2356abecb1c8962f189070c74d5c2fc1673f8c",
+    "project/PROJECT/Logical%20Elements/HelpTemplate/collapse_toggle.png": "e872661cdb15c2876ba213bdec8e9da868581d9b9280452bc5bb9cb26bcef62b",
+    "project/PROJECT/Logical%20Elements/HelpTemplate/image.png": "b18d31b387736694e2a9569358c32c1c6d0cb3e51426ea5601484557e22ad7e9",
+    "project/PROJECT/Logical%20Elements/HelpTemplate/Styles.css": "7c2ef8580640c29a1bba5f093c2fa9073800de9f315937ca8af5723176208bd8",
+    "project/PROJECT/Logical%20Elements/HelpTemplate/TemplateFunction.htm": "60448ff786a625f3a9e59d48133a28e91394597ce2fabc464b902d26656559e5",
+    "project/PROJECT/Logical%20Elements/HelpTemplate/TemplateFunctionBlock.htm": "4f907c9eb9169bf1a8809c06ef5ef1a2886c9f0e5e1469f14a41f3e5f2daea3d",
+    "project/PROJECT/Logical%20Elements/HelpTemplate/TemplateOverview.htm": "b1b1d685611630a52e23849932ecfd7b9e57f6272bb5133a667d2c24e70cc2e3",
+    "project/PROJECT/Logical%20Elements/Main.pou/Description.html": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "project/PROJECT/Logical%20Elements/Main.pou/Description.rtf": "8c39006b09e36ee334ae2e3f12a45a44c471b7ce311d61ae90fd0b721333e0c0",
+    "project/PROJECT/Logical%20Elements/Main.pou/Metadata.meta": "a8b23b5cec5d9a4d9814d30afc1c409478b3693dd2ef85e89e1afee6850f4de8",
+    "project/PROJECT/Logical%20Elements/Main.pou/User.locres": "1e517c0aba34fa36b93389442854291697764fe55a764475d828a0264a2aebf9",
+    "project/PROJECT/Logical%20Elements/Main.pou/Variables.var": "f5329eb366f68a92cbaaf5590e4ca59c0f02ffd741fcc7c63c69ca2e270a8e1b",
+    "project/PROJECT/Logical%20Elements/Main.pou/Variables.var.locres": "5b6f77b6b9bb2247836fd9264cd92cbfbf8849e84ce4069114c46e556396743d",
+    "project/PROJECT/Logical%20Elements/Main.pou/VersionHistory.usermeta": "3e7bf32b65024e912ac8d320cd2936b6c00dedf9c0888fb3dea2200ce06db5e7",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ALARM_Server/Alarms.almwrk": "3689d8403182ff8af92936cc1f752cf16e2336ca965d5f3f9e1e800c3ebe2cef",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ALARM_Server/Arp.Services.AlarmServer.acf.config": "7fffb97b92c12b5ab884ceaf72175ba7548a0f569de3bd32b46e14443c84d773",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/AXLF_Master/13a42f16-33aa-4b59-b4b0-eef1e8201826.L7_ax_AXLF_Master.station": "da40d20b2c50f9b8909bb755c8fbb81db2b9388942c35e2af1c45f9b1863b78e",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/AXLF_Master/Arp.Io.AxlC.acf.config": "27b4983b9b2e0a59164884c346c97a920e2123877553f70f9c507374138e3711",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/EIP_Master/Arp.Io.EthernetIP.acf.config": "d45aa16d4e775593f74da3a63f2ff2a1fdfac3d069d856965b816ee6e7a525f7",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Arp.Services.Ehmi.acf.config": "4754ff9c1a4eb8e2736d23c202297b0ae92c795d9727c0fe5ac7dc773331731d",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/DataList.dlr4hmi": "8ddea8ec4c77161da4a1461a3e59062b12a4e10c70691fdce7e01f85db303ab7",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/IB_Master/13a42f16-33aa-4b59-b4b0-eef1e8201826.L7_8_IB_Master.station": "68b86eab132df86a50e6029fccd567a18a0a5d24122ddf7cb87db5195acfa5b8",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/IB_Master/Arp.Io.IbM.acf.config": "242b574e61e7029b81d26111aefe640942feae7adec30956963bf61cecdad012",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/IB_RemoteMaster/Arp.Io.IbM.acf.config": "242b574e61e7029b81d26111aefe640942feae7adec30956963bf61cecdad012",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/OPCUA/226ab768-d4d8-481f-b42f-29c775287a70.L7_5.opcuaclicon": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/OPCUA/226ab768-d4d8-481f-b42f-29c775287a70.L7_5.pubsub": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/PLCnext/226ab768-d4d8-481f-b42f-29c775287a70.L7_1.datalogger": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/PLCnext/EsmConfiguration.esmc": "07331f9ddbe7d4e4da63c3004689b897e98741d38e83c5a3c1cb5d8b54f4db0b",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/PN_Master/13a42f16-33aa-4b59-b4b0-eef1e8201826.L7_4_InterfaceListDocument.station": "52df91c7c58d4ebcd04abad4f3e171b585bac978316aa41b6db95b5a03cedc00",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/PN_Master/13a42f16-33aa-4b59-b4b0-eef1e8201826.L7_4_PN_Master.station": "ca4fc5b4d57858ea1dfe1e971a054246d49fe69f276a29a218654b16a959b7c3",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/PN_Master/Arp.Io.PnC.acf.config": "3cca5db3bb97ea9a20e17027d9afb45f8ef5a0546b1f0922f85c71a5b77272ca",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/RES_23CA7F267545404C9FED5DC977A6399F/Arp.Plc.Eclr.acf.config": "109e9e07b94f014c06fab7ab21554d057e743e87212712345decf3c5f83fbb0a",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/RES_23CA7F267545404C9FED5DC977A6399F/DataList.dlr4var": "222dd065bbc2d24eb4a7b42e4df27f2cc6ac9f860bf2599b091c05ee9e71df82",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/RES_23CA7F267545404C9FED5DC977A6399F/GlobalVariables.var": "2fa7018692322e26b6a9542bfcbd674b0734d1a230f246ebface604105fb4119",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/RES_23CA7F267545404C9FED5DC977A6399F/IOConfiguration.ioc": "8384d42b2dbaf5fdb704bd65ae8c2d877428f17e014fbb8dd25ea07895b8b08b",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/RES_23CA7F267545404C9FED5DC977A6399F/ResourceSettings.set": "542e30e43be265517bfaaa8620e1c55bf584a7a9259fe04c777e2a5a0a745173",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Navigation.hminav": "e387214ccd47a42a279cb214d459a422ff371d27613c97cd6d8e657cd8c7a52a",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Variables.hmivar": "80ae92474cc44f3f000c63c65b5f073bededdb528afebf2b1f598675fbdf02cd",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Io.Axl.ControllerComponent/Arp.Io.Axl.libmeta": "42953930a38b3834c76f6755124c84836f3306b7f79ea5c9b180cf858b163acc",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Io.Axl.ControllerComponent/ControllerComponent.compmeta": "16bf11c55cf4c26472fd231a68b1e932c45bb50580c5c88b10a38cf24592c21f",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Io.EthernetIP.ControllerComponent/Arp.Io.EthernetIP.libmeta": "758e573d1b0f2bd412e3034f6efe41d3b767da4f450bdb0a68226ccbeddc250a",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Io.EthernetIP.ControllerComponent/ControllerComponent.compmeta": "16bf11c55cf4c26472fd231a68b1e932c45bb50580c5c88b10a38cf24592c21f",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Io.Ib.ControllerComponent/Arp.Io.Ib.libmeta": "16d0722bcefa1cdc6c13791a9856e2a314208217df324a4ae65adc3ceaf70412",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Io.Ib.ControllerComponent/ControllerComponent.compmeta": "16bf11c55cf4c26472fd231a68b1e932c45bb50580c5c88b10a38cf24592c21f",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Io.Pn.ControllerComponent/Arp.Io.Pn.libmeta": "b3576eb26e6d14542c58d1f2d34c7808d7afb642024a736904f6006121fe25f1",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Io.Pn.ControllerComponent/ControllerComponent.compmeta": "16bf11c55cf4c26472fd231a68b1e932c45bb50580c5c88b10a38cf24592c21f",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Plc.Alarm.AlarmProgram/AlarmProgram.compmeta": "8e5812252ec00274302ce3eaa529c4786b3bcffccf66b05d9f9b9f3ae36ee722",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Plc.Alarm.AlarmProgram/AlarmProgram.progmeta": "ef2ac4d6e50a8536b2533c47e28cab27335b7c27286366d1aa45b5bdb5539451",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Plc.Alarm.AlarmProgram/Arp.Plc.Alarm.libmeta": "f41895814817daebc9d2da56a2ccba57021548e10414b70080ad47cd9dbd68bd",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Plc.Eclr.EclrComponent/Arp.Plc.Eclr.libmeta": "f4f3ad94f1539cc18668f0e55f45ff2e6675278f81531249f47193c4533e82e9",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Plc.Eclr.EclrComponent/EclrComponent.compmeta": "537eab590d21bec077a03a872a0cff3e90360591ec83bc19922cb22f423ea802",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Plc.Ehmi.EhmiComponent/Arp.Plc.Ehmi.libmeta": "15d8db56b2541b14aaec23d39d04d3de3f16f6b0a545740ca5104f8dc4563f68",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/ComponentTypes/Arp.Plc.Ehmi.EhmiComponent/EhmiComponent.compmeta": "d0445236927c021bf6f08cbde2aea3bcb367e9eacf016f9ec3b7e218209cd318",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/HmiConfiguration.xml": "515736f3cfd8ff78be551a26e04ccbc008abd8e511e0b2a7b427929507034c12",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Login.hmi/Variables.hmivar": "17feef7f8b13dabe93010ba3cd7b163c52536c49366d6671c1a2a5a38c504a55",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Login.hmi/Definition.hmipagedef": "2bd4e1a5485d12a4ae6823d746553ad4c57f13b31b660f2fa48f8f4afe2982d2",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Login.hmi/Parameters.hmiparams": "eafaa0a72e53a02f0b722f3f1ca4afd2fc2a8b6222f817be261e45be58df1424",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Login.hmi/Definition.hmipagedef.locres": "cb0923c76e36054b85c7218e248ee89af491c69a44192afbd20d6a7b55567efc",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Gateway.hmi/Variables.hmivar": "b49c6f27515ded2a3d24bad94062e6a30ae640c00aff27a897ddf71e758ef221",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Gateway.hmi/Definition.hmipagedef": "608c42e3818be2e27dee71ff6e1337ac209b9a91cfb92e8c7c843c981b6a8516",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Gateway.hmi/Parameters.hmiparams": "eafaa0a72e53a02f0b722f3f1ca4afd2fc2a8b6222f817be261e45be58df1424",
+    "project/PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application/Gateway.hmi/Definition.hmipagedef.locres": "5b6f77b6b9bb2247836fd9264cd92cbfbf8849e84ce4069114c46e556396743d",
+    "project/PROJECT/Logical%20Elements/NG_CaptureTypes.dt": "c113e53efeaee286b09e6f838478fdd313b8561088ae7899c09ec5fd288e4c6d",
+    "project/PROJECT/Logical%20Elements/NG_Types.dt": "f1cfafc7801889f62c1cfc70fecf7895116a66ad7fa2c0f21f079232fdf16821",
+    "project/PROJECT/Logical%20Elements/Main.pou/Code.st": "a8b41e8107baa31b74093c7d3be1d4f83ee909cf9fd7b39598bedc9cac35d91a",
+    "project/PROJECT/Logical%20Elements/NG_AckFields.pou/Metadata.meta": "2f35c610ab6958b18b49f34fe3000c1449f4f8f9fd289d068e2cb089032bc47f",
+    "project/PROJECT/Logical%20Elements/NG_AckFields.pou/Variables.var": "968944286548e4722c1abed34811ede50c9da3dd5196e6b5e5343cee181b7429",
+    "project/PROJECT/Logical%20Elements/NG_AckFields.pou/Code.st": "56310abfe4bda75570123030f45918cab5044d147f1afad29d5543e6cf999628",
+    "project/PROJECT/Logical%20Elements/NG_Add4.pou/Metadata.meta": "148580adf16736d11fb7bfaf074af19cb021838fdd6010b0804f2d5c9c6d0fa4",
+    "project/PROJECT/Logical%20Elements/NG_Add4.pou/Variables.var": "765b9fd73ea0733ab4f26d93dada095892059e8befb0aea75af663b6609faa15",
+    "project/PROJECT/Logical%20Elements/NG_Add4.pou/Code.st": "f5d792a8af2067cbed3af678e44571607f7e53e0398a099b7ea5b5767f86f31e",
+    "project/PROJECT/Logical%20Elements/NG_Allowed.pou/Metadata.meta": "79867b3c567e60e48ff3d68ab118485c01890a749b9994c8759a113263a6c84c",
+    "project/PROJECT/Logical%20Elements/NG_Allowed.pou/Variables.var": "b9871cd58f321274590da4949e82854fd15a89a1ce09dc5a18342101ea6e69ce",
+    "project/PROJECT/Logical%20Elements/NG_Allowed.pou/Code.st": "b6b06cc0dfe3e2316cb8b1f2acaed6beb75684441dc57c8f5a0fc861b371e3fa",
+    "project/PROJECT/Logical%20Elements/NG_AuditAssociation.pou/Metadata.meta": "9d9f03c662684cd184703e2a63ea703f9039fdb6dc96f4dae33850cb8404d56e",
+    "project/PROJECT/Logical%20Elements/NG_AuditAssociation.pou/Variables.var": "cef4e6cdb2cbe6d5b382e8d4282d94d7c90da05a17b7b3b84c1f264700b1198d",
+    "project/PROJECT/Logical%20Elements/NG_AuditAssociation.pou/Code.st": "8fb33bfa492cedb3b470100f45cf86f99f4881b6a6e0c191e9005c4aaf560609",
+    "project/PROJECT/Logical%20Elements/NG_AuditCapture.pou/Metadata.meta": "41556c48aeba42b711650b97ccd7b3192b28f6ffbea9401c966cddd35b4b9809",
+    "project/PROJECT/Logical%20Elements/NG_AuditCapture.pou/Variables.var": "17ac537726d24176e9d13672111b815653c7630e51a465d2f2c2464773134b7b",
+    "project/PROJECT/Logical%20Elements/NG_AuditCapture.pou/Code.st": "50b1c056ad1a37a381da8de6f447c066dda2df1d6845df52f970f2697d993016",
+    "project/PROJECT/Logical%20Elements/NG_AuditDecision.pou/Metadata.meta": "cb30b64937b6915f3b8fb8cd683a69f0f09fe564956772c55c5c0c4bb5d8380a",
+    "project/PROJECT/Logical%20Elements/NG_AuditDecision.pou/Variables.var": "4941a294d6c107dbdd6db82c07a1c3984397d68eacbfebfd25094d9c4a3df587",
+    "project/PROJECT/Logical%20Elements/NG_AuditDecision.pou/Code.st": "e46edfe9fbc5a6179e315d1b4a5a0c55f3524b25f9e4cc8918c1f36f60d329c5",
+    "project/PROJECT/Logical%20Elements/NG_AuditDrain.pou/Metadata.meta": "37299e60c06eeacb3bfbaea6730fcf005c53a27f358971d3010acbfb2faa5072",
+    "project/PROJECT/Logical%20Elements/NG_AuditDrain.pou/Variables.var": "07ce98894435335b6f1634df6caa0ece7dd75ff23ae0f110381424e4532ff8c5",
+    "project/PROJECT/Logical%20Elements/NG_AuditDrain.pou/Code.st": "37b18bbc7d6660e90fd65dfabed6e2c7926a32a04f668ad0100aaeea1dbe94e5",
+    "project/PROJECT/Logical%20Elements/NG_BatchBuilder.pou/Metadata.meta": "bd44f0507bb2d1dddff05665ac3671f34e5e4085a79b684415932c659b508b5e",
+    "project/PROJECT/Logical%20Elements/NG_BatchBuilder.pou/Variables.var": "e0b34555d6bd9fd35c315eede17e9f227d1237ac5b0158c142e99a42e354496b",
+    "project/PROJECT/Logical%20Elements/NG_BatchBuilder.pou/Code.st": "d9eba304017adeb294f41f92dfc792428cc3d587eb17f057b4b66699a4d4f1a2",
+    "project/PROJECT/Logical%20Elements/NG_Bool.pou/Metadata.meta": "2373735893924465916fd7823f79bc2fd6875e08f33ddd9d2baa5d564d0e9f37",
+    "project/PROJECT/Logical%20Elements/NG_Bool.pou/Variables.var": "63e69ace964b55be1956e4a50415021f757d54b2f73427b8b618539789589f58",
+    "project/PROJECT/Logical%20Elements/NG_Bool.pou/Code.st": "4845b78dc78619a9e61a9a8ab3f9fcd6cfa784680204d1b00fe37cd7d3b7b406",
+    "project/PROJECT/Logical%20Elements/NG_BufferMaintenance.pou/Metadata.meta": "7564cbe36f6ff519fd01106027d44025ff35020f096da3e72201a99acff48216",
+    "project/PROJECT/Logical%20Elements/NG_BufferMaintenance.pou/Variables.var": "10daf06450f652c706f3c454ff041e074fc9903eef09d2bde69c7b6f5bd9752a",
+    "project/PROJECT/Logical%20Elements/NG_BufferMaintenance.pou/Code.st": "2b3cd47d1da46418c6dbeb543b131ab10b276978651b9d3d292f5243298a9885",
+    "project/PROJECT/Logical%20Elements/NG_Capture.pou/Metadata.meta": "adc6a47a39edaadbd9a3fe0d46065900b5cbe86bed9aba6fee1a1c01e39f0983",
+    "project/PROJECT/Logical%20Elements/NG_Capture.pou/Variables.var": "7010c05a795866d283d2ff86a7ad8df13bf8be99d5c81450f284ec1230934b00",
+    "project/PROJECT/Logical%20Elements/NG_Capture.pou/Code.st": "f57f0863cd7d186df1fa67f38778600f21eb75008529501c0a135770685bfe50",
+    "project/PROJECT/Logical%20Elements/NG_CaptureCore.pou/Metadata.meta": "25b537fb77d853f9725f38cb8333ce6b7bff38e640a5953460a5cd3039fdcbf4",
+    "project/PROJECT/Logical%20Elements/NG_CaptureCore.pou/Variables.var": "a6d23b1a1a6513f7e86f473ceba82bbc1666aad6efea226bc9850bae17eaca66",
+    "project/PROJECT/Logical%20Elements/NG_CaptureCore.pou/Code.st": "3d74b4644bd9216a4b333c9e597bc1336ae0628e6e321c58df75472be3163f0b",
+    "project/PROJECT/Logical%20Elements/NG_Char.pou/Metadata.meta": "66895049f6dd8cc3975e7bd0feb301373ab3d5989b80597bd76966e1beae72b4",
+    "project/PROJECT/Logical%20Elements/NG_Char.pou/Variables.var": "e706e96f652e0e450293672de457dafa5150e953016d191ffccc091cb057c7ab",
+    "project/PROJECT/Logical%20Elements/NG_Char.pou/Code.st": "2588dc8904471ea9c8f0e3517d0673a48a481417324406cb1c8cce4fd8947620",
+    "project/PROJECT/Logical%20Elements/NG_CheckConfig.pou/Metadata.meta": "7e8700acf22e7aaf3c9c1b2c0825ccabbb8198ec1f6d9d93f3dc5eada4a2c359",
+    "project/PROJECT/Logical%20Elements/NG_CheckConfig.pou/Variables.var": "9590e64dbf2a90641c89a557a3ab0fd44d28a22d543639839b3464577a14685b",
+    "project/PROJECT/Logical%20Elements/NG_CheckConfig.pou/Code.st": "993da15e72b549bfeaee97119133243939e82661fbbf055f623bbc60868dd7a4",
+    "project/PROJECT/Logical%20Elements/NG_CheckCounters.pou/Metadata.meta": "a8b721847c076fee7cc2666f8de19f312f5d10007d320843c913d6bf01a70d4a",
+    "project/PROJECT/Logical%20Elements/NG_CheckCounters.pou/Variables.var": "30493679d025d47f0a01e8ade5b4785ece21141c46055d1d0fdccb637e63ba60",
+    "project/PROJECT/Logical%20Elements/NG_CheckCounters.pou/Code.st": "474543e51c591b627fb3d371e83fa78d9c098f6f0f21afd50fa22e42a5bcd276",
+    "project/PROJECT/Logical%20Elements/NG_Clip.pou/Metadata.meta": "fd35dafb2f6211a5e854cee32f05263b0f8462c343b938e66b0a49ec6dadda2b",
+    "project/PROJECT/Logical%20Elements/NG_Clip.pou/Variables.var": "6282e11da8f110d963f1e08ce04bd80dabc68a6fd812f5adac96fa834be35ce6",
+    "project/PROJECT/Logical%20Elements/NG_Clip.pou/Code.st": "61b2d42aa4c69c014b1bc6a955e89e5f64a3eb4cb11820e676343cadfb004c82",
+    "project/PROJECT/Logical%20Elements/NG_Command.pou/Metadata.meta": "48fa5b60e52e828e09da67fd3dc18febcc7f31265feeaccb88740f8691ce49dc",
+    "project/PROJECT/Logical%20Elements/NG_Command.pou/Variables.var": "9158a35376bdd2ebe7e86fe48b584b45ecefa0dca46bfafdfbd7c079e4cafe38",
+    "project/PROJECT/Logical%20Elements/NG_Command.pou/Code.st": "56f7b7620f072b20964774c022dfc095128779b60c5f2aa08237adaf7aa83c0e",
+    "project/PROJECT/Logical%20Elements/NG_ConfigSlot.pou/Metadata.meta": "14c547dd66d8a56eb0e15239256a00910b1c89364ce7e960b7ff3f4e457a8874",
+    "project/PROJECT/Logical%20Elements/NG_ConfigSlot.pou/Variables.var": "41c881485fbe8d54ca621cb37a7d5818d13f657641cec93bcd3e6b0defd2cf98",
+    "project/PROJECT/Logical%20Elements/NG_ConfigSlot.pou/Code.st": "f27d82e5f10245bb25754f334957cde2ba433dbc08e19c04a7a84e56d627cb73",
+    "project/PROJECT/Logical%20Elements/NG_Delivery.pou/Metadata.meta": "51915e0f8b9b7761c79941b73dd4b5d1be6a2634ad17b4c8430b1246844c6546",
+    "project/PROJECT/Logical%20Elements/NG_Delivery.pou/Variables.var": "77b5c0ddd0b7932f69d98f6e60d2b6e3badc086531d4fc6344e304c67a93fdec",
+    "project/PROJECT/Logical%20Elements/NG_Delivery.pou/Code.st": "bfb710bb0593999a40b4e1174ac280d237a250a97075725951fa785cdcc1c241",
+    "project/PROJECT/Logical%20Elements/NG_DeliveryParallel.pou/Metadata.meta": "c482775e2d6cce8d229b4c6b74c8d5a3e8b282ed3fec7973ed7460a411796771",
+    "project/PROJECT/Logical%20Elements/NG_DeliveryParallel.pou/Variables.var": "23faf9534ceef7c17fdb188035fd34f8a1d638f3790f16d0cc46c317bed221a7",
+    "project/PROJECT/Logical%20Elements/NG_DeliveryParallel.pou/Code.st": "e70418b5f33e2979a09dd2683d8b68ca85ef802bb1adeecd769d49343edbe63a",
+    "project/PROJECT/Logical%20Elements/NG_Diagnostics.pou/Metadata.meta": "232bcf975d912c95b55951e9fe099b7f34f9707f2b07bfe1211cd8aadc7cada1",
+    "project/PROJECT/Logical%20Elements/NG_Diagnostics.pou/Variables.var": "d988b06d4efe10296cfc2d7d3d71eb5a9d3e3e6fdcbd2933268856cb651f5e1e",
+    "project/PROJECT/Logical%20Elements/NG_Diagnostics.pou/Code.st": "2a0806420eac46cdbe104ad17439990b51789fd29e7c240d8bc03dbfeaef470e",
+    "project/PROJECT/Logical%20Elements/NG_EditDevice.pou/Metadata.meta": "c6f7be257dc189cfb25784dd130228bd3da6ca526e370290e41b4b2b2579400c",
+    "project/PROJECT/Logical%20Elements/NG_EditDevice.pou/Variables.var": "9de4fd094d340f61877e70bb540b760d1136ba9a68ec059c3ef30949cd00e50b",
+    "project/PROJECT/Logical%20Elements/NG_EditDevice.pou/Code.st": "2892421e63d53101f1bebbdad6dda9475f720e0b45385078865d8bf85a85c70a",
+    "project/PROJECT/Logical%20Elements/NG_EndBatch.pou/Metadata.meta": "81c6f80b06da6b608fd87f033d3604aaa022f43e379b15d0be8e22595d41e16c",
+    "project/PROJECT/Logical%20Elements/NG_EndBatch.pou/Variables.var": "6ee93af703525e0729d011166d4f8cf940fddde1c5a504ef8c2f437791f325ae",
+    "project/PROJECT/Logical%20Elements/NG_EndBatch.pou/Code.st": "9dd449a13d46b49f31972bb0f46aea0bff635f1ab4edb8b988c10634ef73b48a",
+    "project/PROJECT/Logical%20Elements/NG_FreeRecord.pou/Metadata.meta": "12e3926b3b0e919c136c8fe1c67008b6bcb391e9a28c0fba23986eba138e5cf9",
+    "project/PROJECT/Logical%20Elements/NG_FreeRecord.pou/Variables.var": "560ec5570931c373e9db2ba4c825ece3bde16f43ab119c7ffdeca128cbff3e3f",
+    "project/PROJECT/Logical%20Elements/NG_FreeRecord.pou/Code.st": "fdbc11e9b6149fce72452c893eade168ac1bcf50f2a81e2cbd932f68ab4a40ed",
+    "project/PROJECT/Logical%20Elements/NG_GapLog.pou/Metadata.meta": "9d2b30e1ba2cfc751b88011ad33d6d6afc6988b2fbe0440cfa51308bc47eb151",
+    "project/PROJECT/Logical%20Elements/NG_GapLog.pou/Variables.var": "b541a9ee06331567fb4904da489b9666244ab6e139e094d33ad21a1dfe535e2f",
+    "project/PROJECT/Logical%20Elements/NG_GapLog.pou/Code.st": "85449cb7f75d949a082d32f09aa5977fa342246345a3683e72249cd494d99fd7",
+    "project/PROJECT/Logical%20Elements/NG_HmiEdit.pou/Metadata.meta": "e77edd7fc2172369e1e254d5903110a0fafb467e77a60dc7d2c2df5ae06aaa56",
+    "project/PROJECT/Logical%20Elements/NG_HmiEdit.pou/Variables.var": "fc257496f232e946acd00ec9fa90f9152b3ac5fbec989e9c9f3fcc577f7bd0bc",
+    "project/PROJECT/Logical%20Elements/NG_HmiEdit.pou/Code.st": "ad4254abb1d2dd42fc4023c77a25b86706f7784edbf786af0b3bc9f3f9c26b53",
+    "project/PROJECT/Logical%20Elements/NG_IPv4.pou/Metadata.meta": "af59c19c5eb554cce98c4209422d21eb7ee7a883e7b223da0bfd8e1081ae5366",
+    "project/PROJECT/Logical%20Elements/NG_IPv4.pou/Variables.var": "60e6d3a7fd43349e836ba730a9dc69fff9216e83ce3af4cab9dddfd9e08000e5",
+    "project/PROJECT/Logical%20Elements/NG_IPv4.pou/Code.st": "365ab57b1202c0946833a63af44e50a35cd2f0fe3cfb9c6fcc11a52574ff87a7",
+    "project/PROJECT/Logical%20Elements/NG_JsonParse.pou/Metadata.meta": "cff6c4e51f1629f965e9257c5a92bfb4f6c98e08a29fce8fdbdfebdb6d80cd58",
+    "project/PROJECT/Logical%20Elements/NG_JsonParse.pou/Variables.var": "6ad630a57bc8251e420f5d9590f5a7dd8cdd2332abce1cbb98714b26c9849e7f",
+    "project/PROJECT/Logical%20Elements/NG_JsonParse.pou/Code.st": "eb253a087359d6664875797995a23976f437995ec88d281c7067ea76a9f2d763",
+    "project/PROJECT/Logical%20Elements/NG_Member.pou/Metadata.meta": "a087df235484e0222d6eaa192bcd62005b8e8d5af398f9453524d36c02a9b9cf",
+    "project/PROJECT/Logical%20Elements/NG_Member.pou/Variables.var": "aa1af2a51b4617dcba1dd236d2062fcda992dabb0cb49b27881b3149fc7f1d1e",
+    "project/PROJECT/Logical%20Elements/NG_Member.pou/Code.st": "91c247e43b8e455016b5d4ff26a88b1641883f555ee4326be6fda7c0ad3fda8a",
+    "project/PROJECT/Logical%20Elements/NG_Modbus.pou/Metadata.meta": "7273e2993f6c25c2e0ab9e50c4f56fdb153ac795f54eb00c27a4171f73bcb173",
+    "project/PROJECT/Logical%20Elements/NG_Modbus.pou/Variables.var": "7b8c0e1222626dc1d55592473b57260300380fcb6ef33086e31e5a29b08e996a",
+    "project/PROJECT/Logical%20Elements/NG_Modbus.pou/Code.st": "9b677bd0993179a67eab4086f5b66f621e91af8dbc42ef62ccb7f0ae85c2269a",
+    "project/PROJECT/Logical%20Elements/NG_Mqtt.pou/Metadata.meta": "d63571eedf192ff4fb7d80cce634574303d93e0a1930ed66906c9d5c09906126",
+    "project/PROJECT/Logical%20Elements/NG_Mqtt.pou/Variables.var": "318d833567cb6ceb0adc448c4e3f883cfa9e89be540fefa580bb246402fb4811",
+    "project/PROJECT/Logical%20Elements/NG_Mqtt.pou/Code.st": "088d3ae46b42c329bcb528d4d96ab363407f22bd12f9ea24c322b22a0629280f",
+    "project/PROJECT/Logical%20Elements/NG_NumberValid.pou/Metadata.meta": "4790a914fa93650b09be0c655c5e3c7187d52ee0d48b2091bc2956118666ccee",
+    "project/PROJECT/Logical%20Elements/NG_NumberValid.pou/Variables.var": "65441930cd29705b63a4043df81204604325abe219bf9da6f202e7fda78d0b0e",
+    "project/PROJECT/Logical%20Elements/NG_NumberValid.pou/Code.st": "1b135f724f4a9b33abfab9f468fd00b6265d8fde04439e71cd4a1e85c59e4c11",
+    "project/PROJECT/Logical%20Elements/NG_PollSlot.pou/Metadata.meta": "7af94119e955600add65d1d9bb5d622ce6167815c325753bf810a5f410d7832c",
+    "project/PROJECT/Logical%20Elements/NG_PollSlot.pou/Variables.var": "b467faaa9e07d452cd6f88bcf3456b18197df227bb7caae7362af7cf9748da94",
+    "project/PROJECT/Logical%20Elements/NG_PollSlot.pou/Code.st": "608077f7d07b367da6239f2bad206b102bd7e017e456efcf97fc02a6172b60c1",
+    "project/PROJECT/Logical%20Elements/NG_ProcNumber.pou/Metadata.meta": "6197af1a62cb5e7650e2fa6dc4fe3f2ec67d33318df4b5b0db49039735e0d448",
+    "project/PROJECT/Logical%20Elements/NG_ProcNumber.pou/Variables.var": "999fc3496205c499f47d30450c95e11f58789752998db55e3e3932e1ddd149f8",
+    "project/PROJECT/Logical%20Elements/NG_ProcNumber.pou/Code.st": "d9e3cf35f186e7bb3c270b4b51c0f970b755e6a75c6e4df37524949ea6147355",
+    "project/PROJECT/Logical%20Elements/NG_PruneTerminal.pou/Metadata.meta": "c735e16a18d671d320a3eb66f150cbda32372eaa73c0c660a2461bd3cecac9c6",
+    "project/PROJECT/Logical%20Elements/NG_PruneTerminal.pou/Variables.var": "6464c91504ef719ed38bb5b93c9de43495556cb06191c1c078330c681f217baf",
+    "project/PROJECT/Logical%20Elements/NG_PruneTerminal.pou/Code.st": "fb4952d51064e432a40279f2c8981b996ea53004143e7972b539e290990f8b46",
+    "project/PROJECT/Logical%20Elements/NG_QualityCode.pou/Metadata.meta": "a7a014013e123e22c0a39edc973c60871463305d14c0102dc2c85fd1db2fd0ec",
+    "project/PROJECT/Logical%20Elements/NG_QualityCode.pou/Variables.var": "ee5d7afd048cd47c378538c334e101cb46745fada2b0cba4f0fdab222cd559f0",
+    "project/PROJECT/Logical%20Elements/NG_QualityCode.pou/Code.st": "cd67ad798ef4d98ea9a797edf743f6c2c29d0517911453572993e53d2a6fee23",
+    "project/PROJECT/Logical%20Elements/NG_QualityName.pou/Metadata.meta": "85e473df7535b1f7b617427a769c2acec2041743944367844b643cc683cc7126",
+    "project/PROJECT/Logical%20Elements/NG_QualityName.pou/Variables.var": "e9377f88d09bd6607c39fde67e55f17391de060e8e341f5562b3e9b569abcf55",
+    "project/PROJECT/Logical%20Elements/NG_QualityName.pou/Code.st": "c9170ae57d698e040113447c66a603f6f53605e60a2b74449e7b6652a778f7cd",
+    "project/PROJECT/Logical%20Elements/NG_Quote.pou/Metadata.meta": "42c51a0106b31362144f2036d27172c629b110fdcb2ec766aa444cf57d165e87",
+    "project/PROJECT/Logical%20Elements/NG_Quote.pou/Variables.var": "bd237618a4ee70385829134975e45b0d66b4e49d37d6880cad3d95cd51f9fe0f",
+    "project/PROJECT/Logical%20Elements/NG_Quote.pou/Code.st": "46dd2c3e4ad778ef4a7d257fa8a1a1af10849525f413e9a93e2f8ac094b690fd",
+    "project/PROJECT/Logical%20Elements/NG_Range.pou/Metadata.meta": "98f1d90e970e0334e9c498033be19aaeb81c24c5b485364db68b66e499d70f43",
+    "project/PROJECT/Logical%20Elements/NG_Range.pou/Variables.var": "10b2803fa9bd04aa318e4eb72bb50af34a896cde6a6cca4ae5a93079ec2b8845",
+    "project/PROJECT/Logical%20Elements/NG_Range.pou/Code.st": "c72e06a4c718a3852e092770cba58af7769b89eb2f5985e272666f544d520187",
+    "project/PROJECT/Logical%20Elements/NG_ReadAck.pou/Metadata.meta": "b6bc92d0d9fa30a49a1418a982738d11989aa8ab5d627aaaac9f3d8f54bf9110",
+    "project/PROJECT/Logical%20Elements/NG_ReadAck.pou/Variables.var": "ca4fcb4734862838f30bde8944d621a899c369328f7d8d6cd78baaba38ac0c26",
+    "project/PROJECT/Logical%20Elements/NG_ReadAck.pou/Code.st": "ebe4888806e8e76068ef1e615e927df61b536b7482d5f4898f265e986d1c9f8e",
+    "project/PROJECT/Logical%20Elements/NG_ReadConfig.pou/Metadata.meta": "37898bf1c53ba4b27d8ebfdf231420e3d0ac8b79174e3eebbca0c59c72020cd3",
+    "project/PROJECT/Logical%20Elements/NG_ReadConfig.pou/Variables.var": "6bfc7b13f2336d3de70d4277574c928235b49e4625374694005181524554c0a5",
+    "project/PROJECT/Logical%20Elements/NG_ReadConfig.pou/Code.st": "48d5305418be09540703a617b034e7b2549ec756690f6349d18f37afe7d411b8",
+    "project/PROJECT/Logical%20Elements/NG_ReadDevice.pou/Metadata.meta": "48223a8f53cbbcad2a0b46b8d2b526ccd32998f420c96c2a296e9568d655e6ac",
+    "project/PROJECT/Logical%20Elements/NG_ReadDevice.pou/Variables.var": "ce27dbfd1c1019688d2c7d11251f712da0bfdf58332d3806f4a13ed3f0f62fff",
+    "project/PROJECT/Logical%20Elements/NG_ReadDevice.pou/Code.st": "c3ab7b83252236dd8e325a02a218eab890a52def75b016b0c932ce8a2ef5bfda",
+    "project/PROJECT/Logical%20Elements/NG_ReadPoint.pou/Metadata.meta": "9af63febdbc76805da60f0f57f2871a74602e7ddc56a292b1aabac7d772de92f",
+    "project/PROJECT/Logical%20Elements/NG_ReadPoint.pou/Variables.var": "5b1f446736ec4ae0deb3f013dc111f267d79a8b6ebddfb2128ce256955fd62a7",
+    "project/PROJECT/Logical%20Elements/NG_ReadPoint.pou/Code.st": "143f461884ede227c5379a4356878a47bdd491d4963b3ced386af5ead14a4719",
+    "project/PROJECT/Logical%20Elements/NG_ReportPolicy.pou/Metadata.meta": "5913e741a451f61ed6fe0e0f3e834c191c93c9f1127b84915b0812b6dda2cefd",
+    "project/PROJECT/Logical%20Elements/NG_ReportPolicy.pou/Variables.var": "ba24a9c91d91ec9196cf8fadb4c56e70d1d8ee5d74a211edab47640a41d43003",
+    "project/PROJECT/Logical%20Elements/NG_ReportPolicy.pou/Code.st": "a893d4e8344dac201a957bfce065db2653a3707b0d0aa59c8744d81982b7d6e7",
+    "project/PROJECT/Logical%20Elements/NG_Resources.pou/Metadata.meta": "1e8e27226c0a17218a19cd675b69994e65d48449846145af8cc09df4f588bc52",
+    "project/PROJECT/Logical%20Elements/NG_Resources.pou/Variables.var": "f64b363328af8c133c2777f1e942b3d2d9c720e85270ff4770c0b25fe5899c42",
+    "project/PROJECT/Logical%20Elements/NG_Resources.pou/Code.st": "b52d5934bc24c40ccdfcfd00d08188ba8e95d935ea55906818d7abdcd3f4bca0",
+    "project/PROJECT/Logical%20Elements/NG_SafeAdd.pou/Metadata.meta": "915e5ed0e7681b67cbb43146246180f637ccb5897e4034bb3401d29afce8ee46",
+    "project/PROJECT/Logical%20Elements/NG_SafeAdd.pou/Variables.var": "42c0d4d5ab1700f649e2b3fe34bce330545b8152fa0ae7c65de58b53c53df5f5",
+    "project/PROJECT/Logical%20Elements/NG_SafeAdd.pou/Code.st": "79ff9033c223b2e73eb3821b97af8b437602a15f8e9cf396efb19cc3079f98ac",
+    "project/PROJECT/Logical%20Elements/NG_SameConfig.pou/Metadata.meta": "f21f475353a907134be61fa3315a72e6faa6d9c8cb1958c8ab31b1231eafdbb5",
+    "project/PROJECT/Logical%20Elements/NG_SameConfig.pou/Variables.var": "6ea067af5e2bcf1e192f9de87ae3b9d02699eaca645498dbfce89c5fbbab155a",
+    "project/PROJECT/Logical%20Elements/NG_SameConfig.pou/Code.st": "e853d47900a04ab58356bfcc5d6694079c468374a6bd0aa4da20bc527e49927c",
+    "project/PROJECT/Logical%20Elements/NG_SHA256.pou/Metadata.meta": "1e32adeaa4945e5c226a68fb8dfa91c0d387070ad9749509bc95581fcf4a3a4d",
+    "project/PROJECT/Logical%20Elements/NG_SHA256.pou/Variables.var": "5e4d5b2b3997ddeedf0d310c38fc8235c9de85313034ea837130c36e23171e70",
+    "project/PROJECT/Logical%20Elements/NG_SHA256.pou/Code.st": "15de26158dfc8003f9a6b9307b984658c96c34a1c7e51b1545160b956f8b4c5b",
+    "project/PROJECT/Logical%20Elements/NG_SourceResult.pou/Metadata.meta": "88bd53b35f7dc8ed239f3a63e8fcf3838a62d6bf2039755ba91b8c7503005787",
+    "project/PROJECT/Logical%20Elements/NG_SourceResult.pou/Variables.var": "d9884b275c5871b647a6bee87db71b832d6c568665cbc867648f30a5515e6b9c",
+    "project/PROJECT/Logical%20Elements/NG_SourceResult.pou/Code.st": "54293729178213ee9b8b4895c9aceee17f4d2ff3033b4dd736bae78ca3a8fe81",
+    "project/PROJECT/Logical%20Elements/NG_SourceResultCore.pou/Metadata.meta": "1aff72b7f711ece406136eb0f4143d1c40e9938a87988951d1be76fc5af60be1",
+    "project/PROJECT/Logical%20Elements/NG_SourceResultCore.pou/Variables.var": "078561719a4520dfcb09f971a610731b52a8cd27fe6f0eb82f6a8c12803b4976",
+    "project/PROJECT/Logical%20Elements/NG_SourceResultCore.pou/Code.st": "4fc124e0df285f41a212ecea74e5e6cc83f5dea8151592a7463248e4c19732fe",
+    "project/PROJECT/Logical%20Elements/NG_SourceState.pou/Metadata.meta": "fecbef29d9eb06088e40eae2ada41bb1ca79e2c3046dcafbf64b6c0ccdc99b06",
+    "project/PROJECT/Logical%20Elements/NG_SourceState.pou/Variables.var": "b8749a708643a29231e8543aec9fd47005adb3ca1b953629fe681b3b1e57c7ce",
+    "project/PROJECT/Logical%20Elements/NG_SourceState.pou/Code.st": "4e25e9e830a84c0290209b417e26e8767668b60b95b2dfbee5edf3321eb41110",
+    "project/PROJECT/Logical%20Elements/NG_SourceStateCore.pou/Metadata.meta": "dabb3afccd04f2f256599c12a5c452e0077bbd6d1660cf0684581e893eed76f5",
+    "project/PROJECT/Logical%20Elements/NG_SourceStateCore.pou/Variables.var": "9703cbd882d37fbe5cca18e62b3f5f543e3a04f54f1c570bba1b246878e0319c",
+    "project/PROJECT/Logical%20Elements/NG_SourceStateCore.pou/Code.st": "f94099b92709d26b85d7ece90cb36bf88bb3ca900f9fedbce2abc4b9c31d172b",
+    "project/PROJECT/Logical%20Elements/NG_StorageHash.pou/Metadata.meta": "acd7aa268874e591897221fd98f2b2587a01f42b025d3fe37bd454aa0528e9c0",
+    "project/PROJECT/Logical%20Elements/NG_StorageHash.pou/Variables.var": "84ef8e68978e8c31723138a3d58a0d9f7519fae82ce07f06f93307e6597850f4",
+    "project/PROJECT/Logical%20Elements/NG_StorageHash.pou/Code.st": "3feeca788b28d7fb166e8a494786ff43297dbece20f66ce68c00a8474a1bd230",
+    "project/PROJECT/Logical%20Elements/NG_Store.pou/Metadata.meta": "58e542e8fbdc1124cfaa75dd757fe9f1919746d3297c026ec243b3b44a1a45ba",
+    "project/PROJECT/Logical%20Elements/NG_Store.pou/Variables.var": "c8f76c5c50a68ce655b9c0511a7e3a74fe665f8a4dcfd32b7e02196a6aa6788e",
+    "project/PROJECT/Logical%20Elements/NG_Store.pou/Code.st": "ba6b0a2fcea52318a081f348922371f917bd0a80d0f46449ccba6d243d5fc514",
+    "project/PROJECT/Logical%20Elements/NG_StringSHA256.pou/Metadata.meta": "3b544b9d2490829b7a46225a63a1b3019cbb6c7bdb30e68fefe59ce9853b33cc",
+    "project/PROJECT/Logical%20Elements/NG_StringSHA256.pou/Variables.var": "ad08195e66c7710755a650a79fff5d685e769064b7f4b60e996caa2766ab4d66",
+    "project/PROJECT/Logical%20Elements/NG_StringSHA256.pou/Code.st": "5c62149c6f38e8bcba7df378740080df3cfab95afc49569fae0b28fd9cd69ed9",
+    "project/PROJECT/Logical%20Elements/NG_UiJoin.pou/Metadata.meta": "14cccae9043e309f244acffe8cc02c65d38b82b846a5b265952053ea946fbb98",
+    "project/PROJECT/Logical%20Elements/NG_UiJoin.pou/Variables.var": "9f864afd76f5cdf645968922c504bd6467c0ac6d87d6113227288e6afe0083d0",
+    "project/PROJECT/Logical%20Elements/NG_UiJoin.pou/Code.st": "f49c4427ae6379ce4f05f9a7d0e5d69c7ff642e8f3c673345c16bb8f918189bc",
+    "project/PROJECT/Logical%20Elements/NG_UiText.pou/Metadata.meta": "40f986af8b7b85a22e01ee6a66bb8f8f1e14511c7ec1237b4a06d677aebc1bc0",
+    "project/PROJECT/Logical%20Elements/NG_UiText.pou/Variables.var": "1125860629c5d97cd6f1c4f7230e3ba8cc97e11b8416af3bb5ce9d6c21985aaf",
+    "project/PROJECT/Logical%20Elements/NG_UiText.pou/Code.st": "40bd0058bf9635a80eead9bcbe9904013c1a0f110cb222d8fccce58b09cff309",
+    "project/PROJECT/Logical%20Elements/NG_Unix.pou/Metadata.meta": "3890e28c702caf7036b9e40cdd8089f317f806280a4a5af9ce3086c7a7040340",
+    "project/PROJECT/Logical%20Elements/NG_Unix.pou/Variables.var": "16ceeb724eea072a659e4c70a2b837f4278244a7916cc272e5939cb2df7f680a",
+    "project/PROJECT/Logical%20Elements/NG_Unix.pou/Code.st": "83b20b85b9e8b4805ae094754a536a0c9495cb1fda42fc81b605b2971645d140",
+    "project/PROJECT/Logical%20Elements/NG_ValidId.pou/Metadata.meta": "e98bd4bb1dbe944c8be8293f9277eb3acd2c26944cafd00ec1ece04708977041",
+    "project/PROJECT/Logical%20Elements/NG_ValidId.pou/Variables.var": "3b40bd2586a90169aabcc81318a63b004d7d85bdaedac450ca53a005a938e8cb",
+    "project/PROJECT/Logical%20Elements/NG_ValidId.pou/Code.st": "40e4be4e0123bd1ccd3b4cae6820493f2980da213f2bfae570bdb803099e2f36",
+    "project/PROJECT/Logical%20Elements/NG_WireCode.pou/Metadata.meta": "deeeaa276207e93e3bf4ac359fa918fecc043da69c41c0cf17f830256d7feca9",
+    "project/PROJECT/Logical%20Elements/NG_WireCode.pou/Variables.var": "2f1b8bf769ec13cc1acb4a52369c10a73ae0f5c62f2e03662d76e07e7d203f7e",
+    "project/PROJECT/Logical%20Elements/NG_WireCode.pou/Code.st": "35a053f8b6f3f2d9cc51f4b632a96fd40ee11af9bce8f0cddced684526a4aae7",
+    "project/PROJECT/Logical%20Elements/codex-clipboard-2b444731-1e31-4460-972d-c7c6dbf70708.png/Source": "72d2d7a61856df159cb34fd7d436b67e667874fb0be93f6627529355d0b82760",
+    "project/PROJECT/Logical%20Elements/codex-clipboard-2b444731-1e31-4460-972d-c7c6dbf70708.png/Thumbnail": "72d2d7a61856df159cb34fd7d436b67e667874fb0be93f6627529355d0b82760"
+  },
+  "limitations": [
+    "Experimental AXC F 2152 / 2026 single-resource/single-cyclic-task IEC source cold build; POUs and interfaces are constructed without a project AST seed.",
+    "EN/ENO uses the reported project option or explicit profile default true; independent projects have no GUI equivalence guarantee.",
+    "Requires installed compiler, vendor and project-referenced library packages; no full network/HMI/signature/deployment-package regeneration or PLC execution validation.",
+    "No target limits service or historical IDE warning replay."
+  ],
+  "started_utc": "2026-10-26T04:37:58.302727+00:00",
+  "host_exit_code": 0,
+  "host": {
+    "status": "cil_generated",
+    "cache_assisted": false,
+    "ast_seed_used": false,
+    "aci_used": false,
+    "computer_use_used": false,
+    "controller_connected": false,
+    "deployable": false,
+    "whole_project_rebuilt_from_pcwex": false,
+    "cold_skeleton": {
+      "errors": 0,
+      "warnings": 0,
+      "libraries": [
+        {
+          "name": "eCLR Core runtime metadata",
+          "path": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0\\Profiles\\eCLR Core.zip",
+          "package_sha256": "0247e1bb4c40da6660a780e5d925076278ea0390c2e7db11e8d3b3542f3e3610",
+          "selected_profile_version": "3.4.0",
+          "extracted_dlls": [
+            {
+              "archive_member": "Copy/3.4.0/dummyio.dll",
+              "staged_relative_path": "dummyio.dll",
+              "sha256": "a1a9ecfcf20cf91514b607074bebfbdd2892399175b170738730a71075b5494d"
+            },
+            {
+              "archive_member": "Copy/3.4.0/eclrlib.dll",
+              "staged_relative_path": "eclrlib.dll",
+              "sha256": "514a0871e88fb328a3d5aa326d430b4465c5d719dcb372c2ee93b62ef3cb4a01"
+            },
+            {
+              "archive_member": "Copy/3.4.0/mscorlib.dll",
+              "staged_relative_path": "mscorlib.dll",
+              "sha256": "34ed22e7eb69bbfcab45b5a2b3dd1998287cf1cc5a8e3a08a88300bc096c30c1"
+            },
+            {
+              "archive_member": "Copy/3.4.0/pcoslib.dll",
+              "staged_relative_path": "pcoslib.dll",
+              "sha256": "51399451b8591bb0031468cdd6607ed7d01f07634e2935ec9ace5558d8fb848c"
+            },
+            {
+              "archive_member": "Copy/3.4.0/System.Core.dll",
+              "staged_relative_path": "System.Core.dll",
+              "sha256": "96bbe84eef9fd518196eee3632942cb6db8d3b1a89e9b5d79b2918c01e20878d"
+            },
+            {
+              "archive_member": "Copy/3.4.0/System.dll",
+              "staged_relative_path": "System.dll",
+              "sha256": "4818eeac9fae7cce76fd26f52a61fc35c0e97469ff229cdb9d54d725613d1b7b"
+            }
+          ],
+          "compiler_ast_seed": false
+        },
+        {
+          "name": "IEC 61131-3",
+          "path": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0\\DefaultLibraries\\IEC 61131-3.pxclx",
+          "package_sha256": "d5452301d9cafe6fb25efcddb421d844ff0c81f70ec657d72c7d604652d6bcbd",
+          "precompiled_assemblies": 5,
+          "extracted_dlls": [
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Iec61131Standard.dll",
+              "staged_relative_path": "package-00\\Iec61131Standard.dll",
+              "sha256": "6ebad6d4d2e6c200cdbc9fcc93fef9e8b910c18fd63c66048597ce3bddfbe62c",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "6ebad6d4d2e6c200cdbc9fcc93fef9e8b910c18fd63c66048597ce3bddfbe62c"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Iec61131SequentialFunctionChart.dll",
+              "staged_relative_path": "package-00\\Iec61131SequentialFunctionChart.dll",
+              "sha256": "18c21daa6806eca3446cbe88c4297b39e15ddfb05047e864e56f6488e4d97fb8",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "18c21daa6806eca3446cbe88c4297b39e15ddfb05047e864e56f6488e4d97fb8"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/IecSupport.dll",
+              "staged_relative_path": "package-00\\IecSupport.dll",
+              "sha256": "2c501977f116cd7d94f042bbff54009f823153324d69126eb04f823d90377826",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "2c501977f116cd7d94f042bbff54009f823153324d69126eb04f823d90377826"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/IecEngineering.dll",
+              "staged_relative_path": "package-00\\IecEngineering.dll",
+              "sha256": "96c85d8ce1ca2a1641df06b5ff71229d10b5842b068f545d6b9076cb1ac7ac44",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "96c85d8ce1ca2a1641df06b5ff71229d10b5842b068f545d6b9076cb1ac7ac44"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/pcoslib.dll",
+              "staged_relative_path": "package-00\\pcoslib.dll",
+              "sha256": "e0dea89902ce5c3bc8f8a11e7dbf7aa92150a31630941b96322328293fcbb75f",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "51399451b8591bb0031468cdd6607ed7d01f07634e2935ec9ace5558d8fb848c"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/eclrlib.dll",
+              "staged_relative_path": "package-00\\eclrlib.dll",
+              "sha256": "d2f98d3cb7b4277e0a3f5065119260ed269eb6827c4259477dd97a8e46012a93",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "514a0871e88fb328a3d5aa326d430b4465c5d719dcb372c2ee93b62ef3cb4a01"
+            }
+          ],
+          "compiler_ast_seed": false
+        },
+        {
+          "name": "Extended",
+          "path": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0\\DefaultLibraries\\Extended.pcwlx",
+          "package_sha256": "4d7454c48b662dab347d818edb474d72ac4bbe3581b2654c8f4c509ecc4e63d3",
+          "precompiled_assemblies": 1,
+          "extracted_dlls": [
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Ade.ExtendedPouLibrary.dll",
+              "staged_relative_path": "package-01\\Ade.ExtendedPouLibrary.dll",
+              "sha256": "25f3e33d3779167cc6aa436c30ea14c027cee14fcfa5487fdd00feb3d75fa073",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "25f3e33d3779167cc6aa436c30ea14c027cee14fcfa5487fdd00feb3d75fa073"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/eclrlib.dll",
+              "staged_relative_path": "package-01\\eclrlib.dll",
+              "sha256": "d2f98d3cb7b4277e0a3f5065119260ed269eb6827c4259477dd97a8e46012a93",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "514a0871e88fb328a3d5aa326d430b4465c5d719dcb372c2ee93b62ef3cb4a01"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/pcoslib.dll",
+              "staged_relative_path": "package-01\\pcoslib.dll",
+              "sha256": "e0dea89902ce5c3bc8f8a11e7dbf7aa92150a31630941b96322328293fcbb75f",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "51399451b8591bb0031468cdd6607ed7d01f07634e2935ec9ace5558d8fb848c"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/IecSupport.dll",
+              "staged_relative_path": "package-01\\IecSupport.dll",
+              "sha256": "2c501977f116cd7d94f042bbff54009f823153324d69126eb04f823d90377826",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "2c501977f116cd7d94f042bbff54009f823153324d69126eb04f823d90377826"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/IecEngineering.dll",
+              "staged_relative_path": "package-01\\IecEngineering.dll",
+              "sha256": "96c85d8ce1ca2a1641df06b5ff71229d10b5842b068f545d6b9076cb1ac7ac44",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "96c85d8ce1ca2a1641df06b5ff71229d10b5842b068f545d6b9076cb1ac7ac44"
+            }
+          ],
+          "compiler_ast_seed": false
+        },
+        {
+          "name": "Safety IEC 61131-3",
+          "path": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0\\DefaultLibraries\\Safety IEC 61131-3.pcwlx",
+          "package_sha256": "bac091e9fb1e3bfcbc5f7ad51f5bc4fc3cf1b4c463553f6b8f9e27ce92f07ffc",
+          "precompiled_assemblies": 1,
+          "extracted_dlls": [
+            {
+              "archive_member": "PROJECT/Logical%20Elements/IEC61131Safety.dll",
+              "staged_relative_path": "package-02\\IEC61131Safety.dll",
+              "sha256": "301c0da9002073b388c77eeb4ad2052466aa74a4be545e079754d768f41bb4ca",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "301c0da9002073b388c77eeb4ad2052466aa74a4be545e079754d768f41bb4ca"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/eclrlib.dll",
+              "staged_relative_path": "package-02\\eclrlib.dll",
+              "sha256": "384aef7903541d6dcf09556d504c869ca1f80eca3a9a9c0a43d420586c2efc61",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "514a0871e88fb328a3d5aa326d430b4465c5d719dcb372c2ee93b62ef3cb4a01"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/pcoslib.dll",
+              "staged_relative_path": "package-02\\pcoslib.dll",
+              "sha256": "d29d70685bbf472dd08c07740021c3dd9a9ae922afa7c58ca35fb4340d525097",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "51399451b8591bb0031468cdd6607ed7d01f07634e2935ec9ace5558d8fb848c"
+            }
+          ],
+          "compiler_ast_seed": false
+        },
+        {
+          "name": "PLCnext Controller",
+          "path": "D:\\PLCnext-MCP-Workspace\\ede9c08a703c484cadec4f18941272a2\\builds\\eaa57dd1e51942d793afbf16fa5bbc3c\\libraries\\0000.pcwlx",
+          "package_sha256": "6871db126a070a324c427cafefa5c7c88d2d12ff00c6049d346ec543d304079d",
+          "precompiled_assemblies": 17,
+          "extracted_dlls": [
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Profinet.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Profinet.dll",
+              "sha256": "0b6f7e7ac77eb5c3c45bd10fcf5e375f4cc23449c2c2e238b9b136a83dbdda66",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "0b6f7e7ac77eb5c3c45bd10fcf5e375f4cc23449c2c2e238b9b136a83dbdda66"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Axioline.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Axioline.dll",
+              "sha256": "d349f04c1f5ec76ae3e8a31ef4b7ee0f41dc9a79d70cb32144ce7aef1173db07",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "d349f04c1f5ec76ae3e8a31ef4b7ee0f41dc9a79d70cb32144ce7aef1173db07"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Hardware.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Hardware.dll",
+              "sha256": "bd456ae95e683fb5b92915e98849c90fea71c7ce1e65422ee7b4928b6120a556",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "bd456ae95e683fb5b92915e98849c90fea71c7ce1e65422ee7b4928b6120a556"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Interbus.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Interbus.dll",
+              "sha256": "981a126bfef1d8667c15eae9cd7a9f1a9d9bea556b177897bda66fb12acd7af1",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "981a126bfef1d8667c15eae9cd7a9f1a9d9bea556b177897bda66fb12acd7af1"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.License.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.License.dll",
+              "sha256": "0d9fcba6a5423828ef2572dfb620ad4067f239864b5a7fe82f26ce57c4157048",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "0d9fcba6a5423828ef2572dfb620ad4067f239864b5a7fe82f26ce57c4157048"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Alarms.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Alarms.dll",
+              "sha256": "c8ab9d2fa438d69581b13f88fa223509898db23d2e8e1b80292680957071f0f6",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "c8ab9d2fa438d69581b13f88fa223509898db23d2e8e1b80292680957071f0f6"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Security.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Security.dll",
+              "sha256": "62fe8367158cd8a987fa923c241d42f677198bdebc9c1f411f10eeeb0b705b68",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "62fe8367158cd8a987fa923c241d42f677198bdebc9c1f411f10eeeb0b705b68"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.TimerRetain.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.TimerRetain.dll",
+              "sha256": "275051274ca9c95e836564447b2b89586ffdf16bc80794626af85620e91c863d",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "275051274ca9c95e836564447b2b89586ffdf16bc80794626af85620e91c863d"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.OpcUA.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.OpcUA.dll",
+              "sha256": "3ba42352b920d66d28c41670784731a35f7041cc5d66ad2374ba50ec8faba593",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "3ba42352b920d66d28c41670784731a35f7041cc5d66ad2374ba50ec8faba593"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Ehmi.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Ehmi.dll",
+              "sha256": "a0aebc97c02424c0e6bde599f3906252967a9e1b79b4b14e3b5b4f238c7d3801",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "a0aebc97c02424c0e6bde599f3906252967a9e1b79b4b14e3b5b4f238c7d3801"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Device.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Device.dll",
+              "sha256": "a8e577a6e9c6f1c499153dce692f2a9f265fc15905ffc1846a06422e0a8e5ef5",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "a8e577a6e9c6f1c499153dce692f2a9f265fc15905ffc1846a06422e0a8e5ef5"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Commons.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Commons.dll",
+              "sha256": "d5aa0017392108e6cd89610aa5a4b9feb836f45feebab4584bbbc6ce7f7d5797",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "d5aa0017392108e6cd89610aa5a4b9feb836f45feebab4584bbbc6ce7f7d5797"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.ExceptionInfos.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.ExceptionInfos.dll",
+              "sha256": "5682beff70f3e9ad76496a624a4322832d30806b2a9d8ad638701829e502e48f",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "5682beff70f3e9ad76496a624a4322832d30806b2a9d8ad638701829e502e48f"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.Iec.Sockets.dll",
+              "staged_relative_path": "package-03\\Arp.Iec.Sockets.dll",
+              "sha256": "de0b075ece6298291cbaf0dcb2644ddd4b2b0c85faa341c51fa8053427edf8ee",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "de0b075ece6298291cbaf0dcb2644ddd4b2b0c85faa341c51fa8053427edf8ee"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/TLS_FBs.SysVar.dll",
+              "staged_relative_path": "package-03\\TLS_FBs.SysVar.dll",
+              "sha256": "562cc853fde819bb29e741788034347cbce22702c3fdad6451a97151abb47c35",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "562cc853fde819bb29e741788034347cbce22702c3fdad6451a97151abb47c35"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/IP_FBs.SysVar.dll",
+              "staged_relative_path": "package-03\\IP_FBs.SysVar.dll",
+              "sha256": "60507b4b272ff8b6c2d733ad9b0f28d049bed306677093e09a9725fb72c0f8fb",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "60507b4b272ff8b6c2d733ad9b0f28d049bed306677093e09a9725fb72c0f8fb"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/PACK_FBs.dll",
+              "staged_relative_path": "package-03\\PACK_FBs.dll",
+              "sha256": "c7eaa4ebeba1c0968f13c561a41500b72d0a570a6b5624b170bd2739624db740",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "c7eaa4ebeba1c0968f13c561a41500b72d0a570a6b5624b170bd2739624db740"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Ade.CommonRemoting.Commons.Core.dll",
+              "staged_relative_path": "package-03\\Ade.CommonRemoting.Commons.Core.dll",
+              "sha256": "211ed122d60f6590a23bb645edd745fc6fa25a6247e3419d125c4ccb128678cc",
+              "native_reference_source": "unambiguous_dependency",
+              "selected_native_reference_sha256": "211ed122d60f6590a23bb645edd745fc6fa25a6247e3419d125c4ccb128678cc"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.System.Rsc.Commons.Core.dll",
+              "staged_relative_path": "package-03\\Arp.System.Rsc.Commons.Core.dll",
+              "sha256": "e689840d2f3c3be6ab34948061a9dcfb7cf22f591a2ca7e8e8a7cbefc01f08d4",
+              "native_reference_source": "unambiguous_dependency",
+              "selected_native_reference_sha256": "e689840d2f3c3be6ab34948061a9dcfb7cf22f591a2ca7e8e8a7cbefc01f08d4"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.System.Rsc.Core.dll",
+              "staged_relative_path": "package-03\\Arp.System.Rsc.Core.dll",
+              "sha256": "f2011b58524f2d91e96772c5f01260202c116b12c94f1e608c096a1b59559987",
+              "native_reference_source": "unambiguous_dependency",
+              "selected_native_reference_sha256": "f2011b58524f2d91e96772c5f01260202c116b12c94f1e608c096a1b59559987"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.System.Rsc.Services.Core.dll",
+              "staged_relative_path": "package-03\\Arp.System.Rsc.Services.Core.dll",
+              "sha256": "5ca97f5a5e3965f090351771ab3711ae3ec6a428027e51017c612d0c7bbc781f",
+              "native_reference_source": "unambiguous_dependency",
+              "selected_native_reference_sha256": "5ca97f5a5e3965f090351771ab3711ae3ec6a428027e51017c612d0c7bbc781f"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/Arp.System.Rsc.Services.Proxies.dll",
+              "staged_relative_path": "package-03\\Arp.System.Rsc.Services.Proxies.dll",
+              "sha256": "18d152d1aeaa1d647be719ed219046f418e24724c22221f465f3985c9a88de23",
+              "native_reference_source": "unambiguous_dependency",
+              "selected_native_reference_sha256": "18d152d1aeaa1d647be719ed219046f418e24724c22221f465f3985c9a88de23"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/arplib.dll",
+              "staged_relative_path": "package-03\\arplib.dll",
+              "sha256": "29ab15e2feae1696ba41f0d543303539aea1401f03942a07cf3c832bee136379",
+              "native_reference_source": "unambiguous_dependency",
+              "selected_native_reference_sha256": "29ab15e2feae1696ba41f0d543303539aea1401f03942a07cf3c832bee136379"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/eclrlib.dll",
+              "staged_relative_path": "package-03\\eclrlib.dll",
+              "sha256": "d2f98d3cb7b4277e0a3f5065119260ed269eb6827c4259477dd97a8e46012a93",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "514a0871e88fb328a3d5aa326d430b4465c5d719dcb372c2ee93b62ef3cb4a01"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/pcoslib.dll",
+              "staged_relative_path": "package-03\\pcoslib.dll",
+              "sha256": "e0dea89902ce5c3bc8f8a11e7dbf7aa92150a31630941b96322328293fcbb75f",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "51399451b8591bb0031468cdd6607ed7d01f07634e2935ec9ace5558d8fb848c"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/IecEngineering.dll",
+              "staged_relative_path": "package-03\\IecEngineering.dll",
+              "sha256": "96c85d8ce1ca2a1641df06b5ff71229d10b5842b068f545d6b9076cb1ac7ac44",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "96c85d8ce1ca2a1641df06b5ff71229d10b5842b068f545d6b9076cb1ac7ac44"
+            }
+          ],
+          "compiler_ast_seed": false
+        },
+        {
+          "name": "IIoT_Library",
+          "path": "D:\\PLCnext-MCP-Workspace\\ede9c08a703c484cadec4f18941272a2\\builds\\eaa57dd1e51942d793afbf16fa5bbc3c\\libraries\\0001.pcwlx",
+          "package_sha256": "aa1f8b047d28c5211bb46da0c5739debe76931108c1cb51831e981399afa4b77",
+          "precompiled_assemblies": 1,
+          "extracted_dlls": [
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/IIoT_Library.dll",
+              "staged_relative_path": "package-04\\IIoT_Library.dll",
+              "sha256": "43f2832e7dc5e9b1fe61c8b530d9f3eba8cce4ede69b0d9a97d69533ebcbd583",
+              "native_reference_source": "explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "43f2832e7dc5e9b1fe61c8b530d9f3eba8cce4ede69b0d9a97d69533ebcbd583"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/EclrHelper.dll",
+              "staged_relative_path": "package-04\\EclrHelper.dll",
+              "sha256": "94fa28445ff8802d2f6f52300a7b0da155ab28f17895100a626be2830f5fa789",
+              "native_reference_source": "unambiguous_dependency",
+              "selected_native_reference_sha256": "94fa28445ff8802d2f6f52300a7b0da155ab28f17895100a626be2830f5fa789"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/eclrlib.dll",
+              "staged_relative_path": "package-04\\eclrlib.dll",
+              "sha256": "e2e37d5ac2e386f3551f9358c45410bff8c7ee4cf5c2a1d289efc42634b228c0",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "514a0871e88fb328a3d5aa326d430b4465c5d719dcb372c2ee93b62ef3cb4a01"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/IecEngineering.dll",
+              "staged_relative_path": "package-04\\IecEngineering.dll",
+              "sha256": "af8543d8ae5b0d6baa6c0bdf1ece4f5a4a6005ea0b499c2d506eb0dc1e5d04b2",
+              "native_reference_source": "other_package_explicit_PrecompiledLibrary",
+              "selected_native_reference_sha256": "96c85d8ce1ca2a1641df06b5ff71229d10b5842b068f545d6b9076cb1ac7ac44"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/mscorlib.dll",
+              "staged_relative_path": "package-04\\mscorlib.dll",
+              "sha256": "0869ed0dce17265ef3eb2c870a784869cc84c47b755008e9fc90834e1ff9a1fb",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "34ed22e7eb69bbfcab45b5a2b3dd1998287cf1cc5a8e3a08a88300bc096c30c1"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/pcoslib.dll",
+              "staged_relative_path": "package-04\\pcoslib.dll",
+              "sha256": "448fd585b500a9516201525f738b413d092220565566f8c6e881ccd25aa82ca3",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "51399451b8591bb0031468cdd6607ed7d01f07634e2935ec9ace5558d8fb848c"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/System.Core.dll",
+              "staged_relative_path": "package-04\\System.Core.dll",
+              "sha256": "cdd26f3f9092f0dda601b0f84327141bc4ff3802a0ab265d8cd670e5216e1513",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "96bbe84eef9fd518196eee3632942cb6db8d3b1a89e9b5d79b2918c01e20878d"
+            },
+            {
+              "archive_member": "PROJECT/Logical%20Elements/bin/System.dll",
+              "staged_relative_path": "package-04\\System.dll",
+              "sha256": "3b71382686e9bb265b6b58d64904b1981b864f73e4908783fed9a1222ebba171",
+              "native_reference_source": "selected_eclr_profile",
+              "selected_native_reference_sha256": "4818eeac9fae7cce76fd26f52a61fc35c0e97469ff229cdb9d54d725613d1b7b"
+            }
+          ],
+          "compiler_ast_seed": false
+        }
+      ],
+      "library_results": [
+        {
+          "package": "IEC 61131-3",
+          "dll": "Iec61131Standard.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 967,
+          "types": 0
+        },
+        {
+          "package": "IEC 61131-3",
+          "dll": "Iec61131SequentialFunctionChart.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 5,
+          "types": 16
+        },
+        {
+          "package": "IEC 61131-3",
+          "dll": "IecSupport.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 0,
+          "types": 0
+        },
+        {
+          "package": "IEC 61131-3",
+          "dll": "IecEngineering.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 0,
+          "types": 0
+        },
+        {
+          "package": "IEC 61131-3",
+          "dll": "pcoslib.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 0,
+          "types": 0
+        },
+        {
+          "package": "Extended",
+          "dll": "Ade.ExtendedPouLibrary.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 135,
+          "types": 4
+        },
+        {
+          "package": "Safety IEC 61131-3",
+          "dll": "IEC61131Safety.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 0,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Profinet.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 9,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Axioline.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 3,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Hardware.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 1,
+          "types": 2
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Interbus.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 4,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.License.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 1,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Alarms.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 7,
+          "types": 3
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Security.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 3,
+          "types": 3
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.TimerRetain.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 6,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.OpcUA.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 0,
+          "types": 2
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Ehmi.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 2,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Device.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 2,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Commons.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 1,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.ExceptionInfos.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 1,
+          "types": 1
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "Arp.Iec.Sockets.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 15,
+          "types": 2
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "TLS_FBs.SysVar.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 0,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "IP_FBs.SysVar.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 0,
+          "types": 0
+        },
+        {
+          "package": "PLCnext Controller",
+          "dll": "PACK_FBs.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 2,
+          "types": 0
+        },
+        {
+          "package": "IIoT_Library",
+          "dll": "IIoT_Library.dll",
+          "errors": 0,
+          "warnings": 0,
+          "pous": 8,
+          "types": 12
+        }
+      ],
+      "tasks": [
+        {
+          "configuration": "CFG_B6361CC005D54E9BB94A1EF86E276BF6",
+          "resource": "RES_23CA7F267545404C9FED5DC977A6399F",
+          "name": "Cyclic100",
+          "interval_ns": "20000000",
+          "watchdog_ns": "500000000",
+          "priority": 0,
+          "instances": [
+            "MainInstance"
+          ],
+          "time_unit_mapping": "ESM nanoseconds / 1000000 -> compiler model milliseconds; AXC F 2152 / 2026 profile"
+        }
+      ],
+      "messages": []
+    },
+    "application_name": "NativeGateway.p06-performance-v29-fair",
+    "syntax": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": [],
+      "messages_truncated": false
+    },
+    "pous_reparsed": 61,
+    "interfaces_reparsed": 61,
+    "variables_reparsed": 1082,
+    "anonymous_datatypes_reparsed": 90,
+    "semantic": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": [],
+      "messages_truncated": false,
+      "historical_warnings_replayed": false,
+      "build_item_announcements": 61
+    },
+    "cil": {
+      "generator_return_value": true,
+      "messages": [],
+      "messages_truncated": false
+    },
+    "resource_name": "RES_23CA7F267545404C9FED5DC977A6399F",
+    "generated_files": [
+      "documents.dbgmap",
+      "Main.dll",
+      "Main.pdb",
+      "NG_AckFields.dll",
+      "NG_AckFields.pdb",
+      "NG_Add4.dll",
+      "NG_Add4.pdb",
+      "NG_Allowed.dll",
+      "NG_Allowed.pdb",
+      "NG_AuditAssociation.dll",
+      "NG_AuditAssociation.pdb",
+      "NG_AuditCapture.dll",
+      "NG_AuditCapture.pdb",
+      "NG_AuditDecision.dll",
+      "NG_AuditDecision.pdb",
+      "NG_AuditDrain.dll",
+      "NG_AuditDrain.pdb",
+      "NG_BatchBuilder.dll",
+      "NG_BatchBuilder.pdb",
+      "NG_Bool.dll",
+      "NG_Bool.pdb",
+      "NG_BufferMaintenance.dll",
+      "NG_BufferMaintenance.pdb",
+      "NG_Capture.dll",
+      "NG_Capture.pdb",
+      "NG_CaptureCore.dll",
+      "NG_CaptureCore.pdb",
+      "NG_Char.dll",
+      "NG_Char.pdb",
+      "NG_CheckConfig.dll",
+      "NG_CheckConfig.pdb",
+      "NG_CheckCounters.dll",
+      "NG_CheckCounters.pdb",
+      "NG_Clip.dll",
+      "NG_Clip.pdb",
+      "NG_Command.dll",
+      "NG_Command.pdb",
+      "NG_ConfigSlot.dll",
+      "NG_ConfigSlot.pdb",
+      "NG_Delivery.dll",
+      "NG_Delivery.pdb",
+      "NG_DeliveryParallel.dll",
+      "NG_DeliveryParallel.pdb",
+      "NG_Diagnostics.dll",
+      "NG_Diagnostics.pdb",
+      "NG_EditDevice.dll",
+      "NG_EditDevice.pdb",
+      "NG_EndBatch.dll",
+      "NG_EndBatch.pdb",
+      "NG_FreeRecord.dll",
+      "NG_FreeRecord.pdb",
+      "NG_GapLog.dll",
+      "NG_GapLog.pdb",
+      "NG_HmiEdit.dll",
+      "NG_HmiEdit.pdb",
+      "NG_IPv4.dll",
+      "NG_IPv4.pdb",
+      "NG_JsonParse.dll",
+      "NG_JsonParse.pdb",
+      "NG_Member.dll",
+      "NG_Member.pdb",
+      "NG_Modbus.dll",
+      "NG_Modbus.pdb",
+      "NG_Mqtt.dll",
+      "NG_Mqtt.pdb",
+      "NG_NumberValid.dll",
+      "NG_NumberValid.pdb",
+      "NG_PollSlot.dll",
+      "NG_PollSlot.pdb",
+      "NG_ProcNumber.dll",
+      "NG_ProcNumber.pdb",
+      "NG_PruneTerminal.dll",
+      "NG_PruneTerminal.pdb",
+      "NG_QualityCode.dll",
+      "NG_QualityCode.pdb",
+      "NG_QualityName.dll",
+      "NG_QualityName.pdb",
+      "NG_Quote.dll",
+      "NG_Quote.pdb",
+      "NG_Range.dll",
+      "NG_Range.pdb",
+      "NG_ReadAck.dll",
+      "NG_ReadAck.pdb",
+      "NG_ReadConfig.dll",
+      "NG_ReadConfig.pdb",
+      "NG_ReadDevice.dll",
+      "NG_ReadDevice.pdb",
+      "NG_ReadPoint.dll",
+      "NG_ReadPoint.pdb",
+      "NG_ReportPolicy.dll",
+      "NG_ReportPolicy.pdb",
+      "NG_Resources.dll",
+      "NG_Resources.pdb",
+      "NG_SafeAdd.dll",
+      "NG_SafeAdd.pdb",
+      "NG_SameConfig.dll",
+      "NG_SameConfig.pdb",
+      "NG_SHA256.dll",
+      "NG_SHA256.pdb",
+      "NG_SourceResult.dll",
+      "NG_SourceResult.pdb",
+      "NG_SourceResultCore.dll",
+      "NG_SourceResultCore.pdb",
+      "NG_SourceState.dll",
+      "NG_SourceState.pdb",
+      "NG_SourceStateCore.dll",
+      "NG_SourceStateCore.pdb",
+      "NG_StorageHash.dll",
+      "NG_StorageHash.pdb",
+      "NG_Store.dll",
+      "NG_Store.pdb",
+      "NG_StringSHA256.dll",
+      "NG_StringSHA256.pdb",
+      "NG_UiJoin.dll",
+      "NG_UiJoin.pdb",
+      "NG_UiText.dll",
+      "NG_UiText.pdb",
+      "NG_Unix.dll",
+      "NG_Unix.pdb",
+      "NG_ValidId.dll",
+      "NG_ValidId.pdb",
+      "NG_WireCode.dll",
+      "NG_WireCode.pdb",
+      "RES_23CA7F267545404C9FED5DC977A6399F.Common.dll",
+      "RES_23CA7F267545404C9FED5DC977A6399F.Common.pdb",
+      "RES_23CA7F267545404C9FED5DC977A6399F.exe",
+      "RES_23CA7F267545404C9FED5DC977A6399F.pdb",
+      "RES_23CA7F267545404C9FED5DC977A6399F.SimulationVariables.xml",
+      "TimestampInformation.json",
+      "TypeInformation.json"
+    ],
+    "limitations": [
+      "AXC F 2152 / 2026 single-resource single-cyclic-task IEC source cold build; no project AST seed is read.",
+      "No target limits service or IDE project manager; historical warnings are not replayed.",
+      "No hardware/HMI/configuration rebuild or deployment validation."
+    ],
+    "source_sha256": "34ae4a9ba86b089eb6a1b31ba1b29e643cbf15ed0faf13c77671ec564cb51af1",
+    "source_sha256_after": "34ae4a9ba86b089eb6a1b31ba1b29e643cbf15ed0faf13c77671ec564cb51af1",
+    "loaded_assemblies": [
+      "Ade.Build",
+      "Ade.Compiler",
+      "Ade.Compiler.Eclr",
+      "Ade.Compiler.EclrImpl",
+      "Ade.Compiler.ParsingImpl",
+      "Ade.CompilerImpl",
+      "Ade.Components",
+      "Ade.Core",
+      "Ade.Diagnostics",
+      "Ade.Online",
+      "Ade.Online.Eclr",
+      "Ade.Patterns",
+      "Ade.Reflection",
+      "Ade.Reflection.CecilImpl",
+      "Ade.ReflectionImpl"
+    ]
+  },
+  "pou_emission": {
+    "declared_count": 61,
+    "parsed_count": 61,
+    "emitted": [
+      "Main",
+      "NG_AckFields",
+      "NG_Add4",
+      "NG_Allowed",
+      "NG_AuditAssociation",
+      "NG_AuditCapture",
+      "NG_AuditDecision",
+      "NG_AuditDrain",
+      "NG_BatchBuilder",
+      "NG_Bool",
+      "NG_BufferMaintenance",
+      "NG_Capture",
+      "NG_CaptureCore",
+      "NG_Char",
+      "NG_CheckConfig",
+      "NG_CheckCounters",
+      "NG_Clip",
+      "NG_Command",
+      "NG_ConfigSlot",
+      "NG_Delivery",
+      "NG_DeliveryParallel",
+      "NG_Diagnostics",
+      "NG_EditDevice",
+      "NG_EndBatch",
+      "NG_FreeRecord",
+      "NG_GapLog",
+      "NG_HmiEdit",
+      "NG_IPv4",
+      "NG_JsonParse",
+      "NG_Member",
+      "NG_Modbus",
+      "NG_Mqtt",
+      "NG_NumberValid",
+      "NG_PollSlot",
+      "NG_ProcNumber",
+      "NG_PruneTerminal",
+      "NG_QualityCode",
+      "NG_QualityName",
+      "NG_Quote",
+      "NG_Range",
+      "NG_ReadAck",
+      "NG_ReadConfig",
+      "NG_ReadDevice",
+      "NG_ReadPoint",
+      "NG_ReportPolicy",
+      "NG_Resources",
+      "NG_SHA256",
+      "NG_SafeAdd",
+      "NG_SameConfig",
+      "NG_SourceResult",
+      "NG_SourceResultCore",
+      "NG_SourceState",
+      "NG_SourceStateCore",
+      "NG_StorageHash",
+      "NG_Store",
+      "NG_StringSHA256",
+      "NG_UiJoin",
+      "NG_UiText",
+      "NG_Unix",
+      "NG_ValidId",
+      "NG_WireCode"
+    ],
+    "not_emitted": [],
+    "note": "The vendor generator may omit unreferenced POUs after whole-source parsing and semantic analysis.",
+    "emitted_count": 61
+  },
+  "backend_exit_code": 0,
+  "image_path": "D:\\PLCnext-MCP-Workspace\\ede9c08a703c484cadec4f18941272a2\\builds\\eaa57dd1e51942d793afbf16fa5bbc3c\\generated\\RES_23CA7F267545404C9FED5DC977A6399F.img",
+  "image_bytes": 1041940,
+  "image_sha256": "3b148989ed271fe222466a7af9ee36db0655aa0f45c6346fb818863e83e352d3",
+  "generated_files": [
+    {
+      "name": "Ade.CommonRemoting.Commons.Core.dll",
+      "bytes": 52224,
+      "sha256": "211ed122d60f6590a23bb645edd745fc6fa25a6247e3419d125c4ccb128678cc"
+    },
+    {
+      "name": "Ade.ExtendedPouLibrary.dll",
+      "bytes": 57344,
+      "sha256": "25f3e33d3779167cc6aa436c30ea14c027cee14fcfa5487fdd00feb3d75fa073"
+    },
+    {
+      "name": "Arp.Iec.Alarms.dll",
+      "bytes": 11264,
+      "sha256": "c8ab9d2fa438d69581b13f88fa223509898db23d2e8e1b80292680957071f0f6"
+    },
+    {
+      "name": "Arp.Iec.Axioline.dll",
+      "bytes": 13312,
+      "sha256": "d349f04c1f5ec76ae3e8a31ef4b7ee0f41dc9a79d70cb32144ce7aef1173db07"
+    },
+    {
+      "name": "Arp.Iec.Commons.dll",
+      "bytes": 4096,
+      "sha256": "d5aa0017392108e6cd89610aa5a4b9feb836f45feebab4584bbbc6ce7f7d5797"
+    },
+    {
+      "name": "Arp.Iec.Device.dll",
+      "bytes": 11776,
+      "sha256": "a8e577a6e9c6f1c499153dce692f2a9f265fc15905ffc1846a06422e0a8e5ef5"
+    },
+    {
+      "name": "Arp.Iec.Ehmi.dll",
+      "bytes": 8704,
+      "sha256": "a0aebc97c02424c0e6bde599f3906252967a9e1b79b4b14e3b5b4f238c7d3801"
+    },
+    {
+      "name": "Arp.Iec.ExceptionInfos.dll",
+      "bytes": 8192,
+      "sha256": "5682beff70f3e9ad76496a624a4322832d30806b2a9d8ad638701829e502e48f"
+    },
+    {
+      "name": "Arp.Iec.Hardware.dll",
+      "bytes": 7680,
+      "sha256": "bd456ae95e683fb5b92915e98849c90fea71c7ce1e65422ee7b4928b6120a556"
+    },
+    {
+      "name": "Arp.Iec.Interbus.dll",
+      "bytes": 17408,
+      "sha256": "981a126bfef1d8667c15eae9cd7a9f1a9d9bea556b177897bda66fb12acd7af1"
+    },
+    {
+      "name": "Arp.Iec.License.dll",
+      "bytes": 7168,
+      "sha256": "0d9fcba6a5423828ef2572dfb620ad4067f239864b5a7fe82f26ce57c4157048"
+    },
+    {
+      "name": "Arp.Iec.OpcUA.dll",
+      "bytes": 13824,
+      "sha256": "3ba42352b920d66d28c41670784731a35f7041cc5d66ad2374ba50ec8faba593"
+    },
+    {
+      "name": "Arp.Iec.Profinet.dll",
+      "bytes": 31744,
+      "sha256": "0b6f7e7ac77eb5c3c45bd10fcf5e375f4cc23449c2c2e238b9b136a83dbdda66"
+    },
+    {
+      "name": "Arp.Iec.Security.dll",
+      "bytes": 37376,
+      "sha256": "62fe8367158cd8a987fa923c241d42f677198bdebc9c1f411f10eeeb0b705b68"
+    },
+    {
+      "name": "Arp.Iec.Sockets.dll",
+      "bytes": 97280,
+      "sha256": "de0b075ece6298291cbaf0dcb2644ddd4b2b0c85faa341c51fa8053427edf8ee"
+    },
+    {
+      "name": "Arp.Iec.TimerRetain.dll",
+      "bytes": 7168,
+      "sha256": "275051274ca9c95e836564447b2b89586ffdf16bc80794626af85620e91c863d"
+    },
+    {
+      "name": "Arp.System.Rsc.Commons.Core.dll",
+      "bytes": 6656,
+      "sha256": "e689840d2f3c3be6ab34948061a9dcfb7cf22f591a2ca7e8e8a7cbefc01f08d4"
+    },
+    {
+      "name": "Arp.System.Rsc.Core.dll",
+      "bytes": 11264,
+      "sha256": "f2011b58524f2d91e96772c5f01260202c116b12c94f1e608c096a1b59559987"
+    },
+    {
+      "name": "Arp.System.Rsc.Services.Core.dll",
+      "bytes": 38912,
+      "sha256": "5ca97f5a5e3965f090351771ab3711ae3ec6a428027e51017c612d0c7bbc781f"
+    },
+    {
+      "name": "Arp.System.Rsc.Services.Proxies.dll",
+      "bytes": 47616,
+      "sha256": "18d152d1aeaa1d647be719ed219046f418e24724c22221f465f3985c9a88de23"
+    },
+    {
+      "name": "arplib.dll",
+      "bytes": 8192,
+      "sha256": "29ab15e2feae1696ba41f0d543303539aea1401f03942a07cf3c832bee136379"
+    },
+    {
+      "name": "cilc.opt",
+      "bytes": 110,
+      "sha256": "f6c971e0ce94cc14a4fdc08270c6a4095207a0c0393bfb4c6810e8ed5a147203"
+    },
+    {
+      "name": "documents.dbgmap",
+      "bytes": 11878,
+      "sha256": "7b80b68e8fdf7b88632aebc5a871f22df9991a2ad663d821c507a93f7d585ad2"
+    },
+    {
+      "name": "dummyio.dll",
+      "bytes": 5120,
+      "sha256": "a1a9ecfcf20cf91514b607074bebfbdd2892399175b170738730a71075b5494d"
+    },
+    {
+      "name": "EclrHelper.dll",
+      "bytes": 26624,
+      "sha256": "94fa28445ff8802d2f6f52300a7b0da155ab28f17895100a626be2830f5fa789"
+    },
+    {
+      "name": "eclrlib.dll",
+      "bytes": 44544,
+      "sha256": "514a0871e88fb328a3d5aa326d430b4465c5d719dcb372c2ee93b62ef3cb4a01"
+    },
+    {
+      "name": "IEC61131Safety.dll",
+      "bytes": 6144,
+      "sha256": "301c0da9002073b388c77eeb4ad2052466aa74a4be545e079754d768f41bb4ca"
+    },
+    {
+      "name": "Iec61131SequentialFunctionChart.dll",
+      "bytes": 30208,
+      "sha256": "18c21daa6806eca3446cbe88c4297b39e15ddfb05047e864e56f6488e4d97fb8"
+    },
+    {
+      "name": "Iec61131Standard.dll",
+      "bytes": 223744,
+      "sha256": "6ebad6d4d2e6c200cdbc9fcc93fef9e8b910c18fd63c66048597ce3bddfbe62c"
+    },
+    {
+      "name": "IecEngineering.dll",
+      "bytes": 18432,
+      "sha256": "96c85d8ce1ca2a1641df06b5ff71229d10b5842b068f545d6b9076cb1ac7ac44"
+    },
+    {
+      "name": "IecSupport.dll",
+      "bytes": 34304,
+      "sha256": "2c501977f116cd7d94f042bbff54009f823153324d69126eb04f823d90377826"
+    },
+    {
+      "name": "IIoT_Library.dll",
+      "bytes": 26624,
+      "sha256": "43f2832e7dc5e9b1fe61c8b530d9f3eba8cce4ede69b0d9a97d69533ebcbd583"
+    },
+    {
+      "name": "IP_FBs.SysVar.dll",
+      "bytes": 5120,
+      "sha256": "60507b4b272ff8b6c2d733ad9b0f28d049bed306677093e09a9725fb72c0f8fb"
+    },
+    {
+      "name": "Main.dll",
+      "bytes": 88064,
+      "sha256": "ebf71ab9658bc5b70fd2c9b7b96e7daada2960653b604e0b1ddfd6c26b8494b7"
+    },
+    {
+      "name": "Main.pdb",
+      "bytes": 52736,
+      "sha256": "49ae3c1d11d126d16323304f3e11b8877a0ec59378d1a5d6484ee618e03b515e"
+    },
+    {
+      "name": "mscorlib.dll",
+      "bytes": 341504,
+      "sha256": "34ed22e7eb69bbfcab45b5a2b3dd1998287cf1cc5a8e3a08a88300bc096c30c1"
+    },
+    {
+      "name": "NG_AckFields.dll",
+      "bytes": 6144,
+      "sha256": "ccc8705b22a08272f6678ce607877e08f0bea6f314efeeb41b525c65718a092e"
+    },
+    {
+      "name": "NG_AckFields.pdb",
+      "bytes": 13824,
+      "sha256": "ccd479617db14a21f58544a6dbaabfdc9548b28cbdf63a7451f5b0c310944c88"
+    },
+    {
+      "name": "NG_Add4.dll",
+      "bytes": 2560,
+      "sha256": "1e4a950221b6e2495a0c140464bf601152a9d7c4aae2ea7edb86f1ac0f7460f8"
+    },
+    {
+      "name": "NG_Add4.pdb",
+      "bytes": 11776,
+      "sha256": "81d8edcfb6a994d1af8b2b5fe617ba47321b5d0f6926ffff7ba6595e5dade7fa"
+    },
+    {
+      "name": "NG_Allowed.dll",
+      "bytes": 3584,
+      "sha256": "4f467b55d8cead41eea54f0d03fa76856884e6e41a90720d90e492e765c1771d"
+    },
+    {
+      "name": "NG_Allowed.pdb",
+      "bytes": 11776,
+      "sha256": "a619763bd496441af40dc680a2cb9dae79555db29bcdafa1abd99b544b189bb7"
+    },
+    {
+      "name": "NG_AuditAssociation.dll",
+      "bytes": 6144,
+      "sha256": "e1852be40737be14869df2bfb3514ed7a721ab7385097641d31e3831915b6d34"
+    },
+    {
+      "name": "NG_AuditAssociation.pdb",
+      "bytes": 13824,
+      "sha256": "bef79f74f029851757b1cfad128c22d5d4cc59bac6b94ec90106c0f17eb7e2fd"
+    },
+    {
+      "name": "NG_AuditCapture.dll",
+      "bytes": 4096,
+      "sha256": "7d6c7719a2ff0b9eeb97a897bc046d895ef0b6c192c08825da27d128493dcedc"
+    },
+    {
+      "name": "NG_AuditCapture.pdb",
+      "bytes": 11776,
+      "sha256": "bbda4d18e7e89e18c8d140fe921dfaf3fbc8c18a39b85b8b31c66a07bd7799b8"
+    },
+    {
+      "name": "NG_AuditDecision.dll",
+      "bytes": 3072,
+      "sha256": "19aad2cef73f162173f4e6e0480a36a2f9b3ab12cbeeb205245a55521994ada2"
+    },
+    {
+      "name": "NG_AuditDecision.pdb",
+      "bytes": 11776,
+      "sha256": "aa3e72b5dfa35a869ea034dcccb2d1dc509aa6e1b2b0a20e9fecd6c056bf77e0"
+    },
+    {
+      "name": "NG_AuditDrain.dll",
+      "bytes": 5120,
+      "sha256": "bfbd2a08857e0957687eae83652ae355e94e45885eba276db23a086ab5174fae"
+    },
+    {
+      "name": "NG_AuditDrain.pdb",
+      "bytes": 11776,
+      "sha256": "2f81fb9000aaa51fced04e0eda81b100f31204643280eb9f2d4afdbee4100397"
+    },
+    {
+      "name": "NG_BatchBuilder.dll",
+      "bytes": 20480,
+      "sha256": "4e144230d1c8fd6bf56602b5dab0d50a09523fe3f2a55d39bf9ea361a76d032b"
+    },
+    {
+      "name": "NG_BatchBuilder.pdb",
+      "bytes": 15872,
+      "sha256": "1a46f4e610d56b278eb0d3e38e24ec1100d57958b874fafcb1b48de10415294e"
+    },
+    {
+      "name": "NG_Bool.dll",
+      "bytes": 2560,
+      "sha256": "0f39523b8fea06e9e7c5a7fe9e601c45d964e1f4aea15383d506cbbc721a24dc"
+    },
+    {
+      "name": "NG_Bool.pdb",
+      "bytes": 11776,
+      "sha256": "be19a42454e1fc4f586371956a6f391b827e7ba57fbb9c817543d2ba1797f9bc"
+    },
+    {
+      "name": "NG_BufferMaintenance.dll",
+      "bytes": 8704,
+      "sha256": "9fbc8d7bf8c05d04a46484c528ddcaec2b439e54af256d03934e17c5955b918c"
+    },
+    {
+      "name": "NG_BufferMaintenance.pdb",
+      "bytes": 13824,
+      "sha256": "ee91739a96e92a1c3db0c7a88e362964343a30165311298cf858e0ed84df6388"
+    },
+    {
+      "name": "NG_Capture.dll",
+      "bytes": 3584,
+      "sha256": "40c0c193bd5748ffa658126bd3979b0a2d664a025e2282b56812905a9d4ff981"
+    },
+    {
+      "name": "NG_Capture.pdb",
+      "bytes": 11776,
+      "sha256": "7ce70500e9951b2f0fe7f34e1c885acd07915d0cd3c1f7ca21175c94ec143671"
+    },
+    {
+      "name": "NG_CaptureCore.dll",
+      "bytes": 5632,
+      "sha256": "536fffefb5fb903e3fd152d799660fc7baf33ed0b4e6821bf973b32779611352"
+    },
+    {
+      "name": "NG_CaptureCore.pdb",
+      "bytes": 13824,
+      "sha256": "0de512e651ef3f01dd83bdcb0913b8a29699b6ebf12ff768f8f1839f8d8a7c0c"
+    },
+    {
+      "name": "NG_Char.dll",
+      "bytes": 4096,
+      "sha256": "d3179fafd35bbb924390d2000a97fa51c4ed6f45cbbbafddd7053329562536c2"
+    },
+    {
+      "name": "NG_Char.pdb",
+      "bytes": 11776,
+      "sha256": "2f259d993226cbf3bb1e3221a1062c898fdf03c6f0d7f9675db545263f748350"
+    },
+    {
+      "name": "NG_CheckConfig.dll",
+      "bytes": 7680,
+      "sha256": "c0a75f5647043ca6935b34bbf41fbde2508634e536775869063e757d0c199a90"
+    },
+    {
+      "name": "NG_CheckConfig.pdb",
+      "bytes": 11776,
+      "sha256": "ca6ba0a1c6679acc15d71008de92bdcb763d73751cf36d9771a967b9be42efd8"
+    },
+    {
+      "name": "NG_CheckCounters.dll",
+      "bytes": 3584,
+      "sha256": "b1d33c78e3709941195aacd3512ac2abef5b49b26ea24e091a02bffe660982f9"
+    },
+    {
+      "name": "NG_CheckCounters.pdb",
+      "bytes": 11776,
+      "sha256": "7ff7d34ec87445d80de9194bd5a5719ae24395d753689846f14818348c90f2b3"
+    },
+    {
+      "name": "NG_Clip.dll",
+      "bytes": 3072,
+      "sha256": "d74ff0fcc040c31a2c0c38e4ecc901065918c45c27160f51d4439c5e64b1cc64"
+    },
+    {
+      "name": "NG_Clip.pdb",
+      "bytes": 11776,
+      "sha256": "5da0a3f6895d50376f7960d765ee7a2c79a648b02a1c3200c198aab4258b0ddb"
+    },
+    {
+      "name": "NG_Command.dll",
+      "bytes": 14336,
+      "sha256": "889ad17cfac9ce6052db0f8273927e2d3879169ea2465bb666bd8ddeb785debf"
+    },
+    {
+      "name": "NG_Command.pdb",
+      "bytes": 13824,
+      "sha256": "3130fbc79ce5690a3d4dcf5cf0ccf917c0053e5b939162124eb5a9632ea5c175"
+    },
+    {
+      "name": "NG_ConfigSlot.dll",
+      "bytes": 4608,
+      "sha256": "7e3ed4e8805e558224fcd5c25e0d07547210a41a7e3ec360ecc814400a706302"
+    },
+    {
+      "name": "NG_ConfigSlot.pdb",
+      "bytes": 11776,
+      "sha256": "8b282bf7b8ab419e521bb6d831de6ccac39bca836621e21310791696ff7630d5"
+    },
+    {
+      "name": "NG_Delivery.dll",
+      "bytes": 13824,
+      "sha256": "fdf98135b5ce376cda4a13e2a84a64c000d67d744a097fbfe4ab1097ba0b1f0f"
+    },
+    {
+      "name": "NG_Delivery.pdb",
+      "bytes": 15872,
+      "sha256": "3d2b757e35820807fca8f4d72fd87088535dbba365348dadbc8b0f2b33e33135"
+    },
+    {
+      "name": "NG_DeliveryParallel.dll",
+      "bytes": 5120,
+      "sha256": "f2590416605525b3b17e4443c15e6f24968dc718a8c19e87888598ee28a992d2"
+    },
+    {
+      "name": "NG_DeliveryParallel.pdb",
+      "bytes": 13824,
+      "sha256": "4d6e4cff5dec72a75f639a0103841b7f10323de1d69f23ec328926f303ad759c"
+    },
+    {
+      "name": "NG_Diagnostics.dll",
+      "bytes": 9728,
+      "sha256": "35739e1b6801b4898991f8ef121afcd0d07322d38e341e08108fc8b32873bbb9"
+    },
+    {
+      "name": "NG_Diagnostics.pdb",
+      "bytes": 13824,
+      "sha256": "3aa52b5e7690543e2ef56166862a61d738ccaac0a2142a62dab66b64327d1a65"
+    },
+    {
+      "name": "NG_EditDevice.dll",
+      "bytes": 5632,
+      "sha256": "7128ff093fe68d6473bcdac3cee28e54e98aa7ec4dbe6a6f774e689f21b06f2c"
+    },
+    {
+      "name": "NG_EditDevice.pdb",
+      "bytes": 13824,
+      "sha256": "0393c887bcbb271cc0e7ba3081f7c5d40b40c7c37c543d42680c7f6787e8cf2b"
+    },
+    {
+      "name": "NG_EndBatch.dll",
+      "bytes": 9216,
+      "sha256": "53b4e879e6c7b23e6c2cb3d5996617fa2582079bb32cdbda9737928f44beeaa8"
+    },
+    {
+      "name": "NG_EndBatch.pdb",
+      "bytes": 13824,
+      "sha256": "ececbf89819cf2d63ed47f6846a04eff2c07fe17c89c88140534ef7d922af21c"
+    },
+    {
+      "name": "NG_FreeRecord.dll",
+      "bytes": 4096,
+      "sha256": "69288fb483daceab0435594337b108752d51cad0515e65255757837b6f9e06ed"
+    },
+    {
+      "name": "NG_FreeRecord.pdb",
+      "bytes": 11776,
+      "sha256": "b78b4e4da91fec08939feab5b38fc299209836c8f7e8e9a53b2eb3fddcccd007"
+    },
+    {
+      "name": "NG_GapLog.dll",
+      "bytes": 6144,
+      "sha256": "bc6c5835f434d5c958d97f07d3e4035aed9bfc19b5c4ed20766e7a0bcfb6afa5"
+    },
+    {
+      "name": "NG_GapLog.pdb",
+      "bytes": 13824,
+      "sha256": "d268b2e163011ba01b1d6f352af74a2318130d69f3ae6e2c71937cc30fd1a819"
+    },
+    {
+      "name": "NG_HmiEdit.dll",
+      "bytes": 40448,
+      "sha256": "66bfb38f3fe59caeee3e5a0b26681a87577769ca4bdabab8c35f5991fe05587e"
+    },
+    {
+      "name": "NG_HmiEdit.pdb",
+      "bytes": 22016,
+      "sha256": "ebd2f03492761f76968558531551ddd9b9db8a5b6cab19cd3d27a28742528a9f"
+    },
+    {
+      "name": "NG_IPv4.dll",
+      "bytes": 3584,
+      "sha256": "bdf51a03bdabea1253b252b68cb708f4e6084e0baa1013c2437a89736ba20002"
+    },
+    {
+      "name": "NG_IPv4.pdb",
+      "bytes": 11776,
+      "sha256": "6f47a195b485ddae93eacb0e1f283d7619e3e3faf69ba0882a6f7569ed297815"
+    },
+    {
+      "name": "NG_JsonParse.dll",
+      "bytes": 13824,
+      "sha256": "da552d2e729564c63e29dcf98770cc3e697cd6258399b1429e1169436571fbb6"
+    },
+    {
+      "name": "NG_JsonParse.pdb",
+      "bytes": 15872,
+      "sha256": "06460a993a3c046f0d7a7dcd77a95d9eecff647a6bb7e49b94a09c0994ebaa3b"
+    },
+    {
+      "name": "NG_Member.dll",
+      "bytes": 3072,
+      "sha256": "61ec2e2b8bf1bc7c81d460db59f174b5f5b332ef0f71af07aa48cf3041d27deb"
+    },
+    {
+      "name": "NG_Member.pdb",
+      "bytes": 11776,
+      "sha256": "14f17bde1149338cb2e3ca72bd8500a15ab7e363417393ff63b0beba2a933c7d"
+    },
+    {
+      "name": "NG_Modbus.dll",
+      "bytes": 15360,
+      "sha256": "a96d016c31032e3c5107c33a6e839f621a58eb256bcc17a5648aeacc08d03583"
+    },
+    {
+      "name": "NG_Modbus.pdb",
+      "bytes": 17920,
+      "sha256": "cad8da7c60d28dd11fee675c12b66502716c6dda82b0d666f2d4b8c6db9e012c"
+    },
+    {
+      "name": "NG_Mqtt.dll",
+      "bytes": 10752,
+      "sha256": "8d40f0a3966adbbb0dda92eb7a8ad37104c03d0a0b8c8e0cdbdcc62af8d0652a"
+    },
+    {
+      "name": "NG_Mqtt.pdb",
+      "bytes": 15872,
+      "sha256": "f24ef8131a19294951d2059004c36c85bfd20cf39f6f14b6c77684639676d31b"
+    },
+    {
+      "name": "NG_NumberValid.dll",
+      "bytes": 4608,
+      "sha256": "52690cf5d7471192316d346aa73ed97aac7c5cb3cd120a0c9c5688343272ab9d"
+    },
+    {
+      "name": "NG_NumberValid.pdb",
+      "bytes": 11776,
+      "sha256": "a63ef216f543ecf4b990498738b64dc61c4577339a91337d256d2c16f5c73c05"
+    },
+    {
+      "name": "NG_PollSlot.dll",
+      "bytes": 3072,
+      "sha256": "e23d4f8ba2d1b6ab29987bef0aa7fa3ec46c870832c12feb4abed32d9f194e63"
+    },
+    {
+      "name": "NG_PollSlot.pdb",
+      "bytes": 11776,
+      "sha256": "a27776dbbca68448c701b8315bc7b558ab1c8ee9281c108bfa5487d2fdc6521d"
+    },
+    {
+      "name": "NG_ProcNumber.dll",
+      "bytes": 3072,
+      "sha256": "13ab9f7aa3eff521f2a9577b19ae9dec1d678151c00c5f8d89c5614b51ef0bfc"
+    },
+    {
+      "name": "NG_ProcNumber.pdb",
+      "bytes": 11776,
+      "sha256": "a83f58c09942f94e4ed2bf1d778be05ee295980321f192da331008000f37f917"
+    },
+    {
+      "name": "NG_PruneTerminal.dll",
+      "bytes": 5120,
+      "sha256": "79cac2f7bb7bc82075e81b43b1e5cded064cde22ebe61b96767c4a2c0fa50aa8"
+    },
+    {
+      "name": "NG_PruneTerminal.pdb",
+      "bytes": 13824,
+      "sha256": "b30bea984a83a6b3902c59d936991b8036fc96e6637fd6e20753eeab404e35df"
+    },
+    {
+      "name": "NG_QualityCode.dll",
+      "bytes": 3072,
+      "sha256": "d96deeb2493b50f4a72ef79a7f9db15e81bcdd965e28b0eb21199ef9c5321fc1"
+    },
+    {
+      "name": "NG_QualityCode.pdb",
+      "bytes": 11776,
+      "sha256": "50995060410707113f863921e3ad10f0d2f84aba9d6162b5f94479befa5f9e6c"
+    },
+    {
+      "name": "NG_QualityName.dll",
+      "bytes": 3072,
+      "sha256": "5a7a79e5100d9bffbdfee663dee5e5643307d7014b308ac1283d624c1fe22628"
+    },
+    {
+      "name": "NG_QualityName.pdb",
+      "bytes": 11776,
+      "sha256": "48c9dd4cffec5678f7d0a1ebd804fbe3ab78b31a6e0d995203e7795a39831efc"
+    },
+    {
+      "name": "NG_Quote.dll",
+      "bytes": 4608,
+      "sha256": "57fdcb2c7f36f4921e65ac20570874b372cdce05fdbc1feb0b8fc30e00e0056a"
+    },
+    {
+      "name": "NG_Quote.pdb",
+      "bytes": 11776,
+      "sha256": "75fa1d0d78cd7fdb0d24434117a186c9cdf8236b1ead96cc6d80ac88d63a07ea"
+    },
+    {
+      "name": "NG_Range.dll",
+      "bytes": 3584,
+      "sha256": "201899cf83e07c4c197b92f2512c2317cecde5bee8bc24c5c57243b145c2391c"
+    },
+    {
+      "name": "NG_Range.pdb",
+      "bytes": 11776,
+      "sha256": "2b4e6dd97bb17062f4d074a0fac1381ed5e943bd38bb5b5064792cb859b49296"
+    },
+    {
+      "name": "NG_ReadAck.dll",
+      "bytes": 8704,
+      "sha256": "3ec3f817be072e5ca695de0184268602d06ea7deb1d0c0beef80594e324e67a6"
+    },
+    {
+      "name": "NG_ReadAck.pdb",
+      "bytes": 13824,
+      "sha256": "c8145cfe96690874a0252b09ae56754b86cd14a7270c8297910b483752e321de"
+    },
+    {
+      "name": "NG_ReadConfig.dll",
+      "bytes": 7168,
+      "sha256": "a3eda6471c1a5d405cfc2a984c2f6e1aff15d146d2337ec34b146913c1e01bbd"
+    },
+    {
+      "name": "NG_ReadConfig.pdb",
+      "bytes": 13824,
+      "sha256": "8a6303ba11e7bea284c52d10e9778100e70decbf948a89f0770103c33ecdfb3a"
+    },
+    {
+      "name": "NG_ReadDevice.dll",
+      "bytes": 10752,
+      "sha256": "7e3565b03bb3a728340c11206de92fe828545f29317aeb01bb637d846bec8e35"
+    },
+    {
+      "name": "NG_ReadDevice.pdb",
+      "bytes": 13824,
+      "sha256": "d3baec905d010bfe7ee1cd6e9534ea7b8766942568ed8cc95eb919b19d6f77ae"
+    },
+    {
+      "name": "NG_ReadPoint.dll",
+      "bytes": 12288,
+      "sha256": "c207c54c5c45c686e14cd458596b25cd2bb92d73fbd7098c6d35c5b1ee8bc46c"
+    },
+    {
+      "name": "NG_ReadPoint.pdb",
+      "bytes": 13824,
+      "sha256": "3334e4b24cc16f58581c215102d07e09bf9d4b0d8f8fca137409c16442329470"
+    },
+    {
+      "name": "NG_ReportPolicy.dll",
+      "bytes": 11776,
+      "sha256": "1a0e09a149c4f80a3b8a2eaba932cb6014ee712db33a42e092ffb66ae7583e09"
+    },
+    {
+      "name": "NG_ReportPolicy.pdb",
+      "bytes": 13824,
+      "sha256": "09232798a11cd17f27ef65ea094a06e1cadf1c2e1f7802d2add6b618e245a8ff"
+    },
+    {
+      "name": "NG_Resources.dll",
+      "bytes": 8192,
+      "sha256": "e9ab37597211dbe2b5b0bd7128ebb54c8e06e1bb30f6d41b94a7eddcd249fa01"
+    },
+    {
+      "name": "NG_Resources.pdb",
+      "bytes": 15872,
+      "sha256": "2ccc450ac93e1570f4180a2c6c65b6c4c71b488a35253c9c21df0a5fa3520a49"
+    },
+    {
+      "name": "NG_SafeAdd.dll",
+      "bytes": 2560,
+      "sha256": "246e8dc37a176afe2e750c5aedfecc473ea79539b78bd65b9eeae1fb8ae5f284"
+    },
+    {
+      "name": "NG_SafeAdd.pdb",
+      "bytes": 11776,
+      "sha256": "5c9c7be06435d51ac3e9a02d1fc07be0f4c7474762ec3cfe3161ad39d8836d51"
+    },
+    {
+      "name": "NG_SameConfig.dll",
+      "bytes": 7680,
+      "sha256": "3d84d62d688b3f676d047e06a93419cf5d955cac713fa7492563a21a453fd919"
+    },
+    {
+      "name": "NG_SameConfig.pdb",
+      "bytes": 11776,
+      "sha256": "85027528a120399efb2e0a7d115cb0ec0590dcb0af30fd0e0223d62613eb0d97"
+    },
+    {
+      "name": "NG_SHA256.dll",
+      "bytes": 8192,
+      "sha256": "94683d31bad24a611146b909d05447aad86ca11a54cd2e15d4e0f1066e11a088"
+    },
+    {
+      "name": "NG_SHA256.pdb",
+      "bytes": 15872,
+      "sha256": "4c5396a15480dec3e63e93b8d44a8c063d9ac31e9594e7cd85823981ca518b51"
+    },
+    {
+      "name": "NG_SourceResult.dll",
+      "bytes": 4096,
+      "sha256": "1e3d4cca9f25dde89eafdb1740ac3f91fb9b21a19da036e570991fc910053d28"
+    },
+    {
+      "name": "NG_SourceResult.pdb",
+      "bytes": 11776,
+      "sha256": "fc4e10187ba4ee5e6cb020fb902c921aaa4c90466d9f040a1efec032d0442293"
+    },
+    {
+      "name": "NG_SourceResultCore.dll",
+      "bytes": 5632,
+      "sha256": "07adc0dd1f770ad571a8e6dac6d2a4f2ac85e471f7bb64ae6b87fe7bc678be10"
+    },
+    {
+      "name": "NG_SourceResultCore.pdb",
+      "bytes": 13824,
+      "sha256": "ae62df06e3daf811b3133c2c018879ed9a228974b9cc9150eda5577de1027b5c"
+    },
+    {
+      "name": "NG_SourceState.dll",
+      "bytes": 3584,
+      "sha256": "f364240222592683e0f469bb1482e027083b47b1be8f50057af46321e7525ead"
+    },
+    {
+      "name": "NG_SourceState.pdb",
+      "bytes": 11776,
+      "sha256": "4ef0b8d776bc34432d35eb70e1236fd386cba4a3abf8fe8318107e4e6dfdc59a"
+    },
+    {
+      "name": "NG_SourceStateCore.dll",
+      "bytes": 5120,
+      "sha256": "b3696e985d0862d89b76d08fb7b131a0c5445508556a26de8d19e733b15daf86"
+    },
+    {
+      "name": "NG_SourceStateCore.pdb",
+      "bytes": 13824,
+      "sha256": "58abd64a11602ed073c1d184a04e33433c22516e556199fe0403808d78cf3540"
+    },
+    {
+      "name": "NG_StorageHash.dll",
+      "bytes": 8192,
+      "sha256": "397001bcb56c9a31a3cb25c84b0b1d996ff6717ef772fe9e369f6887ee03f5f8"
+    },
+    {
+      "name": "NG_StorageHash.pdb",
+      "bytes": 13824,
+      "sha256": "416725ef3ce94e7f523ee9b1d044b83f0ce2bd36b32d9091f8bc4dde2237d43f"
+    },
+    {
+      "name": "NG_Store.dll",
+      "bytes": 15872,
+      "sha256": "89fc10b3406657c8dd8fe1f3156ae902600cc01f49e4a3b4a7cbf7ac444bdabe"
+    },
+    {
+      "name": "NG_Store.pdb",
+      "bytes": 19968,
+      "sha256": "0b1932e2761d1ba5490fa17b4ec752714a936ed3d4b4b8eb46af472021e071f8"
+    },
+    {
+      "name": "NG_StringSHA256.dll",
+      "bytes": 47104,
+      "sha256": "15f2d80f9a043b3fa25d6c4266d9d2f15b07b8ee7b490cdbde9682ca9f7a49eb"
+    },
+    {
+      "name": "NG_StringSHA256.pdb",
+      "bytes": 22016,
+      "sha256": "9afe634865d97160556203b9b1ee70759f3b18717ce10ec720501bdd84965899"
+    },
+    {
+      "name": "NG_UiJoin.dll",
+      "bytes": 3584,
+      "sha256": "c5d5b1dfd19d448fdae0298b706bedd965e475b41c62e50277d8ff6612c1c423"
+    },
+    {
+      "name": "NG_UiJoin.pdb",
+      "bytes": 11776,
+      "sha256": "9debc3c21529d9247bef7a9fd0f8232edc9ff803e50e33c67333a0deca13b53f"
+    },
+    {
+      "name": "NG_UiText.dll",
+      "bytes": 24576,
+      "sha256": "3923637466c23af0152af7c6ab156acc7b83585c77b5542a9740f0ed2908e28d"
+    },
+    {
+      "name": "NG_UiText.pdb",
+      "bytes": 11776,
+      "sha256": "a75342f8e61310e966eba5b062631793a56eb2a6d496184037321d759ff1c591"
+    },
+    {
+      "name": "NG_Unix.dll",
+      "bytes": 3072,
+      "sha256": "191401ae963c0e7314539ca0b6df41d51895e3911198a6bfe639379cbe4d7704"
+    },
+    {
+      "name": "NG_Unix.pdb",
+      "bytes": 11776,
+      "sha256": "73debfe65789dae169da4994dfaf3d19d1fa251b7f3bf64785a1b0ddfa99c1b1"
+    },
+    {
+      "name": "NG_ValidId.dll",
+      "bytes": 3584,
+      "sha256": "57b73fa3423dbd35bfd9b26e0b22d103e4a903b98256c90734b4bc52268c934e"
+    },
+    {
+      "name": "NG_ValidId.pdb",
+      "bytes": 11776,
+      "sha256": "90c6a66c3c0292cc56e5429f47b13e5e1c6a044669072b177c69330d525c9c9f"
+    },
+    {
+      "name": "NG_WireCode.dll",
+      "bytes": 4608,
+      "sha256": "25b8bd8f98c8ec6f411eec1d9566f7e504a68505b9550c396b4622e835060b32"
+    },
+    {
+      "name": "NG_WireCode.pdb",
+      "bytes": 11776,
+      "sha256": "78de63f77ba239ea61dbeda35ef14f640a1d606ab8b9db126c08e41f9934d5c9"
+    },
+    {
+      "name": "PACK_FBs.dll",
+      "bytes": 17408,
+      "sha256": "c7eaa4ebeba1c0968f13c561a41500b72d0a570a6b5624b170bd2739624db740"
+    },
+    {
+      "name": "pcoslib.dll",
+      "bytes": 52224,
+      "sha256": "51399451b8591bb0031468cdd6607ed7d01f07634e2935ec9ace5558d8fb848c"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.Common.dll",
+      "bytes": 35840,
+      "sha256": "31a6b72690e55a6fc171e43209e709cef627a2f9d8b57a36686793c7f426f236"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.Common.pdb",
+      "bytes": 118272,
+      "sha256": "27f587f4f57b3a537ee941a9ec011f49d986705215c66b97e83af9be0eddd00f"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.dbg",
+      "bytes": 2003104,
+      "sha256": "3b3a9a34bb21ea3428c403311fa3ac1ecdac0e71cc3a46da5dad17b4626e2132"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.exe",
+      "bytes": 5120,
+      "sha256": "94cb8f5cafe2284a7b845e4458c34eceeb3ae536885844bf263165aace01af55"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.img",
+      "bytes": 1041940,
+      "sha256": "3b148989ed271fe222466a7af9ee36db0655aa0f45c6346fb818863e83e352d3"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.pdb",
+      "bytes": 19968,
+      "sha256": "ac6e0367fa36709fe9600dae461dd8643892398a8c93774ccc06db21dfc12c97"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.SimulationVariables.xml",
+      "bytes": 50,
+      "sha256": "b735da380a9a6546cda512767fc26407f3f17cf0d06b80f1d49e71c16bb0fd1c"
+    },
+    {
+      "name": "System.Core.dll",
+      "bytes": 4096,
+      "sha256": "96bbe84eef9fd518196eee3632942cb6db8d3b1a89e9b5d79b2918c01e20878d"
+    },
+    {
+      "name": "System.dll",
+      "bytes": 193536,
+      "sha256": "4818eeac9fae7cce76fd26f52a61fc35c0e97469ff229cdb9d54d725613d1b7b"
+    },
+    {
+      "name": "TimestampInformation.json",
+      "bytes": 61287,
+      "sha256": "cd5c6519d3224964a2221e170309f85847f5d1898d4e231697f5d0c12fa6079c"
+    },
+    {
+      "name": "TLS_FBs.SysVar.dll",
+      "bytes": 5120,
+      "sha256": "562cc853fde819bb29e741788034347cbce22702c3fdad6451a97151abb47c35"
+    },
+    {
+      "name": "TypeInformation.json",
+      "bytes": 144195,
+      "sha256": "7e819885ea5c54bf6bcf8525813a8d7bde8928910cd1709b5335eb4fac02f140"
+    }
+  ],
+  "project_current_at_completion": true,
+  "analyzed_compiler_model": {
+    "name": "analyzed.LastBuild.ast",
+    "bytes": 6754409,
+    "sha256": "9be330243d963617655f2c2a2c742a6acb1af35df61cc9e55ada904e27450cdf",
+    "rebuilt_from_current_sources": true
+  },
+  "ended_utc": "2026-10-26T04:38:09.513290+00:00",
+  "report_path": "D:\\PLCnext-MCP-Workspace\\ede9c08a703c484cadec4f18941272a2\\builds\\eaa57dd1e51942d793afbf16fa5bbc3c\\result.json"
+}

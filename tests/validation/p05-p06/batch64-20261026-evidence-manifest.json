@@ -1,0 +1,976 @@
+{
+  "atUtc": "2026-10-26T04:22:51.112353+00:00",
+  "evidenceLevel": "SHA256_MANIFEST_OF_LOCAL_RAW_AND_REVIEWABLE_PROOFS",
+  "P06Accepted": false,
+  "boot55Complete": true,
+  "boot56Complete": true,
+  "boot57Complete": true,
+  "originalRestoredBoot": 58,
+  "originalRestored": true,
+  "completeCohortEvents": 49370,
+  "completeCohortBatches": 1193,
+  "rawEvidenceNote": "Raw journals, wire and expanded mappings stay local and are ignored by Git. Hashes allow checking retained local evidence; compact proofs are reviewable.",
+  "temporaryDatabaseDeviation": "Old wildcard Testcontainers execution created iot_migration; dedicated container removed and disclosed. Actual PLC/Hub integration and receipt verification used existing hub database.",
+  "files": [
+    {
+      "path": "D:/work/code/PLCnext-Engineer/docs/阶段1-P06批次全链路取证与预算对照-20261026.md",
+      "bytes": 12784,
+      "sha256": "907594f25e0d8a51277bd01efd58e4a7001b781d619da3e26dc65b66f5505088",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/NativeGateway.pcwex",
+      "bytes": 250119,
+      "sha256": "aeaccfe9b5f1a3e5ddeeb6f21dc14d68dba05cbdea9dfd9ca6a054da2e054c85",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/Main.st",
+      "bytes": 64783,
+      "sha256": "13ffea05ea28074b8bf5ebba26ff5d66e406193115e676048acebeab0c61f346",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_AckFields.st",
+      "bytes": 2027,
+      "sha256": "14c9a892b7568bb235eedded3694b9e98a52dcd8db4a87e983812d19531f6c26",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Add4.st",
+      "bytes": 364,
+      "sha256": "f9ba73e56492ce055a9a928bb68db526091a62bffa0b5ac98434f40c2d990741",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Allowed.st",
+      "bytes": 679,
+      "sha256": "9f1a0ab0d8eedccd189f1c54763757a0ea5abde78daa2c1e6808458e58038f81",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_AuditAssociation.st",
+      "bytes": 2252,
+      "sha256": "e71abe3577b387ac47b520064eb43e5f9915512779eae6fb32fc49d3799f95f9",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_AuditCapture.st",
+      "bytes": 1355,
+      "sha256": "5f55d8350ce0aaa1f414bc831a2c827e961d7c5643c7ee1e88aa6afc43659fda",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_AuditDecision.st",
+      "bytes": 548,
+      "sha256": "50e88d8083e646a9dbb3e134fc50c37ad5e4ecb86510e4fca6d10bcc5aac8fd5",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_AuditDrain.st",
+      "bytes": 1877,
+      "sha256": "7bf79e7efce13bde67c4486fe167e90b37b28f61fda71118cd028083b64f20fb",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_BatchBuilder.st",
+      "bytes": 11504,
+      "sha256": "1827f12566f46d3f0c0ca62f81cf4204370f12bef1f58f8d283979c142b4df94",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Bool.st",
+      "bytes": 141,
+      "sha256": "079046b95c7712eff49884d28d72ca9c6d733342b1d0c531493cf90e1b0a4e75",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_BufferMaintenance.st",
+      "bytes": 4588,
+      "sha256": "d8304d1b9ee9e204530025f1f264f42310d31ebe1091b72d542960077d87d348",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Capture.st",
+      "bytes": 862,
+      "sha256": "03da97fb49a8109b14735d644880b7921f9bb58f05c1334f5b999890b08238ef",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_CaptureCore.st",
+      "bytes": 2971,
+      "sha256": "1939a3fcc208f240d587fdc70cbd1c209149efac96ee7e3ef5edd4adae1941cc",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_CaptureTypes.dt",
+      "bytes": 8871,
+      "sha256": "c113e53efeaee286b09e6f838478fdd313b8561088ae7899c09ec5fd288e4c6d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Char.st",
+      "bytes": 1098,
+      "sha256": "2042668abbc2ed69157b6d2e2c8269c1157ec1daeac9abf542479cac163f6753",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_CheckConfig.st",
+      "bytes": 3310,
+      "sha256": "50b5f8c1d16f16fc0dcee32df00ef7f3109eef2f2aedd461ddedb4275ab1ad6c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_CheckCounters.st",
+      "bytes": 1073,
+      "sha256": "3f82da5d1fc88fb04fd062c30e6ddce9cc273a3224376ffe4f11e023d9498cec",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Clip.st",
+      "bytes": 175,
+      "sha256": "2cbedf57a52cee7c8e32ed19b5a767d7c3f8cf2e89d9efd1dc42933ead835457",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Command.st",
+      "bytes": 7198,
+      "sha256": "50b2ec2cc27dc56706f2d86016965467bce4a7784f0b2967f03b0b2364913292",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_ConfigSlot.st",
+      "bytes": 1326,
+      "sha256": "65b8a5ba69e8d6c10a48bdc41ecaa11b80672726ecc94d1ecb2929926875fb4d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Delivery.st",
+      "bytes": 8410,
+      "sha256": "a91a00490d670a93d60070d4255292e9a3c635d77600fcf317b66ec5a020d24c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_DeliveryParallel.st",
+      "bytes": 1875,
+      "sha256": "c62c7c80f74fb2604d764c79e32ba463d9b0ca644c280b5179d57db5e628fc80",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Diagnostics.st",
+      "bytes": 5065,
+      "sha256": "908537296a614423c84bbaa77a1a22b5a480b284eb3024811cf5e09bebabe99b",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_EditDevice.st",
+      "bytes": 1843,
+      "sha256": "fd75459aa717f4f5ead1686993bcf7f2f8d8d7795bb7e054648adf55ccbd8acd",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_EndBatch.st",
+      "bytes": 3940,
+      "sha256": "05e702e88af091b19f318569c6ad40fd37681d5acf770a90d6f9997401d1a558",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_FreeRecord.st",
+      "bytes": 828,
+      "sha256": "4ec062de7565b286db96da01dfce5b9a7a9f1dfd5e111fb97b21aa92e21ed8ce",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_GapLog.st",
+      "bytes": 1715,
+      "sha256": "cce0960223a0124248eeb995626dece26ea543d09cc8ada09daa9466e14dd09f",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_HmiEdit.st",
+      "bytes": 23370,
+      "sha256": "376f4b1971e2d755233b6513d4c1088bf11696de6948118ef552f7f57b7bf135",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_IPv4.st",
+      "bytes": 681,
+      "sha256": "2b43169881ebd55e793aa224c2332b028c0f13b5a6a4f67f0618b3f7c50a9003",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_JsonParse.st",
+      "bytes": 9746,
+      "sha256": "e5a2aa7d5619c82fb49c3c6f750245725ba216a72a6f7dd4c70958de541657d5",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Member.st",
+      "bytes": 483,
+      "sha256": "ca6b99dff6156ce19b459fd0756059e97cd350ba1b506b2046fe9453d5ce0986",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Modbus.st",
+      "bytes": 12100,
+      "sha256": "08bb5e14788c004586b0bbbed11ef48060223fd595d2148a727fe37bf96421d2",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Mqtt.st",
+      "bytes": 6654,
+      "sha256": "b87f89f6a96d236e1de8070e69fa3c3aac9754c9eba42a463e6f1415df8f2d95",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_NumberValid.st",
+      "bytes": 1325,
+      "sha256": "3db498fb79f4c2b493a1440d9fe1811a55374f4bc6ca7a09985d84ac67e89cc7",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_PollSlot.st",
+      "bytes": 996,
+      "sha256": "560fff93bf434f871631f9ff7871519aadc424d90b7c07dab6d2c3f37e2d8b92",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_ProcNumber.st",
+      "bytes": 543,
+      "sha256": "cbfc22f0cf560081f433e26fe4a42222b68ae9f1039341016df5e43f8202af6d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_PruneTerminal.st",
+      "bytes": 1252,
+      "sha256": "ff2145263bb5001662a86412d085a565ce1624e8459ad7aadfaba5c0af44071a",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_QualityCode.st",
+      "bytes": 427,
+      "sha256": "ab3b7a7c993f49e2df4d1d902c0d65ec02c78dd1d391316af5bb70d89cd1c017",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_QualityName.st",
+      "bytes": 332,
+      "sha256": "8ca8aebbbad4e6b71b749a51fa7cb0f8c2d1092a94f6a1e60c748dda5a3d6a5c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Quote.st",
+      "bytes": 1227,
+      "sha256": "cfbf64f4d27a2adb6344e2ed30289dc2162702afde7ee822e81f8476dbd94bf9",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Range.st",
+      "bytes": 546,
+      "sha256": "d72a7ce5a318f8c55ad461e774495f8f88ae5b04044e45eed468fa099473c71c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_ReadAck.st",
+      "bytes": 3206,
+      "sha256": "41a83a1fd2f2829668ed435238bea2007330d26cb220a67bdc0b53b86850c2c4",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_ReadConfig.st",
+      "bytes": 2088,
+      "sha256": "13c8fd508e43e19f7aa9030550dc774ff34af849dc384d702350a5d413803ad9",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_ReadDevice.st",
+      "bytes": 3944,
+      "sha256": "fe1e78974346396375a9080f221985e736c080aff44a9a8b347b326f7b38df7d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_ReadPoint.st",
+      "bytes": 4513,
+      "sha256": "2365cc2033b6dc0fae39b36b6f7082ffade6b44ffb06da5064c0d7b3d076625c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_ReportPolicy.st",
+      "bytes": 6885,
+      "sha256": "caa979956ba287c922218ff4ad1aa65aa14d7764ffc1d5f36161bc07c8afab74",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Resources.st",
+      "bytes": 4492,
+      "sha256": "c9029c39a0b647b55cf346fa837c1da07f88cb715a688836af0be9181950df4e",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_SafeAdd.st",
+      "bytes": 351,
+      "sha256": "bed7720c086449f91c19ba23f975bded16405a8cdd0c2e4db5b5af4866936531",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_SameConfig.st",
+      "bytes": 1993,
+      "sha256": "57e8a65320876be3ea05475d7eec195cbe5a1c70cd4f518438c4b260d61e83be",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_SHA256.st",
+      "bytes": 3738,
+      "sha256": "29522a2e10ace29e5188b6dee59588a6bd2fc05037412f493c6bf283a8ff8e9a",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_SourceResult.st",
+      "bytes": 961,
+      "sha256": "b8a973d3d5bc303b801095663fd1f24ab9b417eb696b2d9322f194611990dcfd",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_SourceResultCore.st",
+      "bytes": 2018,
+      "sha256": "b67d5615ed8faf5c0c192f10d062e95c17c639a2b32927f8c9c8d111f0cd6644",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_SourceState.st",
+      "bytes": 828,
+      "sha256": "f3835b5d5068331559257da75466182ac725d024c8baa7ac54727ba24e1e71e2",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_SourceStateCore.st",
+      "bytes": 2007,
+      "sha256": "641b49e2b21f86061b595277df38f59490ecbfd390c4f7593dc6be8fe1b01ace",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_StorageHash.st",
+      "bytes": 3751,
+      "sha256": "0b24e4d46bc2a2daf040f216d6ae5153eb720c95cdb772082602dfff71d65bbd",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Store.st",
+      "bytes": 11250,
+      "sha256": "cc0e7c9d9d7ed1a7606005a1bc77d8dc2842c2703a8f5d3dbe1bdfbe61467733",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_StringSHA256.st",
+      "bytes": 56964,
+      "sha256": "dc135d60300f977b507c735e9aac37f624bf5a50b8d8bc9945243d25b75bfc6f",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Types.dt",
+      "bytes": 9782,
+      "sha256": "f1cfafc7801889f62c1cfc70fecf7895116a66ad7fa2c0f21f079232fdf16821",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_UiJoin.st",
+      "bytes": 814,
+      "sha256": "201cc4dca1cb1c9bbf3476780afdb95254c400271c8becf086c31bda36c5c3b7",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_UiText.st",
+      "bytes": 12255,
+      "sha256": "3e4538d47fe1258c8d8459b1bc2dccd914c02dec371baf0a85f56b2fd24882d6",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_Unix.st",
+      "bytes": 1103,
+      "sha256": "eb6c2ac552ab1628303589836faf1ce9f58da56f13bcf3909d963dfdb6c183a6",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_ValidId.st",
+      "bytes": 440,
+      "sha256": "f4b164b190e3ad046ac68b0e055d2f3ec309505d14141eabbedc24e224cbe7fb",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/src/NG_WireCode.st",
+      "bytes": 798,
+      "sha256": "5542a4dc2a7536f464fa3c8d054cb7aa11012eb0ecd475cdd3f8243cbf41e51c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/phase1_pipeline_test.st",
+      "bytes": 33301,
+      "sha256": "57b8c76e413ea9c27a40d967fc58e218e35b382cef26fbf933c65b58978294c7",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/test_phase1_audit_export.py",
+      "bytes": 9593,
+      "sha256": "94e02b2a4c8078bb429150b23a56208aa78dde5d0bbc456cbcf2ddb799b5f3c1",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/test_phase1_batch_trace_export.py",
+      "bytes": 1854,
+      "sha256": "bd3cece35105c688f96068d55e73a4050a40f60571c7d0259ca7adcfb6b49b0a",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/test_phase1_recovery_summary.py",
+      "bytes": 2192,
+      "sha256": "1a63ccd62364f9c1b71f64723a8026b643833515c2b77ea0872b11e24e9db809",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/analysis-boot55.json",
+      "bytes": 287396,
+      "sha256": "84547173e15143cdfbaf823d0d8e73d782524e087b13f7711779e4f6b8b12c6d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/analysis-boot56.json",
+      "bytes": 254130,
+      "sha256": "ff6542b96d1c3245307963b6b3e0fec33ecc0291947ff62f693d1ef1dad8dd72",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/analysis-boot57.json",
+      "bytes": 705972,
+      "sha256": "583d8465c287f738cfd8d05c37f3dee57f3eca6701a73168b9c1fca8317642e0",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/audit-boot55.jsonl",
+      "bytes": 7230107,
+      "sha256": "d594c8cfcdf4309afbe4a6d7b9384967be7b350a9467737d39bb5b3a411a023c",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/audit-boot56.jsonl",
+      "bytes": 7125491,
+      "sha256": "276d04cc283336fa618ebb5ad0d8d21da8ab9ec0d0bbed120cbf10c0861994c1",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/audit-boot57.jsonl",
+      "bytes": 8965265,
+      "sha256": "e2d8f5817b2248606a45e11e78789ee394e207b0dbad2b6c3cab39c558ce2cd6",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/backend-optimized-transition.json",
+      "bytes": 247,
+      "sha256": "ad487ce7628a05412096d60fc24223ed6b25df5ba12daef81c1f827df274cb20",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/backend-transition.json",
+      "bytes": 162,
+      "sha256": "b8acf4102e881b14b2021adfcb7f17a99fbeedd0e5ea023c009f3ad4700b8f74",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/cohort-boot55.json",
+      "bytes": 463,
+      "sha256": "bb54469a1a9611e118c1becbceaaf0b64670487137d84156e32b7197779f975a",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/cohort-boot55.mapping.json",
+      "bytes": 2613231,
+      "sha256": "7a2c249189c01da10c399200e76581f6032616d6ff3fcd78c61f6a30b069068a",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/cohort-boot56.json",
+      "bytes": 463,
+      "sha256": "26a3577000c7743e011afaf79102ee538f560d9f7f07e8d5bb835322ca6add4f",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/cohort-boot56.mapping.json",
+      "bytes": 2594941,
+      "sha256": "0c685cd3ce2a13a1c404431676971632346d02c8f446c9e26295d42ea8050b97",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/cohort-boot57.json",
+      "bytes": 463,
+      "sha256": "4e4eb740d930642a1f87eb94fdc297b0ef8c7cde9f0cb00fd99d82f07f47b755",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/cohort-boot57.mapping.json",
+      "bytes": 3126309,
+      "sha256": "0358e957c3592115ea4b626da3a12808c9ac88c6c2937a528220a26e2a0a2b06",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/disconnect-boot55.jsonl",
+      "bytes": 106429,
+      "sha256": "107983cedf6a70988eb14e448dae627fc02d710e53f06627def152d506bd9ab0",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/disconnect-boot56.jsonl",
+      "bytes": 106328,
+      "sha256": "74fc7df08cb4505884ced8a871ec7efbc8be77c7b66bab05f270a25761be6883",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/disconnect-boot57.jsonl",
+      "bytes": 186771,
+      "sha256": "4e0d4ed372b542a818cbb98dce7a0a9139f4b253292db63be2d85192f783dd0c",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/final-boot55.json",
+      "bytes": 7438,
+      "sha256": "45da48b9e89d29cbf44ca6f8c499851fcc574e3a18ebaa10c796379042d301f8",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/final-boot56.json",
+      "bytes": 7436,
+      "sha256": "ca8d63f3749f70407ab61a80246eed95087614736ac429cdba93d6cfe1d2743d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/final-boot57.json",
+      "bytes": 7472,
+      "sha256": "9a738b8d6c96f8aec60a1da9d75a89082e12fda1ff260b6bd6abeb05489c10f4",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/flushed-boot55.json",
+      "bytes": 7310,
+      "sha256": "448569072376b72ce5afe94445a2eac34eb7b5c59b74164f0fd9a5d51ba59594",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/flushed-boot56.json",
+      "bytes": 7308,
+      "sha256": "952642962f823417f3dc05f68b4cd8ddbb4e9be0b91087f4d3715bf67ad2ff4e",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/flushed-boot57.json",
+      "bytes": 7344,
+      "sha256": "27fc9db7cd3edf12ead51e730f24a19dc5516d1c57d983c7e79a20040a787005",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-optimized-preflight.json",
+      "bytes": 10603,
+      "sha256": "ca6cc2ede8a52a6347f15c47ef1db0b8708d8d9deb8e728746ab3b3c97cce196",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-preflight-enabled.json",
+      "bytes": 10533,
+      "sha256": "0bf19c542a738dc87229eb885dfd5e3203af9d2a98ae3b05a4abdc32a0da182e",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-receipts-boot55.json",
+      "bytes": 529,
+      "sha256": "45ac75048b0847d2392d8e2998aedc228a494171e2bbc1276bebf494bd2d7f00",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-receipts-boot56.json",
+      "bytes": 529,
+      "sha256": "07a1c4cee900ac979bceeb06fd47975f50b30d69a234d0500159b4f992871540",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-receipts-boot57.json",
+      "bytes": 529,
+      "sha256": "c6501d6fbe9aad863aa19f9407bed8964960d9198f9fc6907cb39a5fb8425bc2",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-trace-boot55.jsonl",
+      "bytes": 13034873,
+      "sha256": "d33e79675e69792603705a7c8ceba8e6d79effbdf053715e12e9186c7fe0fb0d",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-trace-boot56.jsonl",
+      "bytes": 10625621,
+      "sha256": "2c412e61ed836d348e1132ae5caeec12885b21684a5dda91685d10082bc9a755",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-trace-boot57.jsonl",
+      "bytes": 17941636,
+      "sha256": "5c64a272496ba3413dff9608ded9cb11c49ffd26b7796b444a21fe201cf37640",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/hub-unit-tests.json",
+      "bytes": 781,
+      "sha256": "605d3fcd733ca4a003d1c59894d844e92b113fc86c6f4e4b3548e7f800bfd52b",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/load-boot55.json",
+      "bytes": 9577,
+      "sha256": "0749bbcf7b8b1a87b45101fd06f1f72c1e711f4d3578d5c4e0c11ee44b3c160d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/load-boot56.json",
+      "bytes": 9533,
+      "sha256": "01755179062fd129449f24b13ec21b525c09f5454799c25c4c442a54599a8ab3",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/load-boot57.json",
+      "bytes": 11512,
+      "sha256": "890cc1b9557039bfbcde09700b764b3148d94aab44b9d04dfd879a224d9d45c7",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/mcp/baseline-trace.json",
+      "bytes": 134078,
+      "sha256": "6230cfc4f2df053d4c669898fc8236712db9d9baf80a51c78c375c745168691d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/mcp/optimized-trace.json",
+      "bytes": 134078,
+      "sha256": "5fd79f4b1117fceef210c4d78cef9d8014dbf5115dff1709fa2b72dcd161e16e",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/mcp/production-optimized.json",
+      "bytes": 134557,
+      "sha256": "b03f228db8939e6d2db61de5df10494052c8becf5508f1c9d6fa92b77f41cf53",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/mcp/pure-v31.json",
+      "bytes": 90412,
+      "sha256": "a6c18eb9d3c574068d604ef30e4fec1045794f48373fa44ee37ffad0429a54b6",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/mcp/wide-trace.json",
+      "bytes": 134093,
+      "sha256": "5c30a795617b225a5aa22dbc19ae2399b63ca03308c22a19ffa5109a0619b9bc",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/optimized-production-layout.json",
+      "bytes": 9445,
+      "sha256": "234f9f98a230b80058ea2d01fc3afea766ad7c5af4b31375ccb1b3025786992c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/original-preflight-boot54.json",
+      "bytes": 577,
+      "sha256": "286b192e37b6e5a160d150d714a9645f1d8a8f10bcd12fcd2e76b4b31516fd42",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/original-quiesced-boot54.json",
+      "bytes": 651,
+      "sha256": "78c6a9368dbbc73ad5df14aa09c817561e545d761004ae13b2abac61d1f2ad2d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/performance-boot55.json",
+      "bytes": 1028,
+      "sha256": "c8351784265365ccc68cc938a2652c8791140c8c5aa637897a55250cdd66a946",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/performance-boot56.json",
+      "bytes": 1042,
+      "sha256": "78d1d07de4379525417d3368f3ac3f7330d679a674bdda76b4d4b4df2e03af37",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/performance-boot57.json",
+      "bytes": 1039,
+      "sha256": "b3b1367e7479f5344f1ce3cb115e0d438296c64047a2dad0289fe5a84fa8129a",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/pipeline-v31.json",
+      "bytes": 18562,
+      "sha256": "0ca1d8edd03c47a5d46e360edcff3b998379948f6950a116689362fc63315a4c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/plc-trace-boot55.jsonl",
+      "bytes": 283208,
+      "sha256": "1b5bb1c2a1ed330d86047f8f13442cf1fcf9389b34a5ea6c25d47795fc45d01a",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/plc-trace-boot56.jsonl",
+      "bytes": 258689,
+      "sha256": "72f76c5360a6ef1627723154ae5f8a68a0d4e5b58ae3152912c3ac477efb042e",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/plc-trace-boot57.jsonl",
+      "bytes": 732263,
+      "sha256": "253400f69ec6a4555afafaa40fda1730a24c4bd51c1c6119f01d4906977f03f4",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/restored-boot58.json",
+      "bytes": 569,
+      "sha256": "43f48145cd7e53946b5b636e4909b32d1903aba455b09961965d72f0034a9926",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/restored-quality-boot58.json",
+      "bytes": 271,
+      "sha256": "65ee605646f0c1d62d2217e2a2c98f3dcee99105f9222d7ec915c4ba82efceb6",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/restored-wire-proof-boot58.json",
+      "bytes": 427,
+      "sha256": "2bfb5ade43a8ba1f143051787cea4e10a824c3dfbb224f7dc869fa9cd894a22d",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/run-boot55.json",
+      "bytes": 531209,
+      "sha256": "6f2966798d6666ff696cef09ad407f9f0ccc02c56859246c12eb0d9f0b29408c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/run-boot56.json",
+      "bytes": 547750,
+      "sha256": "601a862a7e10cbe6498e6a10af51aee40c8799702a82716edb7cb9c4dc615f6c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/run-boot57.json",
+      "bytes": 599842,
+      "sha256": "cd4721ad8e289e1126afea2e7a72ecfa5fd0940a07b3f642902c846db7ce1673",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/services-final.json",
+      "bytes": 785,
+      "sha256": "babb4cd1a5d1aecbc7a31e0e6e9750b793bd993f037c6e2077f054d5563f1e63",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/trace-v1-budget.json",
+      "bytes": 79,
+      "sha256": "8e8e300dd85e6e8fa66fd600530ea39c9767661830e82900516460d42b9abf8a",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/trace-v1-layout.json",
+      "bytes": 9444,
+      "sha256": "b0750ad3f66b4ac926fc0fc68bf9e00ca3a484de7099bfa58623f44650625d4c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/trace-v2-layout.json",
+      "bytes": 9445,
+      "sha256": "cc602ebfd20281cf7cd8528e939ae5ddacd4c8bd07c1f6f7458996b1e22bba01",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/trace-wide-layout.json",
+      "bytes": 9445,
+      "sha256": "1cbf5452933302d936ec76a86623c97f4d005f1b8d22247b7015857fb99deebc",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/wire-boot55.json",
+      "bytes": 2725468,
+      "sha256": "e0687417f26c6a0cbb53dc3aa1a7eaf2e5058c6ef615723d3ce305c1b7d44e3e",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/wire-boot56.json",
+      "bytes": 2688557,
+      "sha256": "1507ff0bbf64a0da8d42b83f4db746c1ddc0a196345b44a52b5c690444a6b2a8",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/wire-boot57.json",
+      "bytes": 3588323,
+      "sha256": "63d9485b182a8669275f4aaba7a645d0ff275b23a0843587d1390107c684c6c4",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/batch64/wire-restored-boot58.json",
+      "bytes": 281598,
+      "sha256": "8d966c61884aa486048525e7c81f8d9760243e1a64f9e1e2305e382013996e54",
+      "rawLocalOnly": true
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tests/validation/p05-p06/optimization-current-state.json",
+      "bytes": 4380,
+      "sha256": "3ec98e9b76a5ba5cc974e44350a7c8589bd2580aa8e69eb376eb3e0629a3d592",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tmp/p01-p02/NativeGateway.restore-native-0.5.0.pcwex",
+      "bytes": 187545,
+      "sha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tmp/p05-p06/NativeGateway.p06-batch64-trace-v1.pcwex",
+      "bytes": 252905,
+      "sha256": "d525dc477924e94aff59caff4eac1263ff424d9bbe3a30bf581faad73f09859f",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tmp/p05-p06/NativeGateway.p06-batch64-trace-v2.pcwex",
+      "bytes": 253211,
+      "sha256": "d0877f14478b6519827160dab32eebc5db4c351533f51518165843cda81d0e7b",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tmp/p05-p06/NativeGateway.p06-batch64-trace-wide-v3.pcwex",
+      "bytes": 253243,
+      "sha256": "5ea7d4c32e308c63ebebc9dfc0c3c7718ab2f5efc0f6d0edf64a76681047db40",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tmp/p05-p06/NativeGateway.p06-full-v23-mcp.pcwex",
+      "bytes": 250119,
+      "sha256": "aeaccfe9b5f1a3e5ddeeb6f21dc14d68dba05cbdea9dfd9ca6a054da2e054c85",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tmp/p05-p06/NativeGateway.phase1-parallel-test-v31.pcwex",
+      "bytes": 169080,
+      "sha256": "8c3a130b44e93dd04e8df392a13cfade0e1990875395244d289ba54eb853e027",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tools/analyze_phase1_batch_trace.py",
+      "bytes": 5455,
+      "sha256": "bb7548da64bb73cef626fddc83420f4ab4b2a2330f9153fd2bb6cc4e966aea3a",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tools/build_phase1_batch_trace.py",
+      "bytes": 11154,
+      "sha256": "8903800fd599d71e7e9b3898e9d53e7632451dfd936a4f1d3f121c56ed928136",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tools/build_phase1_performance_gateway.py",
+      "bytes": 7908,
+      "sha256": "3b04a08e7e89f1149614b0407311b924dc56b2b2242e5851e3866cad849e7787",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tools/phase1_batch_trace_export.py",
+      "bytes": 4063,
+      "sha256": "aa3834dd47f53fcabd7d2d5c0b8191a620b86a812a50c191d69936cce5e03fdc",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tools/phase1_hub_trace_export.py",
+      "bytes": 1812,
+      "sha256": "005374be11350f359d23957a2d3dfcfac1bdad805310a3e99729e251b1c2b64b",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tools/phase1_performance_run.py",
+      "bytes": 6345,
+      "sha256": "228f744a8be86ae2077f5b7487527c3d890a6bd0621dfcf5f1196c7de13038ab",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tools/phase1_plc_probe.py",
+      "bytes": 9361,
+      "sha256": "0540dcb353ce2bd211852fac1ae4ae3ec5b1bec7fd5a9d7752d0d81506a6fad6",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Engineer/tools/summarize_phase1_performance.py",
+      "bytes": 5174,
+      "sha256": "fa6eb61c50d8342f143ea13bb442256af197e72f24495f350af1f5eeaa3c0f6c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/docs/verification/2026-10-26-batch64-trace-cache.md",
+      "bytes": 3013,
+      "sha256": "c1ec1627ddeded374228360e8b053c277727b0c56b534a46132c9750b48f2a54",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/diagnostics/IoTDiagnostics.java",
+      "bytes": 10561,
+      "sha256": "44ab67fb83f965db19139988160baea3122beddf03e77b6cf98d7ae331c22daf",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/messaging/IoTMessageRouter.java",
+      "bytes": 9892,
+      "sha256": "5663602f0c08496d6c577dc8b5003bcf4461e21d396cc89ae633aa416cf5d306",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/telemetry/DefaultIoTTelemetryReceiver.java",
+      "bytes": 5078,
+      "sha256": "5f1d03a3246d4a12ecbca81c168d27b8301b4d228bf2d68a81fa7572a5aa6032",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/telemetry/IoTHistoricalPointCache.java",
+      "bytes": 3552,
+      "sha256": "153b5a062195347dc64f8e3ec5c604c4301268112d2217b1c69cb2ef15625b2a",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/hub-device/src/main/java/com/phoenix/plcnext/hub/device/iot/telemetry/IoTTelemetryTransaction.java",
+      "bytes": 10629,
+      "sha256": "8f78b8c6dd6f990e6760198a62709f2193a48cb4fbf0abf9048c974ee26e5832",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/diagnostics/IoTBatchTraceTest.java",
+      "bytes": 3190,
+      "sha256": "0e1369e6976a0130ff7e8e3028f94fda41e25da24356bc08c0731959b48ff334",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/telemetry/IoTHistoricalCacheFenceTest.java",
+      "bytes": 2723,
+      "sha256": "b9492604566ce6e5e5ade0cd073ba56c567b41b5cc6bf08cc7998e363701c01c",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/hub-device/src/test/java/com/phoenix/plcnext/hub/device/iot/telemetry/IoTHistoricalPointCacheTest.java",
+      "bytes": 3001,
+      "sha256": "9999200938243380aaa9e9f0e5ad8aa836e5f67766ac3b9c38dc45fbe69b9b8f",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/logs/hub-batch64-optimized-runtime.jar",
+      "bytes": 109175334,
+      "sha256": "ffd15c78c9fe040c58cdf83f4d6ca059018cdd8211b6502a025bc3438b8501d5",
+      "rawLocalOnly": false
+    },
+    {
+      "path": "D:/work/code/PLCnext-Hub-Backend/tools/phase1/resource-profile.json",
+      "bytes": 6036,
+      "sha256": "74cd4403b879d1131f98d90706916e1ef1ef0da1c1aff4d66e2e6fd34c654a55",
+      "rawLocalOnly": false
+    }
+  ]
+}

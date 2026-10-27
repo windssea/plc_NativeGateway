@@ -1,0 +1,23 @@
+{
+  "project_id": "166271fa44bd4417aef78f88264a0632",
+  "project_sha256": "4f50340a18441865231081440cf10848dc8fba65996107fd8918cc3363e7da6f",
+  "pou_count": 24,
+  "job_id": "9e3c5222d0fc42628ace892e09fb9539",
+  "compiled": true,
+  "syntax": {
+    "errors": 0,
+    "warnings": 0,
+    "messages": [],
+    "messages_truncated": false
+  },
+  "semantic": {
+    "errors": 0,
+    "warnings": 0,
+    "messages": [],
+    "messages_truncated": false,
+    "historical_warnings_replayed": false,
+    "build_item_announcements": 24
+  },
+  "report_path": "D:\\PLCnext-MCP-Workspace\\166271fa44bd4417aef78f88264a0632\\builds\\9e3c5222d0fc42628ace892e09fb9539\\result.json",
+  "controller_downloaded": false
+}

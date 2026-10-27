@@ -1,0 +1,41 @@
+{
+  "total": 27,
+  "suites": [
+    {
+      "name": "IoTDiagnosticsTest",
+      "tests": 7,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "IoTBatchTraceTest",
+      "tests": 4,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "IoTHistoricalPointCacheTest",
+      "tests": 4,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "IoTHistoricalCacheFenceTest",
+      "tests": 1,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "IoTDataSchedulerTest",
+      "tests": 11,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    }
+  ],
+  "scope": "explicit pure unit classes, no database"
+}

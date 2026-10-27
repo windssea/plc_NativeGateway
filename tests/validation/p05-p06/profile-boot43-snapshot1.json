@@ -1,0 +1,17 @@
+{
+  "BootId": "ng-d4f61b3085b97c5e3831983b-43",
+  "NowMs": 26080,
+  "BatchBuilder.Stage": 0,
+  "BatchBuilder.Digest.ProfileTotalUs": 0,
+  "BatchBuilder.Digest.ProfileLoadUs": 0,
+  "BatchBuilder.Digest.ProfileScheduleUs": 0,
+  "BatchBuilder.Digest.ProfileRoundsUs": 0,
+  "BatchBuilder.Digest.ProfileBlocks": 0,
+  "BatchBuilder.Digest.ProfileCalls": 0,
+  "P06WorkSum[1]": 5306,
+  "P06WorkSum[2]": 8677,
+  "P06WorkSum[3]": 7132,
+  "P06WorkSum[4]": 4535,
+  "P06WorkSum[5]": 918,
+  "P06WorkSum[6]": 1928
+}

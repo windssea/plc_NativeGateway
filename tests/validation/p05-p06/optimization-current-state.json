@@ -6126,5 +6126,16 @@
     "temporaryDatabaseCreated": false,
     "performanceRetestsPaused": true,
     "currentWorkCommitted": false
+  },
+  "latestM14LocalReceptionAttempt": {
+    "atUtc": "2026-10-27T03:20:50.553804+00:00",
+    "status": "REPAIR_NOT_VISIBLE_LOCAL_ACCEPTANCE_FAILED",
+    "priorValidationCommit": "122cc65",
+    "freshMcpVersion": "0.6.9",
+    "triggeringHeadPreserved": false,
+    "evidence": "D:\\work\\code\\PLCnext-Engineer\\docs\\verification\\2026-10-27-m14-reconnection-local-contract.json",
+    "plcAccessed": false,
+    "plcDownloaded": false,
+    "performanceRetestsPaused": true
   }
 }

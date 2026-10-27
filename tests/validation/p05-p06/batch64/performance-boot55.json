@@ -1,0 +1,30 @@
+{
+  "bootId": "ng-d4f61b3085b97c5e3831983b-55",
+  "complete": true,
+  "last": {
+    "NowMs": 351840,
+    "runStage": "drain",
+    "Active.enabled": false,
+    "CaptureBuffer.CapturedEventsTotal": 15486,
+    "CaptureBuffer.StoredConfirmedEventsTotal": 15486,
+    "CaptureBuffer.OwnedCount": 0,
+    "CaptureBuffer.WorkMaxUs": 1274,
+    "P06MaxUs": 9807,
+    "P06OverPeriod": 0,
+    "CaptureBuffer.MissedPollCyclesTotal": 0
+  },
+  "faultScope": "REAL_CANDIDATE_MQTT_CLIENT_DISCONNECT_NOT_PHYSICAL_LAN",
+  "gatedSeconds": 60.26499999995576,
+  "activeRecoveryConfirmedLocalReleaseEventsPerSecond": 60.627737226277375,
+  "activeRecoveryWindowSeconds": 137.0,
+  "saturatedRecoveryMinimumOwned": 512,
+  "saturatedRecoveryWindowSeconds": 129.34,
+  "saturatedRecoveryIntervals": 25,
+  "saturatedRecoveryConfirmedLocalReleaseEventsPerSecond": 63.72351940621617,
+  "historyClearBracket": {
+    "lowerSeconds": 105.84,
+    "upperSeconds": 111.0,
+    "acquisitionEnabled": true
+  },
+  "fullP06Acceptance": false
+}

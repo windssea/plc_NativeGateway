@@ -1,0 +1,275 @@
+{
+  "evidenceLevel": "COMPILED_CIL_METADATA_BOUNDS",
+  "binaryDirectory": "C:\\Users\\windssea\\Documents\\PLCnext Engineer\\Binaries\\NativeGateway.p06-performance-v15@binary\\RES_23CA7F267545404C9FED5DC977A6399F",
+  "valueSizes": {
+    "NG_CaptureEvent": 72,
+    "NG_Buffer": 3058480,
+    "NG_CaptureConfig": 145088,
+    "NG_Config": 144616,
+    "NG_SourceCursor": 48,
+    "NG_CaptureGap": 320,
+    "NG_Packet": 16752,
+    "NG_AuditEvent": 80,
+    "NG_Association": 680,
+    "NG_DiagnosticSnapshot": 968
+  },
+  "mqttStateUpperBound": 9432,
+  "mqttStateReserved": 16384,
+  "captureHelperUpperBound": 40888,
+  "helperAndScratchReserved": 65536,
+  "pipelineStateBounds": {
+    "NG_ReportPolicy": 328,
+    "NG_BufferMaintenance": 736,
+    "NG_BatchBuilder": 2320,
+    "NG_DeliveryParallel": 5088,
+    "NG_CheckCounters": 32,
+    "NG_AuditDrain": 120,
+    "NG_Diagnostics": 240
+  },
+  "sdkPayloadReserve": 135680,
+  "recordCapacity": 28800,
+  "ingressCapacity": 512,
+  "note": "IEC/value layout and FB metadata bounds; opaque native SDK heap and task timing remain P06 measurements.",
+  "hashes": [
+    {
+      "name": "Main.dll",
+      "sha256": "cca783ff9f57ca64c785c19f31e723a45f3149542dff53e066a2acb31ef328d4"
+    },
+    {
+      "name": "NG_AckFields.dll",
+      "sha256": "ebbcc37833a890f7139b6da179a1b586593e2b1d85e491630d2072b42a09cdea"
+    },
+    {
+      "name": "NG_Add4.dll",
+      "sha256": "1108ed5f2b54c71c102a39ef7faa1c64eb058d81b4b2421aa076ad62fa2828cb"
+    },
+    {
+      "name": "NG_Allowed.dll",
+      "sha256": "3cbdfbc985dc7fe229a386e0530a55de65fb3f7bde86b5953d9a31be50b6eb40"
+    },
+    {
+      "name": "NG_AuditAssociation.dll",
+      "sha256": "6f213dc43fd1c2639efc9480267b667622deb14c18565692d0f8722883adf77a"
+    },
+    {
+      "name": "NG_AuditCapture.dll",
+      "sha256": "e55e2d35bdad85a43c0371af5ec1108920c7f8417d47fc612b1314bf4ea80196"
+    },
+    {
+      "name": "NG_AuditDecision.dll",
+      "sha256": "881969eb3228570b6ed09f19690c6aefeed588484cc7b72d5de39508507486b0"
+    },
+    {
+      "name": "NG_AuditDrain.dll",
+      "sha256": "40a769cb2c2587c2d8d8834bde8c08bc32431edca7f5071b72f3e11a423a60fb"
+    },
+    {
+      "name": "NG_BatchBuilder.dll",
+      "sha256": "a7cbd004fbf259253170c52e3c50b92c1aad78843cd0b1c95a0cabc07f03e395"
+    },
+    {
+      "name": "NG_Bool.dll",
+      "sha256": "4d73a0d615658b5a1fd1fb7dd2d330168769dc3d071867814c7cabf9905696cd"
+    },
+    {
+      "name": "NG_BufferMaintenance.dll",
+      "sha256": "eea84f20a7bbba5d0ae6e69f96cbb756a6423631f3d09065def8f3423f0855cd"
+    },
+    {
+      "name": "NG_Capture.dll",
+      "sha256": "af467e5a1d8ed078db6277b10c156c0c7beb2745522d0cb23d25ada33a0bb260"
+    },
+    {
+      "name": "NG_Char.dll",
+      "sha256": "ed833cc4c2e5952f0c0979b3c20974e471c23520d48ddff0b5eba06e8a77dffe"
+    },
+    {
+      "name": "NG_CheckConfig.dll",
+      "sha256": "7e82cceaca6c5466af07d7478a126e3d0b5aff5d0cd4a19bb9cb0dde6849e2e2"
+    },
+    {
+      "name": "NG_CheckCounters.dll",
+      "sha256": "0ba16bb970ffc890a91ce84b207ffe2f6b2f188970861e64bbc290a8fdb17e74"
+    },
+    {
+      "name": "NG_Clip.dll",
+      "sha256": "34640c204b93b3191c2ee21c54e3b6413d3348f3c8c8ad57ffe4c7e2220ddb8b"
+    },
+    {
+      "name": "NG_Command.dll",
+      "sha256": "7957d5217751aa5047de6516e4015c21ccd29ec33b3b128f874fed55d9dd01e2"
+    },
+    {
+      "name": "NG_ConfigSlot.dll",
+      "sha256": "d3ec383edb8875f7a5eb16eeffd67520c944156da7546154fdbc929fbfd829e2"
+    },
+    {
+      "name": "NG_Delivery.dll",
+      "sha256": "4140f0ff7bd95c3db1a42ec0cdac502a38d42c06e5a30f4997c2b87e0f1aa800"
+    },
+    {
+      "name": "NG_DeliveryParallel.dll",
+      "sha256": "dc49c08ae5ce3d814a10b95834ee8cad878f7fa8ffa759dd6d3405d9b1e8b41e"
+    },
+    {
+      "name": "NG_Diagnostics.dll",
+      "sha256": "b4dddb694fafbf5cbd328747d7c38bb2165c94e9ac00d3056a83ff444a0e6619"
+    },
+    {
+      "name": "NG_EditDevice.dll",
+      "sha256": "e7e34dc31c9b108f8f684d978b33cce242200ee28155c54adf5b8698829e4e63"
+    },
+    {
+      "name": "NG_EndBatch.dll",
+      "sha256": "6141d3b89c855436e4e99e252c49ee4f3ebc0f8c7b9821af0e20d26b928f39fd"
+    },
+    {
+      "name": "NG_FreeRecord.dll",
+      "sha256": "c2060ad4dbcf3ffaf53bea03a1711c96331f9c6ee27c9f151f0e68ac841db8ec"
+    },
+    {
+      "name": "NG_GapLog.dll",
+      "sha256": "08b5a94b3a81a78fcbca8d8d549902a3ae438455f21abf70a927d3fef33c01f5"
+    },
+    {
+      "name": "NG_HmiEdit.dll",
+      "sha256": "9a48aebf462281d478d8ee6e83c8c635f9ed3778dd44dade0689a2a400c40455"
+    },
+    {
+      "name": "NG_IPv4.dll",
+      "sha256": "d25588b4ed2f8af7a82403e91fea041e72967a276fb19818b0a4ba86e3d41b03"
+    },
+    {
+      "name": "NG_JsonParse.dll",
+      "sha256": "75a90a1a8713891353a31fcba556e43dadf5c3268b87d142f24186b74073d088"
+    },
+    {
+      "name": "NG_Member.dll",
+      "sha256": "9681a9af1169435a84cbd08fe9c8c5b5ac83023f41666be8dfa3788c4d4b79b7"
+    },
+    {
+      "name": "NG_Modbus.dll",
+      "sha256": "3341553916b0bf7949ec16d3f0a7072dc9f3e7f0610289487d06efcc08997398"
+    },
+    {
+      "name": "NG_Mqtt.dll",
+      "sha256": "bcb9fb1825713894b844118282f7d2d51ef480c04f48f3b8227495ae250d2206"
+    },
+    {
+      "name": "NG_NumberValid.dll",
+      "sha256": "81fff2a1aa3f9ebf62fa74c64431a9579807bfd9013cc288ea60498c874e2f90"
+    },
+    {
+      "name": "NG_PollSlot.dll",
+      "sha256": "ae7ef3d7f7fbdba9fc188474843867342c8710870d8c2c9762a344285e66adbd"
+    },
+    {
+      "name": "NG_ProcNumber.dll",
+      "sha256": "625d33cabf5118b5a0c6dd9a981b6ad2b6779d2ea03f78ade9601a10fec806c0"
+    },
+    {
+      "name": "NG_PruneTerminal.dll",
+      "sha256": "339312a8d429a911919af0261194a36aff141fff7479a608ead9e5ff905b6512"
+    },
+    {
+      "name": "NG_QualityCode.dll",
+      "sha256": "dfdd224ef916463726b8bf0c8ac96388dd7465a842fc2c2deb3686878e5b914e"
+    },
+    {
+      "name": "NG_QualityName.dll",
+      "sha256": "14b992f7566352096c84071f6f25721c99eae17f73af3d3b936bee907a1159a1"
+    },
+    {
+      "name": "NG_Quote.dll",
+      "sha256": "1cb18d62d4ac9f5fc8971f67c1c0abb39a578081ba5edf460a51dd32534722fb"
+    },
+    {
+      "name": "NG_Range.dll",
+      "sha256": "00c4d9d78cb8405246d4578b08a3fb0c5e7b494b6a135ef12fa6cc8fe1381cfd"
+    },
+    {
+      "name": "NG_ReadAck.dll",
+      "sha256": "742e0ce22de62728746bae5ee1536f59d51d4b50f480ef747897e7cdf590e1ea"
+    },
+    {
+      "name": "NG_ReadConfig.dll",
+      "sha256": "69dc5e7e05bb386044623147c6fa57f7904a996b1c9cc730b6c4c2abec067c4c"
+    },
+    {
+      "name": "NG_ReadDevice.dll",
+      "sha256": "d2630e04eb9d6372dd066f42cbb147b9ab6e6ae58df3fafef92c1fdde9cf23ac"
+    },
+    {
+      "name": "NG_ReadPoint.dll",
+      "sha256": "50cab2d14cca3b3dc71c7249b5150cd10f84341e070fc62a1bc0b2dfe306f803"
+    },
+    {
+      "name": "NG_ReportPolicy.dll",
+      "sha256": "ecafe5ccd1b3705da614df45845261f9194bb735c5fa08d7d1ac4ef13c70114b"
+    },
+    {
+      "name": "NG_Resources.dll",
+      "sha256": "7ff19e5eb0a117903ff1c5c314b268d95a15311d266f0790812794137373a2ec"
+    },
+    {
+      "name": "NG_SafeAdd.dll",
+      "sha256": "091d17eb7ec921c19cc921618a91665c1cf8ce81d5d6a34072f12c8140bc6fe8"
+    },
+    {
+      "name": "NG_SameConfig.dll",
+      "sha256": "87c215ed70aa8761c4d1419d50ec6313f5f31a1655209047fa3dc1d1323ee48c"
+    },
+    {
+      "name": "NG_SHA256.dll",
+      "sha256": "af8ddb842f49b1e5d90ae1d79e19c16a8999426a3aed6313289b637e90b6548b"
+    },
+    {
+      "name": "NG_SourceResult.dll",
+      "sha256": "caedfb93fd0513fa149cfd94eeca9f2888612ebcd72544db93dc3de71a2268d4"
+    },
+    {
+      "name": "NG_SourceState.dll",
+      "sha256": "42b705ab88d0d9eeae10f11731d924b946c5a0665d6e7288205e84e0fe1aa83f"
+    },
+    {
+      "name": "NG_SourceStateCore.dll",
+      "sha256": "e9b912d63458476f64b64504426949bc4609cf546361667fe4aacb7ed7b0afaf"
+    },
+    {
+      "name": "NG_StorageHash.dll",
+      "sha256": "e18b41a51a6c5035dd4633eedecfe1dd812033e5569baae9414bb57670bf4455"
+    },
+    {
+      "name": "NG_Store.dll",
+      "sha256": "a3407c1125cd0015cef4c3b0dec50f81b1909d2fb7a258663dab256c53c82fb2"
+    },
+    {
+      "name": "NG_StringSHA256.dll",
+      "sha256": "6fcfde889b4eaa1930b7d0d56e90602484cbd518ff62e06f8e05143af0ed09be"
+    },
+    {
+      "name": "NG_UiJoin.dll",
+      "sha256": "136e601ad010726a36839584e038b73e283ecd8e359fbe0930c8cb3f5921e658"
+    },
+    {
+      "name": "NG_UiText.dll",
+      "sha256": "b4a06e1718cd5efd05c438a9baf3deac30448c501c0a0522cc54332b68ea7715"
+    },
+    {
+      "name": "NG_Unix.dll",
+      "sha256": "a389072a87e9d9fa49afa69c14d93cca315f1ce601c629d0e26fdd626264085b"
+    },
+    {
+      "name": "NG_ValidId.dll",
+      "sha256": "f563f2fd37f17179639dacd76adf6d7335b458f399585d46c357013e08e66b12"
+    },
+    {
+      "name": "NG_WireCode.dll",
+      "sha256": "69bc3ed2ccf0f000463ae5b3b74218afc061b1a8757919bf3191c2eafbff6ad6"
+    },
+    {
+      "name": "RES_23CA7F267545404C9FED5DC977A6399F.Common.dll",
+      "sha256": "e3cb642b46696cebac16b8cae6fda61f46a5d27c93a98c4375cb5bbb751ec750"
+    }
+  ]
+}

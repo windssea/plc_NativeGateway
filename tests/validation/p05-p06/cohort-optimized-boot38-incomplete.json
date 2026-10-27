@@ -1,0 +1,10 @@
+{
+  "bootId": "ng-d4f61b3085b97c5e3831983b-38",
+  "cohortComplete": false,
+  "wireReceiptsComplete": true,
+  "stored": 4250,
+  "batches": 67,
+  "performancePassed": false,
+  "reason": "Native audit exporter stopped on live modification; 33 association records lost. Maintenance 5 ms budget excluded from acceptance.",
+  "associationDropped": 33
+}

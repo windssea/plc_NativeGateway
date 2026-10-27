@@ -1,0 +1,82 @@
+{
+  "evidenceLevel": "REAL_PLC_PER_SCAN_ESM_AND_REAL_STORED_LOCAL_RELEASE",
+  "performancePassed": false,
+  "confirmedLocalReleaseEventsPerSecond": 57.55903774001324,
+  "requiredEventsPerSecond": 90,
+  "releaseWindowSeconds": 362.48,
+  "releasedEvents": 20864,
+  "rateWindowFiles": [
+    "perf-hold-recovery-1.json",
+    "perf-hold-recovery-2.json"
+  ],
+  "taskPeriodUs": 20000,
+  "windows": [
+    {
+      "bootId": "ng-d4f61b3085b97c5e3831983b-32",
+      "samples": 68038,
+      "maxTaskUs": 13833,
+      "overPeriod": 0,
+      "durationScope": "STARTUP_READY_TO_PAUSED_DRAIN_MIXED_LOAD",
+      "addedTaskUs": null
+    },
+    {
+      "bootId": "ng-d4f61b3085b97c5e3831983b-33",
+      "samples": 36713,
+      "maxTaskUs": 23515,
+      "overPeriod": 1,
+      "durationScope": "STARTUP_READY_TO_PAUSED_DRAIN_MIXED_LOAD",
+      "addedTaskUs": null
+    }
+  ],
+  "addedWorkOneMsProven": false,
+  "normalThirtyMinuteLoadProven": false,
+  "opaqueSdkHeapHighWaterProven": false,
+  "oldHistoryDrainAfterResumeSecondsObservedBracket": [
+    514,
+    555
+  ],
+  "oldHistoryWithin540SecondsProven": false,
+  "productionAccountedBytes": 4170829,
+  "performanceVariantAccountedBytes": 4170891,
+  "fixedBudgetBytes": 4194304,
+  "opaqueSdkPayloadReserveBytes": 135680,
+  "wholeDeviceActualMemoryPercent": 71,
+  "wholeDeviceMemoryIsSdkPrivateHeapProof": false,
+  "faults": [
+    {
+      "file": "hold-300s-boot32.jsonl",
+      "seconds": 300.81299999996554,
+      "scope": "CANDIDATE_DATA_SEND_GATE_ONLY_NOT_PHYSICAL_NETWORK_OUTAGE",
+      "released": true,
+      "pendingAtRelease": 15000
+    },
+    {
+      "file": "drop-ack-300s-boot33.jsonl",
+      "seconds": 300.93699999997625,
+      "scope": "CANDIDATE_REAL_ACK_APPLICATION_GATE_ONLY_NOT_BROKER_OUTAGE",
+      "released": true,
+      "pendingAtRelease": 15250
+    }
+  ],
+  "cohorts": [
+    {
+      "bootId": "ng-d4f61b3085b97c5e3831983b-32",
+      "events": 55250,
+      "batches": 867,
+      "databaseVerified": true,
+      "cohortComplete": true,
+      "globalAccountingComplete": false,
+      "previousRamRestartLoss": "UNKNOWN"
+    },
+    {
+      "bootId": "ng-d4f61b3085b97c5e3831983b-33",
+      "events": 28250,
+      "batches": 444,
+      "databaseVerified": true,
+      "cohortComplete": true,
+      "globalAccountingComplete": false,
+      "previousRamRestartLoss": "UNKNOWN"
+    }
+  ],
+  "timeMode": "SYSTEM_RTC_COMPAT_UNVERIFIED"
+}

@@ -1,0 +1,132 @@
+FUNCTION_BLOCK NG_StringSHA256
+VAR_INPUT
+    Execute : BOOL;
+    Length : UDINT;
+    DeadlineUs : ULINT;
+END_VAR
+VAR_IN_OUT
+    Payload : NG_Json;
+END_VAR
+VAR_OUTPUT
+    Busy : BOOL;
+    Done : BOOL;
+    Error : BOOL;
+    Digest : STRING[64];
+END_VAR
+VAR
+    Prev : BOOL;
+    Block : UDINT;
+    Blocks : UDINT;
+    Offset : UDINT;
+    i : INT;
+    j : INT;
+    n : INT;
+    v : DWORD;
+    a : DWORD;
+    b : DWORD;
+    c : DWORD;
+    d : DWORD;
+    e : DWORD;
+    f : DWORD;
+    g : DWORD;
+    h : DWORD;
+    s0 : DWORD;
+    s1 : DWORD;
+    t1 : DWORD;
+    t2 : DWORD;
+    BlockLength : INT;
+    Hs : ARRAY[0..7] OF DWORD;
+    W : ARRAY[0..63] OF DWORD;
+    BlockText : STRING[64];
+    ByteOrderProbe : STRING[4] := 'ABCD';
+    NativeLittleEndian : BOOL;
+    CopyOk : BOOL;
+    CopyStatus : UINT;
+    HexIndex : INT;
+    ReserveUs : ULINT;
+END_VAR
+IF NOT Execute THEN Busy:=FALSE; Done:=FALSE; Error:=FALSE; Prev:=FALSE; RETURN; END_IF;
+IF Error THEN RETURN; END_IF;
+IF Execute AND NOT Prev AND NOT Busy THEN
+    IF (Length>16380) OR (Length<>TO_UDINT(LEN(Payload))) THEN Error:=TRUE; RETURN; END_IF;
+    (* The copy targets complete DWORD elements. Determine byte order from a
+       fixed non-palindromic probe; never infer it from arbitrary payload data. *)
+    CopyOk:=STRING_COPY(ByteOrderProbe,W,UDINT#0,UDINT#4);
+    IF NOT CopyOk THEN Error:=TRUE; RETURN; END_IF;
+    IF W[0]=DWORD#16#44434241 THEN NativeLittleEndian:=TRUE;
+    ELSIF W[0]=DWORD#16#41424344 THEN NativeLittleEndian:=FALSE;
+    ELSE Error:=TRUE; RETURN; END_IF;
+    (* Engineer documents the runtime STRING's 4-byte header. Independently
+       fence MEMORY_COPY's raw-area interpretation against STRING_COPY's
+       character-only interpretation before using an offset on any payload. *)
+    CopyStatus:=MEMORY_COPY(ByteOrderProbe,UDINT#4,W,UDINT#0,UDINT#4);
+    IF CopyStatus<>0 THEN Error:=TRUE; RETURN; END_IF;
+    IF NativeLittleEndian THEN
+        IF W[0]<>DWORD#16#44434241 THEN Error:=TRUE; RETURN; END_IF;
+    ELSE
+        IF W[0]<>DWORD#16#41424344 THEN Error:=TRUE; RETURN; END_IF;
+    END_IF;
+    Hs[0] := 16#6A09E667; Hs[1] := 16#BB67AE85; Hs[2] := 16#3C6EF372; Hs[3] := 16#A54FF53A;
+    Hs[4] := 16#510E527F; Hs[5] := 16#9B05688C; Hs[6] := 16#1F83D9AB; Hs[7] := 16#5BE0CD19;
+    Block := 0; HexIndex:=0; Blocks := (Length + 72) / 64; Busy := TRUE; Done := FALSE; Digest := '';
+END_IF;
+Prev := Execute;
+IF NOT Busy THEN RETURN; END_IF;
+(* Full blocks use bounded native MEMORY_COPY into the first 16 working words.
+   Padding reads only valid remaining bytes, without whole-payload copies. *)
+(* Fixed rotates are emitted as shifts/OR: eCLR otherwise calls ROR_DWORD
+   576 times per block. Constant indices remove repeated array-bound calls. *)
+(* SHA-256 additions intentionally use the documented unsigned overflow value
+   modulo 2^32. UDINT arithmetic avoids ARM 64-bit conversion/add/mask work;
+   native golden-vector and long-payload tests fence this target behaviour. *)
+FOR n := 1 TO 64 DO
+    (* A completed compression must never be repeated while formatting waits. *)
+    IF Block>=Blocks THEN EXIT; END_IF;
+    IF DeadlineUs=0 THEN IF n>8 THEN EXIT; END_IF;
+    ELSE
+        ReserveUs:=ULINT#60;
+        (* Padding uses bounded character/length work rather than the fast copy. *)
+        IF Block*64+64>Length THEN ReserveUs:=ULINT#180; END_IF;
+        IF GET_MICROSECONDS(TRUE)+ReserveUs>=DeadlineUs THEN EXIT; END_IF;
+    END_IF;
+    Offset:=Block*64; BlockLength:=0;
+    IF Offset<Length THEN BlockLength:=TO_INT(MIN(UDINT#64,Length-Offset)); END_IF;
+    IF BlockLength=64 THEN
+@@WORD_LOAD@@
+    ELSE
+    FOR i := 0 TO 15 DO
+        W[i] := 0;
+        FOR j := 0 TO 3 DO
+            Offset := Block*64 + TO_UDINT(i*4+j);
+            IF Offset < Length THEN v := TO_DWORD(TO_BYTE(GET_CHAR(Payload,TO_INT(Offset)+1)));
+            ELSIF Offset = Length THEN v := DWORD#16#80;
+            ELSIF Offset >= Blocks*64-8 THEN v := TO_DWORD(SHR(TO_LWORD(TO_ULINT(Length)*ULINT#8),TO_UINT((Blocks*64-1-Offset)*8)) AND LWORD#255);
+            ELSE v := 0; END_IF;
+            W[i] := SHL(W[i],8) OR v;
+        END_FOR;
+    END_FOR;
+    END_IF;
+@@SCHEDULE@@
+    a := Hs[0]; b := Hs[1]; c := Hs[2]; d := Hs[3]; e := Hs[4]; f := Hs[5]; g := Hs[6]; h := Hs[7];
+@@ROUNDS@@
+    Hs[0] := TO_DWORD(TO_UDINT(Hs[0])+TO_UDINT(a)); Hs[1] := TO_DWORD(TO_UDINT(Hs[1])+TO_UDINT(b));
+    Hs[2] := TO_DWORD(TO_UDINT(Hs[2])+TO_UDINT(c)); Hs[3] := TO_DWORD(TO_UDINT(Hs[3])+TO_UDINT(d));
+    Hs[4] := TO_DWORD(TO_UDINT(Hs[4])+TO_UDINT(e)); Hs[5] := TO_DWORD(TO_UDINT(Hs[5])+TO_UDINT(f));
+    Hs[6] := TO_DWORD(TO_UDINT(Hs[6])+TO_UDINT(g)); Hs[7] := TO_DWORD(TO_UDINT(Hs[7])+TO_UDINT(h));
+    Block := Block + 1;
+    IF Block >= Blocks THEN EXIT; END_IF;
+END_FOR;
+(* Digest rendering shares the same absolute scan budget. Consumers may use
+   Digest only with Done; partial text is never a committed batch digest. *)
+IF Block>=Blocks THEN
+    FOR i:=1 TO 8 DO
+        IF HexIndex>=8 THEN EXIT; END_IF;
+        IF DeadlineUs>0 THEN
+            IF GET_MICROSECONDS(TRUE)+ULINT#80>=DeadlineUs THEN RETURN; END_IF;
+        END_IF;
+        Digest:=CONCAT(Digest,TO_STRING(Hs[HexIndex],'{0:x8}'));
+        HexIndex:=HexIndex+1;
+    END_FOR;
+    IF HexIndex=8 THEN Busy:=FALSE; Done:=TRUE; END_IF;
+END_IF;
+END_FUNCTION_BLOCK

@@ -1,0 +1,8 @@
+{
+  "bootId": "ng-d4f61b3085b97c5e3831983b-45",
+  "events": 12500,
+  "physical": 12250,
+  "maxPhysicalResultsSameScan": 6,
+  "nominalSequencesFixedGrid": true,
+  "pointCount": 250
+}

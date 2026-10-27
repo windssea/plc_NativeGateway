@@ -1,0 +1,37 @@
+{
+  "atUtc": "2026-10-24T13:03:11.569386+00:00",
+  "status": "INTERRUPTED_PHYSICAL_ESCAPE_P06_NOT_ACCEPTED",
+  "originalRuntimeRestored": false,
+  "runtimeProject": "tmp/p05-p06/NativeGateway.p06-profile-rotate-v1.pcwex",
+  "runtimeDone": true,
+  "runtimeEvidence": "timing-rotate-resume.json",
+  "fixtureOnly": true,
+  "fixtureHasMqttModbusOrPhysicalIo": false,
+  "fixtureOwnedCount": 186,
+  "fixtureOwnedIsRealHubBacklog": false,
+  "lastOriginalDrainedEvidence": "plc-original-drained-optimization.json",
+  "restoreProject": "tmp/p01-p02/NativeGateway.restore-native-0.5.0.pcwex",
+  "ideProject": "tmp/p05-p06/NativeGateway.p06-profile-fast-v1.pcwex",
+  "ideProjectUploaded": false,
+  "rootCandidateNativeCompileAndRegressionComplete": false,
+  "pending": [
+    "latest SHA 41 native regression cases",
+    "ACK reader 39 native cases",
+    "full gateway compile and memory budget",
+    "throughput and deadline acceptance",
+    "normal 30 minutes and SDK private heap",
+    "drain and restore original runtime"
+  ],
+  "backendPid": 34208,
+  "backendInstancesListening8080": 1,
+  "resourceRecorderProcesses": 0,
+  "databaseCreated": false,
+  "runningServicesSwitched": false,
+  "files": {
+    "src/NG_StringSHA256.st": "81255f4a941eddc00fe3bd29edcbec884c6731da9abdf6c80bc5f8e4b1a68fac",
+    "src/NG_ReadAck.st": "2fa69b1e86064ebc9fc467be28410607c85ac64922b72b792eaeb81ef91498e0",
+    "src/NG_AckFields.st": "92b2674c522643cfd6c37005845c976dccf8a0bc34685384b65e20b38a5a9333",
+    "NativeGateway.pcwex": "582fdb61344e0214047ac6d2656a1dc216931cea8dc690762bfa175da851d013",
+    "tests/validation/p05-p06/timing-rotate-resume.json": "6183acc662db75c23aad0a003aeec5c1b9dd7008429786bb6fc040303582dfd1"
+  }
+}

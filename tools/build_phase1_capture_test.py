@@ -12,8 +12,8 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def build(destination: Path):
-    source = (ROOT / 'tests/phase1_capture_test.st').read_text(encoding='utf-8')
+def build(destination: Path, source_path=None, keep_set=None):
+    source = (source_path or ROOT / 'tests/phase1_capture_test.st').read_text(encoding='utf-8')
     body = re.sub(r'^PROGRAM Main\s*', '', source)
     end = list(re.finditer(r'\bEND_VAR\b', body))[-1].end()
     variables, code = body[:end], body[end:]
@@ -21,8 +21,11 @@ def build(destination: Path):
     with zipfile.ZipFile(ROOT / 'NativeGateway.pcwex') as z:
         files = {n: z.read(n) for n in z.namelist()}
     # Keep only reachable helpers; the harness has no communication blocks.
-    keep = {'Main','NG_Capture','NG_ConfigSlot','NG_PollSlot','NG_QualityCode',
+    keep = keep_set or {'Main','NG_Capture','NG_GapLog','NG_ConfigSlot','NG_PollSlot','NG_QualityCode',
             'NG_SafeAdd','NG_SameConfig','NG_SourceResult','NG_SourceState'}
+    keep = set(keep) | {'NG_SourceStateCore','NG_CaptureCore','NG_AuditCapture','NG_AuditDecision','NG_AuditAssociation'}
+    if 'NG_SourceResult' in keep:
+        keep.add('NG_SourceResultCore')
     ns='http://schemas.microsoft.com/developer/msbuild/2003'
     ET.register_namespace('', ns)
     project=ET.fromstring(files['PROJECT/PROJECT.proj'])
@@ -32,6 +35,12 @@ def build(destination: Path):
             if match and match[1] not in keep:
                 group.remove(item)
     files['PROJECT/PROJECT.proj']=ET.tostring(project,encoding='utf-8',xml_declaration=True)
+    # Keep the archive payload in sync with its registrations. The independent
+    # cold compiler intentionally rejects orphan POU source members.
+    for name in list(files):
+        match=re.match(r'PROJECT/Logical%20Elements/([^/]+)\.pou/',name)
+        if match and match[1] not in keep:
+            del files[name]
     prefix = 'PROJECT/Logical%20Elements/Main.pou/'
     files[prefix + 'Variables.var'] = variables.encode('utf-8')
     files[prefix + 'Code.st'] = code.encode('utf-8')

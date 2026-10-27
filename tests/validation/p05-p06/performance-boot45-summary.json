@@ -1,0 +1,26 @@
+{
+  "bootId": "ng-d4f61b3085b97c5e3831983b-45",
+  "complete": true,
+  "last": {
+    "NowMs": 287300,
+    "runStage": "drain",
+    "Active.enabled": false,
+    "CaptureBuffer.CapturedEventsTotal": 12500,
+    "CaptureBuffer.StoredConfirmedEventsTotal": 12500,
+    "CaptureBuffer.OwnedCount": 0,
+    "CaptureBuffer.WorkMaxUs": 1331,
+    "P06MaxUs": 6964,
+    "P06OverPeriod": 0,
+    "CaptureBuffer.MissedPollCyclesTotal": 0
+  },
+  "faultScope": "LOCAL_DATA_GATE_NOT_PHYSICAL_NETWORK",
+  "gatedSeconds": 60.25,
+  "activeRecoveryConfirmedLocalReleaseEventsPerSecond": 61.52313482399823,
+  "activeRecoveryWindowSeconds": 180.68,
+  "historyClearBracket": {
+    "lowerSeconds": 108.64,
+    "upperSeconds": 113.8,
+    "acquisitionEnabled": true
+  },
+  "fullP06Acceptance": false
+}

@@ -1,0 +1,72 @@
+{
+  "project_id": "a431bdc32f2a4aa1812c94683db38395",
+  "revision": 1,
+  "project_sha256": "0a4890172ea2da01616e30f399da550b7358ae5a7d62489fd26d51554ba2f37d",
+  "project_path": "D:\\PLCnext-MCP-Workspace\\a431bdc32f2a4aa1812c94683db38395\\revision-0001.pcwex",
+  "status": "offline_download_simulation_ready",
+  "package_job_id": "6368323f0d024427a808104c433db8f1",
+  "package_receipt_sha256": "8bdf2082d6b724c90747e2e8c32f18e724f5f2d961e4fd3508ed5bc3e305028b",
+  "inventory_sha256": "a60cecca35ddeacbadbef96062b36804806e388648cbdfc9053a7ec52120b2f5",
+  "file_count": 48,
+  "total_bytes": 9371906,
+  "batches": [
+    {
+      "file_count": 27,
+      "bytes": 9164617
+    },
+    {
+      "file_count": 21,
+      "bytes": 207289
+    }
+  ],
+  "variable_count": 77,
+  "fb_instance_count": 109,
+  "hmi_mapping_count": 10,
+  "simulation_tool": "project_simulate_download",
+  "available_faults": [
+    "none",
+    "bad_credentials",
+    "penalty_active",
+    "permission_denied",
+    "session_expired",
+    "insufficient_space",
+    "write_error",
+    "short_results",
+    "transport_interrupted",
+    "readback_corrupt",
+    "reset_timeout",
+    "load_timeout",
+    "load_error",
+    "initial_running",
+    "untrusted_peer",
+    "hostname_mismatch"
+  ],
+  "controller_connected": false,
+  "controller_downloaded": false,
+  "real_transport_available": false,
+  "wire_compatibility_verified": false,
+  "tls_handshake_verified": false,
+  "deployable": false,
+  "offline_memory_tls_probe": "TLS1.2 MemoryBIO; public test CA/hostname; not real PLC verification",
+  "rsc_fixed_header_codec_verified": true,
+  "rsc_write_value_codec_verified": true,
+  "complete_rsc_rpc_codec": false,
+  "bounded_binary_rpc_loopback": true,
+  "binary_rpc_profile": "v4, untagged, no datagram; known schema per exchange",
+  "authentication_contract": "IPasswordAuthenticationService.CreateSession; UInt32 security token",
+  "authentication_error_namespace": "Arp.System.Security.Services.AuthenticationError (not Ade UI translations)",
+  "symbolic_project_root": "$ARP_PROJECTS_DIR$/PCWE/",
+  "file_transfer_contract": "IFileService2.WriteMany / ReadMany; whole-file batches flush after >8MiB",
+  "configuration_contract": "Reset(true), poll DeviceState==0, Load(true), poll DeviceState>0; no Start",
+  "policies": [
+    "Initial Stop required.",
+    "Permissions/free-space preflight are simulator application policies.",
+    "Readback hashes must match before Reset/Load.",
+    "No automatic retry after uncertain writes."
+  ],
+  "remaining_wire_work": [
+    "Real PLC TLS channel/certificate acquisition and policy",
+    "General streaming, tagged values, datagrams, other services and real-device negotiation",
+    "Real device behavior and acceptance"
+  ]
+}

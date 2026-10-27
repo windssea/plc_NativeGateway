@@ -1,0 +1,142 @@
+{
+  "backend": "native_pcwex",
+  "aci_dependency": false,
+  "vendor_license_modification": false,
+  "full_aci_replacement": false,
+  "aci_replacement_coverage_tools": [
+    "aci_replacement_status",
+    "aci_replacement_methods"
+  ],
+  "task_configuration": {
+    "inspect": true,
+    "update_existing_cyclic_task": true,
+    "scope": "AXCF2152/2026 single cyclic task; interval_ns/watchdog_ns/priority; source copy only",
+    "create_delete_tasks": false,
+    "runtime_effect_verified": false
+  },
+  "read_pous": true,
+  "edit_existing_st_body": true,
+  "preserve_other_member_payloads": true,
+  "change_pou_interface": true,
+  "create_project": true,
+  "add_delete_st_function_blocks": true,
+  "pou_interface_scope": "Existing variable worksheets: locals, input/output/in-out declarations; no kind/return metadata edits.",
+  "headless_compile": true,
+  "full_project_headless_compile": false,
+  "headless_compile_scope": "Supported single-resource AXC F 2152 standard-ST IEC builds; separate PCWE generation supports the validated NativeGateway hardware/HMI profile only.",
+  "cold_compile": {
+    "available": true,
+    "scope": "AXCF2152_2026_single_eCLR_resource_single_cyclic_task_ST_project",
+    "ast_seed_required": false,
+    "precompiled_vendor_libraries_required": true,
+    "controller_access": false,
+    "deployable": false,
+    "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0"
+  },
+  "controller_access": true,
+  "controller_write_access": false,
+  "controller_write_access_scope": "Default access is false; exact reviewed writes are possible only with a separate operator approval receipt.",
+  "controller_download_client": {
+    "implemented": true,
+    "backend": "independent_pinned_tls_tcp_rsc",
+    "review_tool": "project_prepare_download_review",
+    "readonly_preflight_tool": "project_preflight_controller_download",
+    "loopback_test_tool": "project_test_controller_download",
+    "guarded_execution_tool": "project_execute_controller_download",
+    "review_is_authorization": false,
+    "operator_approval_required": true,
+    "automatic_stop": false,
+    "automatic_start": false,
+    "automatic_retry": false,
+    "remote_directory_listing": false,
+    "remote_old_file_deletion": false,
+    "real_device_write_compatibility_verified": false
+  },
+  "controller_readonly": {
+    "available": true,
+    "tool": "controller_read_state",
+    "requires_explicit_certificate_sha256": true,
+    "protocol_scope": "RSC v4 tagged/no-datagram, Connect + fixed PLC service discovery + GetPlcState only",
+    "credentials": false,
+    "file_access": false,
+    "program_control": false,
+    "real_download": false
+  },
+  "deployment_preparation": {
+    "exact_build_gap_analysis": true,
+    "existing_pcwe_file_integrity_check": true,
+    "existing_pcwe_snapshot": true,
+    "cold_pcwe_generation": true,
+    "cold_pcwe_scope": "Validated NativeGateway AXCF2152/2026 hardware, services and Gateway/Login HMI; rejects unverified profiles.",
+    "signature_validation": false,
+    "daum_zip_generation": false,
+    "controller_transport": false
+  },
+  "download_simulation": {
+    "available": true,
+    "backend": "in_memory_only",
+    "authentication_service_contract": true,
+    "whole_file_transfer_and_readback": true,
+    "configuration_reset_load": true,
+    "network_access": false,
+    "memory_tls12_handshake_verified": true,
+    "fixed_header_codec_verified": true,
+    "write_file_value_codec_verified": true,
+    "bounded_binary_rpc_loopback": true,
+    "available_protocol_profiles": [
+      "v4_untagged",
+      "v4_tagged"
+    ],
+    "tagged_value_codec_verified": true,
+    "tagged_binary_rpc_loopback": true,
+    "tls_handshake_verified": false,
+    "real_controller_wire_compatibility_verified": false
+  },
+  "headless_st_syntax_check": {
+    "available": true,
+    "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0",
+    "powershell": "C:\\Users\\windssea\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.EXE",
+    "missing_assemblies": [],
+    "scope": "ST worksheet syntax only; no type checking or code generation",
+    "aci_used": false,
+    "whole_project_compiled": false
+  },
+  "cache_assisted_compile": {
+    "available": true,
+    "scope": "pinned_NativeGateway_NG_ReadAck_cache_assisted",
+    "aci_used": false,
+    "whole_project_rebuilt_from_pcwex": false,
+    "cache_assisted": true,
+    "deployable": false,
+    "limitations": [
+      "Cache-assisted compilation of the existing NG_ReadAck ST body only, using a pinned GUI-generated NativeGateway semantic seed.",
+      "All other project member payloads must exactly match the frozen B78 project; declarations, interfaces, tasks, I/O and HMI changes are unsupported.",
+      "The complete project is not rebuilt from PCWEX; network, I/O, HMI, packaging and deployment consistency are not regenerated or validated.",
+      "Requires the exact recorded installed Engineer assemblies and seed libraries; this is not an independent compiler implementation.",
+      "The resulting image is an offline experimental artifact, is not approved for deployment, and has not been run on a PLC."
+    ],
+    "seed_directory": "D:\\work\\code\\PLCnext-Engineer-mcp\\artifacts\\nativegateway-compile-seed",
+    "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0",
+    "powershell": "C:\\Users\\windssea\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.EXE",
+    "reference_count": 38
+  },
+  "nativegateway_source_compile": {
+    "available": true,
+    "scope": "NativeGateway_all_existing_POU_code_and_variables",
+    "ast_seed_required": true,
+    "controller_access": false,
+    "deployable": false,
+    "seed_directory": "D:\\work\\code\\PLCnext-Engineer-mcp\\artifacts\\nativegateway-compile-seed",
+    "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0"
+  },
+  "nativegateway_cold_compile": {
+    "available": true,
+    "scope": "AXCF2152_2026_single_eCLR_resource_single_cyclic_task_ST_project",
+    "ast_seed_required": false,
+    "precompiled_vendor_libraries_required": true,
+    "controller_access": false,
+    "deployable": false,
+    "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0"
+  },
+  "workspace": "D:\\PLCnext-MCP-Workspace"
+}

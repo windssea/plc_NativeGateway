@@ -1,0 +1,23 @@
+{
+  "Active.Version": 13,
+  "Active.DeviceCount": 50,
+  "Active.PointCount": 250,
+  "Active.enabled": true,
+  "BootId": "ng-d4f61b3085b97c5e3831983b-34",
+  "QueueCount": 3,
+  "NowMs": 1205500,
+  "UnixMs": 1792844012000,
+  "gatewayId": "NG-HUB-2152-01",
+  "samplingConfigSha256": "a0876a55be998febaf64f218bb8bf51c70055a154b7ea7f8b7565cbd74d35d64",
+  "HMI.Connection": "CONNECTED",
+  "HMI.PublishedBatches": 948,
+  "HMI.ConfirmedBatches": 945,
+  "HMI.InvalidAcks": 0,
+  "HMI.ActiveVersion": "13",
+  "quiesced": {
+    "Active.enabled": false,
+    "QueueCount": 0
+  },
+  "atUtc": "2026-10-24T12:13:36Z",
+  "target": "192.168.0.8"
+}

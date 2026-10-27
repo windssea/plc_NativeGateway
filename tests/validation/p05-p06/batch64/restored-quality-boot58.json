@@ -1,0 +1,11 @@
+{
+  "bootId": "ng-d4f61b3085b97c5e3831983b-58",
+  "sourceGoodPoints": 250,
+  "sourceTotalPoints": 250,
+  "mockRevision": 5,
+  "mockDevices": 50,
+  "mockModbusRunning": true,
+  "mockLastError": null,
+  "activeEnabled": true,
+  "atUtc": "2026-10-26T04:19:05Z"
+}

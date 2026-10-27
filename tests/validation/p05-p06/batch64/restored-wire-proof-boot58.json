@@ -1,0 +1,11 @@
+{
+  "bootId": "ng-d4f61b3085b97c5e3831983b-58",
+  "dataBatchesObserved": 26,
+  "storedBatchesObserved": 26,
+  "goodStoredBatchesObserved": 22,
+  "goodStoredSamplesObserved": 1378,
+  "unacknowledgedWithinObservation": [],
+  "durationSeconds": 90.15600000001723,
+  "evidenceScope": "Passive original-runtime recovery window; not a complete native cohort or performance acceptance",
+  "atUtc": "2026-10-26T04:20:15Z"
+}

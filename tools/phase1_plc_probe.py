@@ -39,7 +39,7 @@ from PyPlcnextRsc.Arp.Plc.Gds.Services import IDataAccessService, WriteItem
 from PyPlcnextRsc.common.serviceDefinition.all_needed import RscVariant
 
 
-def probe(action, output):
+def probe(action, output, pipeline_checks=46):
     prefix = 'Arp.Plc.Eclr/MainInstance.'
     with Device('192.168.0.8') as device:
         service = IDataAccessService(device)
@@ -48,8 +48,29 @@ def probe(action, output):
             if any(int(row.Error) != 0 for row in rows):
                 raise RuntimeError('Requested PLC variables not available in this project')
             return {name: row.Value.GetValue() for name, row in zip(names, rows)}
-        if action == 'test':
-            result = read(['Stage', 'Passed', 'FailedChecks', 'Done', 'RecordBytes', 'BufferBytes', 'BudgetBytes'] + [f'Checks[{i}]' for i in range(1,23)])
+        if action=='diagnostics-test':
+            result=read(['Stage','Passed','FailedChecks','Done']+[f'Checks[{i}]' for i in range(1,17)])
+        elif action in ['test','pipeline-test']:
+            count=pipeline_checks if action=='pipeline-test' else 22
+            result = read(['Stage', 'Passed', 'FailedChecks', 'Done', 'RecordBytes', 'BufferBytes', 'BudgetBytes'] + [f'Checks[{i}]' for i in range(1,count+1)])
+            if action=='pipeline-test':
+                result.update(read(['Scenario','Row','Sequence','LongDigest']))
+                if result['LongDigest']:
+                    try:
+                        chunks=read([f'LongParts[{i}]' for i in range(1,65)])
+                        result['longPartLengths']=[len(part) for part in chunks.values()]
+                        result['LongPayload']=''.join(chunks.values())
+                    except (ValueError,RuntimeError):
+                        result['longPayloadExport']='UNAVAILABLE_IN_THIS_HARNESS_VERSION'
+                if result.get('LongPayload'):
+                    payload=result['LongPayload'].encode('utf-8')
+                    result['longPayloadSha256']=hashlib.sha256(payload).hexdigest()
+                    result['longPayloadBytes']=len(payload)
+                    try:
+                        result['longPayloadValueCount']=len(json.loads(payload)['values'])
+                    except json.JSONDecodeError as error:
+                        result['longPayloadParseError']=str(error)
+                    result['longPayloadHashMatches']=result['longPayloadSha256']==result['LongDigest']
         else:
             gateway = service.ReadSingle('Arp.Plc.Eclr/HMI.GatewayId')
             if int(gateway.Error) or gateway.Value.GetValue() != 'NG-HUB-2152-01':
@@ -118,10 +139,11 @@ def probe(action, output):
 
 if __name__ == '__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['before','quiesce','test','candidate','after'])
+    parser.add_argument('action', choices=['before','quiesce','test','pipeline-test','diagnostics-test','candidate','after'])
     parser.add_argument('output', type=Path)
+    parser.add_argument('--pipeline-checks',type=int,default=46,choices=(46,54,56))
     args=parser.parse_args()
     # The old SDK prints raw packet hex; keep it out of user-facing evidence.
     with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
-        data=probe(args.action,args.output)
-    print(json.dumps(data, ensure_ascii=False))
+        data=probe(args.action,args.output,args.pipeline_checks)
+    print(json.dumps({key:value for key,value in data.items() if key!='LongPayload'}, ensure_ascii=False))

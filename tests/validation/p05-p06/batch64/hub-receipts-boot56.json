@@ -1,0 +1,16 @@
+{
+  "evidenceLevel": "EXISTING_DEV_DATABASE_READ_ONLY_RECEIPTS_AND_SAMPLE_MULTISET",
+  "bootId": "ng-d4f61b3085b97c5e3831983b-56",
+  "cohortComplete": true,
+  "wireReceiptsComplete": true,
+  "auditAssociationProofComplete": true,
+  "receiptHashesVerified": 242,
+  "committedSamplesVerified": 15384,
+  "database": "hub",
+  "serverAddress": "172.17.0.7/32",
+  "serverPort": 5432,
+  "clientEndpoint": "69.230.197.241:6001",
+  "temporaryDatabaseCreated": false,
+  "databaseWrites": false,
+  "backendRestarted": false
+}

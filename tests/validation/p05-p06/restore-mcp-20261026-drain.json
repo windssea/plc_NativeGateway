@@ -1,0 +1,78 @@
+{
+  "initial": {
+    "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+    "QueueCount": 16,
+    "Active.enabled": true,
+    "NowMs": 1848980
+  },
+  "rows": [
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 16,
+      "Active.enabled": false,
+      "NowMs": 1848980
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 16,
+      "Active.enabled": false,
+      "NowMs": 1854000
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 9,
+      "Active.enabled": false,
+      "NowMs": 1859000
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 5,
+      "Active.enabled": false,
+      "NowMs": 1864000
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 4,
+      "Active.enabled": false,
+      "NowMs": 1869020
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 3,
+      "Active.enabled": false,
+      "NowMs": 1874020
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 3,
+      "Active.enabled": false,
+      "NowMs": 1879040
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 3,
+      "Active.enabled": false,
+      "NowMs": 1884040
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 3,
+      "Active.enabled": false,
+      "NowMs": 1889040
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 3,
+      "Active.enabled": false,
+      "NowMs": 1894060
+    },
+    {
+      "BootId": "ng-d4f61b3085b97c5e3831983b-47",
+      "QueueCount": 0,
+      "Active.enabled": false,
+      "NowMs": 1899060
+    }
+  ],
+  "drained": true,
+  "pausedForFixture": true
+}

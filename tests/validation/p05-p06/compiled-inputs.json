@@ -1,0 +1,32 @@
+{
+  "evidenceLevel": "ENGINEER_REBUILD_OBSERVATIONS_AND_INPUT_HASHES",
+  "archives": {
+    "NativeGateway.p05-diagnostics-test-v2.pcwex": {
+      "sha256": "c666b4db393d857b5310af899f35bb35bf324b54a06478adc8414ef67db68b75",
+      "errors": 0,
+      "warnings": 0,
+      "evidence": "Engineer rebuild observed; isolated native assertions / compiled CIL metadata recorded separately"
+    },
+    "NativeGateway.p06-parallel-test-v4.pcwex": {
+      "sha256": "04951e2b8a78908f2927420b7f471695830470d6d0ca74a4f2cf5db7b50308c0",
+      "errors": 0,
+      "warnings": 1,
+      "evidence": "Engineer rebuild observed; isolated native assertions / compiled CIL metadata recorded separately"
+    },
+    "NativeGateway.p05-p06-full-v4.pcwex": {
+      "sha256": "4b4483b106f08659d9fa6a26dd511460589053c3a6ab0ab850d0ad96a599ff77",
+      "errors": 0,
+      "warnings": 0,
+      "evidence": "Engineer rebuild observed; isolated native assertions / compiled CIL metadata recorded separately"
+    },
+    "NativeGateway.p06-performance-v4.pcwex": {
+      "sha256": "5a8c726b3917b116a07f549402945347a8e0469ae4fe3cadc87cd19e225de98b",
+      "errors": 0,
+      "warnings": 0,
+      "evidence": "Engineer rebuild observed; isolated native assertions / compiled CIL metadata recorded separately"
+    }
+  },
+  "rootMatchesProductionV4": true,
+  "parallelFixtureWarning": "SEM2004 unused NG_Add4; full production/performance have zero warnings",
+  "timingFixture": "PREPARED_ONLY_NOT_COMPILED_OR_EXECUTED"
+}

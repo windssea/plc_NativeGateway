@@ -1,0 +1,15 @@
+{
+  "evidenceLevel": "INDEPENDENT_RAW_SOURCE_POLICY_ASSOCIATION_WIRE_STORED_LOCAL_RELEASE",
+  "bootId": "ng-d4f61b3085b97c5e3831983b-55",
+  "captured": 15486,
+  "eligible": 15486,
+  "filtered": 0,
+  "stored": 15486,
+  "batches": 265,
+  "cohortComplete": true,
+  "globalAccountingComplete": false,
+  "previousRamRestartLoss": "UNKNOWN",
+  "timeMode": "SYSTEM_RTC_COMPAT_UNVERIFIED",
+  "databaseReceiptsVerified": false,
+  "performancePassed": false
+}

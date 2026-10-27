@@ -1,0 +1,12 @@
+{
+  "before": {
+    "BootId": "ng-d4f61b3085b97c5e3831983b-31",
+    "Active.enabled": false,
+    "CaptureBuffer.OwnedCount": 0,
+    "CaptureBuffer.IngressCount": 0,
+    "P06HoldSend": false,
+    "P06DropAck": false
+  },
+  "action": "PLC_RUNTIME_COLD_START_NOT_OS_REBOOT",
+  "atUtc": "2026-10-24T11:06:02Z"
+}

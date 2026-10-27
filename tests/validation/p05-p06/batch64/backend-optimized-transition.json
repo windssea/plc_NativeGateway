@@ -1,0 +1,8 @@
+{
+  "oldPid": 55264,
+  "oldExited": true,
+  "newPid": 14160,
+  "jar": "logs/hub-batch64-optimized-runtime.jar",
+  "sha256": "FFD15C78C9FE040C58CDF83F4D6CA059018CDD8211B6502A025BC3438B8501D5",
+  "temporaryDatabaseCreatedByRuntime": false
+}

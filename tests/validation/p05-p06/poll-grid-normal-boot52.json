@@ -1,0 +1,12 @@
+{
+  "points": 250,
+  "physicalEvents": 50476,
+  "nominalDueIntervals": {
+    "5000": 50226
+  },
+  "peakPhysicalResultsPerScan": 8,
+  "partialWhileDrain": false,
+  "exportCompleted": true,
+  "sourceAudit": "audit-normal-boot52.jsonl",
+  "bootId": "ng-d4f61b3085b97c5e3831983b-52"
+}

@@ -1,0 +1,31 @@
+{
+  "evidenceLevel": "OFFLINE_SOURCE_AND_ARCHIVED_EVIDENCE_GATES",
+  "canonicalSha256": "7d7425b4ebe2e17cbc9fb283a59bd0f59be1ba48d24dda078977dde9d421b91f",
+  "sourceHashes": {
+    "tools\\build_phase1_pipeline_test.py": "5f6be160b480f119183347acb42ef6eb095ddb40bf60ef5aaddf40dcf410e6c1",
+    "tools\\build_phase1_capture_test.py": "f7f1dacb8b5895d51f4088d0d1eb242b2e00e76fc45d387e4376871ce4b42c92",
+    "tools\\phase1_plc_probe.py": "c36c459255eca4efcef258c12e36e6d3ae83e61663f2c1716bd0161c06f4c44d",
+    "tools\\phase1_pipeline_plc_probe.py": "7f722181e6de0a93677dfe0a865895adcc66495885d02966033ef6ced0e40a58",
+    "tools\\phase1_wire_observer.py": "90b2a4c5a95ce0b233169592131fa4d993274c7983efb2635353470f7d0ff865",
+    "tools\\check_phase1_pipeline.py": "2f0343f419ee6e2acc0bea96cfd9990f7960206b50831a26fc131afa12fe8f80"
+  },
+  "archives": {
+    "NativeGateway.p03-p04-final-v7.pcwex": "abf8e3e7441854c765f7b8873f0f06e75b616737dcfbf4643a2b08cdb51f42b8",
+    "NativeGateway.p03-p04-test-v7.pcwex": "c1494064ad68ae2afb91715685b6a2cb6d6b4c4dd43729509d13ab67c7261114"
+  },
+  "archivedEvidenceOnly": true,
+  "rootArchiveMatchesCompiledInput": false,
+  "testHelpersMatchProduction": true,
+  "persistentTypesUnchanged": true,
+  "sharedContracts": {
+    "protocol.schema.json": "d65c133d44a02072972361a4c601ca3b22bf0ab1125f6d63d48ca47b65a830e9",
+    "topics.json": "f80f367dd34def81ba86a0a2eb370869bf99de1f25ceadfc986ca004da308d51"
+  },
+  "plcAssertions": 41,
+  "realDataBatches": 40,
+  "realStoredValues": 2500,
+  "restoredBoot": "ng-d4f61b3085b97c5e3831983b-28",
+  "documentsChecked": 8,
+  "localLinksChecked": 104,
+  "noP06PerformanceReleaseClaim": true
+}

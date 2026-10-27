@@ -1,0 +1,122 @@
+{
+  "atUtc": "2026-10-26T01:59:21.927905+00:00",
+  "scope": "2026-10-26 MCP development/native regression, invalid standard-load diagnostic and final original restore; P06 NOT accepted",
+  "P06Accepted": false,
+  "files": [
+    {
+      "path": "NativeGateway.pcwex",
+      "bytes": 249460,
+      "sha256": "0a4890172ea2da01616e30f399da550b7358ae5a7d62489fd26d51554ba2f37d"
+    },
+    {
+      "path": "src/NG_BatchBuilder.st",
+      "bytes": 10385,
+      "sha256": "a66855c0db4de672d7aee88460e992d5b0dbc2e6125fae0ffc796bab20445b6e"
+    },
+    {
+      "path": "tools/build_phase1_capture_test.py",
+      "bytes": 2793,
+      "sha256": "8562556f1ee2761af8b2e513b3310fece6d2594fceeea3888fb2a2ed788b98a8"
+    },
+    {
+      "path": "tools/build_phase1_pipeline_test.py",
+      "bytes": 1326,
+      "sha256": "51a1c58396e755fead93c7e5d934893023aef0566540d3dc578eb1d7077a9169"
+    },
+    {
+      "path": "tmp/p05-p06/NativeGateway.phase1-parallel-test-v29-mcp.pcwex",
+      "bytes": 167838,
+      "sha256": "4f50340a18441865231081440cf10848dc8fba65996107fd8918cc3363e7da6f"
+    },
+    {
+      "path": "tmp/p05-p06/NativeGateway.p06-performance-v27-mcp.pcwex",
+      "bytes": 250653,
+      "sha256": "8a7ac1baa485493fb71b7588b983f5139400ad675738b6b9f6790c05477aa84e"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/00-baseline-cold-compile.json",
+      "bytes": 73898,
+      "sha256": "79314bbe16748737f3da64188d687902ed4b7e76694bde505f697e8cc017be75"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/01-envelope-cold-compile.json",
+      "bytes": 1022,
+      "sha256": "f782a04addda5cad1f563bb46e466c20167059404fca7e67fdc1d68fa9943200"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/02-envelope-pcwe.json",
+      "bytes": 24031,
+      "sha256": "574aa762b314c6dc08fbd3ad045d015032c67b189f8a3c65cfb3455ea2889ceb"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/03-download-plan.json",
+      "bytes": 2730,
+      "sha256": "ea1b78ed76f3c6d6e6ec821d19c869bbe9ecff51034bc313afc22db66f45ad67"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/04-pure-cold-compile.json",
+      "bytes": 694,
+      "sha256": "4ff0ea31f6ed82a39ea7b115f5184598612c33d9e6d4fdfd687a37d3682fab3e"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/05-perf27-layout.json",
+      "bytes": 9444,
+      "sha256": "172774f513bf831ab22fc0c0e753e62c704932702a43b920eaccff5fdd19816d"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/cold-performance-full-report.json",
+      "bytes": 134086,
+      "sha256": "6a860419a535a6b93a13b163920154c5bf65f27826292ce4bd03ef79c80f1105"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/cold-production-full-report.json",
+      "bytes": 134289,
+      "sha256": "cd33b657d0a9f941dd021ae9abc838f535faebb23f9bc8ef6a001363ba1d895b"
+    },
+    {
+      "path": "tests/validation/p05-p06/mcp/cold-pure-full-report.json",
+      "bytes": 90424,
+      "sha256": "3c52bb58e257762ee5b06fa120405adee8d73e32d287cea375c2292a4e025306"
+    },
+    {
+      "path": "tests/validation/p05-p06/pipeline-v29-mcp-plc.json",
+      "bytes": 18446,
+      "sha256": "3fe5ffc5f1a97599d56f1bb6b9db628c0b7788c4ac7dc674f1dc0feaad6b52b2"
+    },
+    {
+      "path": "tests/validation/p05-p06/cohort-optimized-boot48-mcp.json",
+      "bytes": 463,
+      "sha256": "87e312dab9f4a6fea0340a2817b20c082060c13721766395f78e166732bb0833"
+    },
+    {
+      "path": "tests/validation/p05-p06/hub-receipts-optimized-boot48-mcp.json",
+      "bytes": 529,
+      "sha256": "50a0d6eca50ca63cfc1e92f92100da33e1c66ffe23a1954b5af84c3b006bead9"
+    },
+    {
+      "path": "tests/validation/p05-p06/performance-boot48-mcp-summary.json",
+      "bytes": 861,
+      "sha256": "ea30f34f4489981888daaca0129de7f9260c10c000380d50f0e0705da5608d28"
+    },
+    {
+      "path": "tests/validation/p05-p06/final-restore-mcp-20261026-first.json",
+      "bytes": 571,
+      "sha256": "db5f8f6f6d2cfcaffaac18284762f88c019d3629aa0fbca3f71aee5125730164"
+    },
+    {
+      "path": "tests/validation/p05-p06/final-restore-mcp-20261026-good.json",
+      "bytes": 154,
+      "sha256": "0a000817df5abc1f4d7203b63853a704fecfdd3fe34947598403beecbec472d4"
+    },
+    {
+      "path": "tests/validation/p05-p06/wire-final-restore-mcp-20261026.json",
+      "bytes": 741038,
+      "sha256": "9b35f435b4423980ec523b148a7236f318190cd83488a9253a4e2463145767d4"
+    },
+    {
+      "path": "tests/validation/p05-p06/final-restore-mcp-20261026-wire-summary.json",
+      "bytes": 287,
+      "sha256": "8982bfe1f980f8bbe292fe92604cce5726152f7176c642af94e39bad48668393"
+    }
+  ]
+}

@@ -13,6 +13,7 @@ END_VAR
 VAR
     Compare : NG_SameConfig;
     i : INT;
+    j : INT;
 END_VAR
 Slot := 0;
 IF Buffer.ActiveSlot>0 THEN
@@ -30,6 +31,7 @@ FOR i:=1 TO 4 DO
         Buffer.Configs[i].Config:=Config; Buffer.Configs[i].GatewayId:=GatewayId;
         Buffer.Configs[i].CaptureBootId:=CaptureBootId;
         Buffer.Configs[i].Generation:=Buffer.NextConfigGeneration;
+        FOR j:=1 TO 320 DO Buffer.Configs[i].PointDevices[j]:=0; END_FOR;
         Buffer.Configs[i].Reserved:=TRUE; Slot:=TO_UINT(i); RETURN;
     END_IF;
 END_FOR;

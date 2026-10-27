@@ -1,0 +1,21 @@
+{
+  "bootId": "ng-d4f61b3085b97c5e3831983b-48",
+  "P06Accepted": false,
+  "standardLoadValid": false,
+  "reason": "Modbus source port 11502 absent throughout source observation; 250 UNKNOWN + 12750 BAD_CONNECTION events; not the frozen GOOD 50 events/s load",
+  "captured": 13000,
+  "stored": 13000,
+  "batches": 204,
+  "missedPollCycles": 5250,
+  "incrementalMaxUs": 1752,
+  "taskMaxUs": 6912,
+  "taskOverPeriod": 0,
+  "actualClientDisconnectSeconds": 300.25,
+  "shortActiveRecoverySeconds": 40.72,
+  "shortBadLoadReleaseEventsPerSecond": 57.56385068762279,
+  "cohortComplete": true,
+  "existingDevDatabaseVerified": true,
+  "globalAccountingComplete": false,
+  "restartLoss": "UNKNOWN",
+  "note": "Short BAD-load recovery and subsequent paused drain cannot establish 90/s with normal capture, 540s history clearance or hardware maximum."
+}

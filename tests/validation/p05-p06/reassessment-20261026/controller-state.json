@@ -1,0 +1,55 @@
+{
+  "status": "state_read",
+  "state_read": true,
+  "address": "192.168.0.8",
+  "port": 41100,
+  "observed_utc": "2026-10-26T05:37:31.750589+00:00",
+  "backend": "independent_download_transport_readonly",
+  "certificate_policy": "explicit_sha256_pin",
+  "certificate_pin_verified": true,
+  "pki_chain_and_hostname_verified": false,
+  "commands_sent": [
+    "Connect",
+    "GetServiceHandles(IPlcManagerService)",
+    "GetPlcState(method=5)"
+  ],
+  "credentials_sent": false,
+  "file_methods_sent": false,
+  "configuration_commands_sent": false,
+  "program_started_or_stopped": false,
+  "downloaded": false,
+  "aci_used": false,
+  "engineer_started": false,
+  "computer_use_used": false,
+  "rsc_connected": true,
+  "rsc_version": 4,
+  "data_tagging": true,
+  "datagramming": false,
+  "peer_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+  "tls_version": "TLSv1.2",
+  "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+  "plc_state_raw": 3,
+  "plc_base_state": "Running",
+  "plc_state_flags": 0,
+  "cleanup_error_class": null,
+  "trace": [
+    {
+      "operation": "Connect",
+      "response_received": true
+    },
+    {
+      "operation": "GetServiceHandles",
+      "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+      "response_received": true
+    },
+    {
+      "operation": "Invoke",
+      "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+      "method": 5,
+      "mutating": false,
+      "send_attempted": true,
+      "response_received": true
+    }
+  ],
+  "report_path": "D:\\PLCnext-MCP-Workspace\\controller-reads\\c3743c60b7aa448a8b4ae9b9b749a46b\\result.json"
+}

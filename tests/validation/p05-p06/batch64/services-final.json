@@ -1,0 +1,32 @@
+{
+  "atUtc": "2026-10-26T04:19:41.7510554Z",
+  "backendPid": 14160,
+  "backendInstances": 1,
+  "frontendPid": 29140,
+  "frontendStatus": 200,
+  "apiStatus": 200,
+  "mockPid": 23680,
+  "listening": [
+    {
+      "LocalPort": 8080,
+      "OwningProcess": 14160
+    },
+    {
+      "LocalPort": 18080,
+      "OwningProcess": 23680
+    },
+    {
+      "LocalPort": 11502,
+      "OwningProcess": 23680
+    },
+    {
+      "LocalPort": 8090,
+      "OwningProcess": 29140
+    }
+  ],
+  "runtimeJarSha256": "FFD15C78C9FE040C58CDF83F4D6CA059018CDD8211B6502A025BC3438B8501D5",
+  "unauthenticatedOpenApiStatus": 401,
+  "authenticatedDiagnosticsCode": 200,
+  "backendInstanceId": "ecf7fc8f-1489-4685-b124-f487ade6bfaa",
+  "apiEndpoint": "/api/device/iot-diagnostics"
+}

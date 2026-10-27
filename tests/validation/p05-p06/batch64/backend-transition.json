@@ -1,0 +1,7 @@
+{
+  "oldPid": 51060,
+  "oldExited": true,
+  "newPid": 55264,
+  "jar": "logs/hub-batch64-trace-runtime.jar",
+  "temporaryDatabaseCreatedByRuntime": false
+}

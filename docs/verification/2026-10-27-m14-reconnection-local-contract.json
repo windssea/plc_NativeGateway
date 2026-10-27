@@ -1,0 +1,69 @@
+{
+  "schema": "m14-reconnection-local-contract/v1",
+  "atUtc": "2026-10-27T03:20:50.553804+00:00",
+  "localDate": "2026-10-27",
+  "timezone": "Asia/Shanghai",
+  "status": "REPAIR_NOT_VISIBLE_LOCAL_ACCEPTANCE_FAILED",
+  "priorValidationCommit": "122cc65",
+  "freshMcpVersion": "0.6.9",
+  "loadedSource": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\audit_collector.py",
+  "loadedAuditCollectorSha256": "9431b563de61e6ab3fcd598edcc4aa393f5f47a70d290ed4bd08eaf2b9474334",
+  "identicalToFailedBoot74": true,
+  "contractProbe": {
+    "scope": "PURE_LOCAL_TRIGGERING_HEAD_DURABILITY_CONTRACT",
+    "source": "D:\\work\\code\\PLCnext-Engineer-mcp\\src\\plcnext_mcp\\audit_collector.py",
+    "sourceSha256": "9431b563de61e6ab3fcd598edcc4aa393f5f47a70d290ed4bd08eaf2b9474334",
+    "fixtureIsSynthetic": true,
+    "failureRaised": "Native evidence ring incomplete; cohort cannot pass",
+    "triggeringHeadPreserved": false,
+    "recordCount": 0,
+    "journalBytes": 0,
+    "captureCursorAfter": 128,
+    "associationCursorAfter": 0,
+    "networkConnectionsForbidden": true,
+    "sqliteConnectionsForbidden": true,
+    "databaseCreated": false,
+    "physicalPlcAccessed": false,
+    "originalHead": {
+      "BootId": "LOCAL-CONTRACT-ONLY",
+      "Active.Version": 13,
+      "CaptureBuffer.AuditEnabled": true,
+      "CaptureBuffer.AuditReadSeq": 128,
+      "CaptureBuffer.AuditWriteSeq": 700,
+      "CaptureBuffer.AssociationReadSeq": 0,
+      "CaptureBuffer.AssociationWriteSeq": 0,
+      "CaptureBuffer.AuditDropped": 60,
+      "CaptureBuffer.AssociationDropped": 0,
+      "CaptureBuffer.EvidenceComplete": false,
+      "CaptureBuffer.AuditFactSchema": 2,
+      "CaptureBuffer.AuditFactsComplete": true
+    },
+    "records": [],
+    "accepted": false
+  },
+  "physicalPlcAccessedThisTurn": false,
+  "plcDownloadedThisTurn": false,
+  "temporaryDatabaseCreated": false,
+  "sharedServicesStartedOrStopped": false,
+  "backendInstances": 1,
+  "lastKnownOriginalRuntime": "native-0.5.0 / boot75 (prior real observation only)",
+  "performanceRetestsPaused": true,
+  "rawEvidence": [
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-r2-20261027\\capabilities.json",
+      "sha256": "f2ab03ef3ff704e2a493d1d95420a2b1810b467cd636d2153cf01b0dbd8f541f"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-r2-20261027\\probe_failure_head.py",
+      "sha256": "038aff7e18bc2e10c8f9a406d30951c089ffd83b20700068f4a788f15edb53ac"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-r2-20261027\\failure-head-contract-result.json",
+      "sha256": "058855acd9715eb89e9b19520070d484fd98bbc9cfc5195ee1c259cc684a1beb"
+    },
+    {
+      "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-r1-20261027\\reconnection-source-check.json",
+      "sha256": "3b73eab5eeeed6c06fc8aa70f2e977fe5be013164c2f58631a1d625f6b9d0f76"
+    }
+  ]
+}

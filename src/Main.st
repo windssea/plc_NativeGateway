@@ -16,6 +16,21 @@ END_VAR
 VAR
     Store : NG_Store;
     CaptureBuffer : NG_Buffer;
+    ReportPolicy : NG_ReportPolicy;
+    BufferMaintenance : NG_BufferMaintenance;
+    BatchBuilder : NG_BatchBuilder;
+    Delivery : NG_DeliveryParallel;
+    AuditDrain : NG_AuditDrain;
+    Diagnostics : NG_Diagnostics;
+    CheckCounters : NG_CheckCounters;
+    DataGate : BOOL;
+    PipelinePhase : USINT;
+    SubmitDataAck : BOOL;
+    DataAckId : NG_Id;
+    DataAckStored : BOOL;
+    DataAckRetryable : BOOL;
+    DataAckCodes : NG_Text;
+    TxBatchGeneration : UDINT;
     CaptureCompare : NG_SameConfig;
     CaptureConfigSelector : NG_ConfigSlot;
     CaptureSlot : UINT;
@@ -23,6 +38,10 @@ VAR
     CaptureConfigChanged : BOOL;
     CaptureReady : BOOL;
     CaptureExtraBytes : UDINT;
+    CaptureState : NG_SourceState;
+    CaptureActivation : NG_SourceStateCore;
+    CaptureSourceEnabled : BOOL;
+    CaptureLivenessStart : ULINT;
     CaptureIgnored : BOOL;
     Pending : NG_Durable;
     Durable : NG_Durable;
@@ -58,6 +77,31 @@ VAR
     Save : BOOL;
     SaveReason : INT;
     Mqtt : NG_Mqtt;
+    NativeClock : NG_PlatformTime;
+    TimeChecks : NG_PlatformTimeChecks;
+    TimeReader : NG_TimeResponse;
+    TimeMode : BOOL; (* Explicit candidate profile; legacy default is SYSTEM_RTC. *)
+    TimeBasis : NG_Id := 'site-hub-1';
+    TimeDriftPpm : LREAL := 1000;
+    TimeDriftEvidence : NG_Text;
+    TimeBootSeen : NG_Id;
+    TimeReset : BOOL;
+    SystemUnixMs : ULINT;
+    SnapshotMonoMs : ULINT;
+    TimeResponsePending : BOOL;
+    TimeResponseT2 : ULINT;
+    TimeResponseT3 : ULINT;
+    TimeResponseM1 : ULINT;
+    TimeResponseM4 : ULINT;
+    RxReceivedMonoMs : ULINT;
+    EnqueueGate : BOOL;
+    SdkSendGate : BOOL;
+    TxClockRevision : ULINT;
+    TxTokenMonoMs : ULINT;
+    TxBootId : NG_Id;
+    TxConnectionRevision : ULINT;
+    AckActiveVersion : ULINT;
+    AckActiveMessageId : NG_Id;
     Resources : NG_Resources;
     ResourcesPending : BOOL;
     ResourcesPayload : STRING[2048];
@@ -200,10 +244,17 @@ END_VAR
 Clock(IN := NOT Clock.Q, PT := T#20d);
 NowMs := Epoch + TO_ULINT(TO_DINT(Clock.ET));
 IF Clock.Q THEN Epoch := Epoch + ULINT#1728000000; END_IF;
-UnixMs := NG_Unix(RTC,Bootstrap.UtcOffsetMinutes);
-Reconnect := FALSE; ResetMeters := FALSE; TxRequest := FALSE; RxAccept := FALSE;
+SystemUnixMs := NG_Unix(RTC,Bootstrap.UtcOffsetMinutes); UnixMs:=SystemUnixMs;
+Reconnect := FALSE; ResetMeters := FALSE; TxRequest := FALSE; RxAccept := FALSE; SubmitDataAck:=FALSE;
 Store(Save := Save, Candidate := Pending);
 Save := FALSE;
+(* Pure startup assertions reuse the existing parser document/byte buffer.
+   They finish before identity persistence, acquisition or MQTT is enabled. *)
+TimeChecks(Doc:=Doc,Bytes:=Rx);
+IF NOT TimeChecks.Done THEN RETURN; END_IF;
+IF (TimeChecks.FailedChecks<>0) OR (TimeChecks.WireFailed<>0) THEN
+    HMI.Status:='TIME ASSERTIONS FAILED: no gateway traffic started.'; RETURN;
+END_IF;
 IF Store.Ready AND NOT Initialized THEN
     Durable:=Store.Active; Active:=Durable.Config; Bootstrap:=Durable.Bootstrap;
     IF Bootstrap.GatewayId='' THEN
@@ -299,10 +350,43 @@ IF RxStage=30 THEN
     ProtocolConfig := Active;
     IF Durable.Managed AND NOT Durable.HasHubBaseline AND Durable.LocalChanges THEN ProtocolConfig := BlankConfig; END_IF;
 END_IF;
+IF Mqtt.SessionCount <> SessionSeen THEN
+    SessionSeen := Mqtt.SessionCount; SessionId := CONCAT(BootId,'-',TO_STRING(SessionSeen, '{0:d}')); StatusPending := TRUE; GetPending := TRUE; LastHeartbeat := 0; HeartbeatPending:=TRUE;
+    (* Retry deadlines and attempts survive reconnect; no burst/reset. *)
+END_IF;
+TimeReset:=TimeBootSeen<>BootId; TimeBootSeen:=BootId; SnapshotMonoMs:=NowMs;
+NativeClock(Reset:=TimeReset,PlatformMode:=TimeMode,Connected:=Mqtt.Connected,SessionId:=SessionId,NowMs:=NowMs,SystemUtcMs:=SystemUnixMs,
+    TimeBasisRef:=TimeBasis,DriftBoundPpm:=TimeDriftPpm,DriftEvidence:=TimeDriftEvidence,HistoryBasisRef:='',HistoryUtcLowerMs:=0,
+    RequestSubmitted:=Mqtt.TxSubmitted AND (Mqtt.SubmittedKind=8),RequestSubmittedMonoMs:=Mqtt.TxSubmitMonoMs,
+    ResponseReady:=TimeResponsePending,ResponseClientMonoMs:=TimeResponseM1,ResponseReceivedMonoMs:=TimeResponseM4,
+    ServerReceivedMs:=TimeResponseT2,ServerSentMs:=TimeResponseT3,
+    HeartbeatSubmitted:=Mqtt.TxSubmitted AND (Mqtt.SubmittedKind=4),ConfigGetSubmitted:=Mqtt.TxSubmitted AND (Mqtt.SubmittedKind=2));
+TimeResponsePending:=FALSE;
+IF TimeMode THEN UnixMs:=NativeClock.UtcMs; END_IF;
+CaptureBuffer.PlatformTime:=TimeMode; CaptureBuffer.TimeValid:=NativeClock.TimeValid; CaptureBuffer.ClockRevision:=NativeClock.ClockRevision;
+CaptureBuffer.DecisionSnapshotMonoMs:=NowMs;
+(* Charge an attempt at actual library invocation, including uncertain SDK
+   outcomes. A proven Busy/Done submission separately opens control gates. *)
+IF Mqtt.TxInvoked AND (Mqtt.SubmittedKind=5) AND (Head>=1) AND (Head<=16) THEN
+    IF (CaptureBuffer.BatchGenerations[Head]=TxBatchGeneration) AND (Outbox[Head].MessageId=TxBatchId) THEN
+        Outbox[Head].WasSent:=TRUE;
+        IF Outbox[Head].Attempts<UDINT#4294967295 THEN Outbox[Head].Attempts:=Outbox[Head].Attempts+1; END_IF;
+        AckWaitMs:=60000; IF Outbox[Head].Attempts=1 THEN AckWaitMs:=30000; END_IF;
+        Outbox[Head].LastSentMs:=Mqtt.TxSubmitMonoMs; Outbox[Head].RetryAtMs:=Mqtt.TxSubmitMonoMs+AckWaitMs+TO_ULINT(Head)*17;
+        CaptureBuffer.NextSendAt:=Mqtt.TxSubmitMonoMs+334;
+        CaptureBuffer.PreferSend:=USINT#3-CaptureBuffer.BatchOwners[Head].Category;
+    END_IF;
+END_IF;
 Header := CONCAT('{"schemaVersion":1,"gatewayId":',NG_Quote(Bootstrap.GatewayId),',"timestamp":',TO_STRING(UnixMs, '{0:d}'));
-IF (RxStage = 0) AND Mqtt.RxReady AND NOT AckPending AND NOT Store.Busy AND (SaveReason = 0) THEN
+IF (RxStage = 0) AND Mqtt.RxReady AND NOT Store.Busy AND (SaveReason = 0) THEN
     RxTopic := Mqtt.RxTopic; RxLength := Mqtt.RxLength; RxRetain := Mqtt.RxRetained;
-    IF (RxLength = 0) OR (RxLength > 131071) THEN RxAccept := TRUE; HMI.ConfigResult := 'PAYLOAD_TOO_LARGE';
+    RxReceivedMonoMs:=Mqtt.RxReceivedMonoMs;
+    IF AckPending AND (RxTopic<>CONCAT(Prefix,'data/ack')) AND (RxTopic<>CONCAT(Prefix,'time/response')) THEN
+        (* One bounded pending config ACK. Never block TIME/ACK behind another
+           command while unsynced; Hub retry/config-get will reconcile it. *)
+        RxAccept:=TRUE; GetPending:=TRUE;
+    ELSIF (RxTopic=CONCAT(Prefix,'time/response')) AND ((NOT TimeMode) OR (RxLength>2048)) THEN RxAccept:=TRUE;
+    ELSIF (RxLength = 0) OR (RxLength > 131071) THEN RxAccept := TRUE; HMI.ConfigResult := 'PAYLOAD_TOO_LARGE';
     ELSE IsPatch := RxTopic = CONCAT(Prefix,'config/patch'); RxStage := 10;
     END_IF;
 END_IF;
@@ -313,26 +397,25 @@ CASE RxStage OF
 10:
     IF Parser.Error THEN HMI.ConfigResult := Parser.ErrorText; RxAccept := TRUE; RxStage := 0;
     ELSIF Parser.Done THEN
-        IF RxTopic = CONCAT(Prefix,'data/ack') THEN
-            AckReader(GatewayId:=Bootstrap.GatewayId,Doc:=Doc);
-            IF AckReader.Valid THEN
-                FOR q:=1 TO 16 DO
-                    IF (Outbox[q].MessageId=AckReader.MessageId) AND Outbox[q].WasSent AND NOT Outbox[q].Dead THEN
-                        IF AckReader.Stored THEN
-                            Outbox[q]:=EmptyPacket; QueueCount:=QueueCount-1; HMI.ConfirmedBatches:=HMI.ConfirmedBatches+1;
-                        ELSIF AckReader.Retryable THEN
-                            Outbox[q].RetryAtMs:=NowMs+60000; Outbox[q].LastError:=AckReader.Codes;
-                            HMI.ConfigResult:=CONCAT('RETRY data/ack: ',AckReader.Codes);
-                        ELSE
-                            Outbox[q].Dead:=TRUE; Outbox[q].LastError:=AckReader.Codes;
-                            HMI.ConfigResult:=CONCAT('DEAD data/ack: ',AckReader.Codes);
-                        END_IF;
-                        EXIT;
-                    END_IF;
-                END_FOR;
-            ELSE HMI.InvalidAcks:=HMI.InvalidAcks+1; HMI.ConfigResult:='Invalid data/ack ignored.';
+        IF RxTopic=CONCAT(Prefix,'time/response') THEN
+            TimeReader(Length:=RxLength,Retained:=RxRetain,GatewayId:=Bootstrap.GatewayId,BootId:=BootId,SessionId:=SessionId,
+                RequestId:=NativeClock.RequestId,ClientMonoMs:=NativeClock.RequestClientMonoMs,Doc:=Doc,Bytes:=Rx);
+            IF TimeMode AND TimeReader.Valid AND NativeClock.PendingRequest THEN
+                TimeResponseT2:=TimeReader.ServerReceivedMs; TimeResponseT3:=TimeReader.ServerSentMs;
+                TimeResponseM1:=NativeClock.RequestClientMonoMs; TimeResponseM4:=RxReceivedMonoMs; TimeResponsePending:=TRUE;
             END_IF;
-            RxAccept := TRUE; RxStage := 0;
+            RxAccept:=TRUE; RxStage:=0;
+        ELSIF RxTopic = CONCAT(Prefix,'data/ack') THEN
+            AckReader(GatewayId:=Bootstrap.GatewayId,Doc:=Doc);
+            IF AckReader.Valid AND NOT RxRetain THEN
+                IF NOT Delivery.AckBusy THEN
+                    SubmitDataAck:=TRUE; DataAckId:=AckReader.MessageId;
+                    DataAckStored:=AckReader.Stored; DataAckRetryable:=AckReader.Retryable; DataAckCodes:=AckReader.Codes;
+                    RxAccept:=TRUE; RxStage:=0;
+                END_IF;
+            ELSE HMI.InvalidAcks:=HMI.InvalidAcks+1; HMI.ConfigResult:='Invalid data/ack ignored.';
+                RxAccept:=TRUE; RxStage:=0;
+            END_IF;
         ELSE RxStage := 20; END_IF;
     END_IF;
 20: IF Hash.Done THEN RxStage := 30; END_IF;
@@ -368,7 +451,7 @@ CASE RxStage OF
 40: (* Wait for the durable commit. *)
 90:
     IF (RequestId <> '') AND (RequestVersion > 0) THEN
-        AckPayload := CONCAT(Header,',"messageId":',NG_Quote(RequestId),',"configVersion":',TO_STRING(RequestVersion, '{0:d}'),',"activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"status":',NG_Quote(Result),',"errors":[');
+        AckPayload := CONCAT(',"messageId":',NG_Quote(RequestId),',"configVersion":',TO_STRING(RequestVersion, '{0:d}'),',"activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"status":',NG_Quote(Result),',"errors":[');
         IF ErrorCode <> '' THEN WireError:=NG_WireCode(ErrorCode,IsPatch); AckPayload := CONCAT(AckPayload,'{"code":',NG_Quote(WireError),',"path":"/","message":',NG_Quote(AckMessage),'}'); END_IF;
         AckPayload := CONCAT(AckPayload,']');
         IF IsPatch THEN
@@ -378,6 +461,7 @@ CASE RxStage OF
             IF HubActiveVersion > 0 THEN AckPayload := CONCAT(AckPayload,NG_Quote(HubActiveMessageId)); ELSE AckPayload := CONCAT(AckPayload,'null'); END_IF;
         ELSE AckTopic := CONCAT(Prefix,'config/ack'); END_IF;
         AckPayload := CONCAT(AckPayload,'}'); AckPending := TRUE;
+        AckActiveVersion:=HubActiveVersion; AckActiveMessageId:=HubActiveMessageId;
     END_IF;
     HMI.ConfigResult := CONCAT(Result,': ',ErrorCode); RxAccept := TRUE; RxStage := 0;
 END_CASE;
@@ -491,13 +575,16 @@ ELSIF Editor.SubmitBroker AND (SaveReason = 0) THEN
         Pending.Config:=BlankConfig; Pending.Config.batchIntervalMs:=1000; Pending.Config.maxBatchPoints:=32;
         Pending.ReplayIndex:=0; FOR i:=1 TO 32 DO Pending.Requests[i].MessageId:=''; END_FOR;
     END_IF;
-    Save:=TRUE; SaveReason:=3;
+    IF IdentityChanged THEN
+        HMI.Status:='IDENTITY_CHANGE_REQUIRES_MAINTENANCE: preserve RAM ownership; restart through controlled maintenance.';
+        IdentityChanged:=FALSE;
+    ELSE Save:=TRUE; SaveReason:=3; END_IF;
 END_IF;
 (* P01 resource fence: actual IEC SIZEOF including existing packet/materialization
    copies and source FB growth; fixed scratch reserve covers call temporaries.
    NG_Durable and the on-disk v4 layout are unchanged. *)
 CaptureBuffer.RecordBytes:=SIZEOF(CaptureBuffer.Scratch);
-CaptureExtraBytes:=SIZEOF(Outbox)+SIZEOF(Samples)+SIZEOF(Values)+SIZEOF(Item)+SIZEOF(TxPayload)+SIZEOF(EmptyPacket)+SIZEOF(sample)+SIZEOF(point)+SIZEOF(Tx)+SIZEOF(Rx)+UDINT#16384+UDINT#135680+UDINT#65536;
+CaptureExtraBytes:=SIZEOF(Outbox)+SIZEOF(Samples)+SIZEOF(Values)+SIZEOF(Item)+SIZEOF(TxPayload)+SIZEOF(EmptyPacket)+SIZEOF(sample)+SIZEOF(point)+SIZEOF(Tx)+SIZEOF(Rx)+SIZEOF(DevicesJson)+SIZEOF(Header)+UDINT#16384+UDINT#135680+UDINT#65536+UDINT#16384+SIZEOF(CaptureSourceEnabled)+SIZEOF(CaptureLivenessStart)+SIZEOF(PipelinePhase)+UDINT#2048; (* audit-v2 FB-instance growth bound; checked against finalized native types *)
 CaptureBuffer.LayoutBytes:=SIZEOF(CaptureBuffer)+CaptureExtraBytes;
 CaptureBuffer.LayoutValid:=(CaptureBuffer.LayoutBytes<=UDINT#4194304);
 IF CaptureBuffer.ActiveSlot=0 THEN
@@ -510,13 +597,15 @@ IF CaptureBuffer.ActiveSlot=0 THEN
 END_IF;
 (* An identity change persists a new boot before capture restarts. Its reserved
    empty configuration slot has no source events and may be rebound in place. *)
-IF (CaptureBuffer.ActiveSlot>0) AND (CaptureBuffer.Configs[CaptureBuffer.ActiveSlot].CaptureBootId<>BootId) THEN
+IF CaptureBuffer.ActiveSlot>0 THEN
+IF CaptureBuffer.Configs[CaptureBuffer.ActiveSlot].CaptureBootId<>BootId THEN
     IF CaptureBuffer.Configs[CaptureBuffer.ActiveSlot].References=0 THEN
         CaptureBuffer.Configs[CaptureBuffer.ActiveSlot].CaptureBootId:=BootId;
         IF CaptureBuffer.SamplingGeneration>=ULINT#9007199254740991 THEN CaptureBuffer.CaptureStopped:=TRUE;
         ELSE CaptureBuffer.SamplingGeneration:=CaptureBuffer.SamplingGeneration+1; END_IF;
     ELSE CaptureBuffer.CaptureStopped:=TRUE;
     END_IF;
+END_IF;
 END_IF;
 (* Reserve a dictionary slot before the next scan submits the durable save.
    On full dictionary keep both current configuration and captured history. *)
@@ -529,7 +618,40 @@ IF Save AND ((SaveReason=1) OR (SaveReason=2) OR (SaveReason=6) OR ((SaveReason=
         SaveReason:=0;
     END_IF;
 END_IF;
+CaptureBuffer.AuditEnabled:=TRUE;
+CaptureBuffer.SourceWorkUs:=0; CaptureBuffer.WorkDeadlineUs:=0;
+CaptureBuffer.PipelineMarkUs:=GET_MICROSECONDS(TRUE);
+AuditDrain(BootId:=BootId,Buffer:=CaptureBuffer);
+CaptureBuffer.SourceWorkUs:=GET_MICROSECONDS(TRUE)-CaptureBuffer.PipelineMarkUs;
 CaptureReady:=CaptureBuffer.LayoutValid AND NOT CaptureBuffer.CaptureStopped AND (CaptureBuffer.ActiveSlot>0);
+(* Initialize all active sources before dispatch; one global timing bracket
+   avoids charging hundreds of clock calls against the actual capture work. *)
+CaptureBuffer.PipelineMarkUs:=GET_MICROSECONDS(TRUE);
+IF NOT ResetMeters AND CaptureReady AND
+   ((CaptureBuffer.SourceSweepGeneration<>CaptureBuffer.SamplingGeneration) OR
+    (CaptureBuffer.SourceSweepEnabled<>Active.enabled)) THEN
+    CaptureBuffer.StaleCheckAt:=ULINT#9007199254740991;
+    FOR i:=1 TO Active.DeviceCount DO
+        FOR p:=Active.Devices[i].PointStart TO Active.Devices[i].PointStart+Active.Devices[i].PointCount-1 DO
+            CaptureSourceEnabled:=Active.enabled AND Active.Devices[i].enabled AND Active.Points[p].enabled;
+            (* The core owns the same activation/disable guards. Bind the
+               checked point references once instead of repeating the guards
+               and wrapper/array lookups for every point in this bulk scan. *)
+            CaptureActivation(Index:=TO_UINT(p),Enabled:=CaptureSourceEnabled,NowMs:=NowMs,UnixMs:=UnixMs,
+                StaleAfterMs:=Active.Points[p].staleAfterMs,CheckStale:=FALSE,
+                Cursor:=CaptureBuffer.Cursors[p],Sample:=Samples[p],Buffer:=CaptureBuffer);
+        END_FOR;
+    END_FOR;
+    CaptureBuffer.SourceSweepGeneration:=CaptureBuffer.SamplingGeneration;
+    CaptureBuffer.SourceSweepEnabled:=Active.enabled;
+END_IF;
+CaptureBuffer.SourceWorkUs:=CaptureBuffer.SourceWorkUs+GET_MICROSECONDS(TRUE)-CaptureBuffer.PipelineMarkUs;
+(* At most two new connections per 20 ms scan: spread 50 activations over
+   500 ms, within the frozen 5 s grid. Active I/O/final results stay immediate. *)
+CaptureBuffer.ConnectBudget:=2;
+(* Start up to 100 point reads/s, twice the frozen 50/s input load. Limit
+   new reads only; nominal grids and already-completed results are unchanged. *)
+CaptureBuffer.PollStartBudget:=2;
 Meter1(Enable := (1 <= Active.DeviceCount) AND Active.enabled AND CaptureReady, Reset := ResetMeters, NowMs := NowMs, UnixMs := UnixMs, Device := Active.Devices[1], Points := Active.Points, Samples := Samples, Buffer := CaptureBuffer, StateText => Meters[1].StateText, LastError => Meters[1].LastError, LastGoodTimestamp => Meters[1].LastGoodTimestamp, Completed => Meters[1].Completed);
 Meter2(Enable := (2 <= Active.DeviceCount) AND Active.enabled AND CaptureReady, Reset := ResetMeters, NowMs := NowMs, UnixMs := UnixMs, Device := Active.Devices[2], Points := Active.Points, Samples := Samples, Buffer := CaptureBuffer, StateText => Meters[2].StateText, LastError => Meters[2].LastError, LastGoodTimestamp => Meters[2].LastGoodTimestamp, Completed => Meters[2].Completed);
 Meter3(Enable := (3 <= Active.DeviceCount) AND Active.enabled AND CaptureReady, Reset := ResetMeters, NowMs := NowMs, UnixMs := UnixMs, Device := Active.Devices[3], Points := Active.Points, Samples := Samples, Buffer := CaptureBuffer, StateText => Meters[3].StateText, LastError => Meters[3].LastError, LastGoodTimestamp => Meters[3].LastGoodTimestamp, Completed => Meters[3].Completed);
@@ -580,63 +702,70 @@ Meter47(Enable := (47 <= Active.DeviceCount) AND Active.enabled AND CaptureReady
 Meter48(Enable := (48 <= Active.DeviceCount) AND Active.enabled AND CaptureReady, Reset := ResetMeters, NowMs := NowMs, UnixMs := UnixMs, Device := Active.Devices[48], Points := Active.Points, Samples := Samples, Buffer := CaptureBuffer, StateText => Meters[48].StateText, LastError => Meters[48].LastError, LastGoodTimestamp => Meters[48].LastGoodTimestamp, Completed => Meters[48].Completed);
 Meter49(Enable := (49 <= Active.DeviceCount) AND Active.enabled AND CaptureReady, Reset := ResetMeters, NowMs := NowMs, UnixMs := UnixMs, Device := Active.Devices[49], Points := Active.Points, Samples := Samples, Buffer := CaptureBuffer, StateText => Meters[49].StateText, LastError => Meters[49].LastError, LastGoodTimestamp => Meters[49].LastGoodTimestamp, Completed => Meters[49].Completed);
 Meter50(Enable := (50 <= Active.DeviceCount) AND Active.enabled AND CaptureReady, Reset := ResetMeters, NowMs := NowMs, UnixMs := UnixMs, Device := Active.Devices[50], Points := Active.Points, Samples := Samples, Buffer := CaptureBuffer, StateText => Meters[50].StateText, LastError => Meters[50].LastError, LastGoodTimestamp => Meters[50].LastGoodTimestamp, Completed => Meters[50].Completed);
-IF Mqtt.SessionCount <> SessionSeen THEN
-    SessionSeen := Mqtt.SessionCount; SessionId := CONCAT(BootId,'-',TO_STRING(SessionSeen, '{0:d}')); StatusPending := TRUE; GetPending := TRUE; LastHeartbeat := 0; HeartbeatPending:=TRUE;
-    FOR i := 1 TO 16 DO Outbox[i].LastSentMs := 0; END_FOR;
+(* Same-scan final physical results win over stale transitions. *)
+CaptureBuffer.PipelineMarkUs:=GET_MICROSECONDS(TRUE);
+IF NOT ResetMeters AND CaptureReady AND (NowMs>=CaptureBuffer.StaleCheckAt) THEN
+    CaptureBuffer.StaleCheckAt:=ULINT#9007199254740991;
+    FOR p:=1 TO Active.PointCount DO
+        CaptureLivenessStart:=CaptureBuffer.SourceStaleDue[p];
+        IF CaptureLivenessStart>0 THEN
+            IF NowMs>=CaptureLivenessStart THEN
+                CaptureState(Index:=TO_UINT(p),Enabled:=CaptureBuffer.Cursors[p].Enabled,NowMs:=NowMs,UnixMs:=UnixMs,
+                    StaleAfterMs:=Active.Points[p].staleAfterMs,CheckStale:=TRUE,Samples:=Samples,Buffer:=CaptureBuffer);
+                CaptureLivenessStart:=CaptureBuffer.SourceStaleDue[p];
+            END_IF;
+            IF (CaptureLivenessStart>0) AND (CaptureLivenessStart<CaptureBuffer.StaleCheckAt) THEN
+                CaptureBuffer.StaleCheckAt:=CaptureLivenessStart;
+            END_IF;
+        END_IF;
+    END_FOR;
 END_IF;
+CaptureBuffer.SourceWorkUs:=CaptureBuffer.SourceWorkUs+GET_MICROSECONDS(TRUE)-CaptureBuffer.PipelineMarkUs;
 IF NowMs >= LastGet+30000 THEN GetPending := TRUE; END_IF;
 (* Match IoT's 30-second heartbeat in Hub mode. A 50-device heartbeat causes
    50 state writes in Hub; sending it every five seconds starves telemetry. *)
 IF (Durable.Managed AND (NowMs>=LastHeartbeat+30000)) OR
    (NOT Durable.Managed AND (NowMs>=LastHeartbeat+5000)) THEN HeartbeatPending:=TRUE; END_IF;
-IF TelemetryAllowed AND Active.enabled AND NOT BatchSweep AND (NowMs >= LastBatch+Active.batchIntervalMs) AND (Active.Version > 0) THEN
-    LastBatch := NowMs; BatchSweep := TRUE; SweepDevice := 1; SweepPoint := 1;
+(* ENQUEUE and SEND are separate. Already admitted histories survive time loss. *)
+DataGate:=Mqtt.Connected AND TelemetryAllowed AND (UnixMs>0) AND NOT CaptureBuffer.CaptureStopped;
+EnqueueGate:=TelemetryAllowed AND (UnixMs>0) AND NOT CaptureBuffer.CaptureStopped;
+IF TimeMode THEN
+    EnqueueGate:=EnqueueGate AND NativeClock.EnqueueAllowed;
+    DataGate:=DataGate AND NativeClock.SendAllowed;
 END_IF;
-IF NOT Active.enabled OR NOT TelemetryAllowed THEN BatchSweep := FALSE; END_IF;
-// Apply backpressure before advancing report cursors. Keep queued batches intact
-// while configuration parsing/storage temporarily delays business ACK handling.
-IF BatchSweep AND (QueueCount < 16) THEN
-    Values := ''; BatchCount := 0; BatchFull := FALSE;
-    FOR d := SweepDevice TO Active.DeviceCount DO
-        IF Active.Devices[d].enabled THEN
-            FirstPoint := 1; IF d = SweepDevice THEN FirstPoint := SweepPoint; END_IF;
-            FOR p := FirstPoint TO Active.Devices[d].PointCount DO
-                point := Active.Points[Active.Devices[d].PointStart+p-1]; sample := Samples[Active.Devices[d].PointStart+p-1];
-                IF point.enabled THEN
-                    Quality := sample.Quality; IF Quality = '' THEN Quality := 'UNKNOWN'; END_IF;
-                    Changed := (Quality <> sample.ReportQuality) OR (ABS(sample.Value-sample.ReportValue)>point.deadband);
-                    Due := (sample.LastReportMs = 0) OR (((point.reportMode = 'change') OR (point.reportMode = 'change_or_cyclic')) AND sample.Fresh AND Changed) OR (((point.reportMode = 'cyclic') OR (point.reportMode = 'change_or_cyclic')) AND (NowMs >= sample.LastReportMs+point.reportIntervalMs));
-                    IF Due THEN
-                        IF (BatchCount >= 64) OR (BatchCount >= TO_INT(Active.maxBatchPoints)) OR (LEN(Values)>=12000) THEN
-                            SweepDevice := d; SweepPoint := p; BatchFull := TRUE; EXIT;
-                        END_IF;
-                        IF Quality <> 'GOOD' THEN JsonValue := 'null';
-                        ELSIF point.dataType = 'bool' THEN IF sample.Value = 0 THEN JsonValue := 'false'; ELSE JsonValue := 'true'; END_IF;
-                        ELSE JsonValue := TO_STRING(sample.Value,'{0:E16}'); END_IF;
-                        Item := CONCAT('{"deviceId":',NG_Quote(Active.Devices[d].deviceId),',"pointId":',NG_Quote(point.pointId),',"value":',JsonValue,',"quality":',NG_Quote(Quality),',"timestamp":');
-                        IF sample.Timestamp = 0 THEN Item := CONCAT(Item,TO_STRING(UnixMs, '{0:d}'),'}'); ELSE Item := CONCAT(Item,TO_STRING(sample.Timestamp, '{0:d}'),'}'); END_IF;
-                        IF BatchCount > 0 THEN Values := CONCAT(Values,','); END_IF;
-                        Values := CONCAT(Values,Item); BatchCount := BatchCount+1;
-                        IF QueueCount < 16 THEN Samples[Active.Devices[d].PointStart+p-1].LastReportMs := NowMs; Samples[Active.Devices[d].PointStart+p-1].ReportValue := sample.Value; Samples[Active.Devices[d].PointStart+p-1].ReportQuality := Quality; Samples[Active.Devices[d].PointStart+p-1].Fresh := FALSE; END_IF;
-                    END_IF;
-                END_IF;
-            END_FOR;
-        END_IF;
-        IF BatchFull THEN EXIT; END_IF;
-    END_FOR;
-    IF NOT BatchFull THEN BatchSweep := FALSE; END_IF;
-    IF BatchCount > 0 THEN
-        IF QueueCount >= 16 THEN Dropped := Dropped+1;
-        ELSE
-            FOR i := 1 TO 16 DO IF Outbox[Tail].MessageId = '' THEN EXIT; END_IF; Tail := Tail MOD 16+1; END_FOR;
-            Sequence := Sequence+1; Outbox[Tail].MessageId := CONCAT('d-',BootId,'-',TO_STRING(Sequence, '{0:d}'));
-            Outbox[Tail].Payload := CONCAT(Header,',"messageId":',NG_Quote(Outbox[Tail].MessageId),',"bootId":',NG_Quote(BootId),',"sequence":',TO_STRING(Sequence, '{0:d}'),',"configVersion":',TO_STRING(Active.Version, '{0:d}'),',"values":[',Values,']}');
-            Outbox[Tail].Length := TO_UDINT(LEN(Outbox[Tail].Payload)); Outbox[Tail].LastSentMs := 0; QueueCount := QueueCount+1; Tail := Tail MOD 16+1;
-        END_IF;
-    END_IF;
+(* Mandatory physical capture is never delayed. Share the remaining 825 us.
+   Builder plus its first hash consumes about three fifths of isolated cost.
+   Five scans grant three builder-first turns and two delivery-first turns;
+   the inner two-call priority hold gives send and ACK equal delivery turns. *)
+CaptureBuffer.PipelineMarkUs:=GET_MICROSECONDS(TRUE);
+CaptureBuffer.WorkDeadlineUs:=CaptureBuffer.PipelineMarkUs+ULINT#1;
+IF CaptureBuffer.SourceWorkUs<ULINT#825 THEN CaptureBuffer.WorkDeadlineUs:=CaptureBuffer.WorkDeadlineUs+ULINT#825-CaptureBuffer.SourceWorkUs; END_IF;
+PipelinePhase:=TO_USINT(PipelinePhase+1); IF PipelinePhase>5 THEN PipelinePhase:=1; END_IF;
+CaptureBuffer.WorkTurn:=(PipelinePhase<>2) AND (PipelinePhase<>4);
+BufferMaintenance(GateOpen:=DataGate,NowMs:=NowMs,Buffer:=CaptureBuffer,Packets:=Outbox);
+ReportPolicy(DeferCapacity:=TRUE,Buffer:=CaptureBuffer);
+IF CaptureBuffer.WorkTurn THEN
+BatchBuilder(GateOpen:=EnqueueGate,NowMs:=NowMs,UnixMs:=UnixMs,GatewayId:=Bootstrap.GatewayId,BootId:=BootId,BatchIntervalMs:=Active.batchIntervalMs,Buffer:=CaptureBuffer,Packets:=Outbox,Sequence:=Sequence);
+Delivery(GateOpen:=DataGate,NowMs:=NowMs,GatewayId:=Bootstrap.GatewayId,BootId:=BootId,
+    SubmitAck:=SubmitDataAck,AckMessageId:=DataAckId,AckStored:=DataAckStored,AckRetryable:=DataAckRetryable,AckCodes:=DataAckCodes,
+    Buffer:=CaptureBuffer,Packets:=Outbox);
+ELSE
+Delivery(GateOpen:=DataGate,NowMs:=NowMs,GatewayId:=Bootstrap.GatewayId,BootId:=BootId,
+    SubmitAck:=SubmitDataAck,AckMessageId:=DataAckId,AckStored:=DataAckStored,AckRetryable:=DataAckRetryable,AckCodes:=DataAckCodes,
+    Buffer:=CaptureBuffer,Packets:=Outbox);
+BatchBuilder(GateOpen:=EnqueueGate,NowMs:=NowMs,UnixMs:=UnixMs,GatewayId:=Bootstrap.GatewayId,BootId:=BootId,BatchIntervalMs:=Active.batchIntervalMs,Buffer:=CaptureBuffer,Packets:=Outbox,Sequence:=Sequence);
 END_IF;
+QueueCount:=0;
+CheckCounters(Buffer:=CaptureBuffer);
+Diagnostics(BootId:=BootId,GatewayId:=Bootstrap.GatewayId,NowMs:=NowMs,Force:=FALSE,Buffer:=CaptureBuffer);
+HMI.ResourceStatus:=CaptureBuffer.Diagnostics.HmiSummary;
+CaptureBuffer.WorkLastUs:=CaptureBuffer.SourceWorkUs+GET_MICROSECONDS(TRUE)-CaptureBuffer.PipelineMarkUs;
+CaptureBuffer.WorkMaxUs:=MAX(CaptureBuffer.WorkMaxUs,CaptureBuffer.WorkLastUs);
+FOR q:=1 TO 16 DO IF CaptureBuffer.BatchOwners[q].State>=2 THEN QueueCount:=QueueCount+1; END_IF; END_FOR;
+HMI.ConfirmedBatches:=TO_UDINT(MIN(CaptureBuffer.StoredBatchesTotal,ULINT#4294967295));
 IF TxActive THEN
-    IF Mqtt.TxDone THEN
+    IF Mqtt.TxRejected THEN TxActive:=FALSE;
+    ELSIF Mqtt.TxDone THEN
         TxActive := FALSE;
         CASE TxKind OF
             1: AckPending := FALSE; GetPending:=TRUE;
@@ -648,7 +777,7 @@ IF TxActive THEN
                    device/status only for changes after that snapshot. *)
                 DeviceSignatures:=HeartbeatSignatures;
             5:
-                IF Outbox[Head].MessageId=TxBatchId THEN Outbox[Head].LastSentMs:=NowMs; END_IF;
+                (* PUBACK is transport completion only; deadline starts at SDK submission. *)
                 HMI.PublishedBatches := HMI.PublishedBatches+1;
             6: ResourcesPending := FALSE;
             7: DeviceSignatures[EventTxIndex]:=EventTxSignature;
@@ -678,13 +807,23 @@ DeadCount:=0; FOR q:=1 TO 16 DO IF Outbox[q].Dead THEN DeadCount:=DeadCount+1; E
 HMI.DeadBatches:=TO_STRING(DeadCount,'{0:d}');
 IF NOT TxActive AND Mqtt.Connected AND NOT Mqtt.TxBusy THEN
     TxKind := 0; TxRetain := FALSE;
-    IF AckPending THEN TxKind := 1; TxPayload := AckPayload; TxTopic := AckTopic;
+    IF AckPending AND ((AckActiveVersion<>HubActiveVersion) OR (AckActiveMessageId<>HubActiveMessageId)) THEN
+        AckPending:=FALSE; GetPending:=TRUE;
+    END_IF;
+    IF TimeMode AND NativeClock.RequestWanted THEN
+        TxKind:=8; TxTopic:=CONCAT(Prefix,'time/request'); TxPayload:='{}';
+    ELSIF TimeMode AND NOT NativeClock.ControlAllowed THEN TxKind:=0;
+    ELSIF TimeMode AND NOT NativeClock.HeartbeatReady THEN HeartbeatPending:=TRUE;
+    ELSIF TimeMode AND NOT NativeClock.ConfigGetReady THEN GetPending:=TRUE; HeartbeatPending:=FALSE;
+    END_IF;
+    IF (TxKind=0) AND (NOT TimeMode OR NativeClock.ControlAllowed) THEN
+    IF AckPending AND (NOT TimeMode OR NativeClock.ConfigGetReady) THEN TxKind := 1; TxPayload := CONCAT(Header,AckPayload); TxTopic := AckTopic;
     ELSIF GetPending AND Durable.Managed AND NOT HeartbeatPending THEN
         TxKind := 2; TxTopic := CONCAT(Prefix,'config/get');
         GetSequence:=GetSequence+1;
         TxPayload := CONCAT(Header,',"messageId":',NG_Quote(CONCAT('g-',BootNamespace,'-',TO_STRING(Durable.BootCounter,'{0:d}'),'-',TO_STRING(GetSequence,'{0:d}'))),',"activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"sessionId":',NG_Quote(SessionId),',"configCapabilities":["devicePatchV1"],"activeMessageId":');
         IF HubActiveVersion = 0 THEN TxPayload := CONCAT(TxPayload,'null}'); ELSE TxPayload := CONCAT(TxPayload,NG_Quote(HubActiveMessageId),'}'); END_IF;
-    ELSIF StatusPending AND NOT HeartbeatPending THEN
+    ELSIF StatusPending AND NOT HeartbeatPending AND (NOT TimeMode OR NativeClock.ConfigGetReady) THEN
         TxKind := 3; TxTopic := CONCAT(Prefix,'status'); TxRetain := TRUE;
         TxPayload := CONCAT(Header,',"online":true,"reason":"connected","sessionId":',NG_Quote(SessionId),'}');
     ELSIF HeartbeatPending THEN
@@ -707,41 +846,53 @@ IF NOT TxActive AND Mqtt.Connected AND NOT Mqtt.TxBusy THEN
         END_FOR;
         END_IF;
         IF NOT TelemetryAllowed OR (Active.Version=0) THEN StateName := 'WAITING_CONFIG'; ELSIF Active.enabled THEN StateName := 'RUNNING'; ELSE StateName := 'DISABLED'; END_IF;
-        TxPayload := CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"bootId":',NG_Quote(BootId),',"agentVersion":"native-0.5.0","activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"uptimeSeconds":',TO_STRING(NowMs/1000, '{0:d}'),',"agentState":',NG_Quote(StateName),',"devices":[',DevicesJson,'],"points":{"total":',TO_STRING(Total, '{0:d}'),',"good":',TO_STRING(GoodCount, '{0:d}'),',"bad":',TO_STRING(Total-GoodCount, '{0:d}'),'},"queue":{"batches":',TO_STRING(QueueCount, '{0:d}'),',"payloadBytes":',TO_STRING(QueueBytes, '{0:d}'),',"droppedBatches":',TO_STRING(Dropped, '{0:d}'),'}}');
-    ELSIF DeviceEventPending THEN
+        TxPayload := CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"bootId":',NG_Quote(BootId),',"agentVersion":"native-0.7.1-audit-candidate.2","activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"uptimeSeconds":',TO_STRING(NowMs/1000, '{0:d}'),',"agentState":',NG_Quote(StateName),',"devices":[',DevicesJson,'],"points":{"total":',TO_STRING(Total, '{0:d}'),',"good":',TO_STRING(GoodCount, '{0:d}'),',"bad":',TO_STRING(Total-GoodCount, '{0:d}'),'},"queue":{"batches":',TO_STRING(QueueCount, '{0:d}'),',"payloadBytes":',TO_STRING(QueueBytes, '{0:d}'),',"droppedBatches":',TO_STRING(Dropped, '{0:d}'),'}}');
+    ELSIF DeviceEventPending AND (NOT TimeMode OR NativeClock.ConfigGetReady) THEN
         TxKind:=7; TxTopic:=CONCAT(Prefix,'device/status');
         EventTxIndex:=DeviceEventIndex; EventTxSignature:=DeviceEventSignature;
         TxPayload:=CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"configVersion":',TO_STRING(Active.Version,'{0:d}'),',"device":',DevicesJson,'}');
-    ELSIF ResourcesPending THEN
+    ELSIF ResourcesPending AND (NOT TimeMode OR NativeClock.SendAllowed) THEN
         TxKind := 6; TxTopic := CONCAT(Prefix,'diagnostics/resources');
         TxPayload := CONCAT(Header,',"bootId":',NG_Quote(BootId),',"uptimeMs":',TO_STRING(NowMs,'{0:d}'),',"memoryValid":',NG_Bool(Resources.MemoryValid),',"cpuValid":',NG_Bool(Resources.CpuValid),',"processValid":',NG_Bool(Resources.ProcessValid),',"totalKiB":',TO_STRING(Resources.TotalKiB,'{0:d}'),',"availableKiB":',TO_STRING(Resources.AvailableKiB,'{0:d}'),',"rssKiB":',TO_STRING(Resources.RssKiB,'{0:d}'),',"cpuPercent":',TO_STRING(TO_LREAL(Resources.CpuPermille)/10.0,'{0:F1}'),',"processName":',NG_Quote(Resources.ProcessName),',"error":',NG_Quote(Resources.ErrorText),',"configBytes":',TO_STRING(SIZEOF(Active),'{0:d}'),',"devices":',TO_STRING(Active.DeviceCount,'{0:d}'),',"points":',TO_STRING(Active.PointCount,'{0:d}'),'}');
-    ELSIF QueueCount > 0 THEN
-        Due:=FALSE;
-        InFlightCount:=0;
-        FOR q:=1 TO 16 DO
-            AckWaitMs:=60000; IF Outbox[q].Attempts<=1 THEN AckWaitMs:=30000; END_IF;
-            IF (Outbox[q].MessageId<>'') AND Outbox[q].WasSent AND NOT Outbox[q].Dead AND (Outbox[q].LastSentMs>0) AND (NowMs<Outbox[q].LastSentMs+AckWaitMs) THEN InFlightCount:=InFlightCount+1; END_IF;
-        END_FOR;
-        FOR i := 1 TO 16 DO
-            AckWaitMs:=60000; IF Outbox[Head].Attempts<=1 THEN AckWaitMs:=30000; END_IF;
-            IF (InFlightCount<8) AND (Outbox[Head].MessageId<>'') AND NOT Outbox[Head].Dead AND (NowMs>=Outbox[Head].RetryAtMs) AND ((Outbox[Head].LastSentMs=0) OR (NowMs>=Outbox[Head].LastSentMs+AckWaitMs)) THEN Due:=TRUE; EXIT; END_IF;
-            Head := Head MOD 16+1;
-        END_FOR;
-        IF Due THEN TxKind := 5; TxPayload := Outbox[Head].Payload; TxTopic := CONCAT(Prefix,'data'); END_IF;
+    ELSIF DataGate AND (Delivery.SendSlot>0) THEN
+        Head:=TO_INT(Delivery.SendSlot);
+        IF (CaptureBuffer.BatchGenerations[Head]=Delivery.SendGeneration) AND
+           (Outbox[Head].MessageId=Delivery.SendMessageId) AND (CaptureBuffer.BatchOwners[Head].State=2) AND
+           (NowMs>=CaptureBuffer.NextSendAt) AND (NowMs>=Outbox[Head].RetryAtMs) THEN
+            TxKind:=5; TxPayload:=Outbox[Head].Payload; TxTopic:=CONCAT(Prefix,'data');
+            TxBatchGeneration:=Delivery.SendGeneration;
+        END_IF;
+    END_IF;
     END_IF;
     IF TxKind<>0 THEN
         CopyString(REQ := FALSE,BUF_FORMAT := FALSE,BUF_OFFS := 0,BUF_CNT := LEN(TxPayload),SRC := TxPayload,BUFFER := Tx);
         CopyString(REQ := TRUE,BUF_FORMAT := FALSE,BUF_OFFS := 0,BUF_CNT := LEN(TxPayload),SRC := TxPayload,BUFFER := Tx);
-        IF CopyString.DONE THEN
+        IF CopyString.DONE AND ((TxKind<>5) OR (DataGate AND (CaptureBuffer.BatchGenerations[Head]=TxBatchGeneration) AND (CaptureBuffer.BatchOwners[Head].State=2))) THEN
             TxLength := TO_UDINT(LEN(TxPayload)); TxRequest := TRUE; TxActive := TRUE;
+            TxClockRevision:=NativeClock.ClockRevision; TxConnectionRevision:=NativeClock.ConnectionRevision;
+            TxTokenMonoMs:=NowMs; TxBootId:=BootId;
             (* A fast committed business ACK may precede the library PublishDone. *)
-            IF TxKind=5 THEN TxBatchId:=Outbox[Head].MessageId; Outbox[Head].WasSent:=TRUE; Outbox[Head].Attempts:=Outbox[Head].Attempts+1; END_IF;
+            IF TxKind=5 THEN
+                TxBatchId:=Outbox[Head].MessageId;
+            END_IF;
         END_IF;
     END_IF;
 END_IF;
-Mqtt(Enable := Initialized AND StartupReady,Reconnect := Reconnect,NowMs := NowMs,Bootstrap := Bootstrap,BootId:=BootId,TxRequest := TxRequest,TxTopic := TxTopic,TxLength := TxLength,TxRetain := TxRetain,RxAccept := RxAccept,TxBuffer := Tx,RxBuffer := Rx);
+SdkSendGate:=NOT TimeMode OR NativeClock.SendAllowed;
+IF TxKind=5 THEN
+    SdkSendGate:=DataGate AND (Head>=1) AND (Head<=16);
+    IF SdkSendGate THEN SdkSendGate:=(CaptureBuffer.BatchGenerations[Head]=TxBatchGeneration)
+        AND (CaptureBuffer.BatchOwners[Head].State=2) AND (Outbox[Head].MessageId=TxBatchId); END_IF;
+END_IF;
+Mqtt(Enable := Initialized AND StartupReady,Reconnect := Reconnect,NowMs := NowMs,Bootstrap := Bootstrap,BootId:=BootId,TxRequest := TxRequest,TxTopic := TxTopic,TxLength := TxLength,TxRetain := TxRetain,RxAccept := RxAccept,TxBuffer := Tx,RxBuffer := Rx,
+    PlatformTime:=TimeMode,TxKind:=TxKind,TxClockRevision:=TxClockRevision,TxConnectionRevision:=TxConnectionRevision,TxBootId:=TxBootId,
+    ClockRevision:=NativeClock.ClockRevision,ConnectionRevision:=NativeClock.ConnectionRevision,SnapshotMonoMs:=TxTokenMonoMs,
+    ControlAllowed:=NativeClock.ControlAllowed,SendAllowed:=SdkSendGate,TimeRequestId:=NativeClock.RequestId);
 HMI.ActiveMessageId:=Active.MessageId;
 IF Mqtt.Connected THEN HMI.ProtocolStatus:='CONNECTED'; ELSE HMI.ProtocolStatus:=Mqtt.ErrorText; END_IF;
+IF TimeMode THEN
+    HMI.ProtocolStatus:=CONCAT(HMI.ProtocolStatus,' HUB time state=',TO_STRING(NativeClock.State,'{0:d}'),' valid=',NG_Bool(NativeClock.TimeValid),' utc=',TO_STRING(NativeClock.UtcMs,'{0:d}'),' error=',TO_STRING(NativeClock.UncertaintyMs,'{0:d}'),' age=',TO_STRING(NativeClock.SyncAgeMs,'{0:d}'),' basis=',TimeBasis);
+END_IF;
 HMI.ActiveVersion := TO_STRING(Active.Version, '{0:d}'); HMI.DeviceCount := TO_STRING(Active.DeviceCount, '{0:d}'); HMI.QueueCount := TO_STRING(QueueCount, '{0:d}'); HMI.Dropped := TO_STRING(Dropped, '{0:d}');
 IF Mqtt.Connected THEN HMI.Connection := 'CONNECTED'; ELSE HMI.Connection := 'CONNECTING'; END_IF;
 IF Mqtt.ErrorText<>'' THEN HMI.Connection := LEFT(Mqtt.ErrorText,MIN(LEN(Mqtt.ErrorText),24)); END_IF;

@@ -1,0 +1,35 @@
+{
+  "bootId": "ng-d4f61b3085b97c5e3831983b-50",
+  "complete": false,
+  "initialAll250Good": true,
+  "rows": [
+    {
+      "elapsedSeconds": 0.6880000000237487,
+      "NowMs": 29100,
+      "captured": 530,
+      "stored": 0,
+      "missedPoll": 0
+    },
+    {
+      "elapsedSeconds": 6.35999999998603,
+      "NowMs": 34800,
+      "captured": 850,
+      "stored": 256,
+      "missedPoll": 0
+    },
+    {
+      "elapsedSeconds": 12.03200000000652,
+      "NowMs": 40460,
+      "captured": 1166,
+      "stored": 576,
+      "missedPoll": 0
+    },
+    {
+      "elapsedSeconds": 17.71899999998277,
+      "NowMs": 46140,
+      "captured": 1476,
+      "stored": 948,
+      "missedPoll": 0
+    }
+  ]
+}
