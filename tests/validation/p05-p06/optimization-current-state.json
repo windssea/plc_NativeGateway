@@ -159,9 +159,9 @@
   "performanceRetestsPausedByUser": true,
   "physicalIntegrationTool": "plcnext-project MCP; report gaps to user, no automatic Engineer/Computer Use/direct script fallback",
   "latestMcpStateRead": {
-    "atUtc": "2026-10-26T16:06:31.664280+00:00",
-    "observationSha256": "66685032320bc3e11e018d772eb6c0b8b77f1635af2b81bbd0b4783459c7292d",
-    "bootId": "ng-d4f61b3085b97c5e3831983b-72",
+    "atUtc": "2026-10-27T03:00:44.417652+00:00",
+    "observationSha256": "b2718cb6187a7cbf7ab4eaa6621592baf825fbd8fef8185661b823aea2210d9b",
+    "bootId": "ng-d4f61b3085b97c5e3831983b-75",
     "qualityCoverage": {
       "requested": 250,
       "read": 250,
@@ -172,7 +172,7 @@
       "complete_expected_point_coverage": true
     },
     "readOnly": true,
-    "path": "D:\\work\\code\\PLCnext-Engineer\\tmp\\joint-m13\\original-final.json"
+    "path": "D:\\work\\code\\PLCnext-Engineer\\output\\m14-real-20261027\\after-read.json"
   },
   "reviewReport": "../../../docs/三方联调主线与P06验收复审-20261026.md",
   "serviceVerificationAtUtc": "2026-10-26T14:24:25.369165+08:00",
@@ -204,39 +204,27 @@
   },
   "legacyRootFieldsScope": "Historical P06 snapshot at original atUtc, including historical temporaryDatabaseCreated; current functional runtime is latestJointFunctionalObservation.",
   "latestJointFunctionalObservation": {
-    "atUtc": "2026-10-27T01:07:54.056579+00:00",
+    "atUtc": "2026-10-27T03:00:44.417652+00:00",
     "localDate": "2026-10-27",
-    "status": "ENGINEERING_INPUTS_FROZEN_PYTHON_STARTUP_REAL_COHORT_PASS",
+    "status": "IEC20_PASS_V2_WINDOW_FAILED_ORIGINAL_RESTORED",
     "runtimeProject": "original native-0.5.0",
-    "bootId": "ng-d4f61b3085b97c5e3831983b-72",
+    "bootId": "ng-d4f61b3085b97c5e3831983b-75",
     "originalRuntimeRestored": true,
     "all250Good": true,
     "endpointLeaseRetained": false,
     "restoreBlocked": false,
-    "candidateBootId": "ng-d4f61b3085b97c5e3831983b-71",
-    "sourceBoundary": 1782,
-    "candidateSourceWindowAccountingComplete": true,
-    "storedAndReleased": 1082,
-    "timeInvalidKnownUnsent": 700,
-    "sourcePending": 0,
-    "sourceIsolated": 0,
-    "sourceUncertain": 0,
-    "sourceUnassociatedTail": 0,
-    "pairedPhysicalSlots": 1532,
-    "pairedValueQualitySelectionMismatches": 0,
-    "pythonStartupMissedPolls": 0,
-    "restoredBatchesVerified": 48,
-    "restoredValuesVerified": 3000,
+    "candidateBootId": "ng-d4f61b3085b97c5e3831983b-74",
+    "auditV2WindowComplete": false,
+    "iecAssertionsPassed": 20,
+    "iecAssertionTestBootId": "ng-d4f61b3085b97c5e3831983b-73",
+    "restoredBatchesVerified": 16,
+    "restoredValuesVerified": 1000,
     "fullJointAcceptanceComplete": false,
     "globalAccountingComplete": false,
     "performanceAccepted": false,
-    "evidence": "D:\\work\\code\\PLCnext-iot\\doc\\verification\\2026-10-27-project-entry-python-startup-evidence.json",
-    "report": "D:\\work\\code\\PLCnext-Engineer\\docs\\工程入口统一与Python启动缺口修复-20261027.md",
-    "deviceObservedThisTurn": false,
-    "pythonMissedReportSlots": 0,
-    "pythonCurrentBoot": "boot-0407810aa7ea4d84915c27c6ee496a94",
-    "historicalPythonStartupMissedPolls": 314,
-    "lastDeviceEvidenceArchivedAtUtc": "2026-10-26T16:17:54.075070+00:00"
+    "evidence": "D:\\work\\code\\PLCnext-Engineer\\docs\\verification\\2026-10-27-m14-real-iec20-and-audit-v2-evidence.json",
+    "report": "D:\\work\\code\\PLCnext-Engineer\\docs\\M14实机断言与审计v2受约束验证-20261027.md",
+    "deviceObservedThisTurn": true
   },
   "jointFunctionalHistory": [
     {
@@ -5965,5 +5953,178 @@
     "servicesStartedOrStopped": false,
     "controllerAuthorizationIssued": false,
     "receptionWorkCommitted": false
+  },
+  "previousJointFunctionalObservationBeforeM14Real": {
+    "atUtc": "2026-10-27T01:07:54.056579+00:00",
+    "localDate": "2026-10-27",
+    "status": "ENGINEERING_INPUTS_FROZEN_PYTHON_STARTUP_REAL_COHORT_PASS",
+    "runtimeProject": "original native-0.5.0",
+    "bootId": "ng-d4f61b3085b97c5e3831983b-72",
+    "originalRuntimeRestored": true,
+    "all250Good": true,
+    "endpointLeaseRetained": false,
+    "restoreBlocked": false,
+    "candidateBootId": "ng-d4f61b3085b97c5e3831983b-71",
+    "sourceBoundary": 1782,
+    "candidateSourceWindowAccountingComplete": true,
+    "storedAndReleased": 1082,
+    "timeInvalidKnownUnsent": 700,
+    "sourcePending": 0,
+    "sourceIsolated": 0,
+    "sourceUncertain": 0,
+    "sourceUnassociatedTail": 0,
+    "pairedPhysicalSlots": 1532,
+    "pairedValueQualitySelectionMismatches": 0,
+    "pythonStartupMissedPolls": 0,
+    "restoredBatchesVerified": 48,
+    "restoredValuesVerified": 3000,
+    "fullJointAcceptanceComplete": false,
+    "globalAccountingComplete": false,
+    "performanceAccepted": false,
+    "evidence": "D:\\work\\code\\PLCnext-iot\\doc\\verification\\2026-10-27-project-entry-python-startup-evidence.json",
+    "report": "D:\\work\\code\\PLCnext-Engineer\\docs\\工程入口统一与Python启动缺口修复-20261027.md",
+    "deviceObservedThisTurn": false,
+    "pythonMissedReportSlots": 0,
+    "pythonCurrentBoot": "boot-0407810aa7ea4d84915c27c6ee496a94",
+    "historicalPythonStartupMissedPolls": 314,
+    "lastDeviceEvidenceArchivedAtUtc": "2026-10-26T16:17:54.075070+00:00"
+  },
+  "m14RealIEC20AndAudit20261027": {
+    "evidence": "D:\\work\\code\\PLCnext-Engineer\\docs\\verification\\2026-10-27-m14-real-iec20-and-audit-v2-evidence.json",
+    "status": "IEC20_PASS_V2_WINDOW_FAILED_ORIGINAL_RESTORED",
+    "iec20": {
+      "projectId": "1e05dc1bac5640a39d87dc8024c243c9",
+      "sourceSha256": "d70d2ef6ec405b6289124f9599411e61d092f5c62d3901e12ce9e3e975f78bf3",
+      "operationId": "5268cd3f89dc4c6b8eda6a1240fa540f",
+      "planId": "dbdabe0fc7c84c3494974fe9b6dcaf24",
+      "planSha256": "b1956d13fc535e4b2f14060e29a518a49f2787a1bc5c95a85b56bd1e06796ef4",
+      "buildJobId": "118b35d05e674ab2a0c49c51f4fa9e4a",
+      "packageJobId": "ccbaf4e186df4a5a918f98c4e23a0d03",
+      "bootId": "ng-d4f61b3085b97c5e3831983b-73",
+      "harnessSource": "tests/audit_facts_test.st",
+      "wrapperUsesIdenticalCodeAndDeclarations": true,
+      "isolatedExtraBuffer": true,
+      "productionMemoryAndPerformanceNotAccepted": true,
+      "defined": 20,
+      "passed": 20,
+      "failed": 0,
+      "allChecksTrue": true,
+      "artifact": "projects/validation/native-0.7.1-audit-iec20-test.1/NativeGateway.pcwex",
+      "wrapperSourceScopeVerified": {
+        "assertionCodeAndDeclarationsByteEqual": true,
+        "addedMembers": [
+          "PROJECT/Logical%20Elements/NG_AuditFactsAssertions.pou/",
+          "PROJECT/Logical%20Elements/NG_AuditFactsAssertions.pou/Code.st",
+          "PROJECT/Logical%20Elements/NG_AuditFactsAssertions.pou/Metadata.meta",
+          "PROJECT/Logical%20Elements/NG_AuditFactsAssertions.pou/Variables.var"
+        ],
+        "changedMembers": [
+          "PROJECT/Logical%20Elements/Main.pou/Code.st",
+          "PROJECT/Logical%20Elements/Main.pou/Variables.var",
+          "PROJECT/PROJECT.proj"
+        ],
+        "removedMembers": [],
+        "normalCandidateBytesUnchanged": true
+      }
+    },
+    "auditV2": {
+      "bootId": "ng-d4f61b3085b97c5e3831983b-74",
+      "complete": false,
+      "exportedCapture": 128,
+      "exportedAssociation": 0,
+      "sourceBoundary": null,
+      "failure": "Native evidence ring incomplete; cohort cannot pass",
+      "failedHeadValuesPersisted": false
+    },
+    "finalRestore": {
+      "projectId": "17ae4361baa846868b14775bf1de15ea",
+      "operationId": "67f3ae57efd343d1b7091ccbea4dc565",
+      "executionId": "c6ad41d83e2d49dba42a9a0d8a8c600e",
+      "planId": "5445812287334af88f72b5fcca21be4d",
+      "planSha256": "b82e1ca8819c8b1db1b8669e1da32b8126b21ed32e2b7202a31c29cdef0d499c",
+      "status": "original_loaded_runtime_observed",
+      "runtime": "native-0.5.0",
+      "bootId": "ng-d4f61b3085b97c5e3831983b-75",
+      "originalProgramRestored": true,
+      "originalConfigurationVerified": true,
+      "endpointLeaseRetained": false,
+      "outcomeUnknown": false,
+      "qualityCoverage": {
+        "requested": 250,
+        "read": 250,
+        "good": 250,
+        "all_requested_good": true,
+        "atomic_snapshot": false,
+        "expected_point_count": 250,
+        "complete_expected_point_coverage": true
+      },
+      "configurationDigest": {
+        "sha256": "54d0db9e1c564e96fa8fb618a0bc1f6a73afaa7eb331b815a49079b8770a20ab",
+        "field_count": 1006,
+        "scope": "only_returned_active_fields",
+        "full_sampling_configuration_verified": false
+      },
+      "runtimeObservationSha256": "b2718cb6187a7cbf7ab4eaa6621592baf825fbd8fef8185661b823aea2210d9b",
+      "loadedIdentity": {
+        "status": "unknown",
+        "package_sha256": null,
+        "reason": "ProjectName, source symbols and disk manifests do not attest the memory-loaded image."
+      },
+      "databaseProof": {
+        "scope": "CAPTURED_WINDOW_REAL_RECEIPTS_AND_SAMPLE_MULTISET",
+        "gatewayId": "NG-HUB-2152-01",
+        "wireEvidencePath": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\joint-timesync\\m14-restored75-wire.json",
+        "wireEvidenceSha256": "b83164b2acc79ab51431891815be457ec31f0d60fedf352bee059affd6b41030",
+        "bootIds": [
+          "ng-d4f61b3085b97c5e3831983b-75"
+        ],
+        "receiptHashesVerified": 16,
+        "committedSampleMultisetVerified": 1000,
+        "wireValues": 1000,
+        "distinctPoints": 250,
+        "timeRequestCount": 0,
+        "timeResponsesExactEchoVerified": 0,
+        "dataAfterObservedTimeResponses": null,
+        "normalizedTwoAgentConfigEqual": true,
+        "configDevices": 50,
+        "configPoints": 250,
+        "fullEventCohortComplete": false,
+        "nativeLocalReleaseAllProven": false,
+        "performanceAccepted": false,
+        "databaseWrites": false,
+        "temporaryDatabaseCreated": false,
+        "fakeDataOrAckPublished": false
+      },
+      "externalCollectionVerified": true
+    },
+    "services": {
+      "backendInstances": 1,
+      "backendPid": 27204,
+      "frontendPid": 35404,
+      "mockPid": 23716,
+      "ports": [
+        {
+          "port": 8080,
+          "pid": 27204
+        },
+        {
+          "port": 8090,
+          "pid": 35404
+        },
+        {
+          "port": 11502,
+          "pid": 23716
+        },
+        {
+          "port": 18080,
+          "pid": 23716
+        }
+      ],
+      "sharedServicesStartedOrStopped": false,
+      "oldResourceRecorderStarted": false
+    },
+    "temporaryDatabaseCreated": false,
+    "performanceRetestsPaused": true,
+    "currentWorkCommitted": false
   }
 }

@@ -1,6 +1,6 @@
 # 测试与本机联调
 
-> **最新进度（2026-10-27）：** 审计v2离线修改已提交，M14本机接收通过；MCP72项、独立核验89项和Python55项受约束测试通过。合成导出链路不替代真实交付，IEC20项未执行；不下载PLC，单后端、无新数据库，P06后置。见[接收报告](../docs/M14本机适配接收与受约束验证-20261027.md)。
+> **最新进度（2026-10-27）：** M14接收已提交；IEC20项通过独立FB封装实机执行并逐位读回，原8POU纯工程仍只有编译证据。正式candidate.2的v2完整审计窗口失败，已恢复原boot75，250GOOD及16批1000值匹配。详见[实机报告](../docs/M14实机断言与审计v2受约束验证-20261027.md)；P06继续后置。
 
 > 工程与版本以[统一下载入口](../projects/README.md)为准：根工程为授时候选，恢复旧运行程序须选stable归档；本文历史版本说明不代表最终发布。
 
@@ -62,3 +62,7 @@ P06 验证变体由 `tools/build_phase1_performance_gateway.py OUTPUT.pcwex` 生
 ## 2026-10-27 M14本机适配接收
 
 公开MCP 0.6.9/79工具的准备/审阅、72项受约束MCP测试、89项独立核验和55项Python回归通过。IEC20项仍仅编译未执行。明确合成链路入口为Hub仓库的`tools/phase2/receive_m14_loopback.py --mcp-repo D:/work/code/PLCnext-Engineer-mcp --output <全新本机目录>`，需使用MCP虚拟环境Python；SQLite连接禁止，网络连接仅允许自有loopback TLS。它连接生产Exporter与独立核验器，但DATA/STORED均为内存合成，不发布MQTT、不接触Hub数据库或PLC，不构成真实业务交付证明。入口拒绝覆盖已有导出日志。当前禁止下载PLC，P06仍后置；详见[接收报告](../docs/M14本机适配接收与受约束验证-20261027.md)。
+
+## 2026-10-27 IEC20与M14实机结果
+
+原`audit_facts_test.st`的声明和代码逐字节封装到独立FB，通过公开MCP生成[67POU测试变体](../projects/validation/native-0.7.1-audit-iec20-test.1/NativeGateway.pcwex)，20项均在boot73通过；额外独立Buffer仅供测试，不继承生产内存/性能验收。正式candidate.2/boot74仅保存128条v2事实，环完整性守卫失败，N未冻结，不得从部分编码完整推断完整物理漏槽/交付通过。原native-0.5.0/boot75已恢复并核验250GOOD和真实入库；见[实机证据](../docs/M14实机断言与审计v2受约束验证-20261027.md)。本轮之后不批量运行历史PLC脚本、不重复上传；先接收MCP修复，P06仍后置。

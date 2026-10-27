@@ -5,7 +5,7 @@
   "defaultArtifactId": "native-0.7.0-timesync-candidate.1",
   "rootAlias": "NativeGateway.pcwex",
   "archivesImmutable": true,
-  "plcDownloadedThisChange": false,
+  "plcDownloadedThisChange": true,
   "entries": [
     {
       "artifactId": "native-0.5.0",
@@ -42,12 +42,27 @@
       "sha256": "d403231d283d60d0e12f8dbdc7db38dd79c10d23490d1d8dd6c63eabfb1a65f4",
       "embeddedAgentVersion": "native-0.7.1-audit-candidate.2",
       "pouCount": 66,
-      "status": "OFFLINE_M14_ACCEPTED_PENDING_IEC_EXECUTION_AND_REAL_VALIDATION",
-      "downloadPurpose": "M14本机适配/受约束接收通过；IEC20项断言未执行、实机未验。本轮禁止下载，不用于恢复，不替换默认candidate.1。",
+      "status": "REAL_AUDIT_WINDOW_FAILED_ORIGINAL_RESTORED",
+      "downloadPurpose": "M14本机接收通过；实机boot74保存128条v2事实后审计环完整性守卫失败，完整逐事件对账未通过。IEC20项在同源FB隔离测试变体通过；已恢复稳定原工程boot75。不替换默认candidate.1。",
       "verifiedPackageId": "9ccf64a8e3824990bd738a19f70dd550",
-      "controllerDownloaded": false,
+      "controllerDownloaded": true,
       "default": false,
-      "mcpAcceptedVersion": "0.6.9"
+      "mcpAcceptedVersion": "0.6.9",
+      "realPackageId": "93f3368bc5f14af1ab36262d39c56d55",
+      "iecAssertionsVerifiedVia": "native-0.7.1-audit-iec20-test.1",
+      "realEventAuditAccepted": false
+    },
+    {
+      "artifactId": "native-0.7.1-audit-iec20-test.1",
+      "path": "projects/validation/native-0.7.1-audit-iec20-test.1/NativeGateway.pcwex",
+      "sha256": "d70d2ef6ec405b6289124f9599411e61d092f5c62d3901e12ce9e3e975f78bf3",
+      "embeddedAgentVersion": "native-0.7.1-audit-iec20-test.1",
+      "pouCount": 67,
+      "status": "VALIDATION_ONLY_IEC20_REAL_PASS",
+      "downloadPurpose": "仅IEC20实机断言：candidate.2外加隔离断言FB及独立Buffer、Main调用/版本标识。boot73的20项通过；不用于正常部署、恢复、生产内存或P06验收。",
+      "controllerDownloaded": true,
+      "default": false,
+      "verifiedPackageId": "ccbaf4e186df4a5a918f98c4e23a0d03"
     }
   ]
 }
