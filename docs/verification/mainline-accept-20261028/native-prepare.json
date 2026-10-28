@@ -1,0 +1,462 @@
+{
+  "transport": "MCP stdio fresh session",
+  "tool": "project_prepare_recovery",
+  "isError": false,
+  "result": {
+    "schema": "plcnext-controller-recovery-plan/v1",
+    "review_id": "b5d271085a2a422b9f687beda4b88276",
+    "plan_id": "b5d271085a2a422b9f687beda4b88276",
+    "project_id": "8266573fcadd4e118cb2b86995335dc6",
+    "created_utc": "2026-10-28T06:54:58.272815+00:00",
+    "status": "recovery_plan_prepared",
+    "write_authorized": false,
+    "authorization_status": "awaiting_mcp_authorization",
+    "source": {
+      "project_name": "NativeGateway",
+      "project_guid": "5370a173-31a3-4247-9887-8407f3470dce",
+      "managed_revision": 0,
+      "project_sha256": "42d246435b950a8352e8dd2421319e546aff3fb8fb9cfb823070d4139279e4fb",
+      "original_source_path": "D:\\work\\code\\PLCnext-Engineer\\projects\\releases\\native-0.8.0\\NativeGateway.pcwex",
+      "software_revision": "1793164888933761000",
+      "release_date": "2026-10-28T05:21:28.933761Z",
+      "target_product_codes": [
+        "2404267"
+      ],
+      "target_firmware_revision": "26.0.0",
+      "pou_count": 66
+    },
+    "package": {
+      "package_job_id": "a9974bf30ea84069bc0a0be4fc17e4d2",
+      "build_job_id": "a07f5f5cc37641a5a38ae3f9a53d66b4",
+      "package_receipt_sha256": "d4007ab419862e576689ba6c253a78d03e124ac7592ac673c16432016d7dd7b5",
+      "build_receipt_sha256": "93cc00b6a9722fa2cfe25d058d91f05624e0692500a04dcdb7c7e5820fbb3eb5",
+      "inventory_sha256": "9247118afd50561d7bde7e81f4922c72416fd901d28e5467a78361c52e813f60",
+      "image_sha256": "c3a189810c2453e1e790390769a612c99862d1c37b6b2477933c9b137ad2d31b",
+      "file_count": 49,
+      "total_bytes": 9435078,
+      "runtime_binding_validation_passed": true,
+      "variable_count": 77,
+      "fb_instance_count": 118,
+      "hmi_mapping_count": 10,
+      "download_memento": {
+        "schema": "plcnext-download-capability-memento/v1",
+        "policy": "empty_capability_v1",
+        "present": true,
+        "owner": "Engineer download-capability history",
+        "producer": "independent_empty_original_format",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "history_entries": 0,
+        "populated_online_change_history": false,
+        "controller_acceptance_verified": false,
+        "oracle": {
+          "assembly": "Ade.PlcImpl.dll",
+          "assembly_sha256": "ee537d92540ff4f6270f0b2a34121d971abab993fc481319a90bd1bb80508298",
+          "mvid": "1669d53f-7ef8-4452-812c-defedab484c3",
+          "type": "Ade.Internal.Plc.DownloadCapabilityStateMemento",
+          "save_token": "0x0600015b",
+          "load_token": "0x0600015a"
+        },
+        "impact": "Replaces previous download-capability history with a valid empty history; no previous-program or online-change compatibility is asserted."
+      },
+      "package_signature_verified": false,
+      "controller_acceptance_verified": false
+    },
+    "target": {
+      "address": "192.168.0.8",
+      "port": 41100,
+      "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+      "certificate_policy": "explicit_sha256_pin",
+      "authentication_mode": "anonymous"
+    },
+    "files": [
+      {
+        "path": "Io/Arp.Io.PnC/ProfinetDiagnosticDatabase.db",
+        "bytes": 94208,
+        "sha256": "e15ecc656e6406d80728902d82052b48cebc2a64178ae28385ca09f97b5660ac",
+        "sha512": "c0d04c9fb6bae9567709c9e6cc0e53197ce0712a46fb64c80915963741731eb8a9792c3d66aabbce6703bc6d3130c248e9adc6f62fca1f8a0a90e376ec50e1e5"
+      },
+      {
+        "path": "Io/Arp.Io.PnC/Tic.crc",
+        "bytes": 8,
+        "sha256": "eceb165d45353946d87121cbbe1b0410a3ece9a42208e627de6b536580232abe",
+        "sha512": "963e980fc7bda9b3cee25c8858fa8082b70a1631333a979941bc3fa156934adcb82d4b9aaa750bb04175309f5ba5014e8805a244c8e5ee442174ed1f9987089d"
+      },
+      {
+        "path": "Io/Arp.Io.PnC/controller.tic",
+        "bytes": 530,
+        "sha256": "a8da98a4ddaae6b9bbe52be008b0588ec809d3c6aafe62a294d5d9a6dcde54f9",
+        "sha512": "be8db466cdaa6d5c521f4247894490877c099b09097b684f47b120cd5ae2fbbd991b8bc9603eeafe0e420d53e84fbbe565ca4e430a2156e014a541adf78bd02c"
+      },
+      {
+        "path": "Io/Arp.Io.PnC/links.xml",
+        "bytes": 266,
+        "sha256": "5ca0d15a5665561d9d8f76f68d2db1195faaebad9ea6c43eab7c8562ed49d7e9",
+        "sha512": "229bde62d7970f131a217e9372cddce926fbb99d6c9cbe395ab8f7d53c4813fc8e1ea5e4f4d72e378e97012c3d6e67e534911d6287dab952d183185ec462a4bf"
+      },
+      {
+        "path": "Libraries.crc",
+        "bytes": 8,
+        "sha256": "6875257758116ecde85918eeefcc3aabefcafbbdf2f58403567266a3d54816a3",
+        "sha512": "d616184ea80ac0cae7b24f659ac51974b506d77608226a343d620ef02c146b9cc3c37db05a06a8597069733ec991910f5172db71fc09f4b33926334d72678062"
+      },
+      {
+        "path": "PCWE.manifest.config",
+        "bytes": 9512,
+        "sha256": "055bd7827ce29f4dce3c3592f0de91de2531d286f5d551fc93962fd5c75f6fe3",
+        "sha512": "a0a6f0a1a44b02d58b76013466889d9f304cc3e31c68b0d34dbb467df4c44108ab61774319b8a8118b41bdf7f5fabc60c425075fdb1094658e6a3d0e215a5f87"
+      },
+      {
+        "path": "PCWE.software-package-manifest.json",
+        "bytes": 598,
+        "sha256": "b33e4899b6c08ea5c543bf3617dacf99650ce8a7d06682ef01723c93f587d34e",
+        "sha512": "1e8a8412999f5a76945c1b8834a4e7c2a3f567d6d1076245ffc3e182f278237db6d088ec8b854871cffae9778bbbecc036fc537a28fd63acf44e3ae477853e56"
+      },
+      {
+        "path": "Plc/Domain/pcwe.plc.config",
+        "bytes": 277,
+        "sha256": "21417274bb4778588dba9717ef18e36f28a190708060d9d3024788cda87aa071",
+        "sha512": "084c41611543c1d9271c1a9ffc2fb5be8fd5c6bfb216084b13c5050c910e6f23191c4fba67272469ab2a6083f3db8493c01f6c6c145da70c1b2c3f23d133977f"
+      },
+      {
+        "path": "Plc/Eclr/SharedLibraries/IIoT_Library/libIIoT_Library.so",
+        "bytes": 4320156,
+        "sha256": "12b5d548fe20ddef4ef709bfac998f076efde206a7e264da930e5a46f452b44d",
+        "sha512": "fe316470d1a737a93cb32c6b3c2ef9a5c9c8bc52a06833842a2c3067a8190dadcfd9802357fd7ab71ac9e066df77d6f2d27d7b1b53b93baed6b40ab4dc739785"
+      },
+      {
+        "path": "Plc/Eclr/eCLR.img",
+        "bytes": 1093924,
+        "sha256": "c3a189810c2453e1e790390769a612c99862d1c37b6b2477933c9b137ad2d31b",
+        "sha512": "a3bd34a23558d316431c7ba63074da78a87fa443524f8af5b675d33c4bc4da49f71dddb64f3840ecac35d957d43c581e00eeb69d4447ac82ee38dd338407e566"
+      },
+      {
+        "path": "Plc/Esm/PCWE.esm.config",
+        "bytes": 707,
+        "sha256": "a609b4e9073ab660ab112054c1d0b4f74911d4f4fa598730b9236cb81f284156",
+        "sha512": "5a0111a5131107738a47bf1938733247a07814bed352a23144932ee473672734bcdb0ee0ace74474965c01bfc510115df125ddd80ff7e04ff3db9134a435aea8"
+      },
+      {
+        "path": "Plc/Gds/PCWE.gds.config",
+        "bytes": 215,
+        "sha256": "06871c86e0fe326114ef0a7c828d44f71e0b5cecbebd596bf67216693db20bfe",
+        "sha512": "93033ae4bc10efb3a1d52a03bab310513adfbe5aa0f1a3e9d699126de531557af64f7b962175d56a770f1e9d60370c3becdf0b0b0bce9652c404e8be81d1035d"
+      },
+      {
+        "path": "Plc/Plm/pcwe.plm.config",
+        "bytes": 202,
+        "sha256": "0de952aff931324ad5e534e9c1f620965f4f76473500e7413e29810103353dcc",
+        "sha512": "4e09e63d097f243c85e5bab90096fcf4b80440b260582daf241d9d10a311aae32d3a1c4912bdd2f6fe890a0bc8f478753584b15dd3e70b4d17c46f768e01343b"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/application.variables.json",
+        "bytes": 576,
+        "sha256": "958d8b9c87637d4d5c9e8ef2b980b1951e81ea035ab9aa4a132a898a6def50ff",
+        "sha512": "e7d0cfab1ea720aa01e05a84bcfe87055109c43ee0d0ad2113f6b728a8000f9ee261300c174e7023254a11b9ce1e34ea391b3f866bcfee11265440eae623fe0b"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/codex-clipboard-2b444731-1e31-4460-972d-c7c6dbf70708.png",
+        "bytes": 3996,
+        "sha256": "72d2d7a61856df159cb34fd7d436b67e667874fb0be93f6627529355d0b82760",
+        "sha512": "8c2050a6b77537d98bbded9ec889d0a74f5464d771e9a276eade55de39df5d6b11139fe35e6b9da279c8537054a685f6cbb239eaa1c492a3085616c969bdf370"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/connectionError.png",
+        "bytes": 2402,
+        "sha256": "6be08ad87bdddfbefb1b41ecfee9e92a82319ef30173c6ff8b14faf3463a7c02",
+        "sha512": "94bebc28741fd099f1245d74d57121f4e2280bc2abdd94ef5efe2e4cd63034357fbb58fc586680c78304137ed86f06997d4ef4340461eaae6c3b5d5ac2f42fa7"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/data.dictionary.json",
+        "bytes": 825,
+        "sha256": "0438e1ed18f6afc45c1d1adfc741af33a8f78dc27b0e4445047c5a69608af0f1",
+        "sha512": "db83d1dc47e9b9dc552d492047076b63897ebc39ce1a81206292c580d08a65986f509ab56140a3382dd629527924a70d8589377d910d2f10460fb2a79f0e937b"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/downarrow.svg",
+        "bytes": 1411,
+        "sha256": "45eb765a629f49a1acf92de495d9224592b9c6a9e71b48ca5f2ab2c056f56788",
+        "sha512": "a52d89692a23a4caa795f58214eca29ef9b35d986f5a45683a7f29994fdcfbd1961b4af2fd53bdb52ecad8c84bd40210ef409ba4680de7273dc3777326dbfa80"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/error.png",
+        "bytes": 1435,
+        "sha256": "ef113b522f89e29ef89cb7b4da50ef30a35e75d0d2055682ba0469eb66724188",
+        "sha512": "63dbc7f1fe773e294e0008f832da5e5e3ff22326654bcd7190ea5bceb93e6a2bd53e061459571985ba34bd4f0076beececcf2491c672cc4945e07ce32f7753fb"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/favicon.png",
+        "bytes": 9413,
+        "sha256": "818aaf5fa2aa6bfc2556b33057633002f603cd5510ec4a7df05349c801a15bb7",
+        "sha512": "fd69e44dd32f6aaffe7d9f44b03918fbda7290288a395ae027bd62d835e248ecc6b093b903da9342f8ec0e3a9dba73dc8fff2123e3a403c054e4aed2a9a84021"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/gateway.json",
+        "bytes": 601442,
+        "sha256": "f39133ea6f8df9c2890a1cedaddf8d619a7d1153f1226085a4683cbbc21d2132",
+        "sha512": "0ca2d7c76d0cdb1adeaef56a9ddd6bed7f210728a853de39a3f427b00848f5128252a3ff27dfbbca5314ed4581253108b1daad06b74fb957aa7905731f190c50"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/gateway.variables.json",
+        "bytes": 3669,
+        "sha256": "f5783ed63ecef3e8b3194dabffd61ab6ef82600332494f08d425869fe7e9d6b3",
+        "sha512": "bce4a41fb8242a6146b802e678713d9e33e81ffabcdd8e740503b3a584e00136613417c881ace459d1a1a5ab67136119b08126d0f3a008296e66688dd75425e6"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/gatewayModule.js",
+        "bytes": 117060,
+        "sha256": "444591f01ff763880b6ecec0370246b89e0f0416da4a21bbbf88259b45e5af0a",
+        "sha512": "b1ad03aa6ab9445e18c468f048e880bd6a13b957625c3cb9a28e07858028892c6ffe99b27cac1c06b8db12047dcb136b259bc830f241d373e5594aafda4491d9"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/hmiapp.css",
+        "bytes": 1075,
+        "sha256": "ca023fa8078d051ce4241939bb7bbd937247cf961015854d145d3c1be2a17e74",
+        "sha512": "f57200e246dd27273e16e38a8c02f53aee3bfd84d6e37de4330321ffe1ec107f906c09250ede9e0a05ace8aaef95b9997c15fc60539d67ef25904c6633261fc1"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/hmiapp.html",
+        "bytes": 5771,
+        "sha256": "c82b5df9044d650ea1407bf2e5fc5416f800776f39c93039858feba6173d2f3d",
+        "sha512": "fa39afdd595b6762a26307820ba8fbf7becf86dc7313853f174d028404e37d4175cd0e82b5d055654d186cdb46a34470130920b25a2ea25ca3bff6b2c0af6fc4"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/hmiapp.legacy.min.js",
+        "bytes": 1722242,
+        "sha256": "69e8788ef26a75fb7677fbf77299bcb3b56632477c6b2a9f62c44b733e21a090",
+        "sha512": "4b4e8002803393f51603a99140c1277854b9b9d66a2c6cb050fb1c0f5f4dfcc451776997f6996bf7b198694608c6bd8202413c9a4895d2c40079b9fa970bfd68"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/hmiapp.min.js",
+        "bytes": 1235861,
+        "sha256": "8c204235d1117f8a1932b77318e717a18fd7443b8f1bd3a4c4292a833150d6ff",
+        "sha512": "d5da18a49bb9a79d399a7537f543d7b85afdfdfb02a743fa68c870381d9381bfd12425c304822a8f8ad21fa04bac9d7fa6bdee6dcb69f67a8ab40b06f24c9c32"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/imagelist.json",
+        "bytes": 102,
+        "sha256": "2d86d257fcaee731a9f9dd8381db331868a3c62f89161d2aba536fb2fa79db74",
+        "sha512": "9db5a31cb1a87503a9b2a768c6293d9d22036ad831afd7332c0f7e4ed3ea0582b62642574c32c4c24ee32e1de1d97e7375f114c8468fc1c51aed5e3ab6a2bfd8"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/languages-dynamic.dictionary.json",
+        "bytes": 128,
+        "sha256": "222e33732ed2cfb3949613412c60172ef499a032edda2ab090c38a637a6cd292",
+        "sha512": "fcc74d69164ba14d69207ef98043fb881edeed06da55224586203e3ae811a3911a90e920140baecfc633731c992796721e67a682a74d7e44169c9f07d37ba687"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/languages-static.dictionary.json",
+        "bytes": 34000,
+        "sha256": "73b60a4c937babc2f12faf451fce0433147960a01eea49615a432694faecc967",
+        "sha512": "a61ba0dd65b04bb91be8c75aa3db278ceeb228c555677e0da5008b89a5f13b800e3a5ba64fe6f878313fbe2a51b494c40451cfd2f153f923dc828b691eba4703"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/leftarrow.svg",
+        "bytes": 1411,
+        "sha256": "663d941e5b02d7704ba40524583ea0089ce58a76177a064a4c74aeb420be138d",
+        "sha512": "6be708fe1ab56a64b2fc7bd7e93ac5f5f00900b35b7bc1dc59b9236bad72b3ef016bd7921f46ee72b6949571338a255a4093ea87316c40a97a5101a06c5d09f8"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/loading-sm.gif",
+        "bytes": 19702,
+        "sha256": "6d8cb730345225d311c108ee7c1153d0c23cc94f00147b402d51d3e12bc503c9",
+        "sha512": "8affa908cef940b2c7ac8aaa37d40cf916fd8487c514b2ed98be218e64d0dd74e913d87b06a121c746d90e7e6ff89c54b94f7e1026cbcb8918cf83f6641864d6"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/loading.gif",
+        "bytes": 53204,
+        "sha256": "25a8965c47b7cf9bd570189462161ca3413b25188973ed3387d48fc7c62180cd",
+        "sha512": "cdc30bff3d541f4ff5c5eda583d9f1ecc0268780f9afb51b3b071958655afb177eb2a59d8c793000a983babc6478790cdb529cea17a04f6ac9e53f8844c5e556"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/loadingSpriteSheet.png",
+        "bytes": 69895,
+        "sha256": "e287f1ec0c943b5834420264a3e35076301fe67fdf312faf48ceae46d3b11dc3",
+        "sha512": "f7ff786c791ba5669e21fbe649677f422b4146a3cc1e0b864b79c57c9c0dd5f2c5a7088f18b0a77de257d7718c52c05d47e5c179f8fc8e7ace67203746e0e78d"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/login.json",
+        "bytes": 9643,
+        "sha256": "1c38cd36562fdff888734de93671a73db477a961676e1fdf17368119076ef0e3",
+        "sha512": "945ab2790c1023d04de9a8eb17cc9e40eb5c3355697e728b44476c3dfc797e5a3b5fcddc2b3662f59d36275861d1fa124acfe3219317fcb850c9784d1bd8a187"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/login.variables.json",
+        "bytes": 152,
+        "sha256": "c14f1e32a8f18669717fb2130becaa13af61898198945073f99d2fe79a02dfad",
+        "sha512": "4cd9185dc347bf30d4346f22eae8bf41fbc89f4d927113ef584fc30f973d7ee899cc571d37a0aa9a571d65e5d8cc0422e43b1f26b292c3df501460ad73f23a18"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/loginModule.js",
+        "bytes": 472,
+        "sha256": "78aa4c0f4a94c95021060517bbc2f8da36174530701f73b0e3f8682c7c503db1",
+        "sha512": "623127e91c64496b53def89041ebfaea5cd93f6ba337dbfb0491e7c72424e1846890021dc06ab131d7b49a0a0baa2aa9206f8d0b4102df65769e3e235afacfda"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/project.checksum-full.json",
+        "bytes": 1346,
+        "sha256": "0a646ac28cbecaad1702f89dea686c9594ebe33a0f50ce2788971900d4e2bfba",
+        "sha512": "83c1e103f13ac491f445129b174092ad45b9feb8c9ee722993eb89630a7037b9faa4d58b3e6314180baffbac72ff77cede4f8226b7480c62d061eb02bf947c9a"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/project.checksum.json",
+        "bytes": 67,
+        "sha256": "7d6a802f769ccc6451ff1c3120f12defe369783af4b5e05a19c5de48c30a2c8b",
+        "sha512": "a47f0cff5ab7092ff8904d75fc607d46f7a4a01960925bf7a91541d01a11ddbb6deda962c66e5c1227cc4d414fc93a98457a1175df6b17071435e884bee6ff49"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/project.json",
+        "bytes": 944,
+        "sha256": "bd8555746abd9fa3e2c29792c00ecfe8c82467dc39c0361b7256f6e9280ad6e2",
+        "sha512": "64bfc795a507af70505e95cd94de720c479ea3543db72c6a13dc13e6ff3359c5a24bb523441aa4c69ba37ff5c6067d4f158a742679f87ca52789072cbd448899"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/rightarrow.svg",
+        "bytes": 1410,
+        "sha256": "cb2eb69b27844da272b62426ba14de21cb91ca0c71f789550327ccd0c8b5641c",
+        "sha512": "7ee0d829a75496f8da9cf3d796eadd1a714a78ad56f576501152cc95c7626c5db4567b89db9327ae2a2319ebf14b6f3d536595139040e5685ff28b3120c288a9"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/textlist.json",
+        "bytes": 100,
+        "sha256": "08e1973decb3b3955230ddf7ee98a13a666ab795f339760541a79c57963ac765",
+        "sha512": "8e95e0f2f1a547aca662f9b71b3ccb226b4f8e4d05118432786630c14de2bff61828cd77faeaf89c9860040498431377b975270ac354575a6a81f4f66f43962f"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/type.dictionary.json",
+        "bytes": 11382,
+        "sha256": "7312c11888a7ec8e5eeb145985282d44f3ccd50681563fc7da2578fa003f6478",
+        "sha512": "0c6f0ced34816c8c154c90eacf38f6c5323eca305a04a7c8a59f4222cf57a283abbe8405588689673ee0088bb21729901af9727d2bb00c62ccd84cec7ba3f38e"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/uparrow.svg",
+        "bytes": 1360,
+        "sha256": "7a86c327df5ffa8629d5ff25592fcdb66196cf86a0cfbaf0ee16fef220f281ae",
+        "sha512": "3b4f33bd66b46de334c294c777f728e35ed78cdba9a5499ef09a72cc6a1f4af2aa303f3a0f99209bb280e5f4c9d9d3f087c3cba793f204392afc5e9b8c0409e7"
+      },
+      {
+        "path": "Services/Ehmi/ehmi/webserver.configuration.json",
+        "bytes": 57,
+        "sha256": "6356d7111918a2d2533e7551692f5d48dee2399f7e4c3205c17f2b31a0157b96",
+        "sha512": "e77c1efc156689f2c77e43d387aa20a81c3eb518e4c7a0b89c4d0d96d020d8e27226a22057feada53fd3040861aa2629f1aff848f3559d5af400795bca9e0913"
+      },
+      {
+        "path": "Services/Ehmi/index.html",
+        "bytes": 393,
+        "sha256": "36d9f60527decb2c6caf7fab5d000c0d56e1899c8111de06d993eb93c2460435",
+        "sha512": "2231e825d0f892bcf6fe2c06b29e3af467e42c628ba4a29b68929894d31fef439b8663acddbe19ba73f3777739a4cb045422be0d3b1d555146e9595854136b99"
+      },
+      {
+        "path": "Services/OpcUA/Modules/Client/client.module.config",
+        "bytes": 387,
+        "sha256": "fdd5fbdac9304ca0e6e57c794d8730cee2a070523e47f84e4cadfac48e33cd58",
+        "sha512": "186f6efe422a923de7ba63c860ede8c7183d76c417c39e5510720ca0c4263b45b7bb8690d2ce47761464d6d89934a4a0479d6e5dd4ebf6a873d6da8d8af08e70"
+      },
+      {
+        "path": "Services/OpcUA/PCWE.opcua.config",
+        "bytes": 1134,
+        "sha256": "51862b636fc3e9eb61db976d9edc04102fe0ce1adb7be2858b1403cf981e54dc",
+        "sha512": "a83013d98fee48e4e2c02b91360947814b107dd4b263b6fa83dde9d7d5a9743435b813c9fbe7ea71774fa32eda6fc33b7f586e010a86ad27421b89b6eabef110"
+      },
+      {
+        "path": "dlc.bin",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha512": "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+      }
+    ],
+    "approved_actions": [
+      "observe_before",
+      "stop",
+      "write_package_paths",
+      "sha512_readback",
+      "reset",
+      "load",
+      "start",
+      "verify_runtime"
+    ],
+    "children": {
+      "download": {
+        "review_id": "56d16eb235104f03add6cadb3c529ec2",
+        "review_sha256": "0f2faa989807f21616954b621bc9fa58ceaf6bed37fda3af1293e82b5a451ddd"
+      },
+      "stop": {
+        "review_id": "a9ea9a68dc734516bb7de57661e4dda9",
+        "review_sha256": "63caf9b4ae952a8bc360c86d4eeb1f868e3c3e6aa330b85c380e73ff1b925ea0"
+      },
+      "start": {
+        "review_id": "f49f8a64e87c411bb8e3cf202a64d263",
+        "review_sha256": "e485525b1dc28757d9dd23545903f67bc239fb8fd7bfde7da083fb0aa05cfe69"
+      },
+      "monitor": {
+        "plan_id": "4b942ee01e0f4bd2a13fe5c0fbb00a0e",
+        "plan_sha256": "ed146b64ff0234bd6117990d16003f31d9e08609e2c6613ed5b5826ccebc2800"
+      }
+    },
+    "policy": {
+      "purpose": "restore_known_original",
+      "plan_id": "b5d271085a2a422b9f687beda4b88276",
+      "volatile_data_policy": "record_unknown_loss",
+      "start_kind": "cold",
+      "expected_initial_state_raw": 3,
+      "expected_configuration": {
+        "version": 19,
+        "device_count": 50,
+        "point_count": 250,
+        "enabled": true
+      },
+      "continuous_endpoint_lease": true,
+      "automatic_retry": false,
+      "automatic_rollback": false,
+      "delete_old_files": false,
+      "full_pcwe_write": true,
+      "operation_timeout_seconds": 300,
+      "maximum_runtime_observations": 12,
+      "runtime_observation_interval_seconds": 5,
+      "preserved_unlisted_remote_files_acknowledged": true
+    },
+    "impact": {
+      "program_interruption": true,
+      "ram_state_may_be_lost": true,
+      "pending_event_loss_proven_zero": false,
+      "physical_output_hold_behavior_verified": false,
+      "explicit_start_planned": true,
+      "unexpected_autostart_after_load_unverified": true,
+      "download_memento": {
+        "schema": "plcnext-download-capability-memento/v1",
+        "policy": "empty_capability_v1",
+        "present": true,
+        "owner": "Engineer download-capability history",
+        "producer": "independent_empty_original_format",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "history_entries": 0,
+        "populated_online_change_history": false,
+        "controller_acceptance_verified": false,
+        "oracle": {
+          "assembly": "Ade.PlcImpl.dll",
+          "assembly_sha256": "ee537d92540ff4f6270f0b2a34121d971abab993fc481319a90bd1bb80508298",
+          "mvid": "1669d53f-7ef8-4452-812c-defedab484c3",
+          "type": "Ade.Internal.Plc.DownloadCapabilityStateMemento",
+          "save_token": "0x0600015b",
+          "load_token": "0x0600015a"
+        },
+        "impact": "Replaces previous download-capability history with a valid empty history; no previous-program or online-change compatibility is asserted."
+      },
+      "restore_is_explicit_operation_not_failure_handler": true
+    },
+    "verification_limits": [
+      "RAM loss is unknown unless independently complete drain evidence exists.",
+      "A guarded read window is not an atomic 250-point snapshot.",
+      "ProjectName and disk manifests are not memory-loaded module hashes.",
+      "DATA/STORED/Hub/mock acceptance is provided by the external joint verifier.",
+      "A local endpoint lease does not prevent another user or external Engineer from changing the PLC."
+    ],
+    "aci_used": false,
+    "computer_use_used": false,
+    "controller_connected": false,
+    "review_sha256": "4da281cf4060385c7938d20b4a7030e42df1672a7b8fd4003d72f7f47061b756",
+    "plan_sha256": "4da281cf4060385c7938d20b4a7030e42df1672a7b8fd4003d72f7f47061b756",
+    "plan_path": "D:\\PLCnext-MCP-Workspace\\8266573fcadd4e118cb2b86995335dc6\\controller-recovery-plans\\b5d271085a2a422b9f687beda4b88276\\plan.json"
+  }
+}

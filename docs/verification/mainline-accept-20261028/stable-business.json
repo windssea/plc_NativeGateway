@@ -1,0 +1,33 @@
+{
+  "gatewayId": "NG-HUB-2152-01",
+  "bootId": "ng-d4f61b3085b97c5e3831983b-82",
+  "agentVersion": "native-0.5.0",
+  "version": 19,
+  "checkedAtUtc": "2026-10-28T06:55:54.092832+00:00",
+  "since": "2026-10-28T06:50:15+00:00",
+  "releaseId": "2114961616874844161",
+  "configSha256": "d6f02536e42aaded44514239b73c48678c315290724f8bfd1c893f32556f64e8",
+  "wireMessages": 94,
+  "wireSamples": 5878,
+  "wireStoredAcks": 93,
+  "allReceiptHashesMatched": true,
+  "storedMultisetMatched": true,
+  "wireQuality": {
+    "UNKNOWN": 250,
+    "GOOD": 5628
+  },
+  "postReady": {
+    "samples": 16412,
+    "devices": 50,
+    "points": 250,
+    "nonGood": 0,
+    "first": "2026-10-28 14:50:18+08:00",
+    "last": "2026-10-28 14:55:46+08:00"
+  },
+  "timeResponseBeforeDataVerified": false,
+  "timeSessions": [],
+  "databaseWrites": false,
+  "newDatabaseCreated": false,
+  "deviceControlSent": false,
+  "passed": true
+}

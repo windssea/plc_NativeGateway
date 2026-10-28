@@ -1,0 +1,436 @@
+{
+  "transport": "MCP stdio fresh session",
+  "tool": "server_capabilities",
+  "isError": false,
+  "result": {
+    "backend": "native_pcwex",
+    "version": "0.6.12",
+    "aci_dependency": false,
+    "vendor_license_modification": false,
+    "full_aci_replacement": false,
+    "stopped_zero_transfer_recovery": {
+      "available": true,
+      "prepare_tool": "project_prepare_stopped_recovery",
+      "inspect_tool": "project_inspect_stopped_recovery",
+      "execute_tool": "project_execute_recovery",
+      "authorization_kind": "recovery",
+      "lease_handoff": "atomic_owner_replace_without_unlocked_gap",
+      "real_restoration_verified": false
+    },
+    "strict_recovery_preflight": {
+      "available": true,
+      "tool": "project_preflight_recovery_download",
+      "before_stop": true,
+      "rechecked_after_stop": true,
+      "same_transfer_path_and_native_library_policy": true
+    },
+    "device_reboot": {
+      "available": true,
+      "prepare_tool": "project_prepare_reboot",
+      "execute_tool": "project_execute_reboot",
+      "status_tool": "project_reboot_status",
+      "cancel_tool": "project_cancel_reboot_wait",
+      "authorization_kind": "reboot",
+      "automatic_resend": false,
+      "automatic_start": false,
+      "confirmation": "new application BootId and two Running/configuration/GOOD observations",
+      "os_boot_id_attested": false,
+      "real_hardware_verified": false
+    },
+    "verification_levels": {
+      "implemented": "code exists within the stated profile",
+      "offline_verified": "local contracts/negative tests passed",
+      "loopback_verified": "owned local peer/build tested, not real PLC acceptance",
+      "real_verified": "requires exact separately recorded target test evidence"
+    },
+    "joint_gap_mapping": {
+      "M01": [
+        "project_inspect_operator_approval",
+        "project_authorize_controller_operation",
+        "optional interactive operator CLI"
+      ],
+      "M02": [
+        "project_prepare_controller_control",
+        "project_execute_controller_control",
+        "project_test_controller_control"
+      ],
+      "M03": [
+        "project_prepare_runtime_read",
+        "project_read_runtime",
+        "project_preflight_controller_download"
+      ],
+      "M04": [
+        "project_inspect_runtime_symbols",
+        "project_prepare_runtime_read",
+        "project_read_runtime",
+        "project_test_runtime_read"
+      ],
+      "M05": [
+        "project_generate_pcwe",
+        "project_preflight_controller_download",
+        "project_test_controller_download"
+      ],
+      "M06": [
+        "project_prepare_recovery",
+        "project_inspect_recovery",
+        "project_execute_recovery",
+        "project_test_recovery",
+        "project_start_recovery_job",
+        "project_controller_operation_status",
+        "project_cancel_controller_operation"
+      ],
+      "M07": [
+        "project_prepare_fault_control",
+        "project_execute_fault_control",
+        "project_test_fault_supervision",
+        "project_create_fault_profile",
+        "project_prepare_instrumented_fault",
+        "project_execute_instrumented_fault",
+        "project_test_instrumented_fault",
+        "project_start_instrumented_fault_job"
+      ],
+      "M08": [
+        "project_runtime_timing_evidence",
+        "project_prepare_esm_read",
+        "project_read_esm",
+        "project_test_esm_read"
+      ],
+      "M09": [
+        "server_capabilities",
+        "aci_replacement_status"
+      ],
+      "M10": [
+        "project_clone_program",
+        "project_change_cyclic_tasks",
+        "project_declare_task_ownership"
+      ]
+    },
+    "aci_replacement_coverage_tools": [
+      "aci_replacement_status",
+      "aci_replacement_methods"
+    ],
+    "task_configuration": {
+      "inspect": true,
+      "update_existing_cyclic_task": true,
+      "scope": "AXCF2152/2026 single eCLR, 1..16 independently owned cyclic tasks; source copies only",
+      "create_delete_tasks": true,
+      "clone_standard_program": true,
+      "mutable_cross_task_handoff_supported": false,
+      "source_bound_ownership_contract": true,
+      "runtime_effect_verified": false
+    },
+    "read_pous": true,
+    "edit_existing_st_body": true,
+    "preserve_other_member_payloads": true,
+    "change_pou_interface": true,
+    "create_project": true,
+    "add_delete_st_function_blocks": true,
+    "pou_interface_scope": "Existing variable worksheets: locals, input/output/in-out declarations; no kind/return metadata edits.",
+    "headless_compile": true,
+    "full_project_headless_compile": false,
+    "headless_compile_scope": "Supported single-resource AXC F 2152 standard-ST IEC builds with bounded independently owned cyclic tasks; separate PCWE generation supports the validated NativeGateway hardware/HMI profile only.",
+    "cold_compile": {
+      "available": true,
+      "scope": "AXCF2152_2026_single_eCLR_resource_1_to_16_independent_cyclic_tasks_ST_project",
+      "ast_seed_required": false,
+      "precompiled_vendor_libraries_required": true,
+      "controller_access": false,
+      "deployable": false,
+      "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0"
+    },
+    "controller_access": true,
+    "controller_write_access": true,
+    "controller_write_requires_exact_authorization": true,
+    "operator_approval": {
+      "implemented": true,
+      "issuer": "project_authorize_controller_operation",
+      "issuer_is_mcp_tool": true,
+      "interactive_terminal_required": false,
+      "mcp_can_authorize": true,
+      "human_approval_required": false,
+      "optional_terminal_issuer": "python -I -m plcnext_mcp.operator_approval",
+      "receipt_kinds": [
+        "download",
+        "control",
+        "recovery",
+        "instrumented_fault"
+      ],
+      "offline_verified": true,
+      "physical_human_terminal_verified": false,
+      "trust_boundary": "local trusted issuer; same-user filesystem access is not cryptographic human authentication"
+    },
+    "runtime_monitor": {
+      "implemented": true,
+      "prepare_tool": "project_prepare_runtime_read",
+      "read_tool": "project_read_runtime",
+      "test_tool": "project_test_runtime_read",
+      "source_type_allowlist": true,
+      "write_or_force": false,
+      "maximum_symbols": 2048,
+      "maximum_chunk_symbols": 64,
+      "atomic_snapshot": false,
+      "identity_guards": true,
+      "loaded_module_hash_attestation": false,
+      "offline_verified": true,
+      "loopback_verified": true,
+      "real_verified": false
+    },
+    "controller_control": {
+      "implemented": true,
+      "prepare_tool": "project_prepare_controller_control",
+      "execute_tool": "project_execute_controller_control",
+      "test_tool": "project_test_controller_control",
+      "actions": [
+        "stop",
+        "start"
+      ],
+      "start_kinds": [
+        "cold",
+        "warm",
+        "hot",
+        "restore_warm"
+      ],
+      "separate_operator_receipt_required": false,
+      "mcp_authorization_supported": true,
+      "ack_is_completion": false,
+      "standalone_start_loaded_identity_available": false,
+      "recovery_plan_start_uses_verified_load_causality": true,
+      "offline_verified": true,
+      "loopback_verified": true,
+      "real_verified": false
+    },
+    "recovery": {
+      "implemented": true,
+      "prepare_tool": "project_prepare_recovery",
+      "execute_tool": "project_execute_recovery",
+      "continuous_endpoint_lease": true,
+      "automatic_rollback": false,
+      "automatic_retry": false,
+      "unknown_ram_loss_requires_explicit_review": true,
+      "external_data_stored_mock_acceptance": "joint_verifier",
+      "offline_verified": true,
+      "loopback_verified": true,
+      "real_verified": false,
+      "asynchronous_operation_jobs": true,
+      "persistent_cancel_request": true,
+      "cancel_is_rollback": false
+    },
+    "fault_supervision": {
+      "contract_schema": "plcnext-bounded-fault-supervision/v1",
+      "implemented": true,
+      "loopback_independent_supervisor": true,
+      "real_backend_available": false,
+      "supported_real_source_profiles": [],
+      "restore_archive_supported": false,
+      "real_unavailability_reason": "No independently expiring boot-bound fault hook is verified in the restore archive.",
+      "allowed_faults": [
+        "agent_connection_offline",
+        "business_ack_blocked"
+      ],
+      "maximum_ttl_ms": 300000,
+      "arbitrary_variable_write": false,
+      "force": false,
+      "shared_broker_or_hub_control": false,
+      "system_clock_or_power_control": false,
+      "finally_is_independent_recovery": false
+    },
+    "runtime_timing_evidence": {
+      "implemented": true,
+      "backend": "reviewed_runtime_observation_receipts",
+      "direct_esm_diagnostic_service_implemented": false,
+      "versioned_probe_supported": true,
+      "restore_archive_probe_profile_verified": false,
+      "starts_performance_test": false,
+      "rpc_time_is_plc_cpu": false,
+      "p06_acceptance_implemented": false,
+      "maximum_observations": 32,
+      "maximum_observation_bytes": 2097152
+    },
+    "esm_monitor": {
+      "implemented": true,
+      "backend": "existing_source_ESM_DATA_DataAccess",
+      "prepare_tool": "project_prepare_esm_read",
+      "read_tool": "project_read_esm",
+      "test_tool": "project_test_esm_read",
+      "source_template_types_required": true,
+      "threshold_counter_wire_type": "uint32",
+      "time_unit": "microseconds",
+      "new_instrumentation_required": false,
+      "arbitrary_memory_access": false,
+      "elapsed_duration_includes_preemption": true,
+      "p06_test_started": false,
+      "offline_verified": true,
+      "loopback_verified": true,
+      "real_verified": false
+    },
+    "instrumented_fault_profile": {
+      "implemented": true,
+      "create_tool": "project_create_fault_profile",
+      "prepare_tool": "project_prepare_instrumented_fault",
+      "execute_tool": "project_execute_instrumented_fault",
+      "test_tool": "project_test_instrumented_fault",
+      "unchanged_restore_archive_supported": false,
+      "separate_instrumented_source_required": true,
+      "separate_operator_approval_required": false,
+      "mcp_authorization_supported": true,
+      "arbitrary_variable_write": false,
+      "shared_hub_broker_mock_control": false,
+      "real_verified": false,
+      "profile_clock_and_expiry_contract_must_match": true
+    },
+    "audit_export": {
+      "available": true,
+      "prepare_tool": "project_prepare_audit_export",
+      "inspect_tool": "project_inspect_audit_export",
+      "execute_tool": "project_execute_audit_export",
+      "status_tool": "project_audit_export_status",
+      "cancel_tool": "project_cancel_audit_export",
+      "authorization_kind": "audit_export",
+      "fixed_ack_fields_only": true,
+      "fact_modes": [
+        "legacy_v1",
+        "decision_clock_slots_v2"
+      ],
+      "v2_symbol_count": 20148,
+      "independent_slot_proof_by_exporter": false,
+      "capture_capacity": 512,
+      "association_capacity": 32,
+      "real_controller_verified": false,
+      "physical_50_events_per_second_verified": false,
+      "original_32_pou_supported": false,
+      "recovery_start_integration": true,
+      "prepare_parent_tool": "project_prepare_recovery",
+      "parent_option": "audit_duration_seconds",
+      "post_start_full_package_read": false,
+      "parent_failure_reconciliation_tool": "project_prepare_parent_audit_reconciliation"
+    },
+    "endpoint_lease_reconciliation": {
+      "available": true,
+      "prepare_tool": "project_prepare_lease_reconciliation",
+      "inspect_tool": "project_inspect_lease_reconciliation",
+      "execute_tool": "project_execute_lease_reconciliation",
+      "authorization_kind": "lease_reconciliation",
+      "sync_prepare_tool": "project_prepare_sync_lease_reconciliation",
+      "scope": "terminal asynchronous or synchronous recovery with known outcome and pending business verification; fresh Running/configuration/GOOD required",
+      "unknown_writes_supported": false,
+      "controller_mutations": false
+    },
+    "controller_write_access_scope": "MCP decides exact operation authorization; prepare, authorize, execute. No independent human issuer required.",
+    "controller_download_client": {
+      "implemented": true,
+      "backend": "independent_pinned_tls_tcp_rsc",
+      "review_tool": "project_prepare_download_review",
+      "readonly_preflight_tool": "project_preflight_controller_download",
+      "loopback_test_tool": "project_test_controller_download",
+      "guarded_execution_tool": "project_execute_controller_download",
+      "review_is_authorization": false,
+      "operator_approval_required": false,
+      "mcp_authorization_supported": true,
+      "automatic_stop": false,
+      "automatic_start": false,
+      "automatic_retry": false,
+      "remote_directory_listing": false,
+      "remote_old_file_deletion": false,
+      "real_device_write_compatibility_verified": false,
+      "real_device_file_transfer_verified": true,
+      "real_device_sha512_readback_verified": true,
+      "real_device_reset_load_start_verified": true,
+      "real_device_file_evidence": {
+        "source_sha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154",
+        "inventory_sha256": "c83ee20636924cfb29d9459127d77a88f4cbdbe444613a092f0bf373ec69a4cf",
+        "address": "192.168.0.8",
+        "files_verified": 49,
+        "bytes_verified": 9193238,
+        "report": "artifacts/original-recovery-hardware/1273d52e0f9e45c99896aa935c359704/result.json",
+        "scope": "this exact package only; prior changed-file transfer/readback, final identical-file readback, Reset/Load/Cold Start and Running verified; 250 points BAD_CONNECTION, business acceptance incomplete"
+      }
+    },
+    "controller_readonly": {
+      "available": true,
+      "tool": "controller_read_state",
+      "requires_explicit_certificate_sha256": true,
+      "protocol_scope": "RSC v4 tagged/no-datagram, Connect + fixed PLC service discovery + GetPlcState only",
+      "credentials": false,
+      "file_access": false,
+      "program_control": false,
+      "real_download": false
+    },
+    "deployment_preparation": {
+      "exact_build_gap_analysis": true,
+      "existing_pcwe_file_integrity_check": true,
+      "existing_pcwe_snapshot": true,
+      "cold_pcwe_generation": true,
+      "cold_pcwe_scope": "Validated NativeGateway AXCF2152/2026 hardware, services and Gateway/Login HMI; rejects unverified profiles.",
+      "signature_validation": false,
+      "daum_zip_generation": false,
+      "controller_transport": false
+    },
+    "download_simulation": {
+      "available": true,
+      "backend": "in_memory_only",
+      "authentication_service_contract": true,
+      "whole_file_transfer_and_readback": true,
+      "configuration_reset_load": true,
+      "network_access": false,
+      "memory_tls12_handshake_verified": true,
+      "fixed_header_codec_verified": true,
+      "write_file_value_codec_verified": true,
+      "bounded_binary_rpc_loopback": true,
+      "available_protocol_profiles": [
+        "v4_untagged",
+        "v4_tagged"
+      ],
+      "tagged_value_codec_verified": true,
+      "tagged_binary_rpc_loopback": true,
+      "tls_handshake_verified": false,
+      "real_controller_wire_compatibility_verified": false
+    },
+    "headless_st_syntax_check": {
+      "available": true,
+      "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0",
+      "powershell": "C:\\Users\\windssea\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.EXE",
+      "missing_assemblies": [],
+      "scope": "ST worksheet syntax only; no type checking or code generation",
+      "aci_used": false,
+      "whole_project_compiled": false
+    },
+    "cache_assisted_compile": {
+      "available": true,
+      "scope": "pinned_NativeGateway_NG_ReadAck_cache_assisted",
+      "aci_used": false,
+      "whole_project_rebuilt_from_pcwex": false,
+      "cache_assisted": true,
+      "deployable": false,
+      "limitations": [
+        "Cache-assisted compilation of the existing NG_ReadAck ST body only, using a pinned GUI-generated NativeGateway semantic seed.",
+        "All other project member payloads must exactly match the frozen B78 project; declarations, interfaces, tasks, I/O and HMI changes are unsupported.",
+        "The complete project is not rebuilt from PCWEX; network, I/O, HMI, packaging and deployment consistency are not regenerated or validated.",
+        "Requires the exact recorded installed Engineer assemblies and seed libraries; this is not an independent compiler implementation.",
+        "The resulting image is an offline experimental artifact, is not approved for deployment, and has not been run on a PLC."
+      ],
+      "seed_directory": "D:\\work\\code\\PLCnext-Engineer-mcp\\artifacts\\nativegateway-compile-seed",
+      "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0",
+      "powershell": "C:\\Users\\windssea\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.EXE",
+      "reference_count": 38
+    },
+    "nativegateway_source_compile": {
+      "available": true,
+      "scope": "NativeGateway_all_existing_POU_code_and_variables",
+      "ast_seed_required": true,
+      "controller_access": false,
+      "deployable": false,
+      "seed_directory": "D:\\work\\code\\PLCnext-Engineer-mcp\\artifacts\\nativegateway-compile-seed",
+      "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0"
+    },
+    "nativegateway_cold_compile": {
+      "available": true,
+      "scope": "AXCF2152_2026_single_eCLR_resource_1_to_16_independent_cyclic_tasks_ST_project",
+      "ast_seed_required": false,
+      "precompiled_vendor_libraries_required": true,
+      "controller_access": false,
+      "deployable": false,
+      "install_directory": "D:\\Program Files\\PHOENIX CONTACT\\PLCnext Engineer 2026.0"
+    },
+    "workspace": "D:\\PLCnext-MCP-Workspace"
+  }
+}

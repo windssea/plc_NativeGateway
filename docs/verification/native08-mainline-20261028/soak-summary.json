@@ -1,0 +1,718 @@
+{
+  "observationPassed": true,
+  "startedUtc": "2026-10-28T07:17:58.243914+00:00",
+  "endedUtc": "2026-10-28T07:47:58.257024+00:00",
+  "observedSeconds": 1800.0,
+  "databaseWindowEndUtc": "2026-10-28T07:47:58.243914+00:00",
+  "wallTailSeconds": 0.01311,
+  "databaseMinutes": [
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 0,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:17:59.671000+08:00",
+      "last": "2026-10-28 15:18:57.391000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 1,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:18:59.671000+08:00",
+      "last": "2026-10-28 15:19:57.391000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 2,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:19:59.671000+08:00",
+      "last": "2026-10-28 15:20:57.391000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 3,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:20:59.671000+08:00",
+      "last": "2026-10-28 15:21:57.650000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 4,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:21:59.921000+08:00",
+      "last": "2026-10-28 15:22:57.930000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 5,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:23:00.221000+08:00",
+      "last": "2026-10-28 15:23:58.230000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 6,
+      "samples": 2996,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:24:00.522000+08:00",
+      "last": "2026-10-28 15:24:58.228000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 7,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:24:58.248000+08:00",
+      "last": "2026-10-28 15:25:58.226000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 8,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:25:58.246000+08:00",
+      "last": "2026-10-28 15:26:58.226000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 9,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:26:58.246000+08:00",
+      "last": "2026-10-28 15:27:58.226000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 10,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:27:58.246000+08:00",
+      "last": "2026-10-28 15:28:58.226000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 11,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:28:58.246000+08:00",
+      "last": "2026-10-28 15:29:58.226000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 12,
+      "samples": 3002,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:29:58.246000+08:00",
+      "last": "2026-10-28 15:30:58.241000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 13,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:30:58.261000+08:00",
+      "last": "2026-10-28 15:31:58.241000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 14,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:31:58.261000+08:00",
+      "last": "2026-10-28 15:32:58.241000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 15,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:32:58.261000+08:00",
+      "last": "2026-10-28 15:33:58.241000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 16,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:33:58.261000+08:00",
+      "last": "2026-10-28 15:34:58.238000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 17,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:34:58.258000+08:00",
+      "last": "2026-10-28 15:35:58.238000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 18,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:35:58.258000+08:00",
+      "last": "2026-10-28 15:36:58.238000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 19,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:36:58.258000+08:00",
+      "last": "2026-10-28 15:37:58.238000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 20,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:37:58.258000+08:00",
+      "last": "2026-10-28 15:38:58.238000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 21,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:38:58.258000+08:00",
+      "last": "2026-10-28 15:39:58.236000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 22,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:39:58.256000+08:00",
+      "last": "2026-10-28 15:40:58.236000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 23,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:40:58.256000+08:00",
+      "last": "2026-10-28 15:41:58.236000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 24,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:41:58.256000+08:00",
+      "last": "2026-10-28 15:42:58.236000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 25,
+      "samples": 2998,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:42:58.256000+08:00",
+      "last": "2026-10-28 15:43:58.230000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 26,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:43:58.250000+08:00",
+      "last": "2026-10-28 15:44:58.230000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 27,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:44:58.250000+08:00",
+      "last": "2026-10-28 15:45:58.230000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 28,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:45:58.250000+08:00",
+      "last": "2026-10-28 15:46:58.230000+08:00"
+    },
+    {
+      "gateway": "NG-HUB-2152-01",
+      "minute": 29,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:46:58.250000+08:00",
+      "last": "2026-10-28 15:47:58.230000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 0,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:17:58.897000+08:00",
+      "last": "2026-10-28 15:18:54.007000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 1,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:18:58.913000+08:00",
+      "last": "2026-10-28 15:19:54.010000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 2,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:19:58.885000+08:00",
+      "last": "2026-10-28 15:20:53.979000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 3,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:20:58.917000+08:00",
+      "last": "2026-10-28 15:21:53.979000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 4,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:21:58.885000+08:00",
+      "last": "2026-10-28 15:22:53.995000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 5,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:22:58.885000+08:00",
+      "last": "2026-10-28 15:23:53.995000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 6,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:23:58.885000+08:00",
+      "last": "2026-10-28 15:24:54.038000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 7,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:24:58.913000+08:00",
+      "last": "2026-10-28 15:25:54.163000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 8,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:25:58.897000+08:00",
+      "last": "2026-10-28 15:26:54.085000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 9,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:26:58.897000+08:00",
+      "last": "2026-10-28 15:27:54.085000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 10,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:27:58.913000+08:00",
+      "last": "2026-10-28 15:28:54.054000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 11,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:28:58.897000+08:00",
+      "last": "2026-10-28 15:29:54.094000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 12,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:29:58.891000+08:00",
+      "last": "2026-10-28 15:30:54.126000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 13,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:30:58.907000+08:00",
+      "last": "2026-10-28 15:31:54.048000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 14,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:31:58.907000+08:00",
+      "last": "2026-10-28 15:32:54.001000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 15,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:32:58.907000+08:00",
+      "last": "2026-10-28 15:33:53.969000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 16,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:33:58.891000+08:00",
+      "last": "2026-10-28 15:34:53.998000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 17,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:34:58.904000+08:00",
+      "last": "2026-10-28 15:35:53.982000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 18,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:35:58.904000+08:00",
+      "last": "2026-10-28 15:36:54.013000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 19,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:36:58.888000+08:00",
+      "last": "2026-10-28 15:37:54.029000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 20,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:37:58.888000+08:00",
+      "last": "2026-10-28 15:38:53.982000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 21,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:38:58.888000+08:00",
+      "last": "2026-10-28 15:39:53.982000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 22,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:39:58.904000+08:00",
+      "last": "2026-10-28 15:40:54.076000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 23,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:40:58.888000+08:00",
+      "last": "2026-10-28 15:41:54.091000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 24,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:41:58.888000+08:00",
+      "last": "2026-10-28 15:42:54.091000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 25,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:42:58.904000+08:00",
+      "last": "2026-10-28 15:43:54.076000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 26,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:43:58.888000+08:00",
+      "last": "2026-10-28 15:44:53.989000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 27,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:44:58.895000+08:00",
+      "last": "2026-10-28 15:45:54.052000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 28,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:45:58.895000+08:00",
+      "last": "2026-10-28 15:46:54.067000+08:00"
+    },
+    {
+      "gateway": "PLC-UI-DEMO",
+      "minute": 29,
+      "samples": 3000,
+      "devices": 50,
+      "points": 250,
+      "nonGood": 0,
+      "first": "2026-10-28 15:46:58.911000+08:00",
+      "last": "2026-10-28 15:47:53.973000+08:00"
+    }
+  ],
+  "goodSamplesByGateway": {
+    "NG-HUB-2152-01": 89996,
+    "PLC-UI-DEMO": 90000
+  },
+  "queues": {
+    "NG-HUB-2152-01": {
+      "first": {
+        "batches": 4,
+        "payloadBytes": 12158,
+        "droppedBatches": 0
+      },
+      "last": {
+        "batches": 6,
+        "payloadBytes": 27384,
+        "droppedBatches": 0
+      },
+      "maxBatches": 7,
+      "snapshotMaxPayloadBytes": 33474,
+      "sessions": [
+        "ng-d4f61b3085b97c5e3831983b-84-1"
+      ],
+      "boots": [
+        "ng-d4f61b3085b97c5e3831983b-84"
+      ],
+      "maxObservedDataGapSeconds": 5.155999999959022,
+      "maxSnapshotDataAgeSeconds": 0.765999999945052
+    },
+    "PLC-UI-DEMO": {
+      "first": {
+        "batches": 2,
+        "payloadBytes": 16668,
+        "droppedBatches": 0
+      },
+      "last": {
+        "batches": 4,
+        "payloadBytes": 33846,
+        "droppedBatches": 0
+      },
+      "maxBatches": 4,
+      "snapshotMaxPayloadBytes": 33846,
+      "sessions": [
+        "session-7a4a2f408cf74225abfac544299b6aff"
+      ],
+      "boots": [
+        "boot-5dbd5f1ffb344504b34b259fb6e80785"
+      ],
+      "maxObservedDataGapSeconds": 4.407000000006519,
+      "maxSnapshotDataAgeSeconds": 4.047000000020489
+    }
+  },
+  "resources": {
+    "50864": {
+      "firstRssBytes": 535449600,
+      "lastRssBytes": 650477568,
+      "peakRssBytes": 674246656,
+      "cpuUserSecondsDelta": 43.4375,
+      "cpuSystemSecondsDelta": 136.15625,
+      "maxThreads": 332
+    },
+    "62156": {
+      "firstRssBytes": 156004352,
+      "lastRssBytes": 88317952,
+      "peakRssBytes": 156004352,
+      "cpuUserSecondsDelta": 1.5,
+      "cpuSystemSecondsDelta": 10.21875,
+      "maxThreads": 38
+    },
+    "40720": {
+      "firstRssBytes": 60833792,
+      "lastRssBytes": 61284352,
+      "peakRssBytes": 61284352,
+      "cpuUserSecondsDelta": 55.703125,
+      "cpuSystemSecondsDelta": 37.203125,
+      "maxThreads": 2
+    },
+    "61992": {
+      "firstRssBytes": 401408,
+      "lastRssBytes": 241664,
+      "peakRssBytes": 434176,
+      "cpuUserSecondsDelta": 0.0,
+      "cpuSystemSecondsDelta": 0.0,
+      "maxThreads": 1
+    },
+    "20160": {
+      "firstRssBytes": 24260608,
+      "lastRssBytes": 27709440,
+      "peakRssBytes": 28319744,
+      "cpuUserSecondsDelta": 117.640625,
+      "cpuSystemSecondsDelta": 45.078125,
+      "maxThreads": 5
+    }
+  },
+  "sqliteIntegrity": {
+    "agent": {
+      "version": 1,
+      "quickCheck": "ok"
+    },
+    "telemetry": {
+      "version": 2,
+      "quickCheck": "ok"
+    }
+  },
+  "violations": [],
+  "sampleAgeInterpretation": "Resource/message snapshots are not atomic; a message arriving during resource reads can yield a small negative raw age, clamped to zero only in this summary.",
+  "completeSourceCohort": false,
+  "performanceAccepted": false,
+  "databaseWrites": false,
+  "newDatabaseCreated": false
+}

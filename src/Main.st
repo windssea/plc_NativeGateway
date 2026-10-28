@@ -80,10 +80,10 @@ VAR
     NativeClock : NG_PlatformTime;
     TimeChecks : NG_PlatformTimeChecks;
     TimeReader : NG_TimeResponse;
-    TimeMode : BOOL; (* Explicit candidate profile; legacy default is SYSTEM_RTC. *)
+    TimeMode : BOOL := TRUE; (* Explicit candidate profile; legacy default is SYSTEM_RTC. *)
     TimeBasis : NG_Id := 'site-hub-1';
     TimeDriftPpm : LREAL := 1000;
-    TimeDriftEvidence : NG_Text;
+    TimeDriftEvidence : NG_Text := 'DEV_OBSERVATION_b70f7e8fa827053d36f5267a';
     TimeBootSeen : NG_Id;
     TimeReset : BOOL;
     SystemUnixMs : ULINT;
@@ -241,6 +241,7 @@ VAR
     point : NG_Point;
     sample : NG_Sample;
 END_VAR
+
 Clock(IN := NOT Clock.Q, PT := T#20d);
 NowMs := Epoch + TO_ULINT(TO_DINT(Clock.ET));
 IF Clock.Q THEN Epoch := Epoch + ULINT#1728000000; END_IF;
@@ -364,7 +365,6 @@ NativeClock(Reset:=TimeReset,PlatformMode:=TimeMode,Connected:=Mqtt.Connected,Se
 TimeResponsePending:=FALSE;
 IF TimeMode THEN UnixMs:=NativeClock.UtcMs; END_IF;
 CaptureBuffer.PlatformTime:=TimeMode; CaptureBuffer.TimeValid:=NativeClock.TimeValid; CaptureBuffer.ClockRevision:=NativeClock.ClockRevision;
-CaptureBuffer.DecisionSnapshotMonoMs:=NowMs;
 (* Charge an attempt at actual library invocation, including uncertain SDK
    outcomes. A proven Busy/Done submission separately opens control gates. *)
 IF Mqtt.TxInvoked AND (Mqtt.SubmittedKind=5) AND (Head>=1) AND (Head<=16) THEN
@@ -584,7 +584,7 @@ END_IF;
    copies and source FB growth; fixed scratch reserve covers call temporaries.
    NG_Durable and the on-disk v4 layout are unchanged. *)
 CaptureBuffer.RecordBytes:=SIZEOF(CaptureBuffer.Scratch);
-CaptureExtraBytes:=SIZEOF(Outbox)+SIZEOF(Samples)+SIZEOF(Values)+SIZEOF(Item)+SIZEOF(TxPayload)+SIZEOF(EmptyPacket)+SIZEOF(sample)+SIZEOF(point)+SIZEOF(Tx)+SIZEOF(Rx)+SIZEOF(DevicesJson)+SIZEOF(Header)+UDINT#16384+UDINT#135680+UDINT#65536+UDINT#16384+SIZEOF(CaptureSourceEnabled)+SIZEOF(CaptureLivenessStart)+SIZEOF(PipelinePhase)+UDINT#2048; (* audit-v2 FB-instance growth bound; checked against finalized native types *)
+CaptureExtraBytes:=SIZEOF(Outbox)+SIZEOF(Samples)+SIZEOF(Values)+SIZEOF(Item)+SIZEOF(TxPayload)+SIZEOF(EmptyPacket)+SIZEOF(sample)+SIZEOF(point)+SIZEOF(Tx)+SIZEOF(Rx)+SIZEOF(DevicesJson)+SIZEOF(Header)+UDINT#16384+UDINT#135680+UDINT#65536+UDINT#16384+SIZEOF(CaptureSourceEnabled)+SIZEOF(CaptureLivenessStart)+SIZEOF(PipelinePhase);
 CaptureBuffer.LayoutBytes:=SIZEOF(CaptureBuffer)+CaptureExtraBytes;
 CaptureBuffer.LayoutValid:=(CaptureBuffer.LayoutBytes<=UDINT#4194304);
 IF CaptureBuffer.ActiveSlot=0 THEN
@@ -846,7 +846,7 @@ IF NOT TxActive AND Mqtt.Connected AND NOT Mqtt.TxBusy THEN
         END_FOR;
         END_IF;
         IF NOT TelemetryAllowed OR (Active.Version=0) THEN StateName := 'WAITING_CONFIG'; ELSIF Active.enabled THEN StateName := 'RUNNING'; ELSE StateName := 'DISABLED'; END_IF;
-        TxPayload := CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"bootId":',NG_Quote(BootId),',"agentVersion":"native-0.7.1-audit-candidate.2","activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"uptimeSeconds":',TO_STRING(NowMs/1000, '{0:d}'),',"agentState":',NG_Quote(StateName),',"devices":[',DevicesJson,'],"points":{"total":',TO_STRING(Total, '{0:d}'),',"good":',TO_STRING(GoodCount, '{0:d}'),',"bad":',TO_STRING(Total-GoodCount, '{0:d}'),'},"queue":{"batches":',TO_STRING(QueueCount, '{0:d}'),',"payloadBytes":',TO_STRING(QueueBytes, '{0:d}'),',"droppedBatches":',TO_STRING(Dropped, '{0:d}'),'}}');
+        TxPayload := CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"bootId":',NG_Quote(BootId),',"agentVersion":"native-0.8.0","activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"uptimeSeconds":',TO_STRING(NowMs/1000, '{0:d}'),',"agentState":',NG_Quote(StateName),',"devices":[',DevicesJson,'],"points":{"total":',TO_STRING(Total, '{0:d}'),',"good":',TO_STRING(GoodCount, '{0:d}'),',"bad":',TO_STRING(Total-GoodCount, '{0:d}'),'},"queue":{"batches":',TO_STRING(QueueCount, '{0:d}'),',"payloadBytes":',TO_STRING(QueueBytes, '{0:d}'),',"droppedBatches":',TO_STRING(Dropped, '{0:d}'),'}}');
     ELSIF DeviceEventPending AND (NOT TimeMode OR NativeClock.ConfigGetReady) THEN
         TxKind:=7; TxTopic:=CONCAT(Prefix,'device/status');
         EventTxIndex:=DeviceEventIndex; EventTxSignature:=DeviceEventSignature;

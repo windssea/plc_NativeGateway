@@ -8,6 +8,7 @@ VAR
     oldIndex : UINT;
     configSlot : UINT;
 END_VAR
+
 IF NOT Buffer.AuditEnabled THEN RETURN; END_IF;
 IF (Event.SampleSeq=0) OR (Event.ConfigSlot<1) OR (Event.ConfigSlot>4) THEN
     Buffer.CaptureStopped:=TRUE; Buffer.EvidenceComplete:=FALSE; RETURN;
@@ -23,9 +24,6 @@ IF Buffer.AuditWriteSeq-Buffer.AuditReadSeq>=512 THEN
 END_IF;
 index:=TO_UINT((Event.SampleSeq-1) MOD 512)+1;
 Buffer.AuditEvents[index].Event:=Event; Buffer.AuditEvents[index].Decision:=0; Buffer.AuditEvents[index].Reason:=0;
-Buffer.AuditEvents[index].DecisionFlags:=BYTE#0; Buffer.AuditEvents[index].DecisionRevisionDelta:=0;
-Buffer.AuditEvents[index].DecisionDelayLo:=0; Buffer.AuditEvents[index].DecisionDelayHi:=0;
-Buffer.AuditEvents[index].ReportSkipped:=0;
 Buffer.Configs[Event.ConfigSlot].References:=Buffer.Configs[Event.ConfigSlot].References+1;
 Buffer.AuditWriteSeq:=Event.SampleSeq;
 END_FUNCTION_BLOCK

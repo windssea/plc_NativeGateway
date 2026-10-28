@@ -28,9 +28,30 @@ def verify():
                 raise ValueError(f'POU count mismatch: {path}')
         checked.append(dict(artifactId=item['artifactId'], sha256=item['sha256'], pouCount=count))
     selected = next(i for i in catalog['entries'] if i['artifactId'] == catalog['defaultArtifactId'])
+    formal_id = catalog.get('formalArtifactId')
+    formal = [i for i in catalog['entries'] if i['status'] == 'MAINLINE_RELEASE']
+    if formal_id:
+        if ([i['artifactId'] for i in formal] != [formal_id]
+                or formal_id != selected['artifactId']
+                or sum(bool(i.get('default')) for i in catalog['entries']) != 1
+                or not selected.get('default')):
+            raise ValueError('Exactly one formal mainline must be the selected default')
+        receipt = ROOT / catalog['formalVerification']['path']
+        raw = receipt.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != catalog['formalVerification']['sha256']:
+            raise ValueError('Mainline verification receipt changed')
+        result = json.loads(raw)
+        if (result.get('artifactSha256') != selected['sha256']
+                or result.get('artifactId') != formal_id or result.get('passed') is not True
+                or result.get('observedSeconds', 0) < 1800
+                or result.get('sameVersionVerified') is not True):
+            raise ValueError('Formal entry needs completed same-version 30-minute verification')
+    elif formal:
+        raise ValueError('A formal release must have an explicit formalArtifactId')
     if (ROOT / catalog['rootAlias']).read_bytes() != (ROOT / selected['path']).read_bytes():
-        raise ValueError('Root project no longer matches the selected candidate')
-    return dict(archives=checked, rootAliasMatches=True, plcConnected=False, plcDownloaded=False)
+        raise ValueError('Root project no longer matches the selected engineering archive')
+    return dict(archives=checked, rootAliasMatches=True, formalArtifactId=formal_id,
+                formalVerificationChecked=bool(formal_id), plcConnected=False, plcDownloaded=False)
 
 
 if __name__ == '__main__':

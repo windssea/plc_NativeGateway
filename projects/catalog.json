@@ -1,8 +1,8 @@
 {
   "schema": "nativegateway-project-catalog/v1",
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "entryPoint": "projects/README.md",
-  "defaultArtifactId": "native-0.7.0-timesync-candidate.1",
+  "defaultArtifactId": "native-0.8.0",
   "rootAlias": "NativeGateway.pcwex",
   "archivesImmutable": true,
   "plcDownloadedThisChange": true,
@@ -12,10 +12,11 @@
       "path": "projects/stable/native-0.5.0/NativeGateway.pcwex",
       "sha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154",
       "embeddedAgentVersion": "native-0.5.0",
-      "status": "STABLE_RESTORE",
-      "downloadPurpose": "恢复已验证的原运行程序；旧RTC兼容时间路径，不用于证明新授时。",
+      "status": "ROLLBACK_ONLY",
+      "downloadPurpose": "仅作0.8失败时的旧版回退；旧RTC路径，禁止混作正式授时入口。",
       "pouCount": 32,
-      "verifiedPackageId": "f7fc619d55ba42c091f4ca0efed23e73"
+      "verifiedPackageId": "f7fc619d55ba42c091f4ca0efed23e73",
+      "default": false
     },
     {
       "artifactId": "native-0.7.0-timesync-candidate.1",
@@ -25,7 +26,8 @@
       "status": "FUNCTIONAL_CANDIDATE",
       "downloadPurpose": "Hub/IoT/PLC授时及缓冲补传功能联调；完整矩阵、生产漂移、P06尚未放行。",
       "pouCount": 66,
-      "verifiedPackageId": "d8ffa5d9a23c46cba17ee31be144c889"
+      "verifiedPackageId": "d8ffa5d9a23c46cba17ee31be144c889",
+      "default": false
     },
     {
       "artifactId": "p06-before-entry-unification",
@@ -34,7 +36,8 @@
       "embeddedAgentVersion": "native-0.7.0-p05p06",
       "status": "HISTORICAL_EXPERIMENT",
       "downloadPurpose": "保留归档前根目录的P06试验输入，禁止作为默认下载工程。",
-      "pouCount": 61
+      "pouCount": 61,
+      "default": false
     },
     {
       "artifactId": "native-0.7.1-audit-candidate.2",
@@ -63,6 +66,26 @@
       "controllerDownloaded": true,
       "default": false,
       "verifiedPackageId": "ccbaf4e186df4a5a918f98c4e23a0d03"
+    },
+    {
+      "artifactId": "native-0.8.0",
+      "path": "projects/releases/native-0.8.0/NativeGateway.pcwex",
+      "sha256": "42d246435b950a8352e8dd2421319e546aff3fb8fb9cfb823070d4139279e4fb",
+      "embeddedAgentVersion": "native-0.8.0",
+      "pouCount": 66,
+      "status": "MAINLINE_RELEASE",
+      "downloadPurpose": "唯一正式主线工程：Hub逻辑授时、配置恢复、采集/ACK补传、普通断连与整机软件重启恢复、同版本1800秒持续采集均通过；实际boot84/v19。P06、24小时、生产漂移及原生遥测掉电无损不在本次放行范围。",
+      "verifiedPackageId": "a9974bf30ea84069bc0a0be4fc17e4d2",
+      "controllerDownloaded": true,
+      "default": true,
+      "mcpAcceptedVersion": "0.6.13",
+      "formalVerification": "projects/releases/native-0.8.0/verification.json"
     }
-  ]
+  ],
+  "formalArtifactId": "native-0.8.0",
+  "fallbackArtifactId": "native-0.5.0",
+  "formalVerification": {
+    "path": "projects/releases/native-0.8.0/verification.json",
+    "sha256": "e7592bcb73f6acd9ad5419cf8209cf7e9e999f49a6869a8e7f2bbb4222c36e0a"
+  }
 }

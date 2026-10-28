@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-28",
+  "files": [
+    {
+      "path": "capabilities.json",
+      "sha256": "c8bfe4fa8686124fdfe1b78726cf8ec848da2b9270039511e8ca36ed391ebf86",
+      "bytes": 18470,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\capabilities.json",
+      "sourceSha256": "c8bfe4fa8686124fdfe1b78726cf8ec848da2b9270039511e8ca36ed391ebf86"
+    },
+    {
+      "path": "stable-prepare.json",
+      "sha256": "333a016f1ea6bbdbfe9d139057feeeafeb4b2d6bb14c412d40b3837463ac2f81",
+      "bytes": 25148,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\stable-prepare.json",
+      "sourceSha256": "333a016f1ea6bbdbfe9d139057feeeafeb4b2d6bb14c412d40b3837463ac2f81"
+    },
+    {
+      "path": "stable-inspect.json",
+      "sha256": "a7d2f0994899712d016adc48e66ff750702a097d90b00b627977db7b92ca9a6e",
+      "bytes": 24802,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\stable-inspect.json",
+      "sourceSha256": "a7d2f0994899712d016adc48e66ff750702a097d90b00b627977db7b92ca9a6e"
+    },
+    {
+      "path": "stable-execute.json",
+      "sha256": "23263fdba947c307758cfd7bbfd783ddf19795df3fe52bdd57894ab780bc89f5",
+      "bytes": 43455,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\stable-execute.json",
+      "sourceSha256": "23263fdba947c307758cfd7bbfd783ddf19795df3fe52bdd57894ab780bc89f5"
+    },
+    {
+      "path": "stable-runtime-summary.json",
+      "sha256": "828930b5462affdabc29c8aaf718a709dbbaa19ed5ea80ad765af72408812c84",
+      "bytes": 1230,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\stable-current-runtime.json",
+      "sourceSha256": "4ba9750b74980a5615c0c75be1d5dd02126e7af1cbad9e11624bcc3af725e71b"
+    },
+    {
+      "path": "stable-reconcile.json",
+      "sha256": "b3a8f0bdf8189642fa97e21ad848281cc9c8fb9abd6c87f2a009eee8859052e8",
+      "bytes": 288,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\stable-reconcile.json",
+      "sourceSha256": "b3a8f0bdf8189642fa97e21ad848281cc9c8fb9abd6c87f2a009eee8859052e8"
+    },
+    {
+      "path": "omit-preflight.json",
+      "sha256": "33c079ef3771aa450e15e81da8f27d2397c7eaa3e76052757d6bfdb0470e894d",
+      "bytes": 4007,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\omit-preflight.json",
+      "sourceSha256": "33c079ef3771aa450e15e81da8f27d2397c7eaa3e76052757d6bfdb0470e894d"
+    },
+    {
+      "path": "native-preflight.json",
+      "sha256": "dc1d9df4726959451e07f362c302e0a13c68290f9a626d214a6143a2304adb68",
+      "bytes": 5402,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\native-preflight.json",
+      "sourceSha256": "dc1d9df4726959451e07f362c302e0a13c68290f9a626d214a6143a2304adb68"
+    },
+    {
+      "path": "native-prepare.json",
+      "sha256": "b7759bc33849e2638ab693f938b86f04adb3faf554aaa7d545f545ce7bca7225",
+      "bytes": 23752,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\native-prepare.json",
+      "sourceSha256": "b7759bc33849e2638ab693f938b86f04adb3faf554aaa7d545f545ce7bca7225"
+    },
+    {
+      "path": "stable-business.json",
+      "sha256": "91084bb07ba0cb447c3cbb6855115598765bb0555621ed3af11cd5eed221af77",
+      "bytes": 935
+    }
+  ],
+  "promoted": false,
+  "newVersionDownloaded": false
+}

@@ -1,33 +1,30 @@
-# 工程与下载入口
+# 唯一正式工程与回退入口
 
-本目录和 [catalog.json](catalog.json) 是工程身份、下载用途与 SHA-256 的唯一索引。2026-10-27 归档仅整理本地文件，未下载 PLC。
+2026-10-28。**后续正式开发、编译和下载统一使用 [native-0.8.0/NativeGateway.pcwex](releases/native-0.8.0/NativeGateway.pcwex)。** 当前设备已经运行该版本，boot84、业务配置19、50台/250点。
 
-| 身份 | 固定工程 | 下载用途与验收边界 |
+| 用途 | 固定文件 | 状态 |
 |---|---|---|
-| `native-0.5.0` / STABLE_RESTORE | [稳定原工程](stable/native-0.5.0/NativeGateway.pcwex) | 恢复已验证的原运行程序，32 POU、旧 RTC 兼容路径；最近恢复为 boot75、250 GOOD、16 批 1000 值入库核验。不是平台授时最终版。 |
-| `native-0.7.0-timesync-candidate.1` / FUNCTIONAL_CANDIDATE | [授时集成候选](candidates/native-0.7.0-timesync-candidate.1/NativeGateway.pcwex) | 后续三方功能联调的默认输入，66 POU；47 项断言、M13 有限源窗口及共同槽分项通过。完整时间/故障矩阵、生产漂移和 P06 未放行，不等于最终发布。 |
-| `p06-before-entry-unification` / HISTORICAL_EXPERIMENT | [旧根目录试验输入](experimental/p06-before-entry-unification/NativeGateway.pcwex) | 仅保留历史 P06 输入，不作为默认下载工程。 |
-| `native-0.7.1-audit-candidate.2` / REAL_AUDIT_WINDOW_FAILED_ORIGINAL_RESTORED | [审计v2离线候选](candidates/native-0.7.1-audit-candidate.2/NativeGateway.pcwex) | 逐事件决策时钟/漏槽审计，66 POU冷编译及布局复核通过；M14本机接收通过；实机boot74保存128条后审计环完整性守卫失败，完整事件对账未通过；已恢复原boot75。同源隔离FB的IEC20项通过，不替换默认candidate.1。 |
-| `native-0.7.1-audit-iec20-test.1` / VALIDATION_ONLY_IEC20_REAL_PASS | [IEC20测试变体](validation/native-0.7.1-audit-iec20-test.1/NativeGateway.pcwex) | 67POU，candidate.2加入独立断言FB/Buffer及Main调用；boot73的20项通过。仅测试，不用于正常部署/恢复或生产内存/P06验收。 |
+| 唯一正式主线 | `projects/releases/native-0.8.0/NativeGateway.pcwex` | Hub逻辑授时、配置恢复、上传、普通断连、整机软件重启及同版本1800秒采集通过 |
+| 仅作回退 | `projects/stable/native-0.5.0/NativeGateway.pcwex` | 原始字节保留，旧RTC路径；不用于正式授时联调 |
 
-仓库根目录 [NativeGateway.pcwex](../NativeGateway.pcwex) 现在是授时集成候选的逐字节副本。**默认打开根工程是继续开发/联调；需要恢复旧运行程序时，必须明确选择稳定原工程。当前没有获准长期部署的最终授时发布版。**
+正式SHA256：`42d246435b950a8352e8dd2421319e546aff3fb8fb9cfb823070d4139279e4fb`。根目录`NativeGateway.pcwex`是正式文件的逐字节兼容副本，**两个路径是同一版本，不是两套交付**；对外和后续任务只引用上表正式路径。catalog的defaultArtifactId/formalArtifactId均为native-0.8.0，fallbackArtifactId为native-0.5.0。
 
-归档保留已经验证的原始字节及 hash，不改旧工程内部 `agentVersion`：稳定版为 `native-0.5.0`；授时候选仍为历史嵌入值 `native-0.7.0-p05p06`。后者与旧 P06 输入相同，不能仅靠心跳版本号区分。候选的唯一身份是 `artifactId + SHA-256`；新审计candidate.2已采用独立内嵌版本`native-0.7.1-audit-candidate.2`，编译结果不继承旧实机验收。
+0.7授时候选、审计v2、IEC测试变体及P06输入仅保留历史，不作为默认下载。它们的SHA、旧工具ID及适用范围仍在[catalog.json](catalog.json)与历史报告中，不在归档原地覆盖。
 
-下载前先运行只读校验：
+- [正式版本说明](releases/native-0.8.0/README.md)
+- [同版本发布验证报告](../docs/主线0.8发布与同版本验证-20261028.md)
+- [冻结验收收据](releases/native-0.8.0/verification.json)
+
+下载前只读校验：
 
 ```powershell
-python tools/verify_project_catalog.py
+& 'D:/work/code/PLCnext-Engineer-mcp/.venv/Scripts/python.exe' tools/verify_project_catalog.py
 ```
 
-校验根工程别名、五个归档文件、嵌入版本及 POU 数。归档不就地覆盖；新候选另建版本目录并更新清单。历史记录中的临时路径和 MCP project/package ID 保留溯源，后续交付不得以临时文件作为下载入口。MCP 下载仍须导入所选固定文件、冷编译、生成包、审阅/授权和恢复方案；PCWEX 是工程输入，不是直接写入 PLC 的二进制包。
+校验所有归档SHA、内嵌版本、POU数、唯一正式标记、根副本和已完成的同版本30分钟收据。校验本身不连接PLC。
 
-`src/` 是后续可编辑源码，不能视为稳定原工程的源码快照；各冻结 PCWEX 内含对应源码。`tools/build_native.py` 的新生成结果写入 `output/NativeGateway.development.pcwex`，不会覆盖根工程或冻结归档；`tools/build_time_gateway.py` 接受显式 `--base`，输出为待编译的开发产物。供应商库依赖及路径重定位见 [reference/README.md](../reference/README.md)，重定位后的字节变化需重新校验和编译。
+`src/`与`tools/build_mainline.py`为当前正式主线的可编辑源码和构建入口；从固定旧候选取得硬件/HMI/任务元数据，从src取得全部66POU及NG类型，拒绝覆盖既有输出。后续代码变化应生成新版本输入，冷编译、验证后再提升，不就地覆盖冻结0.8。`build_native.py`、时间/审计/P06构建脚本属于历史开发工具，不作为正式发布入口。
 
-已验证候选与原包的对应关系见 [M13 报告](../docs/三方联调-M13有限窗口闭合与逐槽对标-20261027.md)。实机当前状态仍以最后恢复证据为准，不能从本地根工程推断 PLC 已切换。
+MCP下载顺序：导入正式文件→完整冷编译→生成PCWE（download_memento_policy=`empty_capability_v1`）→完整只读预检→精确审阅/授权→后台下载/启动及运行验证；启动观察显式12次、间隔5秒。PCWEX是工程输入，不是直接写入的二进制包。依赖与路径重定位见[reference/README.md](../reference/README.md)，重定位或源码变更后需重新编译验收。
 
-审计v2离线进度、编码与预算见[PLC-AUDIT/2](../docs/PLC逐事件决策时钟与漏槽审计-20261027.md)；仅冷启动候选，不承诺保留旧RAM在线升级。
-
-M14本机接收及证据边界见[接收报告](../docs/M14本机适配接收与受约束验证-20261027.md)；本机通过不代表候选已执行或允许直接下载。
-
-实机结果见[验证与恢复报告](../docs/M14实机断言与审计v2受约束验证-20261027.md)；M14本机通过保留，完整实机审计窗口未通过。
+本次放行是正常负载主线与上述恢复/30分钟观察；P06、24小时、生产漂移、原生遥测文件持久化及物理断电无损仍未放行。配置持久化不能替代遥测历史持久化。

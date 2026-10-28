@@ -1,0 +1,34 @@
+{
+  "schema": "nativegateway-mainline-validation/v1",
+  "artifactId": "native-0.8.0",
+  "artifactSha256": "42d246435b950a8352e8dd2421319e546aff3fb8fb9cfb823070d4139279e4fb",
+  "passed": true,
+  "sameVersionVerified": true,
+  "observedSeconds": 1800.0,
+  "startedUtc": "2026-10-28T07:17:58.243914+00:00",
+  "endedUtc": "2026-10-28T07:47:58.257024+00:00",
+  "bootAfterDownload": "ng-d4f61b3085b97c5e3831983b-83",
+  "bootAfterReboot": "ng-d4f61b3085b97c5e3831983b-84",
+  "configVersion": 19,
+  "packageJobId": "a9974bf30ea84069bc0a0be4fc17e4d2",
+  "checks": {
+    "download": true,
+    "automaticHubTime": true,
+    "reconnect": true,
+    "wholeDeviceSoftwareReboot": true,
+    "continuousCollection30m": true,
+    "database60GatewayMinutes50Devices250PointsGood": true,
+    "existingDatabaseOnly": true,
+    "oneBackend": true
+  },
+  "evidenceManifest": {
+    "path": "docs/verification/native08-mainline-20261028/manifest.json",
+    "sha256": "7246ee5497f933999237a071491a045b56615aabb8cff8a3965f81fbbfd72107"
+  },
+  "limits": {
+    "p06Accepted": false,
+    "powerLossNoDataLossAccepted": false,
+    "longTerm24hAccepted": false,
+    "productionClockDriftAccepted": false
+  }
+}

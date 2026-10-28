@@ -1,0 +1,39 @@
+{
+  "status": "reboot_auto_run_verified",
+  "plan_id": "d4d81d95de5140b6a38f68eba4b7cbe9",
+  "plan_sha256": "b4d632f989b4ecaf79cc941c52ba696c3cce4b9136d75ae60d2b814ec547d334",
+  "new_application_boot_id": "ng-d4f61b3085b97c5e3831983b-84",
+  "elapsed_seconds": 141.8279999999795,
+  "device_start_sent": false,
+  "device_reset_or_load_sent": false,
+  "auto_run_verified": true,
+  "automatic_resend": false,
+  "reboot_reply_received": true,
+  "reboot_send_intent": true,
+  "endpoint_lease_retained": false,
+  "os_boot_id_verified": false,
+  "memory_loaded_image_attested": false,
+  "currentObservation": {
+    "finished_utc": "2026-10-28T07:16:48.914245+00:00",
+    "quality_coverage": {
+      "requested": 250,
+      "read": 250,
+      "good": 250,
+      "all_requested_good": true,
+      "atomic_snapshot": false,
+      "expected_point_count": 250,
+      "complete_expected_point_coverage": true
+    },
+    "configuration_digest": {
+      "sha256": "bf6f827b4a321061bc7dc2f9275ff32bacc1b2db9d320a059136cdf75cd94c3b",
+      "field_count": 1006,
+      "scope": "only_returned_active_fields",
+      "full_sampling_configuration_verified": false
+    },
+    "observation_id": "311865969aa64114b7aa705c5954c1a9",
+    "observation_sha256": "13af50d01f751b5a013b9b518dfc69c62b9ca8b45eae4434d612df844f5ca0ca",
+    "report_path": "D:\\PLCnext-MCP-Workspace\\8266573fcadd4e118cb2b86995335dc6\\runtime-observations\\311865969aa64114b7aa705c5954c1a9\\result.json",
+    "plc_state_before": 3,
+    "plc_state_after": 3
+  }
+}

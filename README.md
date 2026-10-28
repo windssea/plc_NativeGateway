@@ -1,6 +1,6 @@
 # NativeGateway
 
-> **当前主线（2026-10-27）：** Hub面向用户，IoT/PLC作为采集网关；先完成配置→自动对时→持续采集上传→Hub可见，再完成连续运行和重启恢复。全部阶段尚未完成，MCP是工具、M14是辅助取证，P06后置。逐项状态与执行顺序见[MAINLINE/1](docs/三方主线开发与联调计划.md)；以下历史分项不替代当前排程。
+> **当前主线（2026-10-28）：native-0.8.0已成为唯一正式入口。** 已完成同版本Hub自动授时、真实采集上传、普通断连与整机软件重启恢复、完整30分钟采集；当前boot84/配置19/250GOOD，0.5仅回退。正式文件和hash见[工程入口](projects/README.md)，实证见[发布验证](docs/主线0.8发布与同版本验证-20261028.md)，阶段后续见[MAINLINE/8](docs/三方主线开发与联调计划.md)。P06继续后置，全部阶段尚未完成。
 
 
 
@@ -26,9 +26,9 @@ AXC F 2152 的原生 IEC/ST + PLCnext Engineer Web HMI 网关，支持 Modbus TC
 
 - [原生 P05/P06 实现、实机验证与待验项](docs/阶段1-P05-P06开发进度与待验-20261024.md)：本地诊断 16 项及并行流水线 41 项实机断言通过，23 项主机测试通过；完整候选编译 0 错误/0 警告，固定预算 4170829 B。两轮 83500 条/1311 批真实 STORED、本地释放及现有开发库收据/样本核对通过。P06 不放行：释放 57.559 条/秒低于 90，完整任务最大 23.515 ms、超 20 ms 一次；新增 <=1 ms、正常 30 分钟和 SDK 私有堆仍未证明。测试后已恢复原 native-0.5.0/boot34、配置 13/50 台/250 点及相同采样哈希，唯一后端 PID 34208、前端和旧记录器停用状态不变。
 
-工程与下载统一从 [projects/README.md](projects/README.md) 进入：稳定原工程 `native-0.5.0` 用于恢复；授时候选 `native-0.7.0-timesync-candidate.1` 用于三方功能联调。根目录 `NativeGateway.pcwex` 已统一为该候选的精确副本；旧根目录 P06 试验输入另存 experimental，不再作为默认下载输入。归档只整理本地文件，未操作 PLC；P06继续后置。
+正式工程统一使用 `projects/releases/native-0.8.0/NativeGateway.pcwex`；根目录工程已同步为同一字节副本，0.5只作回退，0.7与审计/IEC变体仅保留历史。身份及校验见 [projects/README.md](projects/README.md)。
 
-当前设备恢复版本为 `native-0.5.0`，以 Hub 管理模式为主。设备、点位和周期由 PLCnext-Hub-Backend 原有 IoT 发布接口管理；HMI 保留查看、诊断和 MQTT 维护，可保持同一网关标识手动进入本地维护，默认保留点表。维护期间平台下发返回冲突，本地修改不占用平台版本；交还时恢复平台备份，再在 Hub 重试受阻发布。Hub 和 Python Agent 业务代码无需为本网关增加专用协议分支。分包支持至 64 点并受 12 KB 值区限制，Hub 模式心跳周期为 30 秒。
+当前设备运行正式主线 `native-0.8.0`（boot84、配置19），同版本恢复和30分钟持续采集已通过；`native-0.5.0`仅作回退。以 Hub 管理模式为主。设备、点位和周期由 PLCnext-Hub-Backend 原有 IoT 发布接口管理；HMI 保留查看、诊断和 MQTT 维护，可保持同一网关标识手动进入本地维护，默认保留点表。维护期间平台下发返回冲突，本地修改不占用平台版本；交还时恢复平台备份，再在 Hub 重试受阻发布。Hub 和 Python Agent 业务代码无需为本网关增加专用协议分支。分包支持至 64 点并受 12 KB 值区限制，Hub 模式心跳周期为 30 秒。
 
 原 v104 的 8 小时长测已按用户要求提前结束，实际有效观察 38 分 50.6 秒，不能算 8 小时通过。证据及当时 HMI 短暂不可用异常保留在 `tests/soak/segments/20261023-093205-v104-user-ended-101121`；结论见 `tests/soak/STABILITY-RESULTS.txt`。当前 Hub 联调使用独立身份 `NG-HUB-2152-01`，记录器只读，不模拟 STORED。
 
@@ -38,7 +38,7 @@ AXC F 2152 的原生 IEC/ST + PLCnext Engineer Web HMI 网关，支持 Modbus TC
 
 ## 从仓库开始
 
-先按[统一工程入口](projects/README.md)选择下载用途，运行 `python tools/verify_project_catalog.py` 校验。后续物理联调通过公开 PLCnext MCP 的导入、编译、审阅/授权及下载流程执行；本轮不下载。使用 Engineer 打开时同样选固定归档文件，依赖 IIoT Library 5.3，见[构建依赖](reference/README.md)。`src/` 为后续开发源码；`tools/build_native.py` 仅生成 `output/NativeGateway.development.pcwex`，不会覆盖已验证归档。
+先按[统一工程入口](projects/README.md)选择正式0.8或仅用于回退的0.5，运行 `python tools/verify_project_catalog.py` 校验。物理联调通过公开 PLCnext MCP 的导入、冷编译、完整预检、审阅/授权及下载流程执行；本轮已完成0.8下载和同版本验证。使用 Engineer 打开时同样选固定归档文件，依赖 IIoT Library 5.3，见[构建依赖](reference/README.md)。`src/` 为当前主线源码；使用`tools/build_mainline.py`生成新的主线输入，不覆盖已冻结归档；`build_native.py`仅保留历史开发用途。
 
 本仓库包含当前工程、源码、文档、测试程序、点表及精简验收结果。虚拟环境、供应商分发文件、持续日志、数据库和历史备份保留在本机，未上传；文档中原始证据路径指向原工作站。测试依赖及可能影响运行的脚本见 [测试说明](tests/README.md)。历史 PDF 不随仓库分发。
 

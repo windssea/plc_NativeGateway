@@ -1,0 +1,32 @@
+{
+  "status": "monitor_read_completed",
+  "created_utc": "2026-10-28T06:51:42.462831+00:00",
+  "finished_utc": "2026-10-28T06:51:43.624334+00:00",
+  "observation_id": "0dd89f439b354cec836321bb7e5cbaa0",
+  "observation_sha256": "72f5cd1b7def94107a1b6c6f0e88b44ea7fe7a7b790b52cb8ab5967c7ac01ff3",
+  "report_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\runtime-observations\\0dd89f439b354cec836321bb7e5cbaa0\\result.json",
+  "plc_state_before": 3,
+  "plc_state_after": 3,
+  "configuration_digest": {
+    "sha256": "bf6f827b4a321061bc7dc2f9275ff32bacc1b2db9d320a059136cdf75cd94c3b",
+    "field_count": 1006,
+    "scope": "only_returned_active_fields",
+    "full_sampling_configuration_verified": false
+  },
+  "quality_coverage": {
+    "requested": 250,
+    "read": 250,
+    "good": 250,
+    "all_requested_good": true,
+    "atomic_snapshot": false,
+    "expected_point_count": 250,
+    "complete_expected_point_coverage": true
+  },
+  "identity": {
+    "MainInstance.BootId": "ng-d4f61b3085b97c5e3831983b-82",
+    "MainInstance.Active.Version": 19,
+    "MainInstance.Active.DeviceCount": 50,
+    "MainInstance.Active.PointCount": 250,
+    "MainInstance.Active.enabled": true
+  }
+}

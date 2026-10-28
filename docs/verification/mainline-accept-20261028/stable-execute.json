@@ -1,0 +1,1142 @@
+{
+  "transport": "MCP stdio fresh session",
+  "tool": "project_execute_recovery",
+  "isError": false,
+  "result": {
+    "schema": "plcnext-controller-recovery-result/v1",
+    "execution_id": "6a0c9cb6865146a189538b80e2508bbe",
+    "project_id": "17ae4361baa846868b14775bf1de15ea",
+    "plan_id": "8d3eac92d301407f94d40b17b6f6fa01",
+    "review_sha256": "dc43ec1746a63e0a0e3abd62672cb9f2481fd3b36b9d5fb7ff5b638f4762fddb",
+    "inventory_sha256": "c83ee20636924cfb29d9459127d77a88f4cbdbe444613a092f0bf373ec69a4cf",
+    "target": {
+      "address": "192.168.0.8",
+      "authentication_mode": "anonymous",
+      "certificate_policy": "explicit_sha256_pin",
+      "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+      "port": 41100
+    },
+    "status": "recovery_failed",
+    "stage": "verify_runtime",
+    "controller_changed": true,
+    "original_package_loaded": true,
+    "original_configuration_verified": false,
+    "collection_verified": false,
+    "original_program_restored": false,
+    "original_project_restored": false,
+    "joint_acceptance_complete": false,
+    "outcome_unknown": false,
+    "automatic_retry": false,
+    "automatic_rollback": false,
+    "endpoint_lease_retained": true,
+    "aci_used": false,
+    "computer_use_used": false,
+    "steps": [
+      {
+        "schema": "plcnext-controller-control-result/v1",
+        "status": "control_already_complete",
+        "action": "stop",
+        "start_kind": null,
+        "stage": "completed",
+        "scope": "mcp_authorized",
+        "target": {
+          "address": "192.168.0.8",
+          "port": 41100,
+          "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+          "certificate_policy": "explicit_sha256_pin",
+          "authentication_mode": "anonymous"
+        },
+        "review_sha256": "683a366b5ff22ecb201ec85d0266e1692ff1f84384ae0ae2a84a294b867c7152",
+        "plan_id": "8d3eac92d301407f94d40b17b6f6fa01",
+        "controller_connected": true,
+        "action_sent": false,
+        "ack_received": false,
+        "terminal_state_verified": true,
+        "loaded_package_identity_verified": false,
+        "outcome_unknown": false,
+        "automatic_retry": false,
+        "inverse_action_sent": false,
+        "aci_used": false,
+        "engineer_started": false,
+        "computer_use_used": false,
+        "collection_verified": false,
+        "physical_output_behavior_verified": false,
+        "peer": {
+          "tls_version": "TLSv1.2",
+          "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+          "certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+          "certificate_pin_verified": true,
+          "pki_chain_and_hostname_verified": false
+        },
+        "peer_connected": true,
+        "initial_state_raw": 131074,
+        "last_state_raw": 131074,
+        "final_state_raw": 131074,
+        "request_attempt_count": 0,
+        "cancelled": false,
+        "cleanup_error_class": null,
+        "elapsed_monotonic_seconds": 0.48499999998603016,
+        "stop_command_sent": false,
+        "start_command_sent": false,
+        "trace": [
+          {
+            "operation": "Connect",
+            "response_received": true
+          },
+          {
+            "operation": "GetServiceHandles",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          }
+        ]
+      },
+      {
+        "status": "controller_download_completed",
+        "stage": "loaded_stopped",
+        "scope": "mcp_authorized",
+        "socket_transport_used": true,
+        "memory_bio_used": false,
+        "peer_connected": true,
+        "controller_connected": true,
+        "controller_downloaded": true,
+        "loopback_download_completed": false,
+        "files_verified": 49,
+        "bytes_verified": 9193238,
+        "configuration_reset_attempted": true,
+        "configuration_reset_confirmed": true,
+        "configuration_load_attempted": true,
+        "load_ack_received": true,
+        "load_state_verified": true,
+        "stop_command_sent": false,
+        "start_command_sent": false,
+        "delete_command_sent": false,
+        "automatic_retry": false,
+        "rollback_attempted": false,
+        "deployable": false,
+        "aci_used": false,
+        "engineer_started": false,
+        "computer_use_used": false,
+        "authentication_mode": "anonymous",
+        "target": {
+          "address": "192.168.0.8",
+          "port": 41100,
+          "certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863"
+        },
+        "peer": {
+          "tls_version": "TLSv1.2",
+          "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+          "certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+          "certificate_pin_verified": true,
+          "pki_chain_and_hostname_verified": false
+        },
+        "initial_state_raw": 131074,
+        "remote_project_root": "/opt/plcnext/projects/PCWE",
+        "remote_inventory": {
+          "declared_manifest_paths_match": true,
+          "runtime_path_policy_satisfied": true,
+          "preserved_remote_source_archive_paths": [],
+          "preserved_source_archives_match_new_runtime": "unverified",
+          "complete_remote_directory_listing": false,
+          "remote_manifest_sha256": "44dd44995794fafebaf25c14e329cb0ed18fe51d4346554062831ead15a6c281",
+          "old_files_deleted": false,
+          "path_comparison": {
+            "missing_on_target": {
+              "paths": [],
+              "count": 0,
+              "truncated": false
+            },
+            "preserved_remote": {
+              "paths": [],
+              "count": 0,
+              "truncated": false
+            },
+            "unsupported_remote_extras": {
+              "paths": [],
+              "count": 0,
+              "truncated": false
+            },
+            "directions": "missing_on_target=package minus remote manifest; extras=remote manifest minus package",
+            "source_archive_limit_exceeded": false,
+            "path_limit_per_category": 128,
+            "utf8_bytes_limit_per_category": 8192,
+            "remote_manifest_sha256": "44dd44995794fafebaf25c14e329cb0ed18fe51d4346554062831ead15a6c281"
+          }
+        },
+        "files_compared": 49,
+        "files_skipped_identical": [
+          "Io/Arp.Io.PnC/ProfinetDiagnosticDatabase.db",
+          "Io/Arp.Io.PnC/Tic.crc",
+          "Io/Arp.Io.PnC/controller.tic",
+          "Io/Arp.Io.PnC/links.xml",
+          "Libraries.crc",
+          "PCWE.software-package-manifest.json",
+          "Plc/Domain/pcwe.plc.config",
+          "Plc/Eclr/SharedLibraries/IIoT_Library/libIIoT_Library.so",
+          "Plc/Eclr/eCLR.img",
+          "Plc/Esm/PCWE.esm.config",
+          "Plc/Gds/PCWE.gds.config",
+          "Plc/Plm/pcwe.plm.config",
+          "Services/Ehmi/ehmi/application.variables.json",
+          "Services/Ehmi/ehmi/codex-clipboard-2b444731-1e31-4460-972d-c7c6dbf70708.png",
+          "Services/Ehmi/ehmi/connectionError.png",
+          "Services/Ehmi/ehmi/data.dictionary.json",
+          "Services/Ehmi/ehmi/downarrow.svg",
+          "Services/Ehmi/ehmi/error.png",
+          "Services/Ehmi/ehmi/favicon.png",
+          "Services/Ehmi/ehmi/gateway.json",
+          "Services/Ehmi/ehmi/gateway.variables.json",
+          "Services/Ehmi/ehmi/gatewayModule.js",
+          "Services/Ehmi/ehmi/hmiapp.css",
+          "Services/Ehmi/ehmi/hmiapp.html",
+          "Services/Ehmi/ehmi/hmiapp.legacy.min.js",
+          "Services/Ehmi/ehmi/hmiapp.min.js",
+          "Services/Ehmi/ehmi/imagelist.json",
+          "Services/Ehmi/ehmi/languages-dynamic.dictionary.json",
+          "Services/Ehmi/ehmi/languages-static.dictionary.json",
+          "Services/Ehmi/ehmi/leftarrow.svg",
+          "Services/Ehmi/ehmi/loading-sm.gif",
+          "Services/Ehmi/ehmi/loading.gif",
+          "Services/Ehmi/ehmi/loadingSpriteSheet.png",
+          "Services/Ehmi/ehmi/login.json",
+          "Services/Ehmi/ehmi/login.variables.json",
+          "Services/Ehmi/ehmi/loginModule.js",
+          "Services/Ehmi/ehmi/project.checksum-full.json",
+          "Services/Ehmi/ehmi/project.checksum.json",
+          "Services/Ehmi/ehmi/project.json",
+          "Services/Ehmi/ehmi/rightarrow.svg",
+          "Services/Ehmi/ehmi/textlist.json",
+          "Services/Ehmi/ehmi/type.dictionary.json",
+          "Services/Ehmi/ehmi/uparrow.svg",
+          "Services/Ehmi/ehmi/webserver.configuration.json",
+          "Services/Ehmi/index.html",
+          "Services/OpcUA/Modules/Client/client.module.config",
+          "Services/OpcUA/PCWE.opcua.config",
+          "dlc.bin",
+          "PCWE.manifest.config"
+        ],
+        "planned_written_paths": [],
+        "files_written": 0,
+        "manifest_written_last": false,
+        "manifest_unchanged_verified": true,
+        "last_state_raw": 1048578,
+        "final_state_raw": 1048578,
+        "cleanup_error_class": null,
+        "files_may_have_changed": false,
+        "mutation_request_count": 2,
+        "unacknowledged_mutation_requests": 0,
+        "configuration_outcome_unknown": false,
+        "outcome_unknown": false,
+        "bytes_sent": 8035,
+        "bytes_received": 18417557,
+        "connection_closed": true,
+        "trace": [
+          {
+            "operation": "Connect",
+            "response_received": true
+          },
+          {
+            "operation": "GetServiceHandles",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "GetServiceHandles",
+            "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+            "method": 6,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "GetServiceHandles",
+            "service": "Arp.System.Commons.Services.Io.IFileService2",
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileService2",
+            "method": 9,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileService2",
+            "method": 9,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileService2",
+            "method": 9,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileService2",
+            "method": 9,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileService2",
+            "method": 9,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileService2",
+            "method": 9,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.System.Commons.Services.Io.IFileService2",
+            "method": 9,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 4,
+            "mutating": true,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 1,
+            "mutating": true,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          }
+        ],
+        "execution_id": "6a0c9cb6865146a189538b80e2508bbe",
+        "plan_id": "8d3eac92d301407f94d40b17b6f6fa01",
+        "project_id": "17ae4361baa846868b14775bf1de15ea",
+        "source_project_sha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154",
+        "inventory_sha256": "c83ee20636924cfb29d9459127d77a88f4cbdbe444613a092f0bf373ec69a4cf",
+        "review_sha256": "aac59d7af882ccf9fc86177066c443e15a01dfe215be062ecc1b24a19bacfb6f"
+      },
+      {
+        "schema": "plcnext-controller-control-result/v1",
+        "status": "control_completed",
+        "action": "start",
+        "start_kind": "cold",
+        "stage": "completed",
+        "scope": "mcp_authorized",
+        "target": {
+          "address": "192.168.0.8",
+          "port": 41100,
+          "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+          "certificate_policy": "explicit_sha256_pin",
+          "authentication_mode": "anonymous"
+        },
+        "review_sha256": "d170a517d0f0a86ce86da6fed9f7fed41c62e9050338f5ea40527d282570f983",
+        "plan_id": "8d3eac92d301407f94d40b17b6f6fa01",
+        "controller_connected": true,
+        "action_sent": true,
+        "ack_received": true,
+        "terminal_state_verified": true,
+        "loaded_package_identity_verified": true,
+        "outcome_unknown": false,
+        "automatic_retry": false,
+        "inverse_action_sent": false,
+        "aci_used": false,
+        "engineer_started": false,
+        "computer_use_used": false,
+        "collection_verified": false,
+        "physical_output_behavior_verified": false,
+        "peer": {
+          "tls_version": "TLSv1.2",
+          "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+          "certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+          "certificate_pin_verified": true,
+          "pki_chain_and_hostname_verified": false
+        },
+        "peer_connected": true,
+        "initial_state_raw": 1048578,
+        "last_state_raw": 3,
+        "loaded_identity_evidence": {
+          "source": "same_plan_verified_load",
+          "loaded_package_identity_verified": true,
+          "observed_loaded_inventory_sha256": "c83ee20636924cfb29d9459127d77a88f4cbdbe444613a092f0bf373ec69a4cf",
+          "target": {
+            "address": "192.168.0.8",
+            "authentication_mode": "anonymous",
+            "certificate_policy": "explicit_sha256_pin",
+            "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+            "port": 41100
+          },
+          "plan_id": "8d3eac92d301407f94d40b17b6f6fa01",
+          "lease_held_continuously": true,
+          "journal_binding_verified": true,
+          "readback_all_files_verified": true,
+          "load_state_verified": true,
+          "fresh_plc_state_raw": 1048578,
+          "fresh_project_name_matches": true,
+          "load_execution_id": "6a0c9cb6865146a189538b80e2508bbe",
+          "load_receipt_sha256": "5c65e8fba48e51d4b76e001635efd8217bebf860f4e7772d6ad4850b8152222b",
+          "load_journal_sha256": "0436dac5348eb58d14ebff77b9a363662a29677a92fc3a2db2d7cfd49fedadc9",
+          "load_journal_prefix_bytes": 66355,
+          "project_name_observation": {
+            "wire_type": "utf8",
+            "wire_tag": 19,
+            "value": "NativeGateway"
+          },
+          "device_loaded_module_hash_read": false,
+          "outside_tool_changes_excluded": false
+        },
+        "final_state_raw": 3,
+        "request_attempt_count": 1,
+        "cancelled": false,
+        "cleanup_error_class": null,
+        "elapsed_monotonic_seconds": 2.515999999945052,
+        "stop_command_sent": false,
+        "start_command_sent": true,
+        "trace": [
+          {
+            "operation": "Connect",
+            "response_received": true
+          },
+          {
+            "operation": "GetServiceHandles",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 2,
+            "mutating": true,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          },
+          {
+            "operation": "Invoke",
+            "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+            "method": 5,
+            "mutating": false,
+            "send_attempted": true,
+            "response_received": true
+          }
+        ]
+      }
+    ],
+    "runtime_observations": [
+      {
+        "observation_id": "17a9d673585647c1bf1796d2957ce96d",
+        "observation_sha256": "87beb22ac7e506a765f957f267e78407895ed993d10c7b1aefefc986b915e74c",
+        "report_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\runtime-observations\\17a9d673585647c1bf1796d2957ce96d\\result.json",
+        "status": "monitor_read_completed",
+        "consistency": "guarded_window_observation"
+      },
+      {
+        "observation_id": "8a5e920733894de2911e1dbcea4a26df",
+        "observation_sha256": "3303d6aa0d96df6705f870a8a6bfb06bffa74233f0e6b39709a4f67d734d148a",
+        "report_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\runtime-observations\\8a5e920733894de2911e1dbcea4a26df\\result.json",
+        "status": "monitor_read_completed",
+        "consistency": "guarded_window_observation"
+      },
+      {
+        "observation_id": "c36c8d4c72474bdfa55757e41daaf419",
+        "observation_sha256": "18c3bfcdc819137fab6249d25aaed7590b2a638c4e570f8ddcba2b605cb378f2",
+        "report_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\runtime-observations\\c36c8d4c72474bdfa55757e41daaf419\\result.json",
+        "status": "monitor_read_completed",
+        "consistency": "guarded_window_observation"
+      }
+    ],
+    "controller_connected": true,
+    "journal_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\controller-recoveries\\6a0c9cb6865146a189538b80e2508bbe\\journal.jsonl",
+    "handoff_responsibility_retained": true,
+    "stopped_handoff": {
+      "evidence": {
+        "approval_sha256": "fbc513c479576d685ce76e8e077dc6f45b24a04a0f97324bb35783395040c36d",
+        "claim_sha256": "1fdc99a76b29056f537456ac6e06a7f60836020597f71273547954ee4b3bcb3d",
+        "journal_sha256": "1867516cc445a25a3673af89d09a068d635af7edf5dc8685efe728c25cf9d93b",
+        "last_confirmed_state_raw": 131074,
+        "lease_sha256": "068928d990c3957645dc546de453831cd7db9ccd028389288066bbfd5b303653",
+        "load_result_sha256": "8dc1716a10059cb7322cf6353e3a7df4fbb761d82254c380ff94c663944172d6",
+        "old_job_directory": "D:\\PLCnext-MCP-Workspace\\8266573fcadd4e118cb2b86995335dc6\\controller-recoveries\\0e3b27da8b504c4bb0dce005d38149d0",
+        "old_plan_id": "4458f29f996d461c9822d67c1c6f296e",
+        "result_sha256": "5d1641f9adfcdb7fe24f1041e8092131417f541e1a2b7f68d577122c301d03be"
+      },
+      "execution_id": "0e3b27da8b504c4bb0dce005d38149d0",
+      "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+      "expected_review_sha256": "92d4b2b254e1ca380861122f07d78f22ec8d8f428f111ff396a223ab69db6330",
+      "operation_id": null,
+      "project_id": "8266573fcadd4e118cb2b86995335dc6"
+    },
+    "endpoint_lease_path": "C:\\Users\\windssea\\.plcnext-mcp\\controller-endpoint-leases\\e61b57ff0fd7800a8b9ed52f3302aef5ca8aff36997f4dd71c547aff74f427f1.json",
+    "authorization_scope": "mcp_authorized",
+    "last_observation": {
+      "observation_id": "c36c8d4c72474bdfa55757e41daaf419",
+      "observation_sha256": "18c3bfcdc819137fab6249d25aaed7590b2a638c4e570f8ddcba2b605cb378f2",
+      "report_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\runtime-observations\\c36c8d4c72474bdfa55757e41daaf419\\result.json",
+      "status": "monitor_read_completed",
+      "consistency": "guarded_window_observation"
+    },
+    "baseline_observation": {
+      "observation_id": "9c359f0d1778419a9f1e955b2e764f85",
+      "observation_sha256": "337817cd6b4b713962284d80af9366049411a606f4e374640d395107e7ab6188",
+      "report_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\runtime-observations\\9c359f0d1778419a9f1e955b2e764f85\\result.json",
+      "status": "monitor_read_completed",
+      "consistency": "guarded_window_observation"
+    },
+    "volatile_event_loss": {
+      "status": "unknown",
+      "zero_loss_verified": false,
+      "policy": "record_unknown_loss",
+      "affected_scope": "All unpersisted program-instance RAM, including pending samples, queue/outbox ownership and in-flight acknowledgements.",
+      "event_count_unknown": true,
+      "partial_queue_counters_do_not_prove_drain": true,
+      "prior_boot_observations": [
+        {
+          "symbol": "MainInstance.BootId",
+          "value": "ng-d4f61b3085b97c5e3831983b-81",
+          "status": "read"
+        }
+      ]
+    },
+    "download_preflight": {
+      "schema": "plcnext-strict-download-preflight/v1",
+      "status": "preflight_passed",
+      "read_only": true,
+      "review_sha256": "aac59d7af882ccf9fc86177066c443e15a01dfe215be062ecc1b24a19bacfb6f",
+      "source_sha256": "7c0724cdbe18552956b5f111e2c9ae0feb2829f9d28cfa2fd449ffe8bac46154",
+      "inventory_sha256": "c83ee20636924cfb29d9459127d77a88f4cbdbe444613a092f0bf373ec69a4cf",
+      "target": {
+        "address": "192.168.0.8",
+        "port": 41100,
+        "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+        "certificate_policy": "explicit_sha256_pin",
+        "authentication_mode": "anonymous"
+      },
+      "write_authorized": false,
+      "action_counts": {
+        "stop": 0,
+        "file_write": 0,
+        "reset": 0,
+        "load": 0,
+        "start": 0
+      },
+      "race_free": false,
+      "state_before": 131074,
+      "remote_project_root": "/opt/plcnext/projects/PCWE",
+      "available_bytes": 192655360,
+      "remote_inventory": {
+        "declared_manifest_paths_match": true,
+        "runtime_path_policy_satisfied": true,
+        "preserved_remote_source_archive_paths": [],
+        "preserved_source_archives_match_new_runtime": "unverified",
+        "complete_remote_directory_listing": false,
+        "remote_manifest_sha256": "44dd44995794fafebaf25c14e329cb0ed18fe51d4346554062831ead15a6c281",
+        "old_files_deleted": false,
+        "path_comparison": {
+          "missing_on_target": {
+            "paths": [],
+            "count": 0,
+            "truncated": false
+          },
+          "preserved_remote": {
+            "paths": [],
+            "count": 0,
+            "truncated": false
+          },
+          "unsupported_remote_extras": {
+            "paths": [],
+            "count": 0,
+            "truncated": false
+          },
+          "directions": "missing_on_target=package minus remote manifest; extras=remote manifest minus package",
+          "source_archive_limit_exceeded": false,
+          "path_limit_per_category": 128,
+          "utf8_bytes_limit_per_category": 8192,
+          "remote_manifest_sha256": "44dd44995794fafebaf25c14e329cb0ed18fe51d4346554062831ead15a6c281"
+        }
+      },
+      "files_compared": 49,
+      "changed_file_count": 0,
+      "identical_file_count": 49,
+      "state_after": 131074,
+      "cleanup_error_class": null,
+      "trace": [
+        {
+          "operation": "Connect",
+          "response_received": true
+        },
+        {
+          "operation": "GetServiceHandles",
+          "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+          "method": 5,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        },
+        {
+          "operation": "GetServiceHandles",
+          "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+          "method": 5,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+          "method": 6,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        },
+        {
+          "operation": "GetServiceHandles",
+          "service": "Arp.System.Commons.Services.Io.IFileService2",
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.System.Commons.Services.Io.IFileService2",
+          "method": 9,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.System.Commons.Services.Io.IFileService2",
+          "method": 9,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.System.Commons.Services.Io.IFileService2",
+          "method": 9,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.System.Commons.Services.Io.IFileService2",
+          "method": 9,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.System.Commons.Services.Io.IFileService2",
+          "method": 9,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        },
+        {
+          "operation": "Invoke",
+          "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+          "method": 5,
+          "mutating": false,
+          "send_attempted": true,
+          "response_received": true
+        }
+      ],
+      "bytes_received": 9222869,
+      "report_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\controller-download-preflights\\c514fcc130314e2e88d5cfe787cf0fd4\\result.json"
+    },
+    "failure_code": "recovery_observation_failed",
+    "error_class": "ControllerFailure",
+    "error": "Startup read budget exhausted; invalid windows discarded",
+    "action_counts": {
+      "stop": 0,
+      "file_write": 0,
+      "reset": 1,
+      "load": 1,
+      "start": 1
+    },
+    "cancelled": false,
+    "endpoint_quarantine_reason": "known_execution_failure",
+    "recovery_responsibility": "Stopped/changed device remains under explicit recovery responsibility; no automatic Start or rollback.",
+    "report_path": "D:\\PLCnext-MCP-Workspace\\17ae4361baa846868b14775bf1de15ea\\controller-recoveries\\6a0c9cb6865146a189538b80e2508bbe\\result.json",
+    "receipt_persisted": true
+  }
+}

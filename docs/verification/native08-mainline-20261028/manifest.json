@@ -1,0 +1,104 @@
+{
+  "schema": "nativegateway-mainline-evidence/v1",
+  "date": "2026-10-28",
+  "files": [
+    {
+      "path": "native-install-business.json",
+      "sha256": "15a93b3fdddbbe1e6bbc3157cafd6bd9d35100c15c2b3e5aad53d2fcaca253d0",
+      "bytes": 979,
+      "source": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\mainline-accept-20261028\\native-install-business.json",
+      "sourceSha256": "15a93b3fdddbbe1e6bbc3157cafd6bd9d35100c15c2b3e5aad53d2fcaca253d0"
+    },
+    {
+      "path": "native-reconnect-business.json",
+      "sha256": "625c06a7a68c789adaf371b8746c73379b87ed6897961eb86bec2dc4466e63f9",
+      "bytes": 977,
+      "source": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\mainline-accept-20261028\\native-reconnect-business.json",
+      "sourceSha256": "625c06a7a68c789adaf371b8746c73379b87ed6897961eb86bec2dc4466e63f9"
+    },
+    {
+      "path": "native-reboot-business.json",
+      "sha256": "7449fdb1b31242e9e8425f00e6f23cf376a24b87f00c99e47857f1d039847160",
+      "bytes": 977,
+      "source": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\mainline-accept-20261028\\native-reboot-business.json",
+      "sourceSha256": "7449fdb1b31242e9e8425f00e6f23cf376a24b87f00c99e47857f1d039847160"
+    },
+    {
+      "path": "time-after-install-summary.json",
+      "sha256": "c0fe0e0e022c766f9a31e8bc65bfeb5e9408733dd9442dfc432fcb48152225d0",
+      "bytes": 2078,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\sync-accept\\time-after-install.json",
+      "sourceSha256": "cad6ac4da968e0d1441bdbe2564cd6955a4a96e73fdc556c8a9d355eac14ce8e"
+    },
+    {
+      "path": "time-after-reboot-summary.json",
+      "sha256": "fa51ed5b40f1c9ff045b46693948e14ec3209b014f2dcca170c940aa450b5210",
+      "bytes": 2080,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\sync-accept\\time-after-reboot.json",
+      "sourceSha256": "63cf253fce7d831ed60d5ea89c3ee5d5de1353a36a6d6fbf16b88d538294b027"
+    },
+    {
+      "path": "time-soak-05m-summary.json",
+      "sha256": "60eaa81c990ba85ee77ae14dcc0ea243bddbe572f2eeff5e6402af9999b69bd9",
+      "bytes": 2084,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\sync-accept\\time-soak-05m.json",
+      "sourceSha256": "cd739248a9eb870fe69d08b4653d3c3647809775d977bf4555014e29a5f1eb2c"
+    },
+    {
+      "path": "time-soak-15m-summary.json",
+      "sha256": "f63e758c99baf13c4aa3cbaa105a64d8dc085a56595193ff65400e6894f9be41",
+      "bytes": 2082,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\sync-accept\\time-soak-15m.json",
+      "sourceSha256": "53e5a7eebd430d0139b5f3b5216d3d3f3ef5f24f8bb480ad3e27fa074d2d46fb"
+    },
+    {
+      "path": "time-after-soak-summary.json",
+      "sha256": "3e490fc63514e5bbb0255eaf9a3faee1ff0fdb75abed8bca17a18b2acca1a066",
+      "bytes": 2083,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\sync-accept\\time-after-soak.json",
+      "sourceSha256": "7fd355446be22dcd9616c1a9314c7ffa87ea1ab28d306201b18792dd38538d30"
+    },
+    {
+      "path": "native-after-soak-summary.json",
+      "sha256": "0f5b1bfc1c400f1ac899ae66f293ad51e3f04c579ac484eb36998fe026e9b0ab",
+      "bytes": 1360,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\sync-accept\\native-after-soak.json",
+      "sourceSha256": "d5d82185e1b9009e7d0375594ef6b7c2ad8a9c7bb45935711d9163c604f487a8"
+    },
+    {
+      "path": "native-download-result.json",
+      "sha256": "831ac674963f86a3f4d0429fd432d1d8e8787bada106008231f219607399781a",
+      "bytes": 46339,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\sync-accept\\native-start.json",
+      "sourceSha256": "370d5201e4a67fc5cec5f0696e7e8811973fd964a4989bf395687d02af845ba3"
+    },
+    {
+      "path": "native-reboot-result-summary.json",
+      "sha256": "2fb3de67616f8c2bbee36b41be19928868290d5fd8553df8ed28ede9b8c88766",
+      "bytes": 1548,
+      "source": "D:\\work\\code\\PLCnext-Engineer\\output\\mainline-accept-20261028\\sync-accept\\reboot-execute.json",
+      "sourceSha256": "b37ef4313b3d505269e92eb10efed1dfa1d26363bd51cc3eb1991bcf247a5ae8"
+    },
+    {
+      "path": "soak-summary.json",
+      "sha256": "c0ecf92aa67f2fcab45ad75cad930c49bf30b2d79dbba42b32dc5a86484539c0",
+      "bytes": 18907,
+      "source": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\mainline-accept-20261028\\native08-soak30m-summary.json",
+      "sourceSha256": "c0ecf92aa67f2fcab45ad75cad930c49bf30b2d79dbba42b32dc5a86484539c0"
+    },
+    {
+      "path": "soak-result.json",
+      "sha256": "53f427319f194de58ba94b3fc1126a9f42c40f50bcf85feb79eb60971d01f65f",
+      "bytes": 756199,
+      "source": "D:\\work\\code\\PLCnext-Hub-Backend\\logs\\mainline-accept-20261028\\native08-soak30m\\result.json",
+      "sourceSha256": "53f427319f194de58ba94b3fc1126a9f42c40f50bcf85feb79eb60971d01f65f"
+    },
+    {
+      "path": "mcp-0613-local-acceptance.txt",
+      "sha256": "e5e2936992df50d93e558cb5109bf1983b5a592cbe195452d0d3046199ce94ac",
+      "bytes": 2610,
+      "source": "D:\\work\\code\\PLCnext-Engineer-mcp\\artifacts\\stopped-recovery-research\\user-acceptance-0613-20261028.log",
+      "sourceSha256": "e5e2936992df50d93e558cb5109bf1983b5a592cbe195452d0d3046199ce94ac"
+    }
+  ]
+}

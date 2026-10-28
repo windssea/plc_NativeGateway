@@ -15,7 +15,6 @@ TYPE
         Quality : USINT; (* 1 UNKNOWN,2 GOOD,3 STALE,4 CONNECTION,5 TIMEOUT,6 PROTOCOL,7 DECODE *)
         Kind : USINT; (* 1 PHYSICAL_RESULT,2 QUALITY_STATE *)
         Flags : WORD;
-        PollSkippedBefore : UDINT; (* audit v2: consumes existing 4-byte tail padding; event stays 72 B *)
     END_STRUCT;
     NG_CaptureConfig : STRUCT
         Config : NG_Config;
@@ -36,7 +35,6 @@ TYPE
         Enabled : BOOL;
         HasPhysical : BOOL;
         HasPhysicalUtc : BOOL;
-        PollSkippedPending : UDINT; (* existing cursor tail padding; reset after physical capture *)
     END_STRUCT;
     NG_CaptureGap : STRUCT
         SampleSeq : ULINT;
@@ -85,11 +83,6 @@ TYPE
         Event : NG_CaptureEvent;
         Decision : USINT; (* 0 pending,1 filtered,2 admitted,3 known-unsent,4 undecided-lost *)
         Reason : USINT;
-        DecisionFlags : BYTE; (* bit0 facts,1 platform,2 valid,3 delay exact,4 revision exact,5 report exact,6 quality-epoch offset *)
-        DecisionRevisionDelta : USINT; (* decision revision minus Event.ClockRevision, 0..255 *)
-        DecisionDelayLo : UINT; (* snapshot mono minus completed mono, unsigned 24-bit milliseconds *)
-        DecisionDelayHi : USINT;
-        ReportSkipped : USINT; (* 0..254 physical report gaps; bit6: signed quality epoch slot offset+127; 255 unknown *)
     END_STRUCT;
     NG_Association : STRUCT
         Ordinal : ULINT;
@@ -233,9 +226,6 @@ TYPE
         AssociationAckBootId : NG_Id;
         AssociationDropped : ULINT;
         EvidenceComplete : BOOL := TRUE;
-        AuditFactSchema : USINT := 2;
-        AuditFactsComplete : BOOL := TRUE; (* separate from raw ring completeness and business accounting *)
-        DecisionSnapshotMonoMs : ULINT; (* same logical-clock frame as TimeValid/ClockRevision *)
         DeadRetainedEvents : ULINT;
         UncertainRetainedEvents : ULINT;
         RestartLossUnknown : BOOL := TRUE;

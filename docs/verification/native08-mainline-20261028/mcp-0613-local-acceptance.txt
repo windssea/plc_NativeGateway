@@ -1,0 +1,21 @@
+test_active_execution_and_changed_evidence_rejected (test_sync_observation_reconciliation.SyncObservationTests.test_active_execution_and_changed_evidence_rejected) ... ok
+test_current_boot_change_rejects_no_lease_release (test_sync_observation_reconciliation.SyncObservationTests.test_current_boot_change_rejects_no_lease_release) ... ok
+test_invalid_skip_unknown_and_incomplete_readback_rejected (test_sync_observation_reconciliation.SyncObservationTests.test_invalid_skip_unknown_and_incomplete_readback_rejected) ... ok
+test_skip_stop_conflicting_or_unclosed_journal_rejected (test_sync_observation_reconciliation.SyncObservationTests.test_skip_stop_conflicting_or_unclosed_journal_rejected) ... ok
+test_skip_stop_late_ready_and_read_only_archive (test_sync_observation_reconciliation.SyncObservationTests.test_skip_stop_late_ready_and_read_only_archive) ... ok
+test_active_execution_rejected_even_in_same_service (test_stopped_recovery.StoppedRecoveryTests.test_active_execution_rejected_even_in_same_service) ... ok
+test_async_terminal_alive_service_is_accepted (test_stopped_recovery.StoppedRecoveryTests.test_async_terminal_alive_service_is_accepted) ... ok
+test_conflict_rejected_before_stop (test_stopped_recovery.StoppedRecoveryTests.test_conflict_rejected_before_stop) ... ok
+test_exact_omit_dlc_conflict_and_bounded_diff (test_stopped_recovery.StoppedRecoveryTests.test_exact_omit_dlc_conflict_and_bounded_diff) ... ok
+test_handoff_observation_budget_forwarded_and_bounded (test_stopped_recovery.StoppedRecoveryTests.test_handoff_observation_budget_forwarded_and_bounded) ... ok
+test_interrupted_transition_never_replays_actions (test_stopped_recovery.StoppedRecoveryTests.test_interrupted_transition_never_replays_actions) ... ok
+test_missing_authorization_preserves_old_lease (test_stopped_recovery.StoppedRecoveryTests.test_missing_authorization_preserves_old_lease) ... ok
+test_partial_write_and_unknown_rejected (test_stopped_recovery.StoppedRecoveryTests.test_partial_write_and_unknown_rejected) ... ok
+test_post_handoff_preflight_failure_keeps_stopped_responsibility (test_stopped_recovery.StoppedRecoveryTests.test_post_handoff_preflight_failure_keeps_stopped_responsibility) ... ok
+test_race_zero_write_failure_handoff_and_replay (test_stopped_recovery.StoppedRecoveryTests.test_race_zero_write_failure_handoff_and_replay) ... ok
+test_wrong_pin_and_changed_evidence_denied (test_stopped_recovery.StoppedRecoveryTests.test_wrong_pin_and_changed_evidence_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 55.472s
+
+OK

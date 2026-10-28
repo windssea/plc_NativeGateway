@@ -22,6 +22,7 @@ VAR
     Audit : NG_AuditCapture;
     AuditDecision : NG_AuditDecision;
 END_VAR
+
 Accepted:=FALSE; s:=Buffer.ActiveSlot;
 IF Buffer.CaptureStopped OR NOT Buffer.LayoutValid OR (s=0) OR (s>4) THEN RETURN; END_IF;
 IF (PointIndex<1) OR (PointIndex>320) THEN Buffer.CaptureStopped:=TRUE; RETURN; END_IF;
@@ -33,11 +34,6 @@ Buffer.CapturedEventsTotal:=NG_SafeAdd(Buffer.CapturedEventsTotal,ULINT#1);
 Buffer.Scratch.SampleSeq:=Buffer.NextSampleSeq; Buffer.Scratch.Value:=0;
 IF Quality=2 THEN Buffer.Scratch.Value:=Value; END_IF;
 Buffer.Scratch.Kind:=Kind; Buffer.Scratch.Quality:=Quality;
-Buffer.Scratch.PollSkippedBefore:=0;
-IF Kind=1 THEN
-    Buffer.Scratch.PollSkippedBefore:=Cursor.PollSkippedPending;
-    Cursor.PollSkippedPending:=0;
-END_IF;
 Buffer.Scratch.CompletedMonoMs:=NowMs; Buffer.Scratch.NominalDueMonoMs:=0;
 Buffer.Scratch.ConfigSlot:=s; Buffer.Scratch.ConfigGeneration:=Buffer.Configs[s].Generation;
 Buffer.Scratch.PointIndex:=PointIndex; Buffer.Scratch.SamplingGeneration:=Buffer.SamplingGeneration;
@@ -65,7 +61,7 @@ IF Buffer.IngressCount>=512 THEN
     Buffer.AccountingComplete:=FALSE;
     Buffer.UndecidedLostEventsTotal:=NG_SafeAdd(Buffer.UndecidedLostEventsTotal,ULINT#1);
     Gap(Reason:=USINT#1,Outcome:=USINT#5,Event:=Buffer.Scratch,Buffer:=Buffer);
-    AuditDecision(SampleSeq:=Buffer.Scratch.SampleSeq,Decision:=USINT#4,Reason:=USINT#1,ReportSkipped:=ULINT#0,Buffer:=Buffer);
+    AuditDecision(SampleSeq:=Buffer.Scratch.SampleSeq,Decision:=USINT#4,Reason:=USINT#1,Buffer:=Buffer);
     RETURN;
 END_IF;
 Buffer.Ingress[Buffer.Tail]:=Buffer.Scratch; Buffer.Tail:=Buffer.Tail MOD 512+1;

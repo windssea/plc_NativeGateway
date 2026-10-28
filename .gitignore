@@ -1,5 +1,6 @@
 # Local environments, caches and generated output
 .venv/
+/.venv-validation/
 venv/
 __pycache__/
 *.py[cod]

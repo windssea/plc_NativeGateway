@@ -1,0 +1,8 @@
+{
+  "transport": "MCP stdio fresh session",
+  "tool": "project_prepare_sync_lease_reconciliation",
+  "isError": true,
+  "result": {
+    "error": "Error executing tool project_prepare_sync_lease_reconciliation: Synchronous owner is not a completed business-only quarantine."
+  }
+}

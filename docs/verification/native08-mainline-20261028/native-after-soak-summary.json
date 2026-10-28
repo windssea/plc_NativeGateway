@@ -1,0 +1,35 @@
+{
+  "status": "monitor_read_completed",
+  "created_utc": "2026-10-28T07:48:51.451905+00:00",
+  "finished_utc": "2026-10-28T07:48:52.871421+00:00",
+  "source_project_sha256": "42d246435b950a8352e8dd2421319e546aff3fb8fb9cfb823070d4139279e4fb",
+  "observation_id": "fd75aca6aaa94f3daba25a6895df1ae4",
+  "observation_sha256": "d464c9a038d0bd690cf263ef0bf3fa2e2f7a89f6a11cd3d904f58e31e05adf9a",
+  "report_path": "D:\\PLCnext-MCP-Workspace\\8266573fcadd4e118cb2b86995335dc6\\runtime-observations\\fd75aca6aaa94f3daba25a6895df1ae4\\result.json",
+  "plc_state_before": 3,
+  "plc_state_after": 3,
+  "configuration_digest": {
+    "sha256": "bf6f827b4a321061bc7dc2f9275ff32bacc1b2db9d320a059136cdf75cd94c3b",
+    "field_count": 1006,
+    "scope": "only_returned_active_fields",
+    "full_sampling_configuration_verified": false
+  },
+  "quality_coverage": {
+    "requested": 250,
+    "read": 250,
+    "good": 250,
+    "all_requested_good": true,
+    "atomic_snapshot": false,
+    "expected_point_count": 250,
+    "complete_expected_point_coverage": true
+  },
+  "values": {
+    "MainInstance.BootId": "ng-d4f61b3085b97c5e3831983b-84",
+    "MainInstance.Active.Version": 19,
+    "MainInstance.QueueCount": 6,
+    "MainInstance.Dropped": 0,
+    "HMI.PublishedBatches": 4290,
+    "HMI.ConfirmedBatches": 4288,
+    "HMI.InvalidAcks": 0
+  }
+}

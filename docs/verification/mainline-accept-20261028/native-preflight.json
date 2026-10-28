@@ -1,0 +1,163 @@
+{
+  "transport": "MCP stdio fresh session",
+  "tool": "project_preflight_recovery_download",
+  "isError": false,
+  "result": {
+    "schema": "plcnext-strict-download-preflight/v1",
+    "status": "preflight_passed",
+    "read_only": true,
+    "review_sha256": "0f2faa989807f21616954b621bc9fa58ceaf6bed37fda3af1293e82b5a451ddd",
+    "source_sha256": "42d246435b950a8352e8dd2421319e546aff3fb8fb9cfb823070d4139279e4fb",
+    "inventory_sha256": "9247118afd50561d7bde7e81f4922c72416fd901d28e5467a78361c52e813f60",
+    "target": {
+      "address": "192.168.0.8",
+      "port": 41100,
+      "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+      "certificate_policy": "explicit_sha256_pin",
+      "authentication_mode": "anonymous"
+    },
+    "write_authorized": false,
+    "action_counts": {
+      "stop": 0,
+      "file_write": 0,
+      "reset": 0,
+      "load": 0,
+      "start": 0
+    },
+    "race_free": false,
+    "state_before": 3,
+    "remote_project_root": "/opt/plcnext/projects/PCWE",
+    "available_bytes": 192638976,
+    "remote_inventory": {
+      "declared_manifest_paths_match": true,
+      "runtime_path_policy_satisfied": true,
+      "preserved_remote_source_archive_paths": [],
+      "preserved_source_archives_match_new_runtime": "unverified",
+      "complete_remote_directory_listing": false,
+      "remote_manifest_sha256": "44dd44995794fafebaf25c14e329cb0ed18fe51d4346554062831ead15a6c281",
+      "old_files_deleted": false,
+      "path_comparison": {
+        "missing_on_target": {
+          "paths": [],
+          "count": 0,
+          "truncated": false
+        },
+        "preserved_remote": {
+          "paths": [],
+          "count": 0,
+          "truncated": false
+        },
+        "unsupported_remote_extras": {
+          "paths": [],
+          "count": 0,
+          "truncated": false
+        },
+        "directions": "missing_on_target=package minus remote manifest; extras=remote manifest minus package",
+        "source_archive_limit_exceeded": false,
+        "path_limit_per_category": 128,
+        "utf8_bytes_limit_per_category": 8192,
+        "remote_manifest_sha256": "44dd44995794fafebaf25c14e329cb0ed18fe51d4346554062831ead15a6c281"
+      }
+    },
+    "files_compared": 49,
+    "changed_file_count": 3,
+    "identical_file_count": 46,
+    "state_after": 3,
+    "cleanup_error_class": null,
+    "trace": [
+      {
+        "operation": "Connect",
+        "response_received": true
+      },
+      {
+        "operation": "GetServiceHandles",
+        "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+        "method": 5,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      },
+      {
+        "operation": "GetServiceHandles",
+        "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+        "method": 5,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.System.Commons.Services.Io.IFileSystemInfoService",
+        "method": 6,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      },
+      {
+        "operation": "GetServiceHandles",
+        "service": "Arp.System.Commons.Services.Io.IFileService2",
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.System.Commons.Services.Io.IFileService2",
+        "method": 9,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.System.Commons.Services.Io.IFileService2",
+        "method": 9,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.System.Commons.Services.Io.IFileService2",
+        "method": 9,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.System.Commons.Services.Io.IFileService2",
+        "method": 9,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.System.Commons.Services.Io.IFileService2",
+        "method": 9,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      },
+      {
+        "operation": "Invoke",
+        "service": "Arp.Plc.Domain.Services.IPlcManagerService",
+        "method": 5,
+        "mutating": false,
+        "send_attempted": true,
+        "response_received": true
+      }
+    ],
+    "bytes_received": 9222869,
+    "report_path": "D:\\PLCnext-MCP-Workspace\\8266573fcadd4e118cb2b86995335dc6\\controller-download-preflights\\470b43f9d30f4cf29fe2d220ec0b8ec4\\result.json"
+  }
+}

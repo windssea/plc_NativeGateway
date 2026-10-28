@@ -10,3 +10,8 @@ deploy/ntp/*.conf text eol=lf
 *.png binary
 **/Source binary
 **/Thumbnail binary
+
+# Verification hashes bind original bytes, including Windows line endings.
+projects/releases/**/*.json -text whitespace=cr-at-eol
+docs/verification/mainline-accept-20261028/** -text whitespace=cr-at-eol
+docs/verification/native08-mainline-20261028/** -text whitespace=cr-at-eol

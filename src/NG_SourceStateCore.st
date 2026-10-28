@@ -19,6 +19,7 @@ VAR
     Capture : NG_CaptureCore;
     start : ULINT;
 END_VAR
+
 Accepted:=FALSE;
 IF (Index<1) OR (Index>320) THEN RETURN; END_IF;
 IF NOT Enabled THEN Cursor.Enabled:=FALSE; Buffer.SourceStaleDue[Index]:=0; RETURN; END_IF;
@@ -27,7 +28,6 @@ IF (Cursor.Generation<>Buffer.SamplingGeneration) OR NOT Cursor.Enabled THEN
     Cursor.ActivatedMonoMs:=NowMs; Cursor.LastPhysicalMonoMs:=0;
     Cursor.HasPhysical:=FALSE; Cursor.HasPhysicalUtc:=FALSE;
     Cursor.NextDueMonoMs:=NowMs; Cursor.Quality:=1;
-    Cursor.PollSkippedPending:=0;
     Buffer.SourceStaleDue[Index]:=NowMs+TO_ULINT(StaleAfterMs);
     IF Buffer.SourceStaleDue[Index]<Buffer.StaleCheckAt THEN Buffer.StaleCheckAt:=Buffer.SourceStaleDue[Index]; END_IF;
     Sample.Quality:='UNKNOWN'; Sample.Timestamp:=UnixMs; Sample.Fresh:=TRUE;
