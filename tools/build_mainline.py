@@ -15,8 +15,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'projects/candidates/native-0.7.0-timesync-candidate.1/NativeGateway.pcwex'
 BASE_SHA = 'b585662abf3d86a1d0445d59e9ed4354723edebafd1f0fcb4b81647a7fe80d41'
-VERSION = 'native-0.8.0'
-OUTPUT = ROOT / 'projects/releases' / VERSION / 'NativeGateway.pcwex'
+VERSION = 'native-0.8.1'
+OUTPUT = ROOT / 'projects/candidates' / VERSION / 'NativeGateway.pcwex'
 
 
 def split(source):

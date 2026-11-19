@@ -1,0 +1,174 @@
+{
+  "schema": "nativegateway-time-recovery-validation/v1",
+  "date": "2026-11-12",
+  "version": "native-0.8.1",
+  "artifact": "projects/candidates/native-0.8.1/NativeGateway.pcwex",
+  "sha256": "ac9cfec98d592e6c14f074725176be572831335c39273ef666f468de34236dc0",
+  "projectId": "da44ff772be0468c8ca95fe2667f2e29",
+  "buildJob": "f0fbbddf07d946aea88ecd8a58c73689",
+  "buildStatus": "compiled",
+  "packageJob": "c07533f857c14888b80625e7c47404de",
+  "inventorySha256": "8056184f05ca48076c6f9c6a4d56c43afe33eaed8a66b76d1efc76d1b90f2e77",
+  "recovery": {
+    "operationId": "7dd3f50ed6f84e759d2f9ce2fbb78da9",
+    "status": "original_loaded_runtime_observed",
+    "actions": {
+      "file_write": 2,
+      "load": 1,
+      "reset": 1,
+      "start": 1,
+      "stop": 1
+    },
+    "configuration": {
+      "device_count": {
+        "expected": 50,
+        "observed": 50,
+        "status": "match"
+      },
+      "enabled": {
+        "expected": true,
+        "observed": true,
+        "status": "match"
+      },
+      "point_count": {
+        "expected": 250,
+        "observed": 250,
+        "status": "match"
+      },
+      "version": {
+        "expected": 23,
+        "observed": 23,
+        "status": "match"
+      }
+    },
+    "good": {
+      "all_requested_good": true,
+      "atomic_snapshot": false,
+      "complete_expected_point_coverage": true,
+      "expected_point_count": 250,
+      "good": 250,
+      "read": 250,
+      "requested": 250
+    },
+    "volatileEventLoss": {
+      "affected_scope": "All unpersisted program-instance RAM, including pending samples, queue/outbox ownership and in-flight acknowledgements.",
+      "event_count_unknown": true,
+      "partial_queue_counters_do_not_prove_drain": true,
+      "policy": "record_unknown_loss",
+      "prior_boot_observations": [
+        {
+          "status": "read",
+          "symbol": "MainInstance.BootId",
+          "value": "ng-d4f61b3085b97c5e3831983b-86"
+        }
+      ],
+      "status": "unknown",
+      "zero_loss_verified": false
+    },
+    "report": "D:\\PLCnext-MCP-Workspace\\da44ff772be0468c8ca95fe2667f2e29\\controller-recoveries\\32fc3c9e4e7e4bdda2e10ca541a9fe4e\\result.json"
+  },
+  "reboot": {
+    "planId": "6605eac92f6844c99d9b2096c7d6b467",
+    "status": "reboot_auto_run_verified",
+    "boot": "ng-d4f61b3085b97c5e3831983b-88",
+    "elapsedSeconds": 145.875,
+    "deviceStartSent": false,
+    "automaticResend": false,
+    "configuration": {
+      "sha256": "1af9747ead691b7ea55b59610fa4da125348905bd62240d7687084385f7ab67e",
+      "field_count": 1006,
+      "scope": "only_returned_active_fields",
+      "full_sampling_configuration_verified": false
+    },
+    "quality": {
+      "requested": 250,
+      "read": 250,
+      "good": 250,
+      "all_requested_good": true,
+      "atomic_snapshot": false,
+      "expected_point_count": 250,
+      "complete_expected_point_coverage": true
+    }
+  },
+  "diagnostic": {
+    "report": "D:\\PLCnext-MCP-Workspace\\da44ff772be0468c8ca95fe2667f2e29\\runtime-observations\\c0a23232f873463087f959953a106b67\\result.json",
+    "readOnly": true,
+    "items": [
+      {
+        "symbol": "MainInstance.BootId",
+        "value": "ng-d4f61b3085b97c5e3831983b-88",
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.Active.Version",
+        "value": 23,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.TimeChecks.Done",
+        "value": true,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.TimeChecks.Passed",
+        "value": 40,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.TimeChecks.FailedChecks",
+        "value": 0,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.TimeChecks.WirePassed",
+        "value": 23,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.TimeChecks.WireFailed",
+        "value": 0,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.NativeClock.TimeValid",
+        "value": true,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.NativeClock.State",
+        "value": 2,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.NativeClock.ErrorText",
+        "value": "",
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.NativeClock.UncertaintyMs",
+        "value": 104,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.Mqtt.Connected",
+        "value": true,
+        "status": "read"
+      },
+      {
+        "symbol": "MainInstance.QueueCount",
+        "value": 7,
+        "status": "read"
+      }
+    ]
+  },
+  "limits": {
+    "physical48HourOutageSimulated": false,
+    "clockRecoveryCasesExecutedInPlcStartupSelfTest": true,
+    "plcSystemUtcModified": false,
+    "soak30Minutes": false,
+    "soak24Hours": false,
+    "p06Accepted": false,
+    "oldMissingSamplesRecovered": false,
+    "pythonIoTClockPolicyChanged": false
+  }
+}

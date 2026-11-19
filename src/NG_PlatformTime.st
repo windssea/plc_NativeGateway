@@ -82,6 +82,10 @@ VAR
     CandidateLow : LREAL;
     CandidateHigh : LREAL;
     ChosenError : LREAL;
+    PreviousError : LREAL;
+    RecoveryTolerance : LREAL;
+    OutputFloor : LREAL;
+    LastOutputUtc : ULINT;
     BestPath : LREAL;
     DelayMs : ULINT;
     FinishRound : BOOL;
@@ -105,6 +109,7 @@ IF Reset OR NOT Started THEN
     HeartbeatAccepted:=FALSE; GetAccepted:=FALSE; PendingRequest:=FALSE;
     RequestWanted:=FALSE; RoundOpen:=FALSE; NextSync:=0; RequestSequence:=0;
     Attempts:=0; Candidates:=0; Failures:=0; ConfirmDeviation:=FALSE; ErrorText:='';
+    LastOutputUtc:=0;
 END_IF;
 WasValid:=TimeValid; Invalidate:=FALSE; Adopt:=FALSE; FinishRound:=FALSE;
 IF (PlatformMode<>SeenPlatformMode) OR (TimeBasisRef<>SeenBasis)
@@ -169,17 +174,21 @@ IF PlatformMode THEN
         IF (Chosen>0) AND (CandidateHigh-CandidateLow<=500) THEN
             Target:=CandidateUtc[Chosen]+TO_LREAL(NowMs-CandidateMono[Chosen]);
             ChosenError:=CandidateError[Chosen]+TO_LREAL(NowMs-CandidateMono[Chosen])*DriftBoundPpm/LREAL#1000000.0;
-            IF (HistoryUtcLowerMs>0) AND (Target+ChosenError<TO_LREAL(HistoryUtcLowerMs)) THEN
-                State:=6; Invalidate:=TRUE; ErrorText:='HISTORY_ROLLBACK_REQUIRES_MAINTENANCE';
-            ELSIF HasAnchor AND (ABS(Target-Anchor)>1000) THEN
-                State:=5; Invalidate:=TRUE; ErrorText:='CLOCK_DISCONTINUITY';
-                IF NOT ConfirmDeviation THEN ConfirmDeviation:=TRUE; NextSync:=NowMs;
-                ELSIF Target+ChosenError<Anchor THEN State:=6; ErrorText:='ROLLBACK_REQUIRES_MAINTENANCE';
-                ELSE HasAnchor:=FALSE; Adopt:=TRUE; END_IF;
+            (* A holdover estimate is not a timestamp already emitted. Include
+               its accumulated drift error before declaring a discontinuity.
+               Larger changes need a second consistent round, never a latch
+               which prevents the next time request. Output remains monotonic. *)
+            PreviousError:=0;
+            IF HasAnchor THEN PreviousError:=BaseError+TO_LREAL(NowMs-LastSync)*DriftBoundPpm/LREAL#1000000.0+ABS(Residual); END_IF;
+            RecoveryTolerance:=MAX(LREAL#5000.0,PreviousError+ChosenError);
+            IF HasAnchor AND (ABS(Target-Anchor)>RecoveryTolerance) AND NOT ConfirmDeviation THEN
+                State:=5; Invalidate:=TRUE; ErrorText:='TIME_CORRECTION_CONFIRMING';
+                ConfirmDeviation:=TRUE; NextSync:=NowMs+10000;
             ELSE Adopt:=TRUE; END_IF;
             IF Adopt THEN
-                IF NOT HasAnchor OR (State=4) OR (State=0) OR (State=1) THEN
-                    Anchor:=Target; Residual:=0; HasAnchor:=TRUE;
+                OutputFloor:=MAX(TO_LREAL(LastOutputUtc),TO_LREAL(HistoryUtcLowerMs));
+                IF NOT HasAnchor OR (State=4) OR (State=5) OR (State=0) OR (State=1) THEN
+                    Anchor:=MAX(Target,OutputFloor); Residual:=Target-Anchor; HasAnchor:=TRUE;
                     IF ClockRevision>=ULINT#9007199254740991 THEN State:=6; Invalidate:=TRUE;
                     ELSE ClockRevision:=ClockRevision+1; END_IF;
                 ELSE Residual:=Target-Anchor; END_IF;
@@ -224,11 +233,16 @@ IF HasAnchor THEN
         IF TO_LREAL(UncertaintyMs)<ErrorBound THEN UncertaintyMs:=UncertaintyMs+1; END_IF;
     END_IF;
     TimeValid:=PlatformMode AND ((State=2) OR (State=3)) AND (SyncAgeMs<3600000)
-        AND (ErrorBound>=0) AND (UncertaintyMs<1000) AND (Anchor-ErrorBound>=0)
+        AND (ErrorBound>=0) AND (UncertaintyMs<5000) AND (Anchor-ErrorBound>=0)
         AND (Anchor+ErrorBound<=LREAL#9007199254740991.0);
     IF TimeValid THEN
-        UtcMs:=TO_ULINT(TRUNC_LINT(Anchor)); IF SessionChecked THEN State:=2; ELSE State:=3; END_IF;
-    ELSIF (State=2) OR (State=3) THEN State:=4; Invalidate:=TRUE; ErrorText:='HOLDOVER_EXPIRED'; END_IF;
+        UtcMs:=MAX(LastOutputUtc,TO_ULINT(TRUNC_LINT(Anchor))); LastOutputUtc:=UtcMs;
+        IF SessionChecked THEN State:=2; ELSE State:=3; END_IF;
+    ELSIF (State=2) OR (State=3) THEN
+        State:=4; Invalidate:=TRUE;
+        IF ABS(Residual)>=5000 THEN ErrorText:='TIME_CORRECTION_WAITING'; NextSync:=MIN(NextSync,NowMs+10000);
+        ELSE ErrorText:='HOLDOVER_EXPIRED'; END_IF;
+    END_IF;
 END_IF;
 IF Invalidate THEN
     IF WasValid THEN

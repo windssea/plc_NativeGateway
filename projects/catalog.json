@@ -82,6 +82,18 @@
       "formalVerification": "projects/releases/native-0.8.0/verification.json"
     },
     {
+      "artifactId": "native-0.8.1",
+      "path": "projects/candidates/native-0.8.1/NativeGateway.pcwex",
+      "sha256": "ac9cfec98d592e6c14f074725176be572831335c39273ef666f468de34236dc0",
+      "embeddedAgentVersion": "native-0.8.1",
+      "pouCount": 66,
+      "status": "TIME_RECOVERY_FIX_HARDWARE_VERIFIED",
+      "downloadPurpose": "当前运行的授时容错修复版：63项启动断言、配置23/250 GOOD、DATA/STORED入库和整机重启恢复通过；未代替30分钟正式发布验收。",
+      "controllerDownloaded": true,
+      "default": false,
+      "verifiedPackageId": "c07533f857c14888b80625e7c47404de"
+    },
+    {
       "artifactId": "native-0.8.1-axcf1252",
       "path": "projects/variants/native-0.8.1-axcf1252/NativeGateway1252Candidate.pcwex",
       "sha256": "69e489001ff22bf2802d45dcfa67f35305cedef8725079b7a794d65cb51eea2c",
@@ -103,5 +115,8 @@
   "formalVerification": {
     "path": "projects/releases/native-0.8.0/verification.json",
     "sha256": "e7592bcb73f6acd9ad5419cf8209cf7e9e999f49a6869a8e7f2bbb4222c36e0a"
-  }
+  },
+  "currentRuntimeArtifactId": "native-0.8.1",
+  "currentRuntimeObservedBoot": "ng-d4f61b3085b97c5e3831983b-88",
+  "currentRuntimeVerification": "docs/verification/native081-time-recovery-20261112.json"
 }

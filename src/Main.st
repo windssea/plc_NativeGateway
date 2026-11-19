@@ -846,7 +846,7 @@ IF NOT TxActive AND Mqtt.Connected AND NOT Mqtt.TxBusy THEN
         END_FOR;
         END_IF;
         IF NOT TelemetryAllowed OR (Active.Version=0) THEN StateName := 'WAITING_CONFIG'; ELSIF Active.enabled THEN StateName := 'RUNNING'; ELSE StateName := 'DISABLED'; END_IF;
-        TxPayload := CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"bootId":',NG_Quote(BootId),',"agentVersion":"native-0.8.0","activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"uptimeSeconds":',TO_STRING(NowMs/1000, '{0:d}'),',"agentState":',NG_Quote(StateName),',"devices":[',DevicesJson,'],"points":{"total":',TO_STRING(Total, '{0:d}'),',"good":',TO_STRING(GoodCount, '{0:d}'),',"bad":',TO_STRING(Total-GoodCount, '{0:d}'),'},"queue":{"batches":',TO_STRING(QueueCount, '{0:d}'),',"payloadBytes":',TO_STRING(QueueBytes, '{0:d}'),',"droppedBatches":',TO_STRING(Dropped, '{0:d}'),'}}');
+        TxPayload := CONCAT(Header,',"sessionId":',NG_Quote(SessionId),',"bootId":',NG_Quote(BootId),',"agentVersion":"native-0.8.1","activeConfigVersion":',TO_STRING(HubActiveVersion, '{0:d}'),',"uptimeSeconds":',TO_STRING(NowMs/1000, '{0:d}'),',"agentState":',NG_Quote(StateName),',"devices":[',DevicesJson,'],"points":{"total":',TO_STRING(Total, '{0:d}'),',"good":',TO_STRING(GoodCount, '{0:d}'),',"bad":',TO_STRING(Total-GoodCount, '{0:d}'),'},"queue":{"batches":',TO_STRING(QueueCount, '{0:d}'),',"payloadBytes":',TO_STRING(QueueBytes, '{0:d}'),',"droppedBatches":',TO_STRING(Dropped, '{0:d}'),'}}');
     ELSIF DeviceEventPending AND (NOT TimeMode OR NativeClock.ConfigGetReady) THEN
         TxKind:=7; TxTopic:=CONCAT(Prefix,'device/status');
         EventTxIndex:=DeviceEventIndex; EventTxSignature:=DeviceEventSignature;

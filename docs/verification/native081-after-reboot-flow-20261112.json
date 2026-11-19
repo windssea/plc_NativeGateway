@@ -1,0 +1,52 @@
+{
+  "startedEpoch": 1794458064.0491261,
+  "seconds": 40,
+  "boot": "ng-d4f61b3085b97c5e3831983b-88",
+  "subscribed": true,
+  "mqttPublishRequests": 0,
+  "newMessages": {
+    "data/ack": 110,
+    "data": 110,
+    "heartbeat": 1
+  },
+  "latestMetadata": {
+    "data/ack": {
+      "messageId": "d-ng-d4f61b3085b97c5e3831983b-88-236",
+      "status": "STORED"
+    },
+    "data": {
+      "bootId": "ng-d4f61b3085b97c5e3831983b-88",
+      "messageId": "d-ng-d4f61b3085b97c5e3831983b-88-237",
+      "sequence": 237
+    },
+    "heartbeat": {
+      "bootId": "ng-d4f61b3085b97c5e3831983b-88",
+      "agentVersion": "native-0.8.1",
+      "activeConfigVersion": 23,
+      "points": {
+        "total": 250,
+        "good": 250,
+        "bad": 0
+      }
+    }
+  },
+  "gateway": {
+    "gateway_id": "NG-HUB-2152-01",
+    "boot_id": "ng-d4f61b3085b97c5e3831983b-88",
+    "last_heartbeat_at": "2026-11-12 12:34:34.393959+08:00",
+    "desired_version": 23,
+    "reported_active_version": 23
+  },
+  "samples": {
+    "samples": 1920,
+    "devices": 50,
+    "points": 250,
+    "bad": 0,
+    "latest": "2026-11-12 12:35:02.215000+08:00"
+  },
+  "receipts": {
+    "stored": 111,
+    "latest": "2026-11-12 12:35:04.252928+08:00"
+  },
+  "passed": true
+}

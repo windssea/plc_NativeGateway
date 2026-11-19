@@ -5,7 +5,7 @@ VAR
     WireTests : NG_TimeResponseTest;
     ClockDone : BOOL;
     Stage : UINT;
-    Checks : ARRAY[1..24] OF BOOL;
+    Checks : ARRAY[1..40] OF BOOL;
     Passed : UINT;
     FailedChecks : UINT;
     Done : BOOL;
@@ -22,6 +22,8 @@ VAR
     SystemDate : ULINT := 1000;
     SavedClockRevision : ULINT;
     SavedConnectionRevision : ULINT;
+    SavedOutput : ULINT;
+    Drift : LREAL := 50;
     i : UINT;
 END_VAR
 (* Offline assertion program. No gateway, socket, store, physical IO or RTC writes.
@@ -42,9 +44,23 @@ CASE Stage OF
     12: Connected:=TRUE; Session:='session-two'; Tick:=Tick+20;
     13: Tick:=Tick+3600000;
     14: Tick:=Tick-1;
+    15: ResetClock:=TRUE; Tick:=100000; Drift:=1000; Session:='recover-one';
+    16,18,20,24,26,28,33,35,37,40,42,44,47,49,51,54,56,58: Submit:=TRUE; RequestMono:=Tick;
+    17,19,21: Tick:=Tick+20; Reply:=TRUE; ServerT3:=ULINT#1792000000000+Tick-100000-9;
+    22: SavedOutput:=LogicalClock.UtcMs; Connected:=FALSE; Tick:=Tick+172800000;
+    23: Connected:=TRUE; Session:='recover-two';
+    25,27,29: Tick:=Tick+20; Reply:=TRUE; ServerT3:=ULINT#1792000000000+Tick-100000-9-2170;
+    30,60: Heartbeat:=TRUE;
+    31,61: GetConfig:=TRUE;
+    32,39: Tick:=Tick+330000;
+    34,36,38: Tick:=Tick+20; Reply:=TRUE; ServerT3:=ULINT#1792000000000+Tick-100000-9-4340;
+    41,43,45,48,50,52,55,57,59: Tick:=Tick+20; Reply:=TRUE; ServerT3:=ULINT#1792000000000+Tick-100000-9-90000;
+    46: Tick:=Tick+10000;
+    53: Tick:=Tick+120000;
 END_CASE;
+IF (Stage=37) OR (Stage=44) THEN SavedOutput:=LogicalClock.UtcMs; END_IF;
 LogicalClock(Reset:=ResetClock,PlatformMode:=TRUE,Connected:=Connected,SessionId:=Session,NowMs:=Tick,SystemUtcMs:=SystemDate,
-    TimeBasisRef:='site-hub-1',DriftBoundPpm:=LREAL#50.0,DriftEvidence:='TEST_FIXTURE_ONLY',HistoryBasisRef:='',HistoryUtcLowerMs:=0,
+    TimeBasisRef:='site-hub-1',DriftBoundPpm:=Drift,DriftEvidence:='TEST_FIXTURE_ONLY',HistoryBasisRef:='',HistoryUtcLowerMs:=0,
     RequestSubmitted:=Submit,ResponseReady:=Reply,ResponseClientMonoMs:=RequestMono,ResponseReceivedMonoMs:=Tick,
     ServerReceivedMs:=ServerT3-2,ServerSentMs:=ServerT3,HeartbeatSubmitted:=Heartbeat,ConfigGetSubmitted:=GetConfig);
 CASE Stage OF
@@ -101,8 +117,27 @@ CASE Stage OF
     LogicalClock(Reset:=TRUE,PlatformMode:=TRUE,Connected:=TRUE,SessionId:='bad-basis',NowMs:=Tick,SystemUtcMs:=SystemDate,
         TimeBasisRef:='site-hub-1',DriftBoundPpm:=50,DriftEvidence:='TEST_FIXTURE_ONLY',HistoryBasisRef:='other-hub',HistoryUtcLowerMs:=1);
     Checks[24]:=(LogicalClock.State=6) AND NOT LogicalClock.EnqueueAllowed;
+21: Checks[25]:=LogicalClock.TimeValid;
+22: Checks[26]:=NOT LogicalClock.TimeValid AND (LogicalClock.State=4);
+23: Checks[27]:=LogicalClock.RequestWanted;
+29:
+    Checks[28]:=LogicalClock.TimeValid;
+    Checks[29]:=LogicalClock.State=2;
+    Checks[30]:=LogicalClock.UtcMs>=SavedOutput;
+    Checks[31]:=NOT LogicalClock.SendAllowed;
+31: Checks[32]:=LogicalClock.SendAllowed;
+38:
+    Checks[33]:=LogicalClock.TimeValid AND (LogicalClock.UtcMs>=SavedOutput);
+    Checks[34]:=(LogicalClock.State=2) AND (LogicalClock.UncertaintyMs<5000);
+45: Checks[35]:=(LogicalClock.State=5) AND NOT LogicalClock.TimeValid;
+46: Checks[36]:=LogicalClock.RequestWanted AND NOT LogicalClock.TimeValid;
+52: Checks[37]:=(LogicalClock.State=4) AND NOT LogicalClock.TimeValid;
+53: Checks[38]:=LogicalClock.RequestWanted;
+59: Checks[39]:=LogicalClock.TimeValid AND (LogicalClock.UtcMs>=SavedOutput);
+61:
+    Checks[40]:=LogicalClock.TimeValid AND LogicalClock.SendAllowed AND (LogicalClock.State=2);
     Passed:=0; FailedChecks:=0;
-    FOR i:=1 TO 24 DO IF Checks[i] THEN Passed:=Passed+1; ELSE FailedChecks:=FailedChecks+1; END_IF; END_FOR;
+    FOR i:=1 TO 40 DO IF Checks[i] THEN Passed:=Passed+1; ELSE FailedChecks:=FailedChecks+1; END_IF; END_FOR;
     ClockDone:=TRUE;
 END_CASE;
 Stage:=Stage+1;
