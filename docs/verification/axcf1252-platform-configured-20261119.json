@@ -1,0 +1,302 @@
+{
+  "address": "192.168.0.10",
+  "serial": "2038744160",
+  "gatewayId": "NG-HUB-1252-01",
+  "timeBeijing": "2026-11-19T19:48:07.559467+08:00",
+  "readOnly": true,
+  "plc19216808Accessed": false,
+  "values": {
+    "Arp.Plc.Eclr/MainInstance.StartupStage": {
+      "error": 0,
+      "value": 4
+    },
+    "Arp.Plc.Eclr/MainInstance.StartupReady": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.BootId": {
+      "error": 0,
+      "value": "ng-451cc53459c2a0a4012b916a-1"
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.Done": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.Passed": {
+      "error": 0,
+      "value": 40
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.FailedChecks": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.WirePassed": {
+      "error": 0,
+      "value": 23
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.WireFailed": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Ready": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Busy": {
+      "error": 0,
+      "value": false
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Error": {
+      "error": 0,
+      "value": false
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.ErrorText": {
+      "error": 0,
+      "value": ""
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Name": {
+      "error": 0,
+      "value": "/opt/plcnext/custom/NativeGateway1252-v4-B.bin"
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Active.Generation": {
+      "error": 0,
+      "value": 2
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Active.BootCounter": {
+      "error": 0,
+      "value": 1
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Active.Bootstrap.GatewayId": {
+      "error": 0,
+      "value": "NG-HUB-1252-01"
+    },
+    "Arp.Plc.Eclr/MainInstance.Mqtt.Connected": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.Mqtt.SessionCount": {
+      "error": 0,
+      "value": 1
+    },
+    "Arp.Plc.Eclr/MainInstance.NowMs": {
+      "error": 0,
+      "value": 1505960
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.Version": {
+      "error": 0,
+      "value": 1
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.DeviceCount": {
+      "error": 0,
+      "value": 1
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.PointCount": {
+      "error": 0,
+      "value": 12
+    },
+    "Arp.Plc.Eclr/MainInstance.NativeClock.TimeValid": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.QueueCount": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.UnixMs": {
+      "error": 0,
+      "value": 1795088887523
+    },
+    "Arp.Plc.Eclr/MainInstance.Dropped": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.NativeClock.SyncAgeMs": {
+      "error": 0,
+      "value": 6420
+    },
+    "Arp.Plc.Eclr/MainInstance.NativeClock.UncertaintyMs": {
+      "error": 0,
+      "value": 55
+    },
+    "Arp.Plc.Eclr/MainInstance.NativeClock.CaptureAllowed": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.NativeClock.SendAllowed": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.Devices[1].host": {
+      "error": 0,
+      "value": "192.168.0.7"
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.Devices[1].port": {
+      "error": 0,
+      "value": 502
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.Devices[1].unitId": {
+      "error": 0,
+      "value": 1
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[1].Value": {
+      "error": 0,
+      "value": 222.39486694335938
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[1].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[1].Timestamp": {
+      "error": 0,
+      "value": 1795088886183
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[2].Value": {
+      "error": 0,
+      "value": 0.0
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[2].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[2].Timestamp": {
+      "error": 0,
+      "value": 1795088886323
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[3].Value": {
+      "error": 0,
+      "value": 0.0
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[3].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[3].Timestamp": {
+      "error": 0,
+      "value": 1795088886463
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[4].Value": {
+      "error": 0,
+      "value": 0.10403550416231155
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[4].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[4].Timestamp": {
+      "error": 0,
+      "value": 1795088886603
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[5].Value": {
+      "error": 0,
+      "value": 7.080122947692871
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[5].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[5].Timestamp": {
+      "error": 0,
+      "value": 1795088886743
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[6].Value": {
+      "error": 0,
+      "value": 23.1301212310791
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[6].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[6].Timestamp": {
+      "error": 0,
+      "value": 1795088886883
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[7].Value": {
+      "error": 0,
+      "value": -17.483112335205078
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[7].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[7].Timestamp": {
+      "error": 0,
+      "value": 1795088887023
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[8].Value": {
+      "error": 0,
+      "value": 0.3210282623767853
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[8].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[8].Timestamp": {
+      "error": 0,
+      "value": 1795088887163
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[9].Value": {
+      "error": 0,
+      "value": 7.283536911010742
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[9].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[9].Timestamp": {
+      "error": 0,
+      "value": 1795088887303
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[10].Value": {
+      "error": 0,
+      "value": 50.019935607910156
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[10].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[10].Timestamp": {
+      "error": 0,
+      "value": 1795088887443
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[11].Value": {
+      "error": 0,
+      "value": 1.3209999799728394
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[11].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[11].Timestamp": {
+      "error": 0,
+      "value": 1795088885903
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[12].Value": {
+      "error": 0,
+      "value": 1.3209999799728394
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[12].Quality": {
+      "error": 0,
+      "value": "GOOD"
+    },
+    "Arp.Plc.Eclr/MainInstance.Samples[12].Timestamp": {
+      "error": 0,
+      "value": 1795088886043
+    },
+    "Arp.Plc.Eclr/HMI.GatewayId": {
+      "error": 0,
+      "value": "NG-HUB-1252-01"
+    },
+    "Arp.Plc.Eclr/HMI.Status": {
+      "error": 0,
+      "value": "APPLIED: configuration saved and activated."
+    },
+    "Arp.Plc.Eclr/HMI.Persistence": {
+      "error": 0,
+      "value": "Persisted generation 2 - auto-restore enabled"
+    },
+    "Arp.Plc.Eclr/HMI.Connection": {
+      "error": 0,
+      "value": "CONNECTED"
+    }
+  }
+}

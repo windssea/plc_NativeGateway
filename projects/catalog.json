@@ -80,6 +80,22 @@
       "default": true,
       "mcpAcceptedVersion": "0.6.13",
       "formalVerification": "projects/releases/native-0.8.0/verification.json"
+    },
+    {
+      "artifactId": "native-0.8.1-axcf1252",
+      "path": "projects/variants/native-0.8.1-axcf1252/NativeGateway1252Candidate.pcwex",
+      "sha256": "69e489001ff22bf2802d45dcfa67f35305cedef8725079b7a794d65cb51eea2c",
+      "embeddedAgentVersion": "native-0.8.1",
+      "pouCount": 66,
+      "status": "HARDWARE_VARIANT_INTEGRATION_VERIFIED",
+      "downloadPurpose": "1252 专用硬件变体，仅用于192.168.0.10 / NG-HUB-1252-01；编译下载、Hub逻辑授时、配置v1、真实电表12点采集入库及一次整机软件重启恢复通过，不替换2152主线。",
+      "controllerDownloaded": true,
+      "default": false,
+      "controllerModel": "AXC F 1252",
+      "targetAddress": "192.168.0.10",
+      "gatewayId": "NG-HUB-1252-01",
+      "verification": "projects/variants/native-0.8.1-axcf1252/verification.json",
+      "onlineVerification": "../PLCnext-Hub-Backend/docs/verification/axcf1252-platform-20261119/summary.json"
     }
   ],
   "formalArtifactId": "native-0.8.0",

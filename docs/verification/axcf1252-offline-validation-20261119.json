@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "projectCatalogHashes": true,
+    "root2152AliasUnchanged": true,
+    "deployed1252SourceHash": true,
+    "all48PcweFileHashes": true,
+    "independentGatewayIdentity": true,
+    "storagePathCount": 8,
+    "builderSyntax": true,
+    "readOnlyProbeSyntax": true
+  },
+  "networkAccess": false,
+  "controllerControl": false
+}

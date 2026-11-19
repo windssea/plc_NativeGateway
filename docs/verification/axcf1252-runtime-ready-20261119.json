@@ -1,0 +1,122 @@
+{
+  "address": "192.168.0.10",
+  "serial": "2038744160",
+  "gatewayId": "NG-HUB-1252-01",
+  "timeBeijing": "2026-11-19T19:23:40.793233+08:00",
+  "readOnly": true,
+  "plc19216808Accessed": false,
+  "values": {
+    "Arp.Plc.Eclr/MainInstance.StartupStage": {
+      "error": 0,
+      "value": 4
+    },
+    "Arp.Plc.Eclr/MainInstance.StartupReady": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.BootId": {
+      "error": 0,
+      "value": "ng-451cc53459c2a0a4012b916a-1"
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.Done": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.Passed": {
+      "error": 0,
+      "value": 40
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.FailedChecks": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.WirePassed": {
+      "error": 0,
+      "value": 23
+    },
+    "Arp.Plc.Eclr/MainInstance.TimeChecks.WireFailed": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Ready": {
+      "error": 0,
+      "value": true
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Busy": {
+      "error": 0,
+      "value": false
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Error": {
+      "error": 0,
+      "value": false
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.ErrorText": {
+      "error": 0,
+      "value": ""
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Name": {
+      "error": 0,
+      "value": "/opt/plcnext/custom/NativeGateway1252-v4-A.bin"
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Active.Generation": {
+      "error": 0,
+      "value": 1
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Active.BootCounter": {
+      "error": 0,
+      "value": 1
+    },
+    "Arp.Plc.Eclr/MainInstance.Store.Active.Bootstrap.GatewayId": {
+      "error": 0,
+      "value": "NG-HUB-1252-01"
+    },
+    "Arp.Plc.Eclr/MainInstance.Mqtt.Connected": {
+      "error": 0,
+      "value": false
+    },
+    "Arp.Plc.Eclr/MainInstance.Mqtt.SessionCount": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.NowMs": {
+      "error": 0,
+      "value": 39160
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.Version": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.DeviceCount": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.Active.PointCount": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/MainInstance.NativeClock.TimeValid": {
+      "error": 0,
+      "value": false
+    },
+    "Arp.Plc.Eclr/MainInstance.QueueCount": {
+      "error": 0,
+      "value": 0
+    },
+    "Arp.Plc.Eclr/HMI.GatewayId": {
+      "error": 0,
+      "value": "NG-HUB-1252-01"
+    },
+    "Arp.Plc.Eclr/HMI.Status": {
+      "error": 0,
+      "value": "Startup identity persisted; MQTT starting."
+    },
+    "Arp.Plc.Eclr/HMI.Persistence": {
+      "error": 0,
+      "value": "Persisted generation 1 - auto-restore enabled"
+    },
+    "Arp.Plc.Eclr/HMI.Connection": {
+      "error": 0,
+      "value": "MQTT_CONNECT_ERROR"
+    }
+  }
+}

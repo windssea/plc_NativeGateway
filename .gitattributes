@@ -15,3 +15,6 @@ deploy/ntp/*.conf text eol=lf
 projects/releases/**/*.json -text whitespace=cr-at-eol
 docs/verification/mainline-accept-20261028/** -text whitespace=cr-at-eol
 docs/verification/native08-mainline-20261028/** -text whitespace=cr-at-eol
+
+# Deployed vendor/generated payloads are hash-bound; never normalize their bytes.
+projects/variants/native-0.8.1-axcf1252/PCWE/** binary
