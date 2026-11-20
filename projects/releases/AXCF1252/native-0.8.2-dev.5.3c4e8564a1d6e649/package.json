@@ -1,0 +1,139 @@
+{
+  "files": [
+    {
+      "bytes": 94208,
+      "path": "Io/Arp.Io.PnC/ProfinetDiagnosticDatabase.db",
+      "sha256": "e15ecc656e6406d80728902d82052b48cebc2a64178ae28385ca09f97b5660ac",
+      "sha512": "c0d04c9fb6bae9567709c9e6cc0e53197ce0712a46fb64c80915963741731eb8a9792c3d66aabbce6703bc6d3130c248e9adc6f62fca1f8a0a90e376ec50e1e5"
+    },
+    {
+      "bytes": 8,
+      "path": "Io/Arp.Io.PnC/Tic.crc",
+      "sha256": "eceb165d45353946d87121cbbe1b0410a3ece9a42208e627de6b536580232abe",
+      "sha512": "963e980fc7bda9b3cee25c8858fa8082b70a1631333a979941bc3fa156934adcb82d4b9aaa750bb04175309f5ba5014e8805a244c8e5ee442174ed1f9987089d"
+    },
+    {
+      "bytes": 530,
+      "path": "Io/Arp.Io.PnC/controller.tic",
+      "sha256": "a8da98a4ddaae6b9bbe52be008b0588ec809d3c6aafe62a294d5d9a6dcde54f9",
+      "sha512": "be8db466cdaa6d5c521f4247894490877c099b09097b684f47b120cd5ae2fbbd991b8bc9603eeafe0e420d53e84fbbe565ca4e430a2156e014a541adf78bd02c"
+    },
+    {
+      "bytes": 266,
+      "path": "Io/Arp.Io.PnC/links.xml",
+      "sha256": "5ca0d15a5665561d9d8f76f68d2db1195faaebad9ea6c43eab7c8562ed49d7e9",
+      "sha512": "229bde62d7970f131a217e9372cddce926fbb99d6c9cbe395ab8f7d53c4813fc8e1ea5e4f4d72e378e97012c3d6e67e534911d6287dab952d183185ec462a4bf"
+    },
+    {
+      "bytes": 8,
+      "path": "Libraries.crc",
+      "sha256": "6875257758116ecde85918eeefcc3aabefcafbbdf2f58403567266a3d54816a3",
+      "sha512": "d616184ea80ac0cae7b24f659ac51974b506d77608226a343d620ef02c146b9cc3c37db05a06a8597069733ec991910f5172db71fc09f4b33926334d72678062"
+    },
+    {
+      "bytes": 3113,
+      "path": "PCWE.manifest.config",
+      "sha256": "c2573755269c7983240a325671d1f4f6c7b2ff1bfd7db0d60dc31c843beb7349",
+      "sha512": "1d9a8f7e840e271377cbe0f600f3678f31075ed9f121dc75c1798d1220e3f62781c0b0b442b42ef17296eb79eb353eae065716e701566aa7ef9d7fe2660a9605"
+    },
+    {
+      "bytes": 612,
+      "path": "PCWE.software-package-manifest.json",
+      "sha256": "113d585f5b0c00a1d4a6fb9385fab6272e710e7b0d2e18865a927489cfbf0586",
+      "sha512": "1d604354bf675f3ad300d58abd45b47f2cc801452226a503e9386e78d131477387f1036562ce98dc6bb3db288d3625e712416ad1f8a53bd2551d1b61e87b8e69"
+    },
+    {
+      "bytes": 291,
+      "path": "Plc/Domain/pcwe.plc.config",
+      "sha256": "f571db65cfd96c8f68c6e01ed50994275e13122d150a61f567bae464016b4f6d",
+      "sha512": "2cbb15b11013eb7035ca776ad2200ed04eb4a2ef74f93aa9dec01c28e5e96ece65f9410700cebf75891cf862ceb5090ed883ecc6f84af457241af707656d1e3b"
+    },
+    {
+      "bytes": 4438872,
+      "path": "Plc/Eclr/SharedLibraries/IIoT_Library/libIIoT_Library.so",
+      "sha256": "ef3368fd22f391940ab88f7e770551d08d106a6b0ab657d6b4e090ab5a42f3ed",
+      "sha512": "190839e47e110d558044f7002d71459df2abeacef386aea8916a218d1748312b7cd0257408b95b956cf615c0e053d33a7fcf8718f4bc168d3137fadb1f6dd5bd"
+    },
+    {
+      "bytes": 1319048,
+      "path": "Plc/Eclr/eCLR.img",
+      "sha256": "dc540ad9afa39f68858357064a6da4baf7b3585ad26b03893e764f58fb77f280",
+      "sha512": "28c6d6786c7f1b21b836c84e5b92ef5d71b0890c3d8b4a1aaae7caca89a1c65712f0e90fbce5b48acbaf1cc6b455be209f564a3990443f519178aadaca1630fa"
+    },
+    {
+      "bytes": 707,
+      "path": "Plc/Esm/PCWE.esm.config",
+      "sha256": "a609b4e9073ab660ab112054c1d0b4f74911d4f4fa598730b9236cb81f284156",
+      "sha512": "5a0111a5131107738a47bf1938733247a07814bed352a23144932ee473672734bcdb0ee0ace74474965c01bfc510115df125ddd80ff7e04ff3db9134a435aea8"
+    },
+    {
+      "bytes": 215,
+      "path": "Plc/Gds/PCWE.gds.config",
+      "sha256": "06871c86e0fe326114ef0a7c828d44f71e0b5cecbebd596bf67216693db20bfe",
+      "sha512": "93033ae4bc10efb3a1d52a03bab310513adfbe5aa0f1a3e9d699126de531557af64f7b962175d56a770f1e9d60370c3becdf0b0b0bce9652c404e8be81d1035d"
+    },
+    {
+      "bytes": 202,
+      "path": "Plc/Plm/pcwe.plm.config",
+      "sha256": "0de952aff931324ad5e534e9c1f620965f4f76473500e7413e29810103353dcc",
+      "sha512": "4e09e63d097f243c85e5bab90096fcf4b80440b260582daf241d9d10a311aae32d3a1c4912bdd2f6fe890a0bc8f478753584b15dd3e70b4d17c46f768e01343b"
+    },
+    {
+      "bytes": 387,
+      "path": "Services/OpcUA/Modules/Client/client.module.config",
+      "sha256": "fdd5fbdac9304ca0e6e57c794d8730cee2a070523e47f84e4cadfac48e33cd58",
+      "sha512": "186f6efe422a923de7ba63c860ede8c7183d76c417c39e5510720ca0c4263b45b7bb8690d2ce47761464d6d89934a4a0479d6e5dd4ebf6a873d6da8d8af08e70"
+    },
+    {
+      "bytes": 1134,
+      "path": "Services/OpcUA/PCWE.opcua.config",
+      "sha256": "53324177bf621aa9e5fb523bd3e8445114fb5fa379e8e9af481aae2e00676a64",
+      "sha512": "b4797ca0af0d90b8d48f5614cf6d6d097aaae73a92937c639d6ce6aba6883afae774793df60a53cda0c363059471b071bd777c768acd9c7ee22d9e2d8a5ce037"
+    },
+    {
+      "bytes": 0,
+      "path": "dlc.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha512": "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    }
+  ],
+  "package": {
+    "build_job_id": "86c1ff1d7d7c4a489edbe2c948304346",
+    "build_receipt_sha256": "8b7f78a03606fde4b8e4327333bbd5670129812a8ff7db440ca01d0825bf5369",
+    "controller_acceptance_verified": false,
+    "download_memento": {
+      "bytes": 0,
+      "controller_acceptance_verified": false,
+      "history_entries": 0,
+      "impact": "Replaces previous download-capability history with a valid empty history; no previous-program or online-change compatibility is asserted.",
+      "oracle": {
+        "assembly": "Ade.PlcImpl.dll",
+        "assembly_sha256": "ee537d92540ff4f6270f0b2a34121d971abab993fc481319a90bd1bb80508298",
+        "load_token": "0x0600015a",
+        "mvid": "1669d53f-7ef8-4452-812c-defedab484c3",
+        "save_token": "0x0600015b",
+        "type": "Ade.Internal.Plc.DownloadCapabilityStateMemento"
+      },
+      "owner": "Engineer download-capability history",
+      "policy": "empty_capability_v1",
+      "populated_online_change_history": false,
+      "present": true,
+      "producer": "independent_empty_original_format",
+      "schema": "plcnext-download-capability-memento/v1",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "fb_instance_count": 118,
+    "file_count": 16,
+    "hmi_mapping_count": 10,
+    "image_sha256": "dc540ad9afa39f68858357064a6da4baf7b3585ad26b03893e764f58fb77f280",
+    "inventory_sha256": "13be285707f49997ad465ac44f24cc73e8382284cfb823eb08991bc5fb9cbd72",
+    "package_job_id": "41781d8124d1475d8f8334000d7d1716",
+    "package_receipt_sha256": "cd6629ea82d87b0bf5ac3c8d1aee880c091deac4c1c2179c66ab03f3cc624f75",
+    "package_signature_verified": false,
+    "runtime_binding_validation_passed": true,
+    "total_bytes": 5859601,
+    "variable_count": 69
+  },
+  "project_sha256": "3d31e83430438fd961149ca621f586ad077889ce795346cc4c055f79f62b91ef",
+  "schema": "plcnext-release-package/v1"
+}

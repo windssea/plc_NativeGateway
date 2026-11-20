@@ -1,0 +1,8 @@
+{
+  "blocked_utc": "2026-11-20T06:30:04.921131+00:00",
+  "device_action_performed": false,
+  "project_sha256": "58a8748e3d88080bc43d30d85a7211277d585725bc204992f00d4e2a9ef23cc6",
+  "reason": "Defect found during live real-meter verification on 192.168.0.10: NG_Modbus merged float32 block decode lacked ToFloat(REQ:=FALSE) rising-edge reset inside FOR k:=1 TO BlockCount loop, causing k>=2 float32 points (L2/L3 voltage, L1 current, import energy) to inherit k=1's FloatValue.",
+  "target": "AXCF1252",
+  "version": "native-0.8.2-dev.bcb4c407c28457d4"
+}

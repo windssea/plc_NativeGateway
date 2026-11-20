@@ -1,0 +1,132 @@
+{
+  "schema": "plcnext-mcp-tooling-release/v1",
+  "version": "0.6.15",
+  "created_utc": "2026-11-20T02:35:26.910475+00:00",
+  "files": [
+    {
+      "name": "plcnext_project_mcp-0.6.15-py3-none-any.whl",
+      "bytes": 393532,
+      "sha256": "50e39b955809d33c6758bcfeccb1257b0d22a68c02e3f51046002db9c383b20e"
+    },
+    {
+      "name": "plcnext_project_mcp-0.6.15.tar.gz",
+      "bytes": 1046092,
+      "sha256": "9dc9d8539054352f841a08b2777cae43d09bab756081b2da9737461610e64ae3"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "src/plcnext_mcp/device_profiles.py",
+      "sha256": "07e191099cac03a23856a81fee69dfd689deba418646a2ef56dae1ccde184e0e"
+    },
+    {
+      "path": "src/plcnext_mcp/profiles/eclr-2026.json",
+      "sha256": "700de19d655b1593072e1c447a4ccb08c9e93c3ea994b39a30a6d710b80c5fc3"
+    },
+    {
+      "path": "src/plcnext_mcp/expanded_compile.py",
+      "sha256": "6575ccb820cc1e1e0ac78d82fcd5d54aba09db6f6fcbba003dc744585dabb32b"
+    },
+    {
+      "path": "src/plcnext_mcp/compile_host/ColdProjectBuilder.cs",
+      "sha256": "a9da192f635b8812e57065c28b939eb4c59e6d9a8f3b44d9886961586c6c2a75"
+    },
+    {
+      "path": "src/plcnext_mcp/compile_host/CachedCompilerHost.cs",
+      "sha256": "fd1392a5c509a59d991ba60709ef2100f7c288ee19089433063d05af031c55df"
+    },
+    {
+      "path": "src/plcnext_mcp/pcwe_build.py",
+      "sha256": "e13c773be185dcc945236ae7d48d901a340b6ae1bfbbd650314100c3b7db5615"
+    },
+    {
+      "path": "src/plcnext_mcp/pcwe_auxiliary.py",
+      "sha256": "851bf1dcbdac1b1182534a6e8e9550206a61097e628b8db3a6b7b52d20bc7917"
+    },
+    {
+      "path": "src/plcnext_mcp/runtime_configuration.py",
+      "sha256": "4e3459d9f66b5fa389ff9d6fe26421f0c9d88c1cc3bedce9a1758c6fafa321ba"
+    },
+    {
+      "path": "src/plcnext_mcp/runtime_layout.py",
+      "sha256": "03e95585aebbb542064828d05eb06ce2ebf51a4ea3ab2cb20a1740a31be4e8ab"
+    },
+    {
+      "path": "src/plcnext_mcp/hmi_support.py",
+      "sha256": "a9539261ea0a828eefd7dd81549295975f91fd49489fecb761e822370d17fdce"
+    },
+    {
+      "path": "src/plcnext_mcp/hmi_output.py",
+      "sha256": "d32e66ca5e9a53241ba01ebb473853cb9bf0fc36d0687b6787677dfc511d6df8"
+    },
+    {
+      "path": "src/plcnext_mcp/hmi_host/HmiOutputProbe.cs",
+      "sha256": "7b382b9950ae616db88598e5843ed2bf8917b1810a1723532236199d898230b0"
+    },
+    {
+      "path": "src/plcnext_mcp/compile_host/FinalizeRuntimeTypes.cs",
+      "sha256": "026b1e967603b365baac38537ca5dec551063f0e0c9f046f7259c89de3ed2a50"
+    },
+    {
+      "path": "src/plcnext_mcp/compile_host/Invoke-FinalizeRuntime.ps1",
+      "sha256": "1e9f53caeb7d67e4d024052ae4db18e842ed9619ef0f0b53ad778bb8847e3cb5"
+    },
+    {
+      "path": "src/plcnext_mcp/native_image.py",
+      "sha256": "66f882af1a3c1ce9cabfe74c1b3b6bc3c789084bd88b6be6d52d48915bb0030a"
+    },
+    {
+      "path": "src/plcnext_mcp/download_simulation.py",
+      "sha256": "1c436efeef708c3abe4b1f36b48b0065a23ac9044ff38a88affd21b210cb7597"
+    },
+    {
+      "path": "src/plcnext_mcp/releases.py",
+      "sha256": "0b647878fedc2547709f6fc23a7db5ca930edb65dc350ae6aab9bb19c47725cb"
+    },
+    {
+      "path": "src/plcnext_mcp/server.py",
+      "sha256": "61c231575bacbbcdd6eff5ad55addba14d413ddc3ffbb194147e8ac773ea01d2"
+    },
+    {
+      "path": "tests/test_device_profiles.py",
+      "sha256": "0ef16984fecb57479da7a950f73c91bee6347d712e6ee59773bf6e072670fe99"
+    },
+    {
+      "path": "tests/test_hmi_output.py",
+      "sha256": "b0b9733b2d53c1a9c9af9a2e846358ab61bf6fed3bdbdc32b483c26239bbdf3b"
+    },
+    {
+      "path": "tests/test_pcwe_build.py",
+      "sha256": "108f08bf87a17dc6651941bc2108738dc91a695b78998d1baddcb064c815fb3a"
+    },
+    {
+      "path": "tests/test_releases.py",
+      "sha256": "12b932d6ea60512f0e9600c1b3d0c3949486e61c00465b4e06760daf632779aa"
+    },
+    {
+      "path": "tools/device_compile_e2e.py",
+      "sha256": "9ec9f0aeed1eab705d0d2a198e64acfa2bce8fec4aa71a2db9504d85cbef5dd9"
+    },
+    {
+      "path": "tools/device_registry_e2e.py",
+      "sha256": "27eb64eb8ebb03dd75c5a9e81fe0959583d802048b088bff798b487d6a8af846"
+    },
+    {
+      "path": "tools/device_package_acceptance.py",
+      "sha256": "16d4661da9540c8538584e406582e17ece332e3c547a0875d6839ebb4334079e"
+    },
+    {
+      "path": "docs/device-toolchains.md",
+      "sha256": "3bc531bb59d9b695e974ab2516c25c632101801c11c40e5773f2627bb37888a6"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "ae5baa49117aec0edddad0c263d53d5caede053457ca487228c128ce02344a2e"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "52656af05bc6f1902e956dc8957c02658a4b074f0935ace65b24844ca29beec8"
+    }
+  ],
+  "hardware_download_performed": false
+}

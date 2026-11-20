@@ -11,6 +11,8 @@ __pycache__/
 *.db-*
 *.sqlite*
 *.pid
+# Transient cross-process release locks; version/archive/attempt records stay tracked.
+/projects/releases/**/*.guard
 .env
 .env.*
 !.env.example

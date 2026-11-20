@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.8",
+  "change_note": "Historical exact-byte archive. Existing verification documents remain authoritative; no new device operation or acceptance is claimed.",
+  "channel": "historical",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-20T01:39:23.880228+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-2152-01",
+  "origin": "historical_byte_preserving_import",
+  "project_sha256": "ac9cfec98d592e6c14f074725176be572831335c39273ef666f468de34236dc0",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "ac9cfec98d592e6c14f074725176be572831335c39273ef666f468de34236dc0",
+  "target": "AXCF2152",
+  "version": "native-0.8.1"
+}

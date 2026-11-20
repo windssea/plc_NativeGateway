@@ -1,5 +1,7 @@
 # NativeGateway
 
+跨项目协作入口：[六项目开发分工与全链路联调手册](../PLCnext-Hub-Backend/docs/architecture/six-project-integration-guide.md)。
+
 > **当前主线（2026-10-28）：native-0.8.0已成为唯一正式入口。** 已完成同版本Hub自动授时、真实采集上传、普通断连与整机软件重启恢复、完整30分钟采集；当前boot84/配置19/250GOOD，0.5仅回退。正式文件和hash见[工程入口](projects/README.md)，实证见[发布验证](docs/主线0.8发布与同版本验证-20261028.md)，阶段后续见[MAINLINE/8](docs/三方主线开发与联调计划.md)。P06继续后置，全部阶段尚未完成。
 
 

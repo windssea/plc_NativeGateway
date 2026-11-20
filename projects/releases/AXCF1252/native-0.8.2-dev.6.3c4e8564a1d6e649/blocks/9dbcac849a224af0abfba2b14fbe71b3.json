@@ -1,0 +1,8 @@
+{
+  "blocked_utc": "2026-11-20T05:47:58.279101+00:00",
+  "device_action_performed": false,
+  "project_sha256": "453184a9a3fdd5ea9e69b17fb3a81bf53be82ddf0947c1ec2f2a60b33518c8dc",
+  "reason": "Rejected by AXC F 1252 firmware 26.0.1 LTS Project Integrity on Load (state 129, notification #5277): empty 0-byte dlc.bin failed hash verification and leftover remote Src/* files were not removed; also lacks UTF-8 to WSTRING decoding for Chinese device/point names in eHMI.",
+  "target": "AXCF1252",
+  "version": "native-0.8.2-dev.6.3c4e8564a1d6e649"
+}

@@ -11,11 +11,12 @@ import json
 from pathlib import Path
 import re
 import zipfile
+from dev_version import stamp
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / 'projects/candidates/native-0.7.0-timesync-candidate.1/NativeGateway.pcwex'
 BASE_SHA = 'b585662abf3d86a1d0445d59e9ed4354723edebafd1f0fcb4b81647a7fe80d41'
-VERSION = 'native-0.8.1'
+VERSION = 'native-0.8.1'  # frozen source baseline, never the new build identity
 OUTPUT = ROOT / 'projects/candidates' / VERSION / 'NativeGateway.pcwex'
 
 
@@ -62,6 +63,7 @@ def build(output):
         raise ValueError('Mainline requires automatic Hub logical time')
     if files['PROJECT/Logical%20Elements/NG_Types.dt'] != original['PROJECT/Logical%20Elements/NG_Types.dt']:
         raise ValueError('Persistent configuration layout changed')
+    dev_version = stamp(files)
     output.parent.mkdir(parents=True, exist_ok=True)
     # A fixed ZIP timestamp/order makes identical source inputs byte reproducible.
     with output.open('xb') as stream, zipfile.ZipFile(stream, 'w', zipfile.ZIP_DEFLATED) as archive:
@@ -70,7 +72,7 @@ def build(output):
             info.compress_type = zipfile.ZIP_DEFLATED
             archive.writestr(info, files[name])
     changed = [n for n in files if files[n] != original[n]]
-    report = dict(version=VERSION, output=str(output), sha256=hashlib.sha256(output.read_bytes()).hexdigest(),
+    report = dict(version=dev_version, output=str(output), sha256=hashlib.sha256(output.read_bytes()).hexdigest(),
                   baseSha256=BASE_SHA, pouCount=len(names), inputs=inputs,
                   normalizedInputs=normalized_inputs, changedArchiveMembers=changed,
                   hardwareHmiTasksUnchanged=all(files[n] == original[n] for n in files

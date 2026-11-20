@@ -27,9 +27,12 @@ VAR
     Selected : INT;
     i : INT;
     j : INT;
+    k : INT;
     Retry : USINT;
     Deadline : ULINT;
     RetryAt : ULINT;
+    BackoffLevel : USINT;
+    BackoffMs : ULINT;
     Transaction : UINT;
     FunctionCode : BYTE;
     Width : UINT;
@@ -47,6 +50,7 @@ VAR
     ToFloat : BUF_TO_REAL;
     Value : LREAL;
     OperationFailed : BOOL;
+    PointDecodeFailed : BOOL;
     FailQuality : STRING[24];
     host : STRING;
     Accepted : BOOL;
@@ -58,6 +62,21 @@ VAR
     RequestSlot : UINT;
     RequestConfigGeneration : UDINT;
     RequestSamplingGeneration : ULINT;
+    BlockIndices : ARRAY[1..64] OF UINT;
+    BlockNominalDue : ARRAY[1..64] OF ULINT;
+    BlockCount : INT;
+    BlockStartAddr : UINT;
+    BlockEndAddr : UINT;
+    BlockWidth : UINT;
+    CandIndex : UINT;
+    CandWidth : UINT;
+    CandEnd : UINT;
+    AlreadyInBlock : BOOL;
+    MergedPass : BOOL;
+    RawOff : INT;
+    AnyGoodInBlock : BOOL;
+    AnyErrorInBlock : BOOL;
+    BlockLastErr : STRING[24];
 END_VAR
 OperationFailed := FALSE;
 host := Device.host;
@@ -66,7 +85,7 @@ IF Reset OR NOT Enable OR NOT Device.enabled THEN
         Buffer.CancelledReadsTotal:=NG_SafeAdd(Buffer.CancelledReadsTotal,ULINT#1);
         Buffer.CancellationReason:=2;
     END_IF;
-    State:=90; Selected:=0;
+    State:=90; Selected:=0; BlockCount:=0; BackoffLevel:=USINT#0;
 END_IF;
 (* Limit only new socket activation work; nominal sampling grids remain fixed.
    Already-active sockets and final physical results are never budget-blocked. *)
@@ -84,7 +103,14 @@ CASE State OF
 10:
     IF Socket.ACTIVE THEN State := 15;
     ELSIF NowMs >= Deadline THEN
-        StateText := 'OFFLINE'; LastError := 'BAD_CONNECTION'; RetryAt := NowMs + 2000; State := 90;
+        StateText := 'OFFLINE'; LastError := 'BAD_CONNECTION';
+        IF BackoffLevel < USINT#5 THEN BackoffLevel := BackoffLevel + USINT#1; END_IF;
+        BackoffMs := ULINT#1000;
+        FOR i := 1 TO TO_INT(BackoffLevel) DO
+            IF BackoffMs < ULINT#15000 THEN BackoffMs := BackoffMs * ULINT#2; ELSE BackoffMs := ULINT#30000; END_IF;
+        END_FOR;
+        RetryAt := NowMs + BackoffMs + TO_ULINT(Device.unitId MOD USINT#8) * ULINT#125;
+        State := 90;
         (* Charge the complete final-result loop once, including dispatch and
            index work; avoid four timer calls for each individual point. *)
         SourceMarkUs:=GET_MICROSECONDS(TRUE);
@@ -92,9 +118,9 @@ CASE State OF
             Index:=TO_UINT(Device.PointStart+i-1);
             IF Points[Index].enabled AND (NowMs>=Buffer.Cursors[Index].NextDueMonoMs) THEN
                 PollSlot(NowMs:=NowMs, PeriodMs:=Points[Index].pollIntervalMs, Cursor:=Buffer.Cursors[Index], Buffer:=Buffer);
-        NominalDueMs:=PollSlot.NominalDueMs;
+                NominalDueMs:=PollSlot.NominalDueMs;
                 SourceResult(Index:=Index, Value:=LREAL#0.0, Quality:='BAD_CONNECTION', NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=NominalDueMs, ConfigSlot:=Buffer.ActiveSlot, ConfigGeneration:=Buffer.Configs[Buffer.ActiveSlot].Generation, SamplingGeneration:=Buffer.SamplingGeneration, Samples:=Samples, Buffer:=Buffer);
-        Accepted:=SourceResult.Accepted;
+                Accepted:=SourceResult.Accepted;
             END_IF;
         END_FOR;
         Buffer.SourceWorkUs:=Buffer.SourceWorkUs+GET_MICROSECONDS(TRUE)-SourceMarkUs;
@@ -109,13 +135,62 @@ CASE State OF
         END_FOR;
         IF Selected > 0 THEN
             Buffer.PollStartBudget:=Buffer.PollStartBudget-USINT#1;
-            Point:=Points[Device.PointStart+Selected-1]; Retry:=0;
             Index:=TO_UINT(Device.PointStart+Selected-1);
+            Point:=Points[Index]; Retry:=0;
+            Width := UINT#1;
+            IF (Point.dataType = 'float32') OR (Point.dataType = 'int32') OR (Point.dataType = 'uint32') THEN Width := UINT#2; END_IF;
+            BlockCount := 1;
+            BlockIndices[1] := Index;
+            BlockStartAddr := Point.address;
+            BlockEndAddr := Point.address + Width;
+            (* Strictly contiguous legal register merging for holding/input registers:
+               never span unconfigured register holes; cap at 120 registers (249B <= 260B Rx). *)
+            IF ((Point.area = 'holding_register') OR (Point.area = 'input_register')) AND (Point.dataType <> 'bool') THEN
+                MergedPass := TRUE;
+                WHILE MergedPass AND (BlockCount < 64) DO
+                    MergedPass := FALSE;
+                    FOR i := 1 TO Device.PointCount DO
+                        CandIndex := TO_UINT(Device.PointStart + i - 1);
+                        IF Points[CandIndex].enabled
+                            AND (NowMs >= Samples[CandIndex].NextPollMs)
+                            AND (Points[CandIndex].area = Point.area)
+                            AND (Points[CandIndex].dataType <> 'bool')
+                            AND (Points[CandIndex].pollIntervalMs = Point.pollIntervalMs)
+                            AND (BlockCount < 64) THEN
+                            AlreadyInBlock := FALSE;
+                            FOR j := 1 TO BlockCount DO
+                                IF BlockIndices[j] = CandIndex THEN AlreadyInBlock := TRUE; EXIT; END_IF;
+                            END_FOR;
+                            IF NOT AlreadyInBlock THEN
+                                CandWidth := UINT#1;
+                                IF (Points[CandIndex].dataType = 'float32') OR (Points[CandIndex].dataType = 'int32') OR (Points[CandIndex].dataType = 'uint32') THEN CandWidth := UINT#2; END_IF;
+                                CandEnd := Points[CandIndex].address + CandWidth;
+                                IF (Points[CandIndex].address = BlockEndAddr) AND ((CandEnd - BlockStartAddr) <= UINT#120) THEN
+                                    BlockCount := BlockCount + 1;
+                                    BlockIndices[BlockCount] := CandIndex;
+                                    BlockEndAddr := CandEnd;
+                                    MergedPass := TRUE;
+                                ELSIF (CandEnd = BlockStartAddr) AND ((BlockEndAddr - Points[CandIndex].address) <= UINT#120) THEN
+                                    BlockCount := BlockCount + 1;
+                                    BlockIndices[BlockCount] := CandIndex;
+                                    BlockStartAddr := Points[CandIndex].address;
+                                    MergedPass := TRUE;
+                                END_IF;
+                            END_IF;
+                        END_IF;
+                    END_FOR;
+                END_WHILE;
+            END_IF;
+            BlockWidth := BlockEndAddr - BlockStartAddr;
             SourceMarkUs:=GET_MICROSECONDS(TRUE);
-            PollSlot(NowMs:=NowMs, PeriodMs:=Point.pollIntervalMs, Cursor:=Buffer.Cursors[Index], Buffer:=Buffer);
-        NominalDueMs:=PollSlot.NominalDueMs;
+            FOR k := 1 TO BlockCount DO
+                CandIndex := BlockIndices[k];
+                PollSlot(NowMs:=NowMs, PeriodMs:=Points[CandIndex].pollIntervalMs, Cursor:=Buffer.Cursors[CandIndex], Buffer:=Buffer);
+                BlockNominalDue[k] := PollSlot.NominalDueMs;
+                Samples[CandIndex].NextPollMs := Buffer.Cursors[CandIndex].NextDueMonoMs;
+            END_FOR;
+            NominalDueMs := BlockNominalDue[1];
             Buffer.SourceWorkUs:=Buffer.SourceWorkUs+GET_MICROSECONDS(TRUE)-SourceMarkUs;
-            Samples[Index].NextPollMs:=Buffer.Cursors[Index].NextDueMonoMs;
             RequestSlot:=Buffer.ActiveSlot; RequestConfigGeneration:=Buffer.Configs[RequestSlot].Generation;
             RequestSamplingGeneration:=Buffer.SamplingGeneration; State:=18;
         END_IF;
@@ -127,13 +202,11 @@ CASE State OF
     ELSIF Point.area = 'holding_register' THEN FunctionCode := BYTE#3;
     ELSE FunctionCode := BYTE#4;
     END_IF;
-    Width := 1;
-    IF (Point.dataType = 'float32') OR (Point.dataType = 'int32') OR (Point.dataType = 'uint32') THEN Width := 2; END_IF;
     Tx[0] := TO_BYTE(Transaction / 256); Tx[1] := TO_BYTE(Transaction MOD 256);
     Tx[2] := BYTE#0; Tx[3] := BYTE#0; Tx[4] := BYTE#0; Tx[5] := BYTE#6;
     Tx[6] := TO_BYTE(Device.unitId); Tx[7] := FunctionCode;
-    Tx[8] := TO_BYTE(Point.address / 256); Tx[9] := TO_BYTE(Point.address MOD 256);
-    Tx[10] := BYTE#0; Tx[11] := TO_BYTE(Width);
+    Tx[8] := TO_BYTE(BlockStartAddr / 256); Tx[9] := TO_BYTE(BlockStartAddr MOD 256);
+    Tx[10] := BYTE#0; Tx[11] := TO_BYTE(BlockWidth);
     RxCount := 0; FrameLength := 0; Deadline := NowMs + Device.requestTimeoutMs; State := 20;
 20:
     IF Send.ERROR THEN OperationFailed := TRUE; FailQuality := 'BAD_CONNECTION';
@@ -165,45 +238,72 @@ CASE State OF
     IF (RxCount <> FrameLength) OR (Rx[0] <> Tx[0]) OR (Rx[1] <> Tx[1]) OR (Rx[2] <> 0) OR (Rx[3] <> 0) OR (Rx[6] <> Tx[6]) OR (Rx[7] <> FunctionCode) THEN
         OperationFailed := TRUE; FailQuality := 'BAD_PROTOCOL';
     ELSE
-        IF Point.dataType = 'bool' THEN ByteCount := 1; ELSE ByteCount := Width*2; END_IF;
+        IF Point.dataType = 'bool' THEN ByteCount := UINT#1; ELSE ByteCount := BlockWidth * UINT#2; END_IF;
         IF (TO_UINT(Rx[8]) <> ByteCount) OR (FrameLength <> TO_UDINT(UINT#9+ByteCount)) THEN OperationFailed := TRUE; FailQuality := 'BAD_PROTOCOL';
         ELSE
-            IF Point.dataType = 'bool' THEN
-                IF (Rx[9] AND BYTE#1) <> 0 THEN Value := 1; ELSE Value := 0; END_IF;
-            ELSE
-                Decode[0] := Rx[9]; Decode[1] := Rx[10]; Decode[2] := Rx[11]; Decode[3] := Rx[12];
-                IF (Point.byteOrder = 'BA') OR (Point.byteOrder = 'BADC') OR (Point.byteOrder = 'DCBA') THEN
-                    Decode[0] := Rx[10]; Decode[1] := Rx[9]; Decode[2] := Rx[12]; Decode[3] := Rx[11];
-                END_IF;
-                IF (Point.byteOrder = 'CDAB') OR (Point.byteOrder = 'DCBA') THEN
-                    IF Point.byteOrder = 'CDAB' THEN Decode[0] := Rx[11]; Decode[1] := Rx[12]; Decode[2] := Rx[9]; Decode[3] := Rx[10];
-                    ELSE Decode[0] := Rx[12]; Decode[1] := Rx[11]; Decode[2] := Rx[10]; Decode[3] := Rx[9]; END_IF;
-                END_IF;
-                UIntValue := TO_UDINT(Decode[0])*256 + TO_UDINT(Decode[1]);
-                IF Width = 2 THEN UIntValue := UIntValue*65536 + TO_UDINT(Decode[2])*256 + TO_UDINT(Decode[3]); END_IF;
-                IF Point.dataType = 'float32' THEN
-                    IF (TO_DWORD(UIntValue) AND DWORD#16#7F800000) = DWORD#16#7F800000 THEN OperationFailed := TRUE; FailQuality := 'BAD_DECODE';
-                    ELSE
-                        ToFloat(REQ := TRUE, BUF_FORMAT := TRUE, BUF_OFFS := 0, BUF_CNT := 4, BUFFER := Decode, DST := FloatValue);
-                        Value := TO_LREAL(FloatValue);
-                    END_IF;
+            BackoffLevel := USINT#0;
+            AnyGoodInBlock := FALSE;
+            AnyErrorInBlock := FALSE;
+            BlockLastErr := '';
+            SourceMarkUs := GET_MICROSECONDS(TRUE);
+            FOR k := 1 TO BlockCount DO
+                CandIndex := BlockIndices[k];
+                Point := Points[CandIndex];
+                PointDecodeFailed := FALSE;
+                Width := UINT#1;
+                IF (Point.dataType = 'float32') OR (Point.dataType = 'int32') OR (Point.dataType = 'uint32') THEN Width := UINT#2; END_IF;
+                IF Point.dataType = 'bool' THEN
+                    IF (Rx[9] AND BYTE#1) <> 0 THEN Value := 1; ELSE Value := 0; END_IF;
                 ELSE
-                    IntValue := TO_LINT(UIntValue);
-                    IF (Point.dataType = 'int16') AND (UIntValue >= 32768) THEN IntValue := IntValue - 65536; END_IF;
-                    IF (Point.dataType = 'int32') AND (UIntValue >= UDINT#2147483648) THEN IntValue := IntValue - LINT#4294967296; END_IF;
-                    Value := TO_LREAL(IntValue);
+                    RawOff := 9 + TO_INT(Point.address - BlockStartAddr) * 2;
+                    Decode[0] := Rx[RawOff]; Decode[1] := Rx[RawOff + 1];
+                    IF Width = UINT#2 THEN Decode[2] := Rx[RawOff + 2]; Decode[3] := Rx[RawOff + 3];
+                    ELSE Decode[2] := BYTE#0; Decode[3] := BYTE#0; END_IF;
+                    IF (Point.byteOrder = 'BA') OR (Point.byteOrder = 'BADC') OR (Point.byteOrder = 'DCBA') THEN
+                        Decode[0] := Rx[RawOff + 1]; Decode[1] := Rx[RawOff];
+                        IF Width = UINT#2 THEN Decode[2] := Rx[RawOff + 3]; Decode[3] := Rx[RawOff + 2]; END_IF;
+                    END_IF;
+                    IF (Point.byteOrder = 'CDAB') OR (Point.byteOrder = 'DCBA') THEN
+                        IF Point.byteOrder = 'CDAB' THEN
+                            Decode[0] := Rx[RawOff + 2]; Decode[1] := Rx[RawOff + 3]; Decode[2] := Rx[RawOff]; Decode[3] := Rx[RawOff + 1];
+                        ELSE
+                            Decode[0] := Rx[RawOff + 3]; Decode[1] := Rx[RawOff + 2]; Decode[2] := Rx[RawOff + 1]; Decode[3] := Rx[RawOff];
+                        END_IF;
+                    END_IF;
+                    UIntValue := TO_UDINT(Decode[0])*256 + TO_UDINT(Decode[1]);
+                    IF Width = UINT#2 THEN UIntValue := UIntValue*65536 + TO_UDINT(Decode[2])*256 + TO_UDINT(Decode[3]); END_IF;
+                    IF Point.dataType = 'float32' THEN
+                        IF (TO_DWORD(UIntValue) AND DWORD#16#7F800000) = DWORD#16#7F800000 THEN
+                            PointDecodeFailed := TRUE;
+                        ELSE
+                            ToFloat(REQ := FALSE, BUF_FORMAT := TRUE, BUF_OFFS := 0, BUF_CNT := 4, BUFFER := Decode, DST := FloatValue);
+                            ToFloat(REQ := TRUE, BUF_FORMAT := TRUE, BUF_OFFS := 0, BUF_CNT := 4, BUFFER := Decode, DST := FloatValue);
+                            Value := TO_LREAL(FloatValue);
+                        END_IF;
+                    ELSE
+                        IntValue := TO_LINT(UIntValue);
+                        IF (Point.dataType = 'int16') AND (UIntValue >= 32768) THEN IntValue := IntValue - 65536; END_IF;
+                        IF (Point.dataType = 'int32') AND (UIntValue >= UDINT#2147483648) THEN IntValue := IntValue - LINT#4294967296; END_IF;
+                        Value := TO_LREAL(IntValue);
+                    END_IF;
                 END_IF;
-            END_IF;
-            IF NOT OperationFailed THEN
-                Index:=TO_UINT(Device.PointStart+Selected-1);
-                SourceMarkUs:=GET_MICROSECONDS(TRUE);
-                SourceResult(Index:=Index, Value:=Value*Point.scale+Point.offset, Quality:='GOOD', NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=NominalDueMs, ConfigSlot:=RequestSlot, ConfigGeneration:=RequestConfigGeneration, SamplingGeneration:=RequestSamplingGeneration, Samples:=Samples, Buffer:=Buffer);
-        Accepted:=SourceResult.Accepted;
-                Buffer.SourceWorkUs:=Buffer.SourceWorkUs+GET_MICROSECONDS(TRUE)-SourceMarkUs;
-                IF Samples[Index].Quality='GOOD' THEN LastGoodTimestamp:=UnixMs; StateText:='ONLINE'; LastError:='';
-                ELSE StateText:='DEGRADED'; LastError:=Samples[Index].Quality; END_IF;
-                IF Completed<UDINT#4294967295 THEN Completed:=Completed+1; END_IF; State:=15;
-            END_IF;
+                IF PointDecodeFailed THEN
+                    SourceResult(Index:=CandIndex, Value:=LREAL#0.0, Quality:='BAD_DECODE', NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=BlockNominalDue[k], ConfigSlot:=RequestSlot, ConfigGeneration:=RequestConfigGeneration, SamplingGeneration:=RequestSamplingGeneration, Samples:=Samples, Buffer:=Buffer);
+                    Accepted:=SourceResult.Accepted;
+                    AnyErrorInBlock := TRUE; BlockLastErr := 'BAD_DECODE';
+                ELSE
+                    SourceResult(Index:=CandIndex, Value:=Value*Point.scale+Point.offset, Quality:='GOOD', NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=BlockNominalDue[k], ConfigSlot:=RequestSlot, ConfigGeneration:=RequestConfigGeneration, SamplingGeneration:=RequestSamplingGeneration, Samples:=Samples, Buffer:=Buffer);
+                    Accepted:=SourceResult.Accepted;
+                    IF Samples[CandIndex].Quality='GOOD' THEN AnyGoodInBlock := TRUE;
+                    ELSE AnyErrorInBlock := TRUE; BlockLastErr := Samples[CandIndex].Quality; END_IF;
+                END_IF;
+                IF Completed<UDINT#4294967295 THEN Completed:=Completed+1; END_IF;
+            END_FOR;
+            Buffer.SourceWorkUs:=Buffer.SourceWorkUs+GET_MICROSECONDS(TRUE)-SourceMarkUs;
+            IF AnyGoodInBlock THEN LastGoodTimestamp:=UnixMs; END_IF;
+            IF AnyErrorInBlock THEN StateText:='DEGRADED'; LastError:=BlockLastErr;
+            ELSE StateText:='ONLINE'; LastError:=''; END_IF;
+            State:=15;
         END_IF;
     END_IF;
 90:
@@ -216,14 +316,23 @@ END_CASE;
 IF OperationFailed THEN
     IF (Retry < Device.retryCount) AND (FailQuality = 'BAD_PROTOCOL') THEN Retry := TO_USINT(Retry + 1); State := 18;
     ELSE
-        Index:=TO_UINT(Device.PointStart+Selected-1);
         SourceMarkUs:=GET_MICROSECONDS(TRUE);
-        SourceResult(Index:=Index, Value:=LREAL#0.0, Quality:=FailQuality, NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=NominalDueMs, ConfigSlot:=RequestSlot, ConfigGeneration:=RequestConfigGeneration, SamplingGeneration:=RequestSamplingGeneration, Samples:=Samples, Buffer:=Buffer);
-        Accepted:=SourceResult.Accepted;
+        FOR k := 1 TO BlockCount DO
+            CandIndex := BlockIndices[k];
+            SourceResult(Index:=CandIndex, Value:=LREAL#0.0, Quality:=FailQuality, NowMs:=NowMs, UnixMs:=UnixMs, NominalDueMs:=BlockNominalDue[k], ConfigSlot:=RequestSlot, ConfigGeneration:=RequestConfigGeneration, SamplingGeneration:=RequestSamplingGeneration, Samples:=Samples, Buffer:=Buffer);
+            Accepted:=SourceResult.Accepted;
+        END_FOR;
         Buffer.SourceWorkUs:=Buffer.SourceWorkUs+GET_MICROSECONDS(TRUE)-SourceMarkUs;
         LastError := FailQuality; StateText := 'DEGRADED';
         IF (FailQuality = 'BAD_TIMEOUT') OR (FailQuality = 'BAD_CONNECTION') THEN
-            StateText := 'OFFLINE'; RetryAt := NowMs + 1000; State := 90;
+            IF BackoffLevel < USINT#5 THEN BackoffLevel := BackoffLevel + USINT#1; END_IF;
+            BackoffMs := ULINT#1000;
+            FOR i := 1 TO TO_INT(BackoffLevel) DO
+                IF BackoffMs < ULINT#15000 THEN BackoffMs := BackoffMs * ULINT#2; ELSE BackoffMs := ULINT#30000; END_IF;
+            END_FOR;
+            StateText := 'OFFLINE';
+            RetryAt := NowMs + BackoffMs + TO_ULINT(Device.unitId MOD USINT#8) * ULINT#125;
+            State := 90;
         ELSE State := 15; END_IF;
     END_IF;
 END_IF;

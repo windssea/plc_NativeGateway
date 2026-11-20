@@ -54,6 +54,10 @@ VAR
     status : STRING[24];
     value : STRING[64];
     cmd : BOOL;
+    Utf8 : NG_Utf8Label;
+    DeviceLabel : NG_UiLabel;
+    PointLabel : NG_UiLabel;
+    UnitLabel : NG_UiLabel;
 END_VAR
 Submit := FALSE; SubmitBroker := FALSE; SubmitMode := FALSE; ClearConfig := FALSE; LoadDevice := FALSE; LoadPoint := FALSE;
 Nav := Hmi.Navigation; Hmi.Navigation := '';
@@ -272,30 +276,38 @@ FOR row := 1 TO 8 DO
     IF i <= Draft.DeviceCount THEN
         device := Draft.Devices[i]; marker := ''; IF i = d THEN marker := '> '; END_IF;
         status := 'DRAFT'; FOR a := 1 TO Active.DeviceCount DO IF Active.Devices[a].deviceId = device.deviceId THEN status := States[a].StateText; EXIT; END_IF; END_FOR;
+        Utf8(Text := device.name, MaxChars := 48); DeviceLabel := Utf8.Value;
         IF Hmi.English THEN
-            rows[row]:=NG_UiJoin(TO_WSTRING(marker,""),TO_WSTRING(NG_Clip(device.name),"")," | ",NG_UiText(status,TRUE),"\n",TO_WSTRING(CONCAT(device.host,':',TO_STRING(device.port,'{0:d}')),""),TO_WSTRING(device.unitId," / Unit {0:d}"),TO_WSTRING(device.PointCount," / {0:d} points"));
+            rows[row]:=NG_UiJoin(TO_WSTRING(marker,""),DeviceLabel," | ",NG_UiText(status,TRUE),"\n",TO_WSTRING(CONCAT(device.host,':',TO_STRING(device.port,'{0:d}')),""),TO_WSTRING(device.unitId," / Unit {0:d}"),TO_WSTRING(device.PointCount," / {0:d} points"));
         ELSE
-            rows[row]:=NG_UiJoin(TO_WSTRING(marker,""),TO_WSTRING(NG_Clip(device.name),"")," | ",NG_UiText(status,FALSE),"\n",TO_WSTRING(CONCAT(device.host,':',TO_STRING(device.port,'{0:d}')),""),TO_WSTRING(device.unitId," / 站号 {0:d}"),TO_WSTRING(device.PointCount," / {0:d} 个点位"));
+            rows[row]:=NG_UiJoin(TO_WSTRING(marker,""),DeviceLabel," | ",NG_UiText(status,FALSE),"\n",TO_WSTRING(CONCAT(device.host,':',TO_STRING(device.port,'{0:d}')),""),TO_WSTRING(device.unitId," / 站号 {0:d}"),TO_WSTRING(device.PointCount," / {0:d} 个点位"));
         END_IF;
     END_IF;
 END_FOR;
 Hmi.DeviceRow1 := rows[1]; Hmi.DeviceRow2 := rows[2]; Hmi.DeviceRow3 := rows[3]; Hmi.DeviceRow4 := rows[4]; Hmi.DeviceRow5 := rows[5]; Hmi.DeviceRow6 := rows[6]; Hmi.DeviceRow7 := rows[7]; Hmi.DeviceRow8 := rows[8];
 Hmi.SelectedDevice := NG_UiText('No device selected',Hmi.English); Hmi.SelectedPoint := NG_UiText('No point selected',Hmi.English);
-IF d <= Draft.DeviceCount THEN Hmi.SelectedDevice := TO_WSTRING(Draft.Devices[d].name,""); END_IF;
+IF d <= Draft.DeviceCount THEN Utf8(Text := Draft.Devices[d].name, MaxChars := 0); Hmi.SelectedDevice := Utf8.Value; END_IF;
 pages := 1; IF d <= Draft.DeviceCount THEN pages := MAX(1,(Draft.Devices[d].PointCount+7)/8); END_IF;
 Hmi.PointPage := MAX(1,MIN(pages,Hmi.PointPage)); Hmi.PointPages := CONCAT(TO_STRING(Hmi.PointPage,'{0:d}'),' / ',TO_STRING(pages,'{0:d}'));
 FOR row := 1 TO 8 DO
     i := (Hmi.PointPage-1)*8+row; rows[row] := "";
     IF d <= Draft.DeviceCount THEN
         IF i <= Draft.Devices[d].PointCount THEN
-            point := Draft.Points[Draft.Devices[d].PointStart+i-1]; marker := ''; IF i = p THEN marker := '> '; Hmi.SelectedPoint := NG_UiText(point.name,Hmi.English); END_IF;
+            point := Draft.Points[Draft.Devices[d].PointStart+i-1]; marker := '';
+            IF (point.name='voltage') OR (point.name='current') OR (point.name='frequency') OR (point.name='power') OR (point.name='energy') THEN
+                PointLabel := NG_UiText(point.name,Hmi.English);
+            ELSE
+                Utf8(Text := point.name, MaxChars := 0); PointLabel := Utf8.Value;
+            END_IF;
+            IF i = p THEN marker := '> '; Hmi.SelectedPoint := PointLabel; END_IF;
             status := 'DRAFT'; value := '';
             FOR a := 1 TO Active.DeviceCount DO
                 IF Active.Devices[a].deviceId = Draft.Devices[d].deviceId THEN
                     FOR b := 1 TO Active.Devices[a].PointCount DO idx := Active.Devices[a].PointStart+b-1; IF Active.Points[idx].pointId = point.pointId THEN status := Samples[idx].Quality; IF status = 'GOOD' THEN IF ABS(Samples[idx].Value)<1.0E9 THEN value := TO_STRING(Samples[idx].Value,'{0:F3}'); ELSE value := TO_STRING(Samples[idx].Value,'{0:E6}'); END_IF; END_IF; EXIT; END_IF; END_FOR; EXIT;
                 END_IF;
             END_FOR;
-            rows[row]:=NG_UiJoin(TO_WSTRING(marker,""),NG_UiText(point.name,Hmi.English),"  |  ",TO_WSTRING(CONCAT(value,' ',point.unit),""),"  |  ",NG_UiText(status,Hmi.English),"\n",NG_UiText(point.area,Hmi.English));
+            Utf8(Text := CONCAT(value,' ',point.unit), MaxChars := 0); UnitLabel := Utf8.Value;
+            rows[row]:=NG_UiJoin(TO_WSTRING(marker,""),PointLabel,"  |  ",UnitLabel,"  |  ",NG_UiText(status,Hmi.English),"\n",NG_UiText(point.area,Hmi.English));
             IF Hmi.English THEN
                 rows[row]:=NG_UiJoin(rows[row],TO_WSTRING(point.address," @{0:d}"),TO_WSTRING(point.pollIntervalMs," / Poll {0:d}"),TO_WSTRING(point.reportIntervalMs," / Send {0:d} ms"),"","","","");
             ELSE

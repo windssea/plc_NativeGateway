@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 import re
 import zipfile
+from dev_version import stamp
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "projects/templates/NativeGateway1252.engineering.pcwex"
@@ -50,13 +51,14 @@ def build(output):
         raise ValueError("1252 gateway identity not isolated")
     if "/opt/plcnext/NativeGateway" in store or STORAGE_PREFIX not in store:
         raise ValueError("1252 persistence must use the writable custom directory")
+    dev_version = stamp(files)
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("xb") as stream, zipfile.ZipFile(stream, "w", zipfile.ZIP_DEFLATED) as archive:
         # Keep the validated OPC member order and original ZIP metadata.
         # Repacking is not proof that Engineer can load or compile the result.
         for entry in entries:
             archive.writestr(copy.copy(entry), files[entry.filename])
-    report = dict(version=VERSION, variant="AXCF1252", address="192.168.0.10",
+    report = dict(version=dev_version, variant="AXCF1252", address="192.168.0.10",
                   gatewayId=GATEWAY_ID, clientId=GATEWAY_ID + "-native", storagePrefix=STORAGE_PREFIX,
                   source=str(output), sha256=hashlib.sha256(output.read_bytes()).hexdigest(),
                   engineeringBase=str(BASE), engineeringBaseSha256=BASE_SHA, pouCount=len(names), inputs=inputs,

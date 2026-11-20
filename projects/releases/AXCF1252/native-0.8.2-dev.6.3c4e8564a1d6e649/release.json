@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Independent device toolchain acceptance; version-stamped offline build, no controller access.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-20T02:24:24.355721+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "453184a9a3fdd5ea9e69b17fb3a81bf53be82ddf0947c1ec2f2a60b33518c8dc",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "3c4e8564a1d6e6499f8811ea6b3087d8ceffb6406b3be6bd7a306afe139c5d5f",
+  "target": "AXCF1252",
+  "version": "native-0.8.2-dev.6.3c4e8564a1d6e649"
+}

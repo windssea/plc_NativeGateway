@@ -1,0 +1,18 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Formal release native-0.8.2 for AXC F 1252 (NG-HUB-1252-01): NG_Modbus merged float32 BUF_TO_REAL rising-edge fix, NG_Utf8Label UTF-8 Chinese eHMI decoding, 48-file omit PCWE for 26.0.1 LTS.",
+  "channel": "release",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-20T08:36:15.652014+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_release_promotion",
+  "project_sha256": "dae5e9e059672632308ceee6f9365823540136445df57e238821a45789cb9c8c",
+  "promoted_from_project_sha256": "c7a37e565922d6f8af25ed481a3cd9ce7e93a31292b64802bed6950471a75e2e",
+  "promoted_from_version": "native-0.8.2-dev.c1cfb42488265450",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "c1cfb42488265450add260e42a0c136a21cf63d3c7fd6c5be8d76af4e41c5dc9",
+  "target": "AXCF1252",
+  "verification_note": "Dev candidate native-0.8.2-dev.c1cfb42488265450 deployed to 192.168.0.10 (attempt 0fb64a63216243c98c9c69f0329dbf6e) and live-verified with 12/12 real meter (.7:502) GOOD values, 1.105s poll interval, crisp Chinese eHMI WSTRING, and 0-flap 90s regression.",
+  "version": "native-0.8.2"
+}

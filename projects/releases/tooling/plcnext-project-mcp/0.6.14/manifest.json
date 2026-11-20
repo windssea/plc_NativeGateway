@@ -1,0 +1,56 @@
+{
+  "schema": "plcnext-mcp-tooling-release/v1",
+  "version": "0.6.14",
+  "created_utc": "2026-11-20T01:46:33.731441+00:00",
+  "files": [
+    {
+      "name": "plcnext_project_mcp-0.6.14-py3-none-any.whl",
+      "sha256": "aa14c8995b43b96aa79f6599078c08c056611b74f137efecdca7d41864464018",
+      "bytes": 386194
+    },
+    {
+      "name": "plcnext_project_mcp-0.6.14.tar.gz",
+      "sha256": "0084a06e0ff12880dca14fb8c8e5d5ec75c134c9b9cd6ea9e3a42a06ef25d7d5",
+      "bytes": 1029834
+    }
+  ],
+  "source_files": [
+    {
+      "path": "src/plcnext_mcp/releases.py",
+      "sha256": "c86a5cbf1e63c9ba244d69183df91ed6c4d5da1f78e3907ae5eb3798595a75bc"
+    },
+    {
+      "path": "src/plcnext_mcp/server.py",
+      "sha256": "f2a8b8c3833ddca81a31f82136e8eb05877bf8184a41cebac71a658185cde460"
+    },
+    {
+      "path": "src/plcnext_mcp/controller_transfer.py",
+      "sha256": "9e4e1d54abdd8a4fceb2e4ea4016eefedb5b32d010a7180a1840da3653e16160"
+    },
+    {
+      "path": "src/plcnext_mcp/controller_recovery.py",
+      "sha256": "d4e08e06308dfac130d085ab96809d439e35addb2d19e820dbfe57d7fdc9aeab"
+    },
+    {
+      "path": "tests/test_releases.py",
+      "sha256": "1ca5c4c43b2d0bd9c09987f97460b7eb0e1ab1bd50fb3b53a067fd2424c2a0ee"
+    },
+    {
+      "path": "tests/test_download_approval_guards.py",
+      "sha256": "df48289c1a1441f1278b7d37ded4b5c9bba1f6fa875d16dc14bea4c8d697e6cc"
+    },
+    {
+      "path": "tools/release_workflow_e2e.py",
+      "sha256": "a265f5e0f1146018ce6793962b8936fdc5e69b2d52ffb615a965c2368f872fac"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "1a8417a751ec81879aa3a7a2f5084834eb9365b614ec5f0e349118c7ad5ff7f4"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "8de6f65347d6af80537d21161a401e00003cdfc8a3b5b38d5158117b1a2a3430"
+    }
+  ],
+  "controller_access": false
+}

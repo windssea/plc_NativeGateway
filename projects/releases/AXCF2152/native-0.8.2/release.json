@@ -1,0 +1,18 @@
+{
+  "address": "192.168.0.8",
+  "change_note": "Formal release native-0.8.2 for AXC F 2152 (NG-HUB-2152-01): NG_Modbus merged float32 BUF_TO_REAL rising-edge fix and NG_Utf8Label UTF-8 Chinese eHMI decoding.",
+  "channel": "release",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-20T08:38:37.585897+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-2152-01",
+  "origin": "mcp_release_promotion",
+  "project_sha256": "53dd68086cb3dcf0350077d887cbe9c422d4925c61ba1c7d357adc6c145df142",
+  "promoted_from_project_sha256": "c18cd4ec7bfb804e71605a165a74f5066a1f573d13aeb0d03ba7886375b83172",
+  "promoted_from_version": "native-0.8.2-dev.eb28b9f30280b16f",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "eb28b9f30280b16f4b7ac28d63218c734911ce5e18f3e248d307c9e7bbf78f81",
+  "target": "AXCF2152",
+  "verification_note": "Dev candidate native-0.8.2-dev.eb28b9f30280b16f deployed to 192.168.0.8 (attempt 255762c3ec5145b1a726d7f6b9a2641c) and live-verified with 50/50 mock meters (250/250 GOOD, distinct voltage/power values) and 0-flap 90s regression.",
+  "version": "native-0.8.2"
+}

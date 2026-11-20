@@ -1,0 +1,8 @@
+{
+  "blocked_utc": "2026-11-20T02:27:00.922599+00:00",
+  "device_action_performed": false,
+  "project_sha256": "bf5c15ff3404262f3314aa2e41355490981854716ed7dfc73fd7774af42850d9",
+  "reason": "Withdrawn offline development candidate: HMI under Services/Ehmi was incorrectly omitted. No device download occurred. Corrected complete package uses dev.6; retain all original artifacts and receipts.",
+  "target": "AXCF1252",
+  "version": "native-0.8.2-dev.4.3c4e8564a1d6e649"
+}

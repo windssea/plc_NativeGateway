@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Fix eHMI UTF-8 Chinese rendering via NG_Utf8Label (retaining NG_Clip for ASCII) + NG_HmiEdit and omit 0-byte dlc.bin for AXC F 1252 26.0.1 LTS Project Integrity.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-20T06:16:45.677526+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "58a8748e3d88080bc43d30d85a7211277d585725bc204992f00d4e2a9ef23cc6",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "bcb4c407c28457d46a0c51579d3d01d4cb3f9521eb4d5df2edf5fd9d3e2d58f7",
+  "target": "AXCF1252",
+  "version": "native-0.8.2-dev.bcb4c407c28457d4"
+}

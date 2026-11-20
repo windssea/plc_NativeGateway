@@ -1,0 +1,8 @@
+{
+  "blocked_utc": "2026-11-20T06:30:04.992973+00:00",
+  "device_action_performed": false,
+  "project_sha256": "fc941c39775de1f0a1322fc4bbb6067219ad9261e9aab93022ed326483bda514",
+  "reason": "Defect found during live verification on 192.168.0.8: NG_Modbus merged float32 block decode lacked ToFloat(REQ:=FALSE) rising-edge reset inside FOR k:=1 TO BlockCount loop, causing mock power (@2) to inherit voltage (@0)'s FloatValue.",
+  "target": "AXCF2152",
+  "version": "native-0.8.2-dev.2.69bcbcedab8995c3"
+}

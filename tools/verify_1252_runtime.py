@@ -61,6 +61,9 @@ def read_runtime(output, samples=False):
         'Store.Active.Generation', 'Store.Active.BootCounter', 'Store.Active.Bootstrap.GatewayId',
         'Mqtt.Connected', 'Mqtt.SessionCount', 'NowMs', 'Active.Version', 'Active.DeviceCount',
         'Active.PointCount', 'NativeClock.TimeValid', 'QueueCount',
+        'CaptureBuffer.KnownUnsentEventsTotal', 'CaptureBuffer.UncertainDeliveryEventsTotal',
+        'CaptureBuffer.CaptureOverflowEventsTotal', 'CaptureBuffer.CorruptBatchesTotal',
+        'CaptureBuffer.GapRecordsTotal',
     ]
     paths = ['Arp.Plc.Eclr/MainInstance.' + name for name in local_names]
     if samples:
