@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.8",
+  "change_note": "Demote stalled >=8s live Queue[2] records and unacked Category=2 batches to HISTORY (Category=1) when Hub is down while MQTT stays connected, enabling fast live recovery upon Hub restart without losing history.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-20T12:48:56.186636+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-2152-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "86bc4362204d617f6419ff5416c8642e642c209e8c3bd66dd6e0573d762dd02d",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "d32988cb86c626d8d53027c5b9bdc1cd5544b9f13ac2ec97b79f22a046ae8d44",
+  "target": "AXCF2152",
+  "version": "native-0.8.3-dev.d32988cb86c626d8"
+}

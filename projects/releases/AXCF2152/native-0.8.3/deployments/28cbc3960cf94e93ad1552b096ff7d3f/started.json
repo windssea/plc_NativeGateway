@@ -1,0 +1,58 @@
+{
+  "attempt_id": "28cbc3960cf94e93ad1552b096ff7d3f",
+  "before_observation": null,
+  "current_device_version_verified": false,
+  "operation": "execute_recovery_plan",
+  "package": {
+    "build_job_id": "4dfaaa01a3204d65a1679f3020842786",
+    "build_receipt_sha256": "494f168333b6692caae9df1c60b5ce8657b659df08754d05b357e4b046263472",
+    "controller_acceptance_verified": false,
+    "download_memento": {
+      "bytes": null,
+      "controller_acceptance_verified": false,
+      "history_entries": null,
+      "impact": "No memento is generated; a remote extra path remains a strict download blocker.",
+      "oracle": {
+        "assembly": "Ade.PlcImpl.dll",
+        "assembly_sha256": "ee537d92540ff4f6270f0b2a34121d971abab993fc481319a90bd1bb80508298",
+        "load_token": "0x0600015a",
+        "mvid": "1669d53f-7ef8-4452-812c-defedab484c3",
+        "save_token": "0x0600015b",
+        "type": "Ade.Internal.Plc.DownloadCapabilityStateMemento"
+      },
+      "owner": "Engineer download-capability history",
+      "policy": "omit",
+      "populated_online_change_history": false,
+      "present": false,
+      "producer": "none",
+      "schema": "plcnext-download-capability-memento/v1",
+      "sha256": null
+    },
+    "fb_instance_count": 119,
+    "file_count": 48,
+    "hmi_mapping_count": 10,
+    "image_sha256": "5bc5d55de1e192567f9f9de268c501eaa2d2318297f3e0706a131f4fb4b0f4c2",
+    "inventory_sha256": "f28d0049507f7b337db54544d9526b988d0d2e624ab76a7368e0fe25f2697f71",
+    "package_job_id": "eb1c1a4e653e450984ca67e7e16bf476",
+    "package_receipt_sha256": "12ce5cc5968f378e54b4ed0ea7d4d2be1fe196ee606232a6e7cbdc5106ae7782",
+    "package_signature_verified": false,
+    "runtime_binding_validation_passed": true,
+    "total_bytes": 9456558,
+    "variable_count": 77
+  },
+  "project_id": "19445e6e66394aff879ebe6feaed6468",
+  "project_sha256": "a43c546ffb3d22b26448aa9a3ad47457f839412b2f01f7cb0ebba7b7bc282f69",
+  "review_id": "fa894e27540d495b90fd8823d7aace9c",
+  "review_sha256": "85779f6d63950952350f6829b95e30bc6039d9c41f551c8e20bd7240ea5e5a4e",
+  "schema": "plcnext-release-attempt/v1",
+  "started_utc": "2026-11-20T13:55:52.489111+00:00",
+  "status": "pending_outcome_unknown",
+  "target": {
+    "address": "192.168.0.8",
+    "authentication_mode": "anonymous",
+    "certificate_policy": "explicit_sha256_pin",
+    "expected_certificate_sha256": "3c7b256b25712d045396c61ecaf919700af43b7daaf9f36787438491f9caf863",
+    "port": 41100
+  },
+  "version": "native-0.8.3"
+}

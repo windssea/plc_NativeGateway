@@ -1,0 +1,18 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Formal release native-0.8.3 for AXC F 1252 (NG-HUB-1252-01): NG_BufferMaintenance 8s ACK-stall demotion keeps live Queue[2] lane separate from HISTORY during Hub-down/MQTT-up outages.",
+  "channel": "release",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-20T13:35:42.210795+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_release_promotion",
+  "project_sha256": "32f245b7717ead59c98e9f3eb55e08126f8eda5e4a54b500681e2307d8b4d1e0",
+  "promoted_from_project_sha256": "7d7387bb17ff4e451f3f1d965816f9c05ce647e004142d0f1f8f1a567adc32aa",
+  "promoted_from_version": "native-0.8.3-dev.8d50ac1ac070eca7",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "8d50ac1ac070eca7508478d95d7dc40f15a7dfdb2b71cbc594b885b1b5323fa8",
+  "target": "AXCF1252",
+  "verification_note": "Dev candidate native-0.8.3-dev.8d50ac1ac070eca7 deployed to 192.168.0.10 (attempt 005a69ef3eac4e28aca322dd404b073a) and verified in 97.6s Scenario 2 Hub outage: 1/1 NORMAL recovered in 6.5s (vs 118.0s before, 18.2x faster), 877/877 seq missing=0, 1984/1984 outage rows backfilled, 12/12 latest regressed=0.",
+  "version": "native-0.8.3"
+}

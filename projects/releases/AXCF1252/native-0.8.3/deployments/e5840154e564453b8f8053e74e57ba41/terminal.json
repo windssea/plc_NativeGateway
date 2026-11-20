@@ -1,0 +1,16 @@
+{
+  "automatic_retry_allowed": false,
+  "current_device_version_verified": false,
+  "execution_receipt_sha256": "ad31a33fbd3a0b1ba1620b1dead54e9b011bb28d1dcd197e676980d2f255f2e2",
+  "finished_utc": "2026-11-20T13:54:32.222012+00:00",
+  "result": {
+    "endpoint_lease_retained": false,
+    "execution_id": "e7c92412ad994934873a60b823026afa",
+    "outcome_unknown": false,
+    "receipt_persisted": true,
+    "report_path": "D:\\PLCnext-MCP-Workspace\\device-profiles-20261120\\f59476c8b999405393ee1506bae573eb\\controller-recoveries\\e7c92412ad994934873a60b823026afa\\result.json",
+    "stage": "completed",
+    "status": "original_loaded_runtime_observed"
+  },
+  "status": "operation_returned"
+}

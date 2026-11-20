@@ -24,6 +24,9 @@ VAR
     n : INT;
     pressure : BOOL;
     expired : BOOL;
+    preparingNew : BOOL;
+    stalledNew : BOOL;
+    histCount : UINT;
 END_VAR
 IF Buffer.WorkDeadlineUs>0 THEN IF GET_MICROSECONDS(TRUE)+ULINT#200>=Buffer.WorkDeadlineUs THEN RETURN; END_IF; END_IF;
 IF GateOpen AND NOT Buffer.GateWasOpen THEN
@@ -34,6 +37,40 @@ IF GateOpen AND NOT Buffer.GateWasOpen THEN
         Buffer.QueueTail[1]:=Buffer.QueueTail[2]; Buffer.QueueHead[2]:=0; Buffer.QueueTail[2]:=0;
     END_IF;
     FOR q:=1 TO 16 DO IF Buffer.BatchOwners[q].State<>0 THEN Buffer.BatchOwners[q].Category:=1; END_IF; END_FOR;
+ELSIF GateOpen AND (Buffer.QueueHead[2]<>0) THEN
+    (* Hub outage while MQTT stays UP: if live batches stall >=8s without DATA_ACK
+       and Queue[2] head ages >=8s, demote aged live records/batches to HISTORY (1)
+       so fresh live samples immediately use the reserved Category=2 lane on recovery. *)
+    r:=Buffer.QueueHead[2];
+    IF (NowMs>Buffer.Records[r].CompletedMonoMs) AND (NowMs>=Buffer.Records[r].CompletedMonoMs+ULINT#8000) THEN
+        preparingNew:=FALSE; stalledNew:=FALSE; histCount:=0;
+        FOR q:=1 TO 16 DO
+            IF Buffer.BatchOwners[q].State<>0 THEN
+                IF Buffer.BatchOwners[q].Category=1 THEN histCount:=histCount+1;
+                ELSIF Buffer.BatchOwners[q].State=1 THEN preparingNew:=TRUE;
+                ELSIF (Buffer.BatchOwners[q].State=2) AND Packets[q].WasSent THEN
+                    IF (Packets[q].Attempts>=UDINT#2) OR (NowMs>=Packets[q].RetryAtMs) OR
+                       ((NowMs>Packets[q].LastSentMs) AND (NowMs>=Packets[q].LastSentMs+ULINT#8000)) THEN
+                        stalledNew:=TRUE;
+                    END_IF;
+                END_IF;
+            END_IF;
+        END_FOR;
+        IF stalledNew AND NOT preparingNew THEN
+            Buffer.Watermark:=Buffer.LastAdmittedSeq;
+            IF Buffer.QueueHead[1]=0 THEN Buffer.QueueHead[1]:=Buffer.QueueHead[2];
+            ELSE Buffer.FreeSlots[Buffer.QueueTail[1]]:=Buffer.QueueHead[2]; END_IF;
+            Buffer.QueueTail[1]:=Buffer.QueueTail[2]; Buffer.QueueHead[2]:=0; Buffer.QueueTail[2]:=0;
+            FOR q:=1 TO 16 DO
+                IF (histCount<UINT#7) AND (Buffer.BatchOwners[q].State=2) AND (Buffer.BatchOwners[q].Category=2) AND Packets[q].WasSent THEN
+                    IF (Packets[q].Attempts>=UDINT#2) OR (NowMs>=Packets[q].RetryAtMs) OR
+                       ((NowMs>Packets[q].LastSentMs) AND (NowMs>=Packets[q].LastSentMs+ULINT#8000)) THEN
+                        Buffer.BatchOwners[q].Category:=1; histCount:=histCount+1;
+                    END_IF;
+                END_IF;
+            END_FOR;
+        END_IF;
+    END_IF;
 END_IF;
 Buffer.GateWasOpen:=GateOpen;
 deadCount:=0; deadBytes:=0; deadSlot:=0;
