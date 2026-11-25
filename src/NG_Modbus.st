@@ -4,6 +4,10 @@ VAR_INPUT
     Reset : BOOL;
     NowMs : ULINT;
     UnixMs : ULINT;
+    MaxMergeGap : UINT := UINT#16;
+    MaxGapSpan : UINT := UINT#40;
+    InterFrameGapMs : UDINT := UDINT#0;
+    MaxTimeoutRetries : USINT := USINT#2;
 END_VAR
 VAR_IN_OUT
     Device : NG_Device;
@@ -64,15 +68,35 @@ VAR
     RequestSamplingGeneration : ULINT;
     BlockIndices : ARRAY[1..64] OF UINT;
     BlockNominalDue : ARRAY[1..64] OF ULINT;
+    SavedNextDue : ARRAY[1..64] OF ULINT;
     BlockCount : INT;
     BlockStartAddr : UINT;
     BlockEndAddr : UINT;
     BlockWidth : UINT;
+    BlockHasHoles : BOOL;
+    HoleMergeDisabled : BOOL;
+    EffectiveMaxGap : UINT;
+    EffectiveGapSpan : UINT;
+    SpanLimit : UINT;
     CandIndex : UINT;
     CandWidth : UINT;
     CandEnd : UINT;
+    CandGap : UINT;
+    CandSpan : UINT;
+    BestIndex : UINT;
+    BestGap : UINT;
+    BestNewStart : UINT;
+    BestNewEnd : UINT;
     AlreadyInBlock : BOOL;
     MergedPass : BOOL;
+    RequestSentMs : ULINT;
+    LastRttMs : ULINT;
+    NextTxAllowedMs : ULINT;
+    TimeoutInReceive : BOOL;
+    StaleDrains : USINT;
+    TimeoutRetryCap : USINT;
+    CanRetry : BOOL;
+    RemainBytes : INT;
     RawOff : INT;
     AnyGoodInBlock : BOOL;
     AnyErrorInBlock : BOOL;
@@ -81,11 +105,13 @@ END_VAR
 OperationFailed := FALSE;
 host := Device.host;
 IF Reset OR NOT Enable OR NOT Device.enabled THEN
-    IF (State>=18) AND (State<=40) THEN
+    IF (State>=16) AND (State<=40) THEN
         Buffer.CancelledReadsTotal:=NG_SafeAdd(Buffer.CancelledReadsTotal,ULINT#1);
         Buffer.CancellationReason:=2;
     END_IF;
-    State:=90; Selected:=0; BlockCount:=0; BackoffLevel:=USINT#0;
+    State:=90; Selected:=0; BlockCount:=0; BlockHasHoles:=FALSE; BackoffLevel:=USINT#0;
+    NextTxAllowedMs:=ULINT#0; LastRttMs:=ULINT#0; TimeoutInReceive:=FALSE; StaleDrains:=USINT#0;
+    IF Reset THEN HoleMergeDisabled:=FALSE; END_IF;
 END_IF;
 (* Limit only new socket activation work; nominal sampling grids remain fixed.
    Already-active sockets and final physical results are never budget-blocked. *)
@@ -127,7 +153,7 @@ CASE State OF
     END_IF;
 15:
     IF NOT Socket.ACTIVE THEN State := 0;
-    ELSIF Buffer.PollStartBudget>0 THEN
+    ELSIF (NowMs >= NextTxAllowedMs) AND (Buffer.PollStartBudget>0) THEN
         Selected := 0;
         FOR i := 1 TO Device.PointCount DO
             Scan := Scan + 1; IF Scan > Device.PointCount THEN Scan := 1; END_IF;
@@ -136,19 +162,33 @@ CASE State OF
         IF Selected > 0 THEN
             Buffer.PollStartBudget:=Buffer.PollStartBudget-USINT#1;
             Index:=TO_UINT(Device.PointStart+Selected-1);
-            Point:=Points[Index]; Retry:=0;
+            Point:=Points[Index]; Retry:=USINT#0; StaleDrains:=USINT#0;
             Width := UINT#1;
             IF (Point.dataType = 'float32') OR (Point.dataType = 'int32') OR (Point.dataType = 'uint32') THEN Width := UINT#2; END_IF;
             BlockCount := 1;
             BlockIndices[1] := Index;
             BlockStartAddr := Point.address;
             BlockEndAddr := Point.address + Width;
-            (* Strictly contiguous legal register merging for holding/input registers:
-               never span unconfigured register holes; cap at 120 registers (249B <= 260B Rx). *)
+            BlockHasHoles := FALSE;
+            (* Register merging for holding/input registers:
+               contiguous blocks up to 120 regs; small-gap bridging up to EffectiveMaxGap
+               within EffectiveGapSpan regs, with automatic fallback on Modbus Exception. *)
+            IF HoleMergeDisabled THEN EffectiveMaxGap := UINT#0;
+            ELSE
+                EffectiveMaxGap := MaxMergeGap;
+                IF EffectiveMaxGap > UINT#118 THEN EffectiveMaxGap := UINT#118; END_IF;
+            END_IF;
+            EffectiveGapSpan := MaxGapSpan;
+            IF EffectiveGapSpan > UINT#120 THEN EffectiveGapSpan := UINT#120; END_IF;
+            IF EffectiveGapSpan < UINT#2 THEN EffectiveGapSpan := UINT#2; END_IF;
             IF ((Point.area = 'holding_register') OR (Point.area = 'input_register')) AND (Point.dataType <> 'bool') THEN
                 MergedPass := TRUE;
                 WHILE MergedPass AND (BlockCount < 64) DO
                     MergedPass := FALSE;
+                    BestIndex := UINT#0;
+                    BestGap := UINT#65535;
+                    BestNewStart := BlockStartAddr;
+                    BestNewEnd := BlockEndAddr;
                     FOR i := 1 TO Device.PointCount DO
                         CandIndex := TO_UINT(Device.PointStart + i - 1);
                         IF Points[CandIndex].enabled
@@ -164,27 +204,48 @@ CASE State OF
                             IF NOT AlreadyInBlock THEN
                                 CandWidth := UINT#1;
                                 IF (Points[CandIndex].dataType = 'float32') OR (Points[CandIndex].dataType = 'int32') OR (Points[CandIndex].dataType = 'uint32') THEN CandWidth := UINT#2; END_IF;
-                                CandEnd := Points[CandIndex].address + CandWidth;
-                                IF (Points[CandIndex].address = BlockEndAddr) AND ((CandEnd - BlockStartAddr) <= UINT#120) THEN
-                                    BlockCount := BlockCount + 1;
-                                    BlockIndices[BlockCount] := CandIndex;
-                                    BlockEndAddr := CandEnd;
-                                    MergedPass := TRUE;
-                                ELSIF (CandEnd = BlockStartAddr) AND ((BlockEndAddr - Points[CandIndex].address) <= UINT#120) THEN
-                                    BlockCount := BlockCount + 1;
-                                    BlockIndices[BlockCount] := CandIndex;
-                                    BlockStartAddr := Points[CandIndex].address;
-                                    MergedPass := TRUE;
+                                IF Points[CandIndex].address <= (UINT#65535 - CandWidth) THEN
+                                    CandEnd := Points[CandIndex].address + CandWidth;
+                                    IF Points[CandIndex].address >= BlockEndAddr THEN
+                                        CandGap := Points[CandIndex].address - BlockEndAddr;
+                                        CandSpan := CandEnd - BlockStartAddr;
+                                        IF (NOT BlockHasHoles) AND (CandGap = UINT#0) THEN SpanLimit := UINT#120; ELSE SpanLimit := EffectiveGapSpan; END_IF;
+                                        IF (CandGap <= EffectiveMaxGap) AND (CandSpan <= SpanLimit) AND (CandGap < BestGap) THEN
+                                            BestIndex := CandIndex;
+                                            BestGap := CandGap;
+                                            BestNewStart := BlockStartAddr;
+                                            BestNewEnd := CandEnd;
+                                        END_IF;
+                                    ELSIF CandEnd <= BlockStartAddr THEN
+                                        CandGap := BlockStartAddr - CandEnd;
+                                        CandSpan := BlockEndAddr - Points[CandIndex].address;
+                                        IF (NOT BlockHasHoles) AND (CandGap = UINT#0) THEN SpanLimit := UINT#120; ELSE SpanLimit := EffectiveGapSpan; END_IF;
+                                        IF (CandGap <= EffectiveMaxGap) AND (CandSpan <= SpanLimit) AND (CandGap < BestGap) THEN
+                                            BestIndex := CandIndex;
+                                            BestGap := CandGap;
+                                            BestNewStart := Points[CandIndex].address;
+                                            BestNewEnd := BlockEndAddr;
+                                        END_IF;
+                                    END_IF;
                                 END_IF;
                             END_IF;
                         END_IF;
                     END_FOR;
+                    IF BestIndex > UINT#0 THEN
+                        BlockCount := BlockCount + 1;
+                        BlockIndices[BlockCount] := BestIndex;
+                        BlockStartAddr := BestNewStart;
+                        BlockEndAddr := BestNewEnd;
+                        IF BestGap > UINT#0 THEN BlockHasHoles := TRUE; END_IF;
+                        MergedPass := TRUE;
+                    END_IF;
                 END_WHILE;
             END_IF;
             BlockWidth := BlockEndAddr - BlockStartAddr;
             SourceMarkUs:=GET_MICROSECONDS(TRUE);
             FOR k := 1 TO BlockCount DO
                 CandIndex := BlockIndices[k];
+                SavedNextDue[k] := Buffer.Cursors[CandIndex].NextDueMonoMs;
                 PollSlot(NowMs:=NowMs, PeriodMs:=Points[CandIndex].pollIntervalMs, Cursor:=Buffer.Cursors[CandIndex], Buffer:=Buffer);
                 BlockNominalDue[k] := PollSlot.NominalDueMs;
                 Samples[CandIndex].NextPollMs := Buffer.Cursors[CandIndex].NextDueMonoMs;
@@ -195,7 +256,14 @@ CASE State OF
             RequestSamplingGeneration:=Buffer.SamplingGeneration; State:=18;
         END_IF;
     END_IF;
+16:
+    IF NOT Socket.ACTIVE THEN
+        OperationFailed := TRUE; FailQuality := 'BAD_CONNECTION';
+    ELSIF NowMs >= NextTxAllowedMs THEN
+        State := 18;
+    END_IF;
 18:
+    Point := Points[BlockIndices[1]];
     Transaction := Transaction + 1;
     IF Point.area = 'coil' THEN FunctionCode := BYTE#1;
     ELSIF Point.area = 'discrete_input' THEN FunctionCode := BYTE#2;
@@ -207,7 +275,9 @@ CASE State OF
     Tx[6] := TO_BYTE(Device.unitId); Tx[7] := FunctionCode;
     Tx[8] := TO_BYTE(BlockStartAddr / 256); Tx[9] := TO_BYTE(BlockStartAddr MOD 256);
     Tx[10] := BYTE#0; Tx[11] := TO_BYTE(BlockWidth);
-    RxCount := 0; FrameLength := 0; Deadline := NowMs + Device.requestTimeoutMs; State := 20;
+    RxCount := 0; FrameLength := 0; TimeoutInReceive := FALSE;
+    RequestSentMs := NowMs;
+    Deadline := NowMs + Device.requestTimeoutMs; State := 20;
 20:
     IF Send.ERROR THEN OperationFailed := TRUE; FailQuality := 'BAD_CONNECTION';
     ELSIF Send.DONE THEN State := 30;
@@ -233,15 +303,69 @@ CASE State OF
             END_IF;
         END_IF;
     END_IF;
-    IF (NowMs >= Deadline) AND (State = 30) THEN OperationFailed := TRUE; FailQuality := 'BAD_TIMEOUT'; END_IF;
+    IF (NowMs >= Deadline) AND (State = 30) THEN
+        OperationFailed := TRUE; FailQuality := 'BAD_TIMEOUT'; TimeoutInReceive := TRUE;
+    END_IF;
 40:
-    IF (RxCount <> FrameLength) OR (Rx[0] <> Tx[0]) OR (Rx[1] <> Tx[1]) OR (Rx[2] <> 0) OR (Rx[3] <> 0) OR (Rx[6] <> Tx[6]) OR (Rx[7] <> FunctionCode) THEN
+    IF (RxCount >= FrameLength) AND (Rx[2] = BYTE#0) AND (Rx[3] = BYTE#0) AND (Rx[6] = Tx[6])
+        AND ((Rx[0] <> Tx[0]) OR (Rx[1] <> Tx[1]))
+        AND (Retry > USINT#0) AND (StaleDrains < Retry) AND (NowMs < Deadline) THEN
+        (* Drain a late response frame from an earlier timed-out attempt on this socket. *)
+        StaleDrains := StaleDrains + USINT#1;
+        IF RxCount > FrameLength THEN
+            RemainBytes := TO_INT(RxCount - FrameLength);
+            FOR i := 0 TO RemainBytes - 1 DO Rx[i] := Rx[TO_INT(FrameLength) + i]; END_FOR;
+            RxCount := RxCount - FrameLength;
+            FrameLength := 0;
+            IF RxCount >= 7 THEN
+                FrameLength := UDINT#6 + TO_UDINT(Rx[4])*256 + TO_UDINT(Rx[5]);
+                IF (FrameLength < 9) OR (FrameLength > 260) THEN OperationFailed := TRUE; FailQuality := 'BAD_PROTOCOL';
+                ELSIF RxCount >= FrameLength THEN State := 40;
+                ELSE State := 30;
+                END_IF;
+            ELSE State := 30;
+            END_IF;
+        ELSE
+            RxCount := 0; FrameLength := 0; State := 30;
+        END_IF;
+    ELSIF (RxCount = FrameLength) AND (FrameLength = UDINT#9)
+        AND (Rx[0] = Tx[0]) AND (Rx[1] = Tx[1])
+        AND (Rx[2] = BYTE#0) AND (Rx[3] = BYTE#0)
+        AND (Rx[6] = Tx[6]) AND (Rx[7] = (FunctionCode OR BYTE#16#80))
+        AND BlockHasHoles THEN
+        (* Slave rejected a hole-bridged read with Modbus Exception: fall back to contiguous reads. *)
+        HoleMergeDisabled := TRUE;
+        FOR k := 2 TO BlockCount DO
+            CandIndex := BlockIndices[k];
+            Buffer.Cursors[CandIndex].NextDueMonoMs := SavedNextDue[k];
+            Samples[CandIndex].NextPollMs := SavedNextDue[k];
+        END_FOR;
+        Point := Points[BlockIndices[1]];
+        Width := UINT#1;
+        IF (Point.dataType = 'float32') OR (Point.dataType = 'int32') OR (Point.dataType = 'uint32') THEN Width := UINT#2; END_IF;
+        BlockCount := 1;
+        BlockStartAddr := Point.address;
+        BlockEndAddr := Point.address + Width;
+        BlockWidth := Width;
+        BlockHasHoles := FALSE;
+        Retry := USINT#0;
+        StaleDrains := USINT#0;
+        State := 18;
+    ELSIF (RxCount <> FrameLength) OR (Rx[0] <> Tx[0]) OR (Rx[1] <> Tx[1]) OR (Rx[2] <> 0) OR (Rx[3] <> 0) OR (Rx[6] <> Tx[6]) OR (Rx[7] <> FunctionCode) THEN
         OperationFailed := TRUE; FailQuality := 'BAD_PROTOCOL';
     ELSE
         IF Point.dataType = 'bool' THEN ByteCount := UINT#1; ELSE ByteCount := BlockWidth * UINT#2; END_IF;
         IF (TO_UINT(Rx[8]) <> ByteCount) OR (FrameLength <> TO_UDINT(UINT#9+ByteCount)) THEN OperationFailed := TRUE; FailQuality := 'BAD_PROTOCOL';
         ELSE
             BackoffLevel := USINT#0;
+            IF NowMs >= RequestSentMs THEN LastRttMs := NowMs - RequestSentMs; ELSE LastRttMs := ULINT#0; END_IF;
+            IF InterFrameGapMs > UDINT#0 THEN
+                NextTxAllowedMs := NowMs + TO_ULINT(InterFrameGapMs);
+            ELSIF LastRttMs >= ULINT#150 THEN
+                NextTxAllowedMs := NowMs + ULINT#150;
+            ELSE
+                NextTxAllowedMs := ULINT#0;
+            END_IF;
             AnyGoodInBlock := FALSE;
             AnyErrorInBlock := FALSE;
             BlockLastErr := '';
@@ -314,7 +438,22 @@ CASE State OF
     END_IF;
 END_CASE;
 IF OperationFailed THEN
-    IF (Retry < Device.retryCount) AND (FailQuality = 'BAD_PROTOCOL') THEN Retry := TO_USINT(Retry + 1); State := 18;
+    TimeoutRetryCap := Device.retryCount;
+    IF TimeoutRetryCap > MaxTimeoutRetries THEN TimeoutRetryCap := MaxTimeoutRetries; END_IF;
+    CanRetry := ((FailQuality = 'BAD_PROTOCOL') AND (Retry < Device.retryCount))
+        OR ((FailQuality = 'BAD_TIMEOUT') AND TimeoutInReceive AND Socket.ACTIVE AND (Retry < TimeoutRetryCap));
+    IF CanRetry THEN
+        Retry := Retry + USINT#1;
+        IF (FailQuality = 'BAD_TIMEOUT') OR (LastRttMs >= ULINT#150) THEN
+            IF InterFrameGapMs >= UDINT#200 THEN NextTxAllowedMs := NowMs + TO_ULINT(InterFrameGapMs);
+            ELSE NextTxAllowedMs := NowMs + ULINT#200; END_IF;
+            State := 16;
+        ELSIF InterFrameGapMs > UDINT#0 THEN
+            NextTxAllowedMs := NowMs + TO_ULINT(InterFrameGapMs);
+            State := 16;
+        ELSE
+            State := 18;
+        END_IF;
     ELSE
         SourceMarkUs:=GET_MICROSECONDS(TRUE);
         FOR k := 1 TO BlockCount DO

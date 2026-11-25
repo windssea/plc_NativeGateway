@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "NG_Modbus slow-link/LoRa hardening: (1) in-place BAD_TIMEOUT retry up to MIN(Device.retryCount, MaxTimeoutRetries=2) with late-frame draining; (2) small-gap register merging (MaxMergeGap=16, MaxGapSpan=40, SDM630 8->3 reads) with automatic Modbus Exception fallback; (3) configurable InterFrameGapMs + RTT-adaptive 150ms slow-link pacing (0ms on fast Ethernet).",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-25T07:31:10.699890+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "175b8dda7755d93d13f8f71d52ed66a0452fe32008b414109c600f8bf7696482",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "fbc0a284401ba776ef7b036e410260cae34ba778b1a3d17d96d83ab0be0a4701",
+  "target": "AXCF1252",
+  "version": "native-0.8.4-dev.fbc0a284401ba776"
+}

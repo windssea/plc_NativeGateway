@@ -1,0 +1,18 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "NG_Modbus slow-link/LoRa hardening: (1) in-place BAD_TIMEOUT retry up to MIN(Device.retryCount, MaxTimeoutRetries=2) with late-frame draining; (2) small-gap register merging (MaxMergeGap=16, MaxGapSpan=40, SDM630 8->3 reads) with automatic Modbus Exception fallback; (3) configurable InterFrameGapMs + RTT-adaptive 150ms slow-link pacing (0ms on fast Ethernet).",
+  "channel": "release",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-25T09:12:30.379914+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_release_promotion",
+  "project_sha256": "f0b186ed0b9d81f1da73d263f2e53aa9af48a02d19953fb9677570eeb4d85212",
+  "promoted_from_project_sha256": "b8af554b506e6c102b3fb972b3c45697bb3959906d8872222b26611248fa9fd5",
+  "promoted_from_version": "native-0.8.4-dev.43d37289d48f8c9a",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "43d37289d48f8c9a4dc26489e8da7e4495e24775ede17cbf2982e45a4a664a3d",
+  "target": "AXCF1252",
+  "verification_note": "Live AXCF1252 (192.168.0.10 / NG-HUB-1252-01) verification of native-0.8.4-dev.43d37289d48f8c9a: MCP recovery operation_id=37f022a488094280b6e52860e5aa1c44, release attempt_id=d40e8d013ea0445c9779fd6e0555512b (48/48 SHA-512 readback verified, Cold Start Running, v3/2 devices/24 points 24/24 GOOD). 59-minute live burn-in (2026-11-25T08:11:05Z..09:10:07Z): ZLAN9743 (192.168.0.6:502 LoRa SDM630, 15000ms poll) achieved 2820/2820 GOOD (0 BAD_TIMEOUT, 0 DATA_STALE, 0 ABNORMAL; 8->3 merged reads proven via sampledAt grouping and live single-timeout in-place retry recovery observed); Meter-Unit1 (192.168.0.7:502) achieved 42324/42324 GOOD (0 errors); AXCF2152 (192.168.0.8) untouched.",
+  "version": "native-0.8.4"
+}

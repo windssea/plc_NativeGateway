@@ -1,0 +1,8 @@
+{
+  "blocked_utc": "2026-11-25T07:37:16.340455+00:00",
+  "device_action_performed": false,
+  "project_sha256": "175b8dda7755d93d13f8f71d52ed66a0452fe32008b414109c600f8bf7696482",
+  "reason": "CILG0016 redundant TO_USINT(USINT) conversion in NG_Modbus.st; never compiled or packaged.",
+  "target": "AXCF1252",
+  "version": "native-0.8.4-dev.fbc0a284401ba776"
+}
