@@ -1,0 +1,1 @@
+{"variablePathPrefix":"@login","variables":[{"name":"ErrorString","type":"STRING","initValue":""},{"name":"StatusCode","type":"DWORD","initValue":"0"}]}

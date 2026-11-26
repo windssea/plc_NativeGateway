@@ -1,0 +1,18 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Display live stamped agentVersion on eHMI header and Maintenance page: (1) add HMI.AgentVersion (NG_Id) in NG_Types.dt without changing durable V5 storage; (2) derive HMI.AgentVersion and heartbeat agentVersion from one single stamped AgentVersionTag literal in Main.st so MCP dev/formal stamping stays single-source-of-truth; (3) render HMI.AgentVersion beside NativeGateway title in top header bar and in View 13 Ownership/Maintenance.",
+  "channel": "release",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T12:31:22.798689+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_release_promotion",
+  "project_sha256": "2a8e39fd179f494cf60f2da6099716aab2a55623d8ff3f26cc17c1093a96c2bf",
+  "promoted_from_project_sha256": "ba863d0f90bd5a57e5a5226dff2d786bd685df11c40901310319296c8d3ada0d",
+  "promoted_from_version": "native-0.8.8-dev.14f8464c62320ca1",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "14f8464c62320ca1925a966b24fe7385ff720424adf6a335525ff2e491578882",
+  "target": "AXCF1252",
+  "verification_note": "Live AXCF1252 (192.168.0.10 / NG-HUB-1252-01) verification of native-0.8.8-dev.14f8464c62320ca1: MCP recovery operation_id=1ac39b569a9f4925a71c716abc3b619c, release_attempt_id=18d45dab315e46bcb3a5a44cd198dec9 (48/48 SHA-512 readback verified, Cold Start Running, persisted V5 config v3/2 devices/24 points, original_configuration_verified=True, collection_verified=False).",
+  "version": "native-0.8.8"
+}
