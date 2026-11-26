@@ -1,0 +1,33 @@
+{
+  "plcnextapp": {
+    "name": "PLCnext NativeGateway",
+    "identifier": "99000021520001",
+    "version": "0.8.8-dev.440466aa1ce32f7b",
+    "target": "AXC F 2152",
+    "minfirmware_version": "24.0.0",
+    "manufacturer": "Phoenix Contact Lab",
+    "licensetype": "Free"
+  },
+  "engineerapp": {
+    "folder": "/arp/PCWE"
+  },
+  "datastorage": {
+    "persistentdata": true,
+    "temporarydata": false
+  },
+  "plcnextservices": [
+    {
+      "service": "EHMI",
+      "action": "MUST_HAVE"
+    },
+    {
+      "service": "IEC",
+      "action": "MUST_HAVE"
+    }
+  ],
+  "updateconfigs": {
+    "autoupdate_enabled": false,
+    "keep_persistentdata": true,
+    "keep_temporarydata": false
+  }
+}

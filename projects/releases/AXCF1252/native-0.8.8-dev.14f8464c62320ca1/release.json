@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Display live firmware agentVersion on eHMI header and Maintenance page: (1) add HMI.AgentVersion (NG_Id) in NG_Types.dt without changing durable V5 storage; (2) derive HMI.AgentVersion and heartbeat agentVersion from one single stamped AgentVersionTag literal in Main.st so MCP dev/formal stamping stays single-source-of-truth; (3) render HMI.AgentVersion beside NativeGateway title in top header bar and in View 13 Ownership/Maintenance.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T12:26:46.415182+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "ba863d0f90bd5a57e5a5226dff2d786bd685df11c40901310319296c8d3ada0d",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "14f8464c62320ca1925a966b24fe7385ff720424adf6a335525ff2e491578882",
+  "target": "AXCF1252",
+  "version": "native-0.8.8-dev.14f8464c62320ca1"
+}
