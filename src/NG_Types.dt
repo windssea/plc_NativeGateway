@@ -91,21 +91,6 @@ TYPE
         Digest : STRING[64];
         IsPatch : BOOL;
     END_STRUCT;
-    NG3_Durable : STRUCT
-        Generation : ULINT;
-        Managed : BOOL := TRUE;
-        BootCounter : ULINT;
-        Bootstrap : NG_Bootstrap;
-        Config : NG4_Config;
-        ReplayIndex : INT;
-        Requests : ARRAY[1..32] OF NG_Replay;
-    END_STRUCT;
-    NG3_File : STRUCT
-        Magic : DWORD;
-        FormatVersion : UDINT;
-        State : NG3_Durable;
-        Digest : STRING[64];
-    END_STRUCT;
     NG4_Device : STRUCT
         deviceId : NG_Id;
         name : STRING[128];
@@ -129,6 +114,21 @@ TYPE
         Devices : ARRAY[1..50] OF NG4_Device;
         PointCount : INT;
         Points : ARRAY[1..320] OF NG_Point;
+    END_STRUCT;
+    NG3_Durable : STRUCT
+        Generation : ULINT;
+        Managed : BOOL := TRUE;
+        BootCounter : ULINT;
+        Bootstrap : NG_Bootstrap;
+        Config : NG4_Config;
+        ReplayIndex : INT;
+        Requests : ARRAY[1..32] OF NG_Replay;
+    END_STRUCT;
+    NG3_File : STRUCT
+        Magic : DWORD;
+        FormatVersion : UDINT;
+        State : NG3_Durable;
+        Digest : STRING[64];
     END_STRUCT;
     NG4_Durable : STRUCT
         HubConfig : NG4_Config;
