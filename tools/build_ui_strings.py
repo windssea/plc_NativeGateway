@@ -12,7 +12,7 @@ T={
 'The selected management mode is already active.':'已处于所选模式，无需重复切换。',
 'Saving management mode; existing identity is retained.':'正在保存管理模式，保留当前网关标识。',
 'Management mode saved. Check the ownership guidance above.':'管理模式已保存并生效，请查看上方的管理说明。',
-'Check broker URI, gateway ID, client ID and time zone.':'请检查服务器地址、网关标识、客户端标识与时区。',
+'Check broker URI, gateway ID, client ID and time zone.':'请检查服务器地址、网关标识与时区。',
 'Broker settings saved; configuration ownership is unchanged.':'连接设置已保存，正在重连；管理模式保持不变。',
 'CONNECTED':'已连接','CONNECTING':'正在连接','ONLINE':'在线','OFFLINE':'离线','DEGRADED':'部分异常','DISABLED':'已停用','UNCONFIGURED':'未配置','DRAFT':'待生效',
 'GOOD':'正常','BAD':'异常','STALE':'已过期','UNKNOWN':'暂无数据','BAD_COMMUNICATION':'通信异常','BAD_CONFIGURATION':'配置有误',

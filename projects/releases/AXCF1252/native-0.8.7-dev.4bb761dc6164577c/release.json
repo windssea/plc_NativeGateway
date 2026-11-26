@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Sync AXCF1252 with unified GatewayId/ClientId on eHMI, persistent online identity change, CaptureBuffer non-audit slot reclamation, and GUI-openable NG_Types.dt forward-ref fix.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T08:23:03.288071+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "eeb78793941bc1b034394263bd1377dbd851e9bd36729ee8c5e90ec6c2f7c74d",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "4bb761dc6164577ca4c324ae61d0f371a0a2309767d7ef6e6ea4ffbbac23b8f2",
+  "target": "AXCF1252",
+  "version": "native-0.8.7-dev.4bb761dc6164577c"
+}

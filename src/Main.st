@@ -259,13 +259,14 @@ END_IF;
 IF Store.Ready AND NOT Initialized THEN
     Durable:=Store.Active; Active:=Durable.Config; Bootstrap:=Durable.Bootstrap;
     IF Bootstrap.GatewayId='' THEN
-        Bootstrap.GatewayId:='NG-HUB-2152-01'; Bootstrap.ClientId:='NG-HUB-2152-01-native';
+        Bootstrap.GatewayId:='NG-HUB-2152-01'; Bootstrap.ClientId:='NG-HUB-2152-01';
         Bootstrap.BrokerUri:='tcp://192.168.0.5:1883'; Bootstrap.UtcOffsetMinutes:=0;
         Active.batchIntervalMs:=1000; Active.maxBatchPoints:=32; Durable.Managed:=TRUE;
     END_IF;
+    IF Bootstrap.ClientId='' THEN Bootstrap.ClientId:=Bootstrap.GatewayId; END_IF;
     Prefix:=CONCAT('iot/v1/gateway/',Bootstrap.GatewayId,'/');
     HMI.GatewayId:=Bootstrap.GatewayId; HMI.BrokerGatewayId:=Bootstrap.GatewayId;
-    HMI.BrokerUri:=Bootstrap.BrokerUri; HMI.ClientId:=Bootstrap.ClientId; HMI.UserName:=Bootstrap.UserName;
+    HMI.BrokerUri:=Bootstrap.BrokerUri; HMI.ClientId:=Bootstrap.GatewayId; HMI.UserName:=Bootstrap.UserName;
     HMI.UtcOffsetMinutes:=TO_STRING(Bootstrap.UtcOffsetMinutes,'{0:d}');
     IF Durable.Managed THEN HMI.ManagementMode:='HUB_MANAGED'; ELSE HMI.ManagementMode:='STANDALONE'; END_IF;
     HMI.Status:='Persisting unique startup identity before MQTT...'; Initialized:=TRUE; StartupStage:=1;
@@ -302,14 +303,48 @@ IF Store.Done THEN
     ELSIF SaveReason = 3 THEN
         IF IdentityChanged THEN
             Initialized:=FALSE; StartupReady:=FALSE; StartupStage:=0; ResetMeters:=TRUE;
-            RxStage:=0; AckPending:=FALSE; TxActive:=FALSE; GetPending:=TRUE; HeartbeatPending:=FALSE;
-            LastGet:=0; LastHeartbeat:=0; LastBatch:=0;
+            RxStage:=0; AckPending:=FALSE; TxActive:=FALSE; TxKind:=0; TxBatchId:=''; TxBatchGeneration:=0;
+            GetPending:=TRUE; HeartbeatPending:=FALSE; StatusPending:=FALSE; DeviceEventPending:=FALSE; ResourcesPending:=FALSE;
+            LastGet:=0; LastHeartbeat:=0; LastBatch:=0; TimeBootSeen:='';
             QueueCount:=0; Head:=1; Tail:=1; Sequence:=0; SessionSeen:=0; BatchSweep:=FALSE;
             FOR q:=1 TO 16 DO Outbox[q]:=EmptyPacket; END_FOR;
             FOR p:=1 TO 320 DO Samples[p]:=EmptySample; END_FOR;
+            (* Reset volatile capture pipeline in-place (zero extra RAM) so no old-identity
+               records, batches or config dictionary slots survive across a GatewayId change. *)
+            CaptureBuffer.ActiveSlot:=0; CaptureBuffer.Head:=1; CaptureBuffer.Tail:=1; CaptureBuffer.IngressCount:=0;
+            CaptureBuffer.QueueHead[1]:=0; CaptureBuffer.QueueHead[2]:=0; CaptureBuffer.QueueTail[1]:=0; CaptureBuffer.QueueTail[2]:=0;
+            CaptureBuffer.FreeHead:=0; CaptureBuffer.HighSlot:=0; CaptureBuffer.OwnedCount:=0;
+            CaptureBuffer.Watermark:=0; CaptureBuffer.LastAdmittedSeq:=0; CaptureBuffer.GateWasOpen:=FALSE;
+            CaptureBuffer.PreferMaterialize:=1; CaptureBuffer.PreferSend:=1; CaptureBuffer.NextSendAt:=0;
+            CaptureBuffer.SourceSweepGeneration:=0; CaptureBuffer.SourceSweepEnabled:=FALSE; CaptureBuffer.StaleCheckAt:=0;
+            CaptureBuffer.SamplingGeneration:=CaptureBuffer.SamplingGeneration+1; CaptureBuffer.NextSampleSeq:=0;
+            CaptureBuffer.CaptureStopped:=FALSE; CaptureBuffer.DeadRetainedEvents:=0; CaptureBuffer.UncertainRetainedEvents:=0;
+            CaptureBuffer.TerminalIndex:=0;
+            CaptureBuffer.AuditWriteSeq:=0; CaptureBuffer.AuditReadSeq:=0; CaptureBuffer.AuditAckSeq:=0; CaptureBuffer.AuditAckBootId:=''; CaptureBuffer.AuditDropped:=0;
+            CaptureBuffer.AssociationWriteSeq:=0; CaptureBuffer.AssociationReadSeq:=0; CaptureBuffer.AssociationAckSeq:=0; CaptureBuffer.AssociationAckBootId:=''; CaptureBuffer.AssociationDropped:=0;
+            FOR i:=1 TO 4 DO
+                CaptureBuffer.Configs[i].References:=0; CaptureBuffer.Configs[i].Reserved:=FALSE;
+                CaptureBuffer.Configs[i].Generation:=0; CaptureBuffer.Configs[i].GatewayId:=''; CaptureBuffer.Configs[i].CaptureBootId:='';
+            END_FOR;
+            FOR q:=1 TO 16 DO
+                CaptureBuffer.BatchOwners[q].State:=0; CaptureBuffer.BatchOwners[q].Count:=0;
+                CaptureBuffer.BatchOwners[q].OrderSeq:=0; CaptureBuffer.BatchOwners[q].ConfigSlot:=0;
+            END_FOR;
+            FOR i:=1 TO 64 DO
+                CaptureBuffer.TerminalOwners[i].Count:=0; CaptureBuffer.TerminalOwners[i].MessageId:=''; CaptureBuffer.TombstoneIds[i]:='';
+            END_FOR;
+            FOR p:=1 TO 320 DO
+                CaptureBuffer.SourceStaleDue[p]:=0;
+                CaptureBuffer.Cursors[p].Enabled:=FALSE; CaptureBuffer.Cursors[p].Generation:=0;
+                CaptureBuffer.Cursors[p].HasPhysical:=FALSE; CaptureBuffer.Cursors[p].HasPhysicalUtc:=FALSE;
+                CaptureBuffer.ReportCursors[p].SamplingGeneration:=0; CaptureBuffer.ReportCursors[p].HasBaseline:=FALSE;
+            END_FOR;
             IdentityChanged:=FALSE;
+            HMI.Status:='Broker/mode saved; identity changes reset local baseline.';
+        ELSE
+            HMI.Status:='Broker settings saved; configuration ownership is unchanged.';
         END_IF;
-        Reconnect:=TRUE; HMI.Status:='Broker settings saved; configuration ownership is unchanged.';
+        Reconnect:=TRUE;
     ELSIF SaveReason = 6 THEN
         ResetMeters := CaptureConfigChanged; BatchSweep := FALSE;
         IF CaptureConfigChanged THEN FOR p := 1 TO 320 DO Samples[p] := EmptySample; END_FOR; END_IF;
@@ -575,10 +610,7 @@ ELSIF Editor.SubmitBroker AND (SaveReason = 0) THEN
         Pending.Config:=BlankConfig; Pending.Config.batchIntervalMs:=1000; Pending.Config.maxBatchPoints:=32;
         Pending.ReplayIndex:=0; FOR i:=1 TO 32 DO Pending.Requests[i].MessageId:=''; END_FOR;
     END_IF;
-    IF IdentityChanged THEN
-        HMI.Status:='IDENTITY_CHANGE_REQUIRES_MAINTENANCE: preserve RAM ownership; restart through controlled maintenance.';
-        IdentityChanged:=FALSE;
-    ELSE Save:=TRUE; SaveReason:=3; END_IF;
+    Save:=TRUE; SaveReason:=3;
 END_IF;
 (* P01 resource fence: actual IEC SIZEOF including existing packet/materialization
    copies and source FB growth; fixed scratch reserve covers call temporaries.
@@ -609,7 +641,7 @@ END_IF;
 END_IF;
 (* Reserve a dictionary slot before the next scan submits the durable save.
    On full dictionary keep both current configuration and captured history. *)
-IF Save AND ((SaveReason=1) OR (SaveReason=2) OR (SaveReason=6) OR ((SaveReason=3) AND IdentityChanged)) THEN
+IF Save AND ((SaveReason=1) OR (SaveReason=2) OR (SaveReason=6)) THEN
     CaptureConfigSelector(GatewayId:=Pending.Bootstrap.GatewayId,CaptureBootId:=BootId,Config:=Pending.Config,Buffer:=CaptureBuffer);
     ReservedCaptureSlot:=CaptureConfigSelector.Slot;
     IF ReservedCaptureSlot=0 THEN

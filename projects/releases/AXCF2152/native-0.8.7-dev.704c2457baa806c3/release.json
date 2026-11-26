@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.8",
+  "change_note": "Unified GatewayId/ClientId on eHMI with persistent online identity change and CaptureBuffer slot reclamation: (1) unify ClientId with GatewayId in NG_HmiEdit/Main/HMI v4 (expose Gateway ID on Connection main view); (2) enable persistent GatewayId change via eHMI with clean in-place CaptureBuffer/Outbox/Samples reset and re-bootstrap; (3) reclaim oldest AuditEvents/Associations in NG_ConfigSlot when 4-slot dictionary is full and no external auditor is attached.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T08:18:41.203686+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-2152-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "f41ef6ba1677d829ed6a913290cfe2eb49a427bb899212d98756b36d27df292b",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "704c2457baa806c3e15748d00729cde455e5791fa7e95a6d3e6c118c156ddfd1",
+  "target": "AXCF2152",
+  "version": "native-0.8.7-dev.704c2457baa806c3"
+}

@@ -249,9 +249,9 @@ ELSIF cmd THEN
         IF Hmi.SaveBroker THEN
             ValidBroker := FALSE;
             IF LEN(Hmi.BrokerUri) >= 6 THEN ValidBroker := (LEFT(Hmi.BrokerUri,6)='tcp://') OR (LEFT(Hmi.BrokerUri,6)='ssl://'); END_IF;
-            IF NOT ValidBroker OR NOT NG_ValidId(Hmi.BrokerGatewayId) OR ((Hmi.ManagementMode<>'HUB_MANAGED') AND (Hmi.ManagementMode<>'STANDALONE')) OR (LEN(Hmi.ClientId)=0) OR NOT NG_Range(Hmi.UtcOffsetMinutes,-840,840,TRUE) THEN Hmi.Status := 'Check broker URI, gateway ID, client ID and time zone.';
+            IF NOT ValidBroker OR NOT NG_ValidId(Hmi.BrokerGatewayId) OR ((Hmi.ManagementMode<>'HUB_MANAGED') AND (Hmi.ManagementMode<>'STANDALONE')) OR NOT NG_Range(Hmi.UtcOffsetMinutes,-840,840,TRUE) THEN Hmi.Status := 'Check broker URI, gateway ID, client ID and time zone.';
             ELSE
-                NewManaged := Managed; NewBroker := Bootstrap; NewBroker.GatewayId:=Hmi.BrokerGatewayId; NewBroker.BrokerUri := Hmi.BrokerUri; NewBroker.ClientId := Hmi.ClientId; NewBroker.UserName := Hmi.UserName; NewBroker.UtcOffsetMinutes := TO_INT(Hmi.UtcOffsetMinutes);
+                NewManaged := Managed; NewBroker := Bootstrap; NewBroker.GatewayId:=Hmi.BrokerGatewayId; NewBroker.BrokerUri := Hmi.BrokerUri; NewBroker.ClientId := Hmi.BrokerGatewayId; Hmi.ClientId := Hmi.BrokerGatewayId; NewBroker.UserName := Hmi.UserName; NewBroker.UtcOffsetMinutes := TO_INT(Hmi.UtcOffsetMinutes);
                 IF Hmi.Password <> '' THEN NewBroker.Password := Hmi.Password; END_IF;
                 SubmitBroker := TRUE; Hmi.Password := ''; Hmi.View:=3; Hmi.Status := 'Saving broker settings...';
             END_IF;
