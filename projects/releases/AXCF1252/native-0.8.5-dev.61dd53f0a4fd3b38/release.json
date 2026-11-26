@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Per-device Modbus read block limits & V5 store migration: (1) parse optional connection.maxReadRegisters (1..125) and connection.maxRegisterGap (0..124) in NG_ReadDevice/NG_CheckConfig/NG_SameConfig; (2) enforce per-device EffectiveContigSpan and EffectiveMaxGap in NG_Modbus while clamping gap spans to EffectiveContigSpan; (3) freeze NG4_Device/NG4_File and upgrade NG_Store to FormatVersion 5 with lossless V4->V5 persistence migration.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T03:20:49.380097+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "7315fdb658b3cb432fa3faad4f44225d584f2f999fc6281087225a7a85da708a",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "61dd53f0a4fd3b38174c33d9ffc9852995db48e9f66391dfdd744b256ff2c1a0",
+  "target": "AXCF1252",
+  "version": "native-0.8.5-dev.61dd53f0a4fd3b38"
+}

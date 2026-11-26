@@ -20,6 +20,7 @@ FOR d := 1 TO Config.DeviceCount DO
     IF NOT NG_IPv4(Config.Devices[d].host) THEN NG_CheckConfig := 'BAD_CONFIGURATION'; RETURN; END_IF;
     IF (Config.Devices[d].port = 0) OR (Config.Devices[d].PointCount < 0) OR (Config.Devices[d].PointCount > 32) THEN RETURN; END_IF;
     IF (Config.Devices[d].connectTimeoutMs < 1) OR (Config.Devices[d].connectTimeoutMs > 300000) OR (Config.Devices[d].requestTimeoutMs < 1) OR (Config.Devices[d].requestTimeoutMs > 300000) OR (Config.Devices[d].retryCount > 10) THEN RETURN; END_IF;
+    IF (Config.Devices[d].maxReadRegisters > UINT#125) OR (Config.Devices[d].hasMaxRegisterGap AND (Config.Devices[d].maxRegisterGap > UINT#124)) THEN RETURN; END_IF;
     FOR p := 1 TO Config.Devices[d].PointCount DO
         point := Config.Points[Config.Devices[d].PointStart+p-1];
         IF NOT NG_ValidId(point.pointId) THEN RETURN; END_IF;

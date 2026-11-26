@@ -295,6 +295,19 @@ class NGModbusSlowLinkTests(unittest.TestCase):
         # Explicit InterFrameGapMs=120 -> always enforced even on fast link.
         self.assertEqual(simulate_success_pacing(now_ms=1012, request_sent_ms=1000, inter_frame_gap_ms=120), (12, 1132))
 
+    def test_per_device_max_read_registers_and_v5_store_migration(self):
+        read_dev = (ROOT / "src" / "NG_ReadDevice.st").read_text(encoding="utf-8")
+        modbus_st = NG_MODBUS_PATH.read_text(encoding="utf-8")
+        store_st = (ROOT / "src" / "NG_Store.st").read_text(encoding="utf-8")
+        types_dt = (ROOT / "src" / "NG_Types.dt").read_text(encoding="utf-8")
+        self.assertIn("|maxReadRegisters|maxRegisterGap|", read_dev)
+        self.assertIn("Device.maxReadRegisters", modbus_st)
+        self.assertIn("Device.hasMaxRegisterGap", modbus_st)
+        self.assertIn("EffectiveContigSpan", modbus_st)
+        self.assertIn("NG4_File", types_dt)
+        self.assertIn("NativeGateway-v5-A.bin", store_st)
+        self.assertIn("FormatVersion := 5", store_st)
+
 
 if __name__ == "__main__":
     unittest.main()

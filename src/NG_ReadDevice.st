@@ -32,7 +32,7 @@ Device.enabled := (Doc.Tokens[t].Text = 'true');
 t := NG_Member(Node,'protocol',Doc);
 IF (Doc.Tokens[t].Kind <> 3) OR (Doc.Tokens[t].Text <> 'modbus_tcp') THEN ErrorText := 'UNSUPPORTED_PROTOCOL'; RETURN; END_IF;
 conn := NG_Member(Node,'connection',Doc);
-IF NOT NG_Allowed(conn,'|host|port|unitId|connectTimeoutMs|requestTimeoutMs|retryCount|',Doc) THEN ErrorText := 'SCHEMA_INVALID'; RETURN; END_IF;
+IF NOT NG_Allowed(conn,'|host|port|unitId|connectTimeoutMs|requestTimeoutMs|retryCount|maxReadRegisters|maxRegisterGap|',Doc) THEN ErrorText := 'SCHEMA_INVALID'; RETURN; END_IF;
 t := NG_Member(conn, 'host', Doc);
 IF (Doc.Tokens[t].Kind <> 3) OR (LEN(Doc.Tokens[t].Text) < 1) OR (LEN(Doc.Tokens[t].Text) > 253) THEN ErrorText := 'SCHEMA_INVALID'; RETURN; END_IF;
 Device.host := Doc.Tokens[t].Text;
@@ -51,6 +51,22 @@ Device.requestTimeoutMs := TO_UDINT(Doc.Tokens[t].Number);
 t := NG_Member(conn, 'retryCount', Doc);
 IF (Doc.Tokens[t].Kind <> 4) OR (Doc.Tokens[t].Number < LREAL#0.0) OR (Doc.Tokens[t].Number > LREAL#10.0) OR (Doc.Tokens[t].Number <> TO_LREAL(TO_LINT(Doc.Tokens[t].Number))) THEN ErrorText := 'SCHEMA_INVALID'; RETURN; END_IF;
 Device.retryCount := TO_USINT(Doc.Tokens[t].Number);
+t := NG_Member(conn, 'maxReadRegisters', Doc);
+IF t > 0 THEN
+    IF (Doc.Tokens[t].Kind <> 4) OR (Doc.Tokens[t].Number < LREAL#1.0) OR (Doc.Tokens[t].Number > LREAL#125.0) OR (Doc.Tokens[t].Number <> TO_LREAL(TO_LINT(Doc.Tokens[t].Number))) THEN ErrorText := 'SCHEMA_INVALID'; RETURN; END_IF;
+    Device.maxReadRegisters := TO_UINT(Doc.Tokens[t].Number);
+ELSE
+    Device.maxReadRegisters := UINT#0;
+END_IF;
+t := NG_Member(conn, 'maxRegisterGap', Doc);
+IF t > 0 THEN
+    IF (Doc.Tokens[t].Kind <> 4) OR (Doc.Tokens[t].Number < LREAL#0.0) OR (Doc.Tokens[t].Number > LREAL#124.0) OR (Doc.Tokens[t].Number <> TO_LREAL(TO_LINT(Doc.Tokens[t].Number))) THEN ErrorText := 'SCHEMA_INVALID'; RETURN; END_IF;
+    Device.hasMaxRegisterGap := TRUE;
+    Device.maxRegisterGap := TO_UINT(Doc.Tokens[t].Number);
+ELSE
+    Device.hasMaxRegisterGap := FALSE;
+    Device.maxRegisterGap := UINT#0;
+END_IF;
 pointsNode := NG_Member(Node,'points',Doc);
 IF Doc.Tokens[pointsNode].Kind <> 2 THEN ErrorText := 'SCHEMA_INVALID'; RETURN; END_IF;
 Device.PointCount := 0; p := pointsNode + 1;

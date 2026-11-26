@@ -1,0 +1,23 @@
+{
+  "manifestVersion": "1.0",
+  "identification": {
+    "name": "NativeGateway",
+    "manufacturer": "PHOENIX CONTACT GmbH & Co. KG",
+    "manufacturerUri": "http://phoenixcontact.com",
+    "productCode": "PLCnext Engineer project",
+    "model": "PLCnext Engineer project",
+    "softwareRevision": "1795663221601388000",
+    "releaseDate": "2026-11-26T03:20:21.601388Z",
+    "description": "",
+    "targetProductCodes": [
+      "2404267"
+    ],
+    "targetFirmwareRevision": "26.0.0"
+  },
+  "updateBehavior": [
+    "KeepsParameters",
+    "WillDisconnect",
+    "NeedsPreparation"
+  ],
+  "tags": {}
+}

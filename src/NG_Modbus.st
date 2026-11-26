@@ -77,6 +77,7 @@ VAR
     HoleMergeDisabled : BOOL;
     EffectiveMaxGap : UINT;
     EffectiveGapSpan : UINT;
+    EffectiveContigSpan : UINT;
     SpanLimit : UINT;
     CandIndex : UINT;
     CandWidth : UINT;
@@ -171,16 +172,23 @@ CASE State OF
             BlockEndAddr := Point.address + Width;
             BlockHasHoles := FALSE;
             (* Register merging for holding/input registers:
-               contiguous blocks up to 120 regs; small-gap bridging up to EffectiveMaxGap
-               within EffectiveGapSpan regs, with automatic fallback on Modbus Exception. *)
+               per-device maxReadRegisters (default 120, capped at 120) and maxRegisterGap
+               (default MaxMergeGap), with automatic fallback on Modbus Exception. *)
+            EffectiveContigSpan := UINT#120;
+            IF (Device.maxReadRegisters > UINT#0) AND (Device.maxReadRegisters < EffectiveContigSpan) THEN
+                EffectiveContigSpan := Device.maxReadRegisters;
+            END_IF;
             IF HoleMergeDisabled THEN EffectiveMaxGap := UINT#0;
+            ELSIF Device.hasMaxRegisterGap THEN
+                EffectiveMaxGap := Device.maxRegisterGap;
+                IF EffectiveMaxGap > UINT#118 THEN EffectiveMaxGap := UINT#118; END_IF;
             ELSE
                 EffectiveMaxGap := MaxMergeGap;
                 IF EffectiveMaxGap > UINT#118 THEN EffectiveMaxGap := UINT#118; END_IF;
             END_IF;
             EffectiveGapSpan := MaxGapSpan;
-            IF EffectiveGapSpan > UINT#120 THEN EffectiveGapSpan := UINT#120; END_IF;
-            IF EffectiveGapSpan < UINT#2 THEN EffectiveGapSpan := UINT#2; END_IF;
+            IF EffectiveGapSpan > EffectiveContigSpan THEN EffectiveGapSpan := EffectiveContigSpan; END_IF;
+            IF EffectiveGapSpan < UINT#1 THEN EffectiveGapSpan := UINT#1; END_IF;
             IF ((Point.area = 'holding_register') OR (Point.area = 'input_register')) AND (Point.dataType <> 'bool') THEN
                 MergedPass := TRUE;
                 WHILE MergedPass AND (BlockCount < 64) DO
@@ -209,7 +217,7 @@ CASE State OF
                                     IF Points[CandIndex].address >= BlockEndAddr THEN
                                         CandGap := Points[CandIndex].address - BlockEndAddr;
                                         CandSpan := CandEnd - BlockStartAddr;
-                                        IF (NOT BlockHasHoles) AND (CandGap = UINT#0) THEN SpanLimit := UINT#120; ELSE SpanLimit := EffectiveGapSpan; END_IF;
+                                        IF (NOT BlockHasHoles) AND (CandGap = UINT#0) THEN SpanLimit := EffectiveContigSpan; ELSE SpanLimit := EffectiveGapSpan; END_IF;
                                         IF (CandGap <= EffectiveMaxGap) AND (CandSpan <= SpanLimit) AND (CandGap < BestGap) THEN
                                             BestIndex := CandIndex;
                                             BestGap := CandGap;
@@ -219,7 +227,7 @@ CASE State OF
                                     ELSIF CandEnd <= BlockStartAddr THEN
                                         CandGap := BlockStartAddr - CandEnd;
                                         CandSpan := BlockEndAddr - Points[CandIndex].address;
-                                        IF (NOT BlockHasHoles) AND (CandGap = UINT#0) THEN SpanLimit := UINT#120; ELSE SpanLimit := EffectiveGapSpan; END_IF;
+                                        IF (NOT BlockHasHoles) AND (CandGap = UINT#0) THEN SpanLimit := EffectiveContigSpan; ELSE SpanLimit := EffectiveGapSpan; END_IF;
                                         IF (CandGap <= EffectiveMaxGap) AND (CandSpan <= SpanLimit) AND (CandGap < BestGap) THEN
                                             BestIndex := CandIndex;
                                             BestGap := CandGap;

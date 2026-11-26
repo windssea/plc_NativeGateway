@@ -20,6 +20,9 @@ FOR i:=1 TO A.DeviceCount DO
        (A.Devices[i].connectTimeoutMs<>B.Devices[i].connectTimeoutMs) OR
        (A.Devices[i].requestTimeoutMs<>B.Devices[i].requestTimeoutMs) OR
        (A.Devices[i].retryCount<>B.Devices[i].retryCount) OR
+       (A.Devices[i].maxReadRegisters<>B.Devices[i].maxReadRegisters) OR
+       (A.Devices[i].hasMaxRegisterGap<>B.Devices[i].hasMaxRegisterGap) OR
+       (A.Devices[i].maxRegisterGap<>B.Devices[i].maxRegisterGap) OR
        (A.Devices[i].PointStart<>B.Devices[i].PointStart) OR (A.Devices[i].PointCount<>B.Devices[i].PointCount) THEN RETURN; END_IF;
 END_FOR;
 FOR i:=1 TO A.PointCount DO

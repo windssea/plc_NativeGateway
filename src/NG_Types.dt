@@ -49,6 +49,9 @@ TYPE
         connectTimeoutMs : UDINT;
         requestTimeoutMs : UDINT;
         retryCount : USINT;
+        maxReadRegisters : UINT;
+        hasMaxRegisterGap : BOOL;
+        maxRegisterGap : UINT;
         PointCount : INT;
         PointStart : INT;
     END_STRUCT;
@@ -93,7 +96,7 @@ TYPE
         Managed : BOOL := TRUE;
         BootCounter : ULINT;
         Bootstrap : NG_Bootstrap;
-        Config : NG_Config;
+        Config : NG4_Config;
         ReplayIndex : INT;
         Requests : ARRAY[1..32] OF NG_Replay;
     END_STRUCT;
@@ -101,6 +104,49 @@ TYPE
         Magic : DWORD;
         FormatVersion : UDINT;
         State : NG3_Durable;
+        Digest : STRING[64];
+    END_STRUCT;
+    NG4_Device : STRUCT
+        deviceId : NG_Id;
+        name : STRING[128];
+        enabled : BOOL;
+        host : STRING[253];
+        port : UINT;
+        unitId : USINT;
+        connectTimeoutMs : UDINT;
+        requestTimeoutMs : UDINT;
+        retryCount : USINT;
+        PointCount : INT;
+        PointStart : INT;
+    END_STRUCT;
+    NG4_Config : STRUCT
+        Version : ULINT;
+        MessageId : NG_Id;
+        enabled : BOOL;
+        batchIntervalMs : UDINT;
+        maxBatchPoints : UINT;
+        DeviceCount : INT;
+        Devices : ARRAY[1..50] OF NG4_Device;
+        PointCount : INT;
+        Points : ARRAY[1..320] OF NG_Point;
+    END_STRUCT;
+    NG4_Durable : STRUCT
+        HubConfig : NG4_Config;
+        HasHubBaseline : BOOL;
+        LocalChanges : BOOL;
+        LocalRevision : ULINT;
+        Generation : ULINT;
+        Managed : BOOL := TRUE;
+        BootCounter : ULINT;
+        Bootstrap : NG_Bootstrap;
+        Config : NG4_Config;
+        ReplayIndex : INT;
+        Requests : ARRAY[1..32] OF NG_Replay;
+    END_STRUCT;
+    NG4_File : STRUCT
+        Magic : DWORD;
+        FormatVersion : UDINT;
+        State : NG4_Durable;
         Digest : STRING[64];
     END_STRUCT;
     NG_Durable : STRUCT
@@ -125,7 +171,7 @@ TYPE
     NG2_Durable : STRUCT
         Generation : ULINT;
         Bootstrap : NG_Bootstrap;
-        Config : NG_Config;
+        Config : NG4_Config;
         ReplayIndex : INT;
         Requests : ARRAY[1..32] OF NG_Replay;
     END_STRUCT;
