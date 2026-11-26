@@ -1,0 +1,18 @@
+{
+  "address": "192.168.0.8",
+  "change_note": "Per-device Modbus read block limits & V5 store migration: (1) parse optional connection.maxReadRegisters (1..125) and connection.maxRegisterGap (0..124) in NG_ReadDevice/NG_CheckConfig/NG_SameConfig; (2) enforce per-device EffectiveContigSpan and EffectiveMaxGap in NG_Modbus while clamping gap spans to EffectiveContigSpan; (3) freeze NG4_Device/NG4_File and upgrade NG_Store to FormatVersion 5 with lossless V4->V5 persistence migration.",
+  "channel": "release",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T03:49:37.596840+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-2152-01",
+  "origin": "mcp_release_promotion",
+  "project_sha256": "99c9764bcae31ae4ce1c2ff2ab689b62d1736355a33e1910fceba618766ac6cd",
+  "promoted_from_project_sha256": "bd27fe0efb1dec360422f925538278ddffde2deec9ea667b592e4adbfc8b114e",
+  "promoted_from_version": "native-0.8.5-dev.94cbcb58f3470af1",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "94cbcb58f3470af1b3d394ea2d8cac31ebe5e18507adc3de9e1adb1e32476f46",
+  "target": "AXCF2152",
+  "verification_note": "Live AXCF2152 (192.168.0.8 / NG-HUB-2152-01) verification of native-0.8.5-dev.94cbcb58f3470af1: MCP recovery operation_id=7d5c05be82e9434b9a3f5f68327ae462, release_attempt_id=bd318fda403040be820e0428be71f21f (48/48 SHA-512 readback verified, Cold Start Running, V4->V5 store migration preserved v23/50 devices/250 points, original_configuration_verified=True, collection_verified=False).",
+  "version": "native-0.8.6"
+}
