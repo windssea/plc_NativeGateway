@@ -38,6 +38,9 @@ ELSIF Value='Local maintenance active. Hub configuration is locked until you ret
 ELSIF Value='The selected management mode is already active.' THEN NG_UiText:="已处于所选模式，无需重复切换。";
 ELSIF Value='Saving management mode; existing identity is retained.' THEN NG_UiText:="正在保存管理模式，保留当前网关标识。";
 ELSIF Value='Management mode saved. Check the ownership guidance above.' THEN NG_UiText:="管理模式已保存并生效，请查看上方的管理说明。";
+ELSIF Value='Clearing local configuration and version baseline...' THEN NG_UiText:="正在清空本地点表与版本基线，请稍候。";
+ELSIF Value='Open the reset confirmation before clearing local configuration.' THEN NG_UiText:="请先打开重置确认页后再确认清空。";
+ELSIF Value='Local configuration and version baseline cleared; requesting fresh config from Hub.' THEN NG_UiText:="已清空本地点表与版本基线，正在重连并向平台重新拉取配置。";
 ELSIF Value='Check broker URI, gateway ID, client ID and time zone.' THEN NG_UiText:="请检查服务器地址、网关标识与时区。";
 ELSIF Value='Broker settings saved; configuration ownership is unchanged.' THEN NG_UiText:="连接设置已保存，正在重连；管理模式保持不变。";
 ELSIF Value='CONNECTED' THEN NG_UiText:="已连接";

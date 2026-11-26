@@ -12,10 +12,12 @@ VAR_IN_OUT
 END_VAR
 VAR
     Compare : NG_SameConfig;
+    Prune : NG_PruneTerminal;
     i : INT;
     j : INT;
     oldIndex : UINT;
     configSlot : UINT;
+    recIndex : UINT;
     hasFree : BOOL;
 END_VAR
 Slot := 0;
@@ -69,6 +71,22 @@ IF (Buffer.AuditAckBootId<>CaptureBootId) AND (Buffer.AssociationAckBootId<>Capt
             hasFree:=TRUE;
         END_IF;
     END_WHILE;
+    IF NOT hasFree THEN
+        FOR i:=1 TO 64 DO
+            IF Buffer.TerminalOwners[i].Count>0 THEN
+                recIndex:=Buffer.TerminalRefs[(i-1)*64+1];
+                IF (recIndex>0) AND (recIndex<=Buffer.HighSlot) THEN
+                    configSlot:=Buffer.Records[recIndex].ConfigSlot;
+                    IF (configSlot>=1) AND (configSlot<=4) AND (configSlot<>Buffer.ActiveSlot) THEN
+                        Prune(Index:=TO_UINT(i),Buffer:=Buffer);
+                        IF (Buffer.Configs[configSlot].References=0) AND NOT Buffer.Configs[configSlot].Reserved THEN
+                            hasFree:=TRUE; EXIT;
+                        END_IF;
+                    END_IF;
+                END_IF;
+            END_IF;
+        END_FOR;
+    END_IF;
     FOR i:=1 TO 4 DO
         IF (i<>TO_INT(Buffer.ActiveSlot)) AND (Buffer.Configs[i].References=0) AND NOT Buffer.Configs[i].Reserved THEN
             Buffer.NextConfigGeneration:=Buffer.NextConfigGeneration+1;

@@ -350,6 +350,43 @@ IF Store.Done THEN
         IF CaptureConfigChanged THEN FOR p := 1 TO 320 DO Samples[p] := EmptySample; END_FOR; END_IF;
         HeartbeatPending := TRUE; GetPending := TRUE;
         HMI.Status := 'Management mode saved. Check the ownership guidance above.';
+    ELSIF SaveReason = 7 THEN
+        ResetMeters:=TRUE; RxStage:=0; AckPending:=FALSE; TxActive:=FALSE; TxKind:=0; TxBatchId:=''; TxBatchGeneration:=0;
+        GetPending:=TRUE; HeartbeatPending:=TRUE; StatusPending:=FALSE; DeviceEventPending:=FALSE; ResourcesPending:=FALSE;
+        LastGet:=0; LastHeartbeat:=0; LastBatch:=0;
+        QueueCount:=0; Head:=1; Tail:=1; Sequence:=0; BatchSweep:=FALSE;
+        FOR q:=1 TO 16 DO Outbox[q]:=EmptyPacket; END_FOR;
+        FOR p:=1 TO 320 DO Samples[p]:=EmptySample; END_FOR;
+        CaptureBuffer.ActiveSlot:=0; CaptureBuffer.Head:=1; CaptureBuffer.Tail:=1; CaptureBuffer.IngressCount:=0;
+        CaptureBuffer.QueueHead[1]:=0; CaptureBuffer.QueueHead[2]:=0; CaptureBuffer.QueueTail[1]:=0; CaptureBuffer.QueueTail[2]:=0;
+        CaptureBuffer.FreeHead:=0; CaptureBuffer.HighSlot:=0; CaptureBuffer.OwnedCount:=0;
+        CaptureBuffer.Watermark:=0; CaptureBuffer.LastAdmittedSeq:=0; CaptureBuffer.GateWasOpen:=FALSE;
+        CaptureBuffer.PreferMaterialize:=1; CaptureBuffer.PreferSend:=1; CaptureBuffer.NextSendAt:=0;
+        CaptureBuffer.SourceSweepGeneration:=0; CaptureBuffer.SourceSweepEnabled:=FALSE; CaptureBuffer.StaleCheckAt:=0;
+        CaptureBuffer.SamplingGeneration:=CaptureBuffer.SamplingGeneration+1; CaptureBuffer.NextSampleSeq:=0;
+        CaptureBuffer.CaptureStopped:=FALSE; CaptureBuffer.DeadRetainedEvents:=0; CaptureBuffer.UncertainRetainedEvents:=0;
+        CaptureBuffer.TerminalIndex:=0;
+        CaptureBuffer.AuditWriteSeq:=0; CaptureBuffer.AuditReadSeq:=0; CaptureBuffer.AuditAckSeq:=0; CaptureBuffer.AuditAckBootId:=''; CaptureBuffer.AuditDropped:=0;
+        CaptureBuffer.AssociationWriteSeq:=0; CaptureBuffer.AssociationReadSeq:=0; CaptureBuffer.AssociationAckSeq:=0; CaptureBuffer.AssociationAckBootId:=''; CaptureBuffer.AssociationDropped:=0;
+        FOR i:=1 TO 4 DO
+            CaptureBuffer.Configs[i].References:=0; CaptureBuffer.Configs[i].Reserved:=FALSE;
+            CaptureBuffer.Configs[i].Generation:=0; CaptureBuffer.Configs[i].GatewayId:=''; CaptureBuffer.Configs[i].CaptureBootId:='';
+        END_FOR;
+        FOR q:=1 TO 16 DO
+            CaptureBuffer.BatchOwners[q].State:=0; CaptureBuffer.BatchOwners[q].Count:=0;
+            CaptureBuffer.BatchOwners[q].OrderSeq:=0; CaptureBuffer.BatchOwners[q].ConfigSlot:=0;
+        END_FOR;
+        FOR i:=1 TO 64 DO
+            CaptureBuffer.TerminalOwners[i].Count:=0; CaptureBuffer.TerminalOwners[i].MessageId:=''; CaptureBuffer.TombstoneIds[i]:='';
+        END_FOR;
+        FOR p:=1 TO 320 DO
+            CaptureBuffer.SourceStaleDue[p]:=0;
+            CaptureBuffer.Cursors[p].Enabled:=FALSE; CaptureBuffer.Cursors[p].Generation:=0;
+            CaptureBuffer.Cursors[p].HasPhysical:=FALSE; CaptureBuffer.Cursors[p].HasPhysicalUtc:=FALSE;
+            CaptureBuffer.ReportCursors[p].SamplingGeneration:=0; CaptureBuffer.ReportCursors[p].HasBaseline:=FALSE;
+        END_FOR;
+        Reconnect:=TRUE; HMI.View:=0;
+        HMI.Status:='Local configuration and version baseline cleared; requesting fresh config from Hub.';
     ELSIF SaveReason = 5 THEN
         BootId:=CONCAT('ng-',BootNamespace,'-',TO_STRING(Durable.BootCounter,'{0:d}'));
         SessionId:=BootId; StartupReady:=TRUE; StartupStage:=4; HMI.Status:='Startup identity persisted; MQTT starting.';
@@ -570,6 +607,8 @@ CASE GW_Nav OF
 66: HMI.Navigation := 'MODEKEEP';
 67: HMI.Navigation := 'MODECLEAR';
 68: HMI.Navigation := 'MODECOMMIT';
+69: HMI.Navigation := 'RESETPAGE';
+70: HMI.Navigation := 'RESETCOMMIT';
 END_CASE; GW_Nav := 0;
 HMI.LoadPoint := HMI.LoadPoint OR GW_LoadPoint; GW_LoadPoint := FALSE;
 HMI.SaveDevice := HMI.SaveDevice OR GW_SaveDevice; GW_SaveDevice := FALSE;
@@ -578,7 +617,7 @@ HMI.RemoveDevice := HMI.RemoveDevice OR GW_RemoveDevice; GW_RemoveDevice := FALS
 HMI.RemovePoint := HMI.RemovePoint OR GW_RemovePoint; GW_RemovePoint := FALSE;
 HMI.Apply := HMI.Apply OR GW_Apply; GW_Apply := FALSE;
 HMI.SaveBroker := HMI.SaveBroker OR GW_SaveBroker; GW_SaveBroker := FALSE;
-Editor(Managed:=Durable.Managed, LocalRevision:=Durable.LocalRevision, Busy := Store.Busy OR (RxStage <> 0) OR AckPending OR (SaveReason <> 0), NowMs := NowMs, Hmi := HMI, Active := Active, Bootstrap := Bootstrap, States := Meters, Samples := Samples);
+Editor(Managed:=Durable.Managed, LocalRevision:=Durable.LocalRevision, Busy := Store.Busy OR (RxStage <> 0) OR AckPending OR (SaveReason <> 0), StoreBusy := Store.Busy OR (SaveReason <> 0), NowMs := NowMs, Hmi := HMI, Active := Active, Bootstrap := Bootstrap, States := Meters, Samples := Samples);
 IF Editor.Submit AND NOT Durable.Managed AND (SaveReason = 0) THEN
     Pending := Durable; Pending.Config := Editor.Draft;
     Pending.LocalRevision := Durable.LocalRevision+1; Pending.LocalChanges := TRUE;
@@ -609,8 +648,17 @@ ELSIF Editor.SubmitBroker AND (SaveReason = 0) THEN
         Pending.HubConfig:=BlankConfig; Pending.HasHubBaseline:=FALSE; Pending.LocalChanges:=FALSE; Pending.LocalRevision:=0;
         Pending.Config:=BlankConfig; Pending.Config.batchIntervalMs:=1000; Pending.Config.maxBatchPoints:=32;
         Pending.ReplayIndex:=0; FOR i:=1 TO 32 DO Pending.Requests[i].MessageId:=''; END_FOR;
+        RxStage:=0; AckPending:=FALSE;
     END_IF;
     Save:=TRUE; SaveReason:=3;
+ELSIF Editor.SubmitReset AND (SaveReason = 0) THEN
+    Pending:=Durable; Pending.Managed:=TRUE;
+    Pending.HubConfig:=BlankConfig; Pending.HasHubBaseline:=FALSE;
+    Pending.LocalChanges:=FALSE; Pending.LocalRevision:=0;
+    Pending.Config:=BlankConfig; Pending.Config.batchIntervalMs:=1000; Pending.Config.maxBatchPoints:=32;
+    Pending.ReplayIndex:=0; FOR i:=1 TO 32 DO Pending.Requests[i].MessageId:=''; END_FOR;
+    RxStage:=0; AckPending:=FALSE;
+    Save:=TRUE; SaveReason:=7;
 END_IF;
 (* P01 resource fence: actual IEC SIZEOF including existing packet/materialization
    copies and source FB growth; fixed scratch reserve covers call temporaries.

@@ -6,7 +6,7 @@ TYPE='{http://www.w3.org/2001/XMLSchema-instance}type';E.register_namespace('xsi
 APP='PROJECT/Hardware/CFG_B6361CC005D54E9BB94A1EF86E276BF6/HMI_Server/Application'
 NAVS=['LIST','MQTT','DEDIT','PEDIT','DPREV','DNEXT','PPREV','PNEXT','DDEL','PDEL','CANCEL','DNEW','PNEW','PERIOD']+[f'D{i}' for i in range(1,9)]+[f'P{i}' for i in range(1,9)]+['ZH','EN','REFRESH','DISCARD','REVIEW','COMMIT','DEVON','DEVOFF','POINTON','POINTOFF','MODEHUB','MODELOCAL','CYCLIC','CHANGE','BOTH','HOLDING','INPUT','COIL','DISCRETE','UINT16','INT16','UINT32','INT32','FLOAT32','BOOL','ADVANCED','BROKERREVIEW','BROKERCOMMIT','HELP','TYPEPICK','AREAPICK','REPORTPICK']
 C={'ink':'#FF202629','muted':'#FF526365','bg':'#FFF3F6F5','white':'#FFFFFFFF','teal':'#FF007D80','light':'#FFE3F3F0','green':'#FF8AC640','line':'#FFD3DEDA','red':'#FFB43D37'}
-NAVS+=['GATEWAY','POINTBACK','MODEPAGE','MODEKEEP','MODECLEAR','MODECOMMIT']
+NAVS+=['GATEWAY','POINTBACK','MODEPAGE','MODEKEEP','MODECLEAR','MODECOMMIT','RESETPAGE','RESETCOMMIT']
 def build():
     with zipfile.ZipFile(ROOT/'reference/NativeGateway.before-implementation.pcwex') as z:original=E.fromstring(z.read(APP+'/Login.hmi/Definition.hmipagedef'))
     templates={}
@@ -57,7 +57,7 @@ def build():
     button(1124,22,128,'English',nav='EN',hide='HMI.English');button(1124,22,128,'中文',nav='ZH',hide='NOT HMI.English')
     box(0,88,1280,64)
     text(0,150,1280,3,fill=C['green'])
-    for x,label,nav,views in [(24,('设备与点位','Devices & points'),'LIST',[0,1,2,4,5,6,9,10,11]),(216,('连接设置','Connection'),'MQTT',[3,7,13,14,15]),(408,('使用说明','How it works'),'HELP',[8])]:
+    for x,label,nav,views in [(24,('设备与点位','Devices & points'),'LIST',[0,1,2,4,5,6,9,10,11]),(216,('连接设置','Connection'),'MQTT',[3,7,13,14,15,16]),(408,('使用说明','How it works'),'HELP',[8])]:
         active=' OR '.join('HMI.View = '+str(v) for v in views)
         button(x,98,180,label,nav=nav,hide=active);button(x,98,180,label,nav=nav,primary=True,hide='NOT ('+active+')')
     button(600,98,180,('管理与维护','Ownership'),nav='MODEPAGE')
@@ -122,6 +122,11 @@ def build():
     button(48,790,340,('进入本地维护…','Enter local maintenance…'),nav='MODELOCAL',view=13,primary=True,hide='NOT HMI.Managed')
     button(48,790,340,('交还平台管理…','Return ownership to Hub…'),nav='MODEHUB',view=13,primary=True,hide='HMI.Managed')
     button(412,790,220,('返回设备列表','Back to devices'),nav='LIST',view=13)
+    button(656,790,340,('清空本地点表与基线…','Reset local table & baseline…'),nav='RESETPAGE',view=13,danger=True)
+    heading(('清空本地点表与版本基线','Reset local table & version baseline'),('用于清理错误下发的点表或解决版本号错位（STALE_VERSION）；保留连接参数与网关标识。','Clears saved devices, points and version baseline to recover from wrong configs or STALE_VERSION; keeps broker & gateway ID.'),16)
+    text(48,420,1184,180,('此操作将：\n1. 保留当前消息服务器地址、账号与网关标识；\n2. 清空控制器本地保存的设备、点位、平台配置基线、版本号及防重放记录；\n3. 重置内存采集缓冲，切换为平台统一管理并自动重连拉取最新配置。','This action will:\n1. Keep the current broker URI, credentials and Gateway ID;\n2. Clear saved devices, points, Hub baseline, config version and replay history;\n3. Reset the RAM capture buffer, restore Hub-managed mode and reconnect to pull fresh config.'),21,view=16,color=C['red'])
+    button(48,780,380,('确认清空并重新同步','Confirm reset & resync'),nav='RESETCOMMIT',view=16,danger=True)
+    button(452,780,260,('取消，保留当前配置','Cancel; keep current config'),nav='MODEPAGE',view=16)
     heading(('进入本地维护','Enter local maintenance'),('默认保留当前设备和点位；只有主动选择清空才移除本地点表。','Current devices and points are retained by default. Clearing is optional.'),14)
     text(48,412,1184,104,('网关标识保持不变。平台配置先备份，随后暂停应用平台下发。\n模式切换会放弃未生效草稿；已生效点表按下面的选项处理。','Gateway ID stays unchanged. The Hub configuration is saved before locking updates.\nUnapplied draft edits are discarded. Choose how to handle the active point table.'),21,view=14)
     button(48,542,560,('保留设备与点位（推荐）','Keep devices & points (recommended)'),nav='MODEKEEP',view=14,primary=True,hide='HMI.ClearOnMaintenance')

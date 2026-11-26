@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Add eHMI one-click local table & version baseline reset (View 16, SaveReason 7) with in-place CaptureBuffer reset and auto-resync.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T08:38:41.023470+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "1dc1d58a9d72be68c8ed98819d1b63c27a902753c69f06c1732f4c17ef647d74",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "bffb587c38e10516cec1bbc9a808bf49814f2b489a2e108d400fe5082545f04e",
+  "target": "AXCF1252",
+  "version": "native-0.8.7-dev.bffb587c38e10516"
+}

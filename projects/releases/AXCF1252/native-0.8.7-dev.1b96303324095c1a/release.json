@@ -1,0 +1,15 @@
+{
+  "address": "192.168.0.10",
+  "change_note": "Fix eHMI SaveBroker/Reset deadlock when AckPending/RxStage busy and prune inactive TerminalOwners in NG_ConfigSlot on 4-slot exhaustion.",
+  "channel": "dev",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T08:50:43.108491+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-1252-01",
+  "origin": "mcp_dev_build",
+  "project_sha256": "787df22ec0d2ceb97d0b25cd2279227427b1f727067e73101d22e997c15c7cff",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "1b96303324095c1a17f62eab839439869e0b7c91b5094dcfc143a0e51b675978",
+  "target": "AXCF1252",
+  "version": "native-0.8.7-dev.1b96303324095c1a"
+}

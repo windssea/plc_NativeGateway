@@ -1,6 +1,7 @@
 FUNCTION_BLOCK NG_HmiEdit
 VAR_INPUT
     Busy : BOOL;
+    StoreBusy : BOOL;
     Managed : BOOL;
     LocalRevision : ULINT;
     NowMs : ULINT;
@@ -16,6 +17,7 @@ VAR_OUTPUT
     Submit : BOOL;
     SubmitBroker : BOOL;
     SubmitMode : BOOL;
+    SubmitReset : BOOL;
     ClearConfig : BOOL;
     Draft : NG_Config;
     NewBroker : NG_Bootstrap;
@@ -30,6 +32,7 @@ VAR
     BaseRevision : ULINT;
     ModeTargetManaged : BOOL;
     ModeReviewOpen : BOOL;
+    ResetReviewOpen : BOOL;
     Initialized : BOOL;
     Dirty : BOOL;
     Awaiting : BOOL;
@@ -59,7 +62,7 @@ VAR
     PointLabel : NG_UiLabel;
     UnitLabel : NG_UiLabel;
 END_VAR
-Submit := FALSE; SubmitBroker := FALSE; SubmitMode := FALSE; ClearConfig := FALSE; LoadDevice := FALSE; LoadPoint := FALSE;
+Submit := FALSE; SubmitBroker := FALSE; SubmitMode := FALSE; SubmitReset := FALSE; ClearConfig := FALSE; LoadDevice := FALSE; LoadPoint := FALSE;
 Nav := Hmi.Navigation; Hmi.Navigation := '';
 IF Nav='ZH' THEN Hmi.English:=FALSE;
 ELSIF Nav='EN' THEN Hmi.English:=TRUE;
@@ -71,14 +74,20 @@ ELSIF Nav='DEVON' THEN Hmi.DeviceEnabled:='true';
 ELSIF Nav='DEVOFF' THEN Hmi.DeviceEnabled:='false';
 ELSIF Nav='POINTON' THEN Hmi.PointEnabled:='true';
 ELSIF Nav='POINTOFF' THEN Hmi.PointEnabled:='false';
-ELSIF Nav='MODEPAGE' THEN ModeReviewOpen:=FALSE; Hmi.View:=13;
-ELSIF Nav='MODEHUB' THEN ModeTargetManaged:=TRUE; ModeReviewOpen:=TRUE; Hmi.ClearOnMaintenance:=FALSE; Hmi.View:=15;
-ELSIF Nav='MODELOCAL' THEN ModeTargetManaged:=FALSE; ModeReviewOpen:=TRUE; Hmi.ClearOnMaintenance:=FALSE; Hmi.View:=14;
+ELSIF Nav='MODEPAGE' THEN ModeReviewOpen:=FALSE; ResetReviewOpen:=FALSE; Hmi.View:=13;
+ELSIF Nav='MODEHUB' THEN ModeTargetManaged:=TRUE; ModeReviewOpen:=TRUE; ResetReviewOpen:=FALSE; Hmi.ClearOnMaintenance:=FALSE; Hmi.View:=15;
+ELSIF Nav='MODELOCAL' THEN ModeTargetManaged:=FALSE; ModeReviewOpen:=TRUE; ResetReviewOpen:=FALSE; Hmi.ClearOnMaintenance:=FALSE; Hmi.View:=14;
 ELSIF Nav='MODEKEEP' THEN Hmi.ClearOnMaintenance:=FALSE;
 ELSIF Nav='MODECLEAR' THEN Hmi.ClearOnMaintenance:=TRUE;
 ELSIF Nav='MODECOMMIT' THEN
     IF ModeReviewOpen AND ((Hmi.View=14) OR (Hmi.View=15)) THEN Hmi.SwitchMode:=TRUE;
     ELSE Hmi.Status:='Open the management mode confirmation before saving.'; END_IF;
+ELSIF Nav='RESETPAGE' THEN ModeReviewOpen:=FALSE; ResetReviewOpen:=TRUE; Hmi.View:=16;
+ELSIF Nav='RESETCOMMIT' THEN
+    IF ResetReviewOpen AND (Hmi.View=16) THEN
+        IF StoreBusy THEN Hmi.Status:='Busy: configuration transaction in progress. Try again shortly.';
+        ELSE SubmitReset:=TRUE; ResetReviewOpen:=FALSE; Dirty:=FALSE; Awaiting:=FALSE; Reload:=TRUE; Hmi.View:=0; Hmi.Status:='Clearing local configuration and version baseline...'; END_IF;
+    ELSE Hmi.Status:='Open the reset confirmation before clearing local configuration.'; END_IF;
 ELSIF Nav='CYCLIC' THEN Hmi.ReportMode:='cyclic';
 ELSIF Nav='CHANGE' THEN Hmi.ReportMode:='change';
 ELSIF Nav='BOTH' THEN Hmi.ReportMode:='change_or_cyclic';
@@ -182,7 +191,7 @@ IF LoadPoint AND (d <= Draft.DeviceCount) THEN
     END_IF;
 END_IF;
 cmd := Hmi.SaveDevice OR Hmi.SavePoint OR Hmi.RemoveDevice OR Hmi.RemovePoint OR Hmi.Apply OR Hmi.SaveBroker OR Hmi.SwitchMode OR (Nav = 'PERIOD');
-IF cmd AND Busy THEN Hmi.Status := 'Busy: configuration transaction in progress. Try again shortly.';
+IF cmd AND ((Hmi.SaveBroker AND StoreBusy) OR ((NOT Hmi.SaveBroker) AND Busy)) THEN Hmi.Status := 'Busy: configuration transaction in progress. Try again shortly.';
 ELSIF cmd THEN
     IF NOT NG_Range(Hmi.DeviceIndex,1,50,TRUE) OR NOT NG_Range(Hmi.PointIndex,1,32,TRUE) THEN Hmi.Status := 'Device index 1..50; point index 1..32.';
     ELSE

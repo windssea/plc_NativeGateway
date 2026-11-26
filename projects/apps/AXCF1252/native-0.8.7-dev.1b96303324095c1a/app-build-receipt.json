@@ -1,0 +1,15 @@
+{
+  "schema": "plcnext-solution-app-build/v1",
+  "target": "AXCF1252",
+  "version": "native-0.8.7-dev.1b96303324095c1a",
+  "source_pcwe_dir": "D:\\work\\code\\PLCnext-Engineer\\projects\\releases\\AXCF1252\\native-0.8.7-dev.1b96303324095c1a\\PCWE",
+  "app_file": "D:\\work\\code\\PLCnext-Engineer\\projects\\apps\\AXCF1252\\native-0.8.7-dev.1b96303324095c1a\\NativeGateway-AXCF1252-0.8.7-dev.1b96303324095c1a.app",
+  "app_bytes": 2875392,
+  "app_sha256": "dee45b696355528e7507fa277d6e67f1c5db062ea305e45f3c994b66c1d7843a",
+  "app_info_file": "D:\\work\\code\\PLCnext-Engineer\\projects\\apps\\AXCF1252\\native-0.8.7-dev.1b96303324095c1a\\app_info.json",
+  "app_identifier": "99000012520001",
+  "schema_validated": true,
+  "pcwe_file_count": 48,
+  "squashfs_entry_count": 67,
+  "signed": false
+}
