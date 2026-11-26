@@ -1,0 +1,17 @@
+{
+  "automatic_retry_allowed": false,
+  "current_device_version_verified": false,
+  "execution_receipt_sha256": "da18e9a567c78a9e6d9a590c10d252baa7ddf41f78d478ff0b29de568ea9d80c",
+  "finished_utc": "2026-11-26T11:50:24.630357+00:00",
+  "result": {
+    "endpoint_lease_retained": true,
+    "execution_id": "ec0ba565d171478c92b9c16bb0406452",
+    "failure_code": "recovery_transfer_failed",
+    "outcome_unknown": false,
+    "receipt_persisted": true,
+    "report_path": "D:\\PLCnext-MCP-Workspace\\2bd5a60838aa4277b4d709f8f1bef24d\\controller-recoveries\\ec0ba565d171478c92b9c16bb0406452\\result.json",
+    "stage": "transferring",
+    "status": "recovery_failed"
+  },
+  "status": "operation_returned"
+}

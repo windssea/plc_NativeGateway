@@ -1,0 +1,18 @@
+{
+  "address": "192.168.0.8",
+  "change_note": "NativeGateway 0.8.7 eHMI identity & recovery hardening: (1) unify GatewayId and MQTT ClientId into one eHMI field and support persistent online GatewayId modification with safe in-place CaptureBuffer reset; (2) reclaim CaptureBuffer 4-slot dictionary under non-audit runtime by evicting oldest AuditEvents, Associations and inactive TerminalOwners in NG_ConfigSlot; (3) add eHMI Maintenance one-click point-table/baseline reset (GW_Nav=70, SaveReason=7) preserving Broker and GatewayId; (4) fix AckPending/RxStage SaveBroker & Reset deadlock by gating on StoreBusy only.",
+  "channel": "release",
+  "controller_downloaded_by_registration": false,
+  "created_utc": "2026-11-26T12:09:22.236976+00:00",
+  "current_device_version_verified": false,
+  "gateway_id": "NG-HUB-2152-01",
+  "origin": "mcp_release_promotion",
+  "project_sha256": "01c01b137d5f37cdf18bab05c3a83b468409c2c2438a130e9b7d05f8b1afe300",
+  "promoted_from_project_sha256": "4bbdaf423db1d7a643e21d853df8dfe490497c3a3122fc9b6c961e41b84af589",
+  "promoted_from_version": "native-0.8.7-dev.82e141b01ea2ffaa",
+  "schema": "plcnext-release/v1",
+  "source_input_sha256": "82e141b01ea2ffaa57403341ca854527b21e442ba95eee35b869b80ac67f37f1",
+  "target": "AXCF2152",
+  "verification_note": "Live AXCF2152 (192.168.0.8 / NG-HUB-2152-01) verification of native-0.8.7-dev.82e141b01ea2ffaa: MCP recovery operation_id=cc763aad4a2e40278f113b5af7f415ff, release_attempt_id=fd8491266ec34707939ee7f916426395 (48/48 SHA-512 readback verified, Cold Start Running, persisted V5 config v23/50 devices/250 points, original_configuration_verified=True, collection_verified=False).",
+  "version": "native-0.8.7"
+}
